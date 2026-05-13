@@ -41,7 +41,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           style={{ color: '#F6E05E', marginBottom: '24px' }}
         >
-          For working professionals, specifically for hindi and Hindi and hinglish speaking peoples
+          For working professionals, specifically for hindi and hinglish speaking peoples
         </motion.span>
         
         <motion.h1 
