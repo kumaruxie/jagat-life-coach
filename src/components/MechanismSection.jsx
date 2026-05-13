@@ -27,7 +27,7 @@ const MechanismSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            Jagat Ka Signature System: Teen Steps Mein Permanent Change
+            Jagat Ka Signature System: 3 Steps Mein Permanent Change
           </motion.h2>
         </div>
 

@@ -41,7 +41,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           style={{ color: '#F6E05E', marginBottom: '24px' }}
         >
-          For Delhi–Gurgaon Professionals
+          For working professionals, specifically for hindi and Hindi and hinglish speaking peoples
         </motion.span>
         
         <motion.h1 
@@ -50,7 +50,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           style={{ color: 'white', marginBottom: '24px' }}
         >
-          Ghar Ke Conflicts Ko <em style={{ color: 'var(--color-secondary)', fontStyle: 'normal' }}>1 Mahine Mein</em> Clarity Mein Badlo.
+          Ghar Ke Conflicts Ko <em style={{ color: 'var(--color-secondary)', fontStyle: 'normal' }}>Ek Mahine Mai</em> Clarity Mein Badlo.
         </motion.h1>
         
         <motion.p 

@@ -10,12 +10,13 @@ const Footer = () => {
         
         <div style={{ display: 'flex', gap: '24px', fontSize: '14px', color: 'var(--color-text-light)' }}>
           <a href="#">Privacy Policy</a>
+          <a href="#">Refund Policy</a>
           <a href="#">Terms</a>
           <a href="#">Contact</a>
         </div>
         
         <div style={{ fontSize: '14px', color: 'var(--color-text-muted)' }}>
-          © 2026 Jagat Turkiya. All Rights Reserved.
+          © 2026 All rights reserved by apkacoach.com
         </div>
       </div>
     </footer>

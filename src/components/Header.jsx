@@ -30,7 +30,7 @@ const Header = () => {
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <div style={{ width: '32px', height: '32px', backgroundColor: 'var(--color-secondary)', borderRadius: '4px' }}></div>
-            Jagat Turkiya
+            <span>APKACOACH</span>
           </div>
         </div>
         

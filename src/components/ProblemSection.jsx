@@ -5,11 +5,11 @@ import { X } from 'lucide-react';
 const ProblemSection = () => {
   const problems = [
     "Ghar aate hi mood off ho jaata hai — kyunki pata hai ki phir koi baat pakdi jayegi.",
-    "Spouse, parents, ya siblings ko samjhana chahte hain, lekin har baat debate ya blame game ban jaati hai.",
+    "Spouse, parents, ya siblings ko samjhana chahte hain, lekin har baat debate ya blame game mai badal jaati hai.",
     "Career chal raha hai, financially theek hain — par andar se lagta hai ki kuch toh missing hai.",
     "Itne saalon se same pattern repeat ho raha hai: Love → Expectations → Disappointments → Fights → Silence.",
     "Compromise karte-karte khud ko hi kho chuke hain — 'Main kaun hoon?' ka jawab ab clear nahi.",
-    "YouTube reels, motivational quotes, sab try kar liya — par agli subah wahi purani reality."
+    "YouTube, reels, motivational quotes, sab try kar liya — par agli subah wahi purani reality."
   ];
 
   return (
