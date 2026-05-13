@@ -1,5 +1,6 @@
 
 import { motion } from 'framer-motion';
+import logoImg from '../assets/jagat logo png.png';
 
 const Header = () => {
   return (
@@ -22,16 +23,12 @@ const Header = () => {
       }}
     >
       <div className="section-inner header-responsive">
-        <div className="logo" style={{ 
-          fontFamily: 'var(--font-heading)', 
-          fontWeight: 700, 
-          fontSize: '24px',
-          color: 'var(--color-primary)'
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <div style={{ width: '32px', height: '32px', backgroundColor: 'var(--color-secondary)', borderRadius: '4px' }}></div>
-            <span>APKACOACH</span>
-          </div>
+        <div className="logo" style={{ display: 'flex', alignItems: 'center' }}>
+          <img 
+            src={logoImg} 
+            alt="Apka coach logo" 
+            style={{ height: '48px', width: 'auto', objectFit: 'contain' }} 
+          /> APKACOACH
         </div>
         
         <div className="nav-container" style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>

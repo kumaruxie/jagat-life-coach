@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const VSLSection = () => {
   return (
-    <section className="section" style={{ backgroundColor: 'var(--color-bg)' }}>
+    <section id="vsl" className="section" style={{ backgroundColor: 'var(--color-bg)' }}>
       <div className="section-inner" style={{ textAlign: 'center', maxWidth: '900px' }}>
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
@@ -43,13 +43,14 @@ const VSLSection = () => {
             boxShadow: '0 20px 40px rgba(0,0,0,0.1)'
           }}
         >
-          {/* VSL Video Placeholder */}
-          <div style={{ color: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <div style={{ width: '64px', height: '64px', borderRadius: '50%', backgroundColor: 'var(--color-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', marginBottom: '16px' }}>
-              <div style={{ width: 0, height: 0, borderTop: '10px solid transparent', borderBottom: '10px solid transparent', borderLeft: '16px solid white', marginLeft: '4px' }}></div>
-            </div>
-            <p>[ VSL Video Placeholder ]</p>
-          </div>
+          <iframe
+            src="https://www.youtube.com/embed/92mCOUkNrj0?autoplay=1&mute=1&rel=0&modestbranding=1&controls=1"
+            title="Video Sales Letter"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}
+          ></iframe>
         </motion.div>
         
         <motion.div

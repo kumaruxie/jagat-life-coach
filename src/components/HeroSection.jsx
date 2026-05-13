@@ -71,9 +71,22 @@ const HeroSection = () => {
           <button className="btn-primary" style={{ padding: '20px 40px', fontSize: '16px' }}>
             Join the Accelerator — ₹1,997
           </button>
-          <button className="btn-ghost" style={{ color: 'white', borderColor: 'rgba(255,255,255,0.3)', padding: '20px 40px', fontSize: '16px' }}>
+          <a 
+            href="#vsl" 
+            className="btn-ghost" 
+            style={{ 
+              color: 'white', 
+              borderColor: 'rgba(255,255,255,0.3)', 
+              padding: '20px 40px', 
+              fontSize: '16px',
+              textDecoration: 'none',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+          >
             ▶ Watch Jagat's Message
-          </button>
+          </a>
         </motion.div>
       </div>
     </section>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PolicyModal from './PolicyModal';
 import { policyContent } from '../utils/policyContent';
+import logoImg from '../assets/jagat logo png.png';
 
 const Footer = () => {
   const [modalConfig, setModalConfig] = useState({ isOpen: false, title: '', content: null });
@@ -21,8 +22,12 @@ const Footer = () => {
     <>
       <footer style={{ backgroundColor: 'white', padding: '60px 0', borderTop: '1px solid var(--color-border)' }}>
         <div className="section-inner footer-responsive">
-          <div style={{ fontWeight: 600, color: 'var(--color-primary)' }}>
-            MindErist training llp — Life Strategic Family Coach
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <img 
+              src={logoImg} 
+              alt="MindErist Training LLP Logo" 
+              style={{ height: '48px', width: 'auto', objectFit: 'contain' }} 
+            />
           </div>
           
           <div style={{ display: 'flex', gap: '24px', fontSize: '14px', color: 'var(--color-text-light)' }}>

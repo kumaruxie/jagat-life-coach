@@ -1,26 +1,29 @@
 import { motion } from 'framer-motion';
 
+import coachImg from '../assets/jagat photo.jpg';
+
 const AboutCoachSection = () => {
   return (
     <section id="about" className="section" style={{ backgroundColor: 'white' }}>
       <div className="section-inner">
         <div className="grid-2-col" style={{ alignItems: 'center' }}>
-          {/* Image Placeholder */}
+          {/* Coach Photo */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             style={{
               aspectRatio: '3/4',
-              backgroundColor: 'var(--color-bg)',
               borderRadius: '16px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: 'var(--color-text-muted)'
+              overflow: 'hidden',
+              boxShadow: '0 20px 40px rgba(0,0,0,0.1)'
             }}
           >
-            [ Jagat Turkiya Image Placeholder ]
+            <img 
+              src={coachImg} 
+              alt="MindErist Training LLP Coach" 
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 10%' }}
+            />
           </motion.div>
 
           <motion.div
