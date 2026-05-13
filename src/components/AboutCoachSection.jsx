@@ -19,9 +19,9 @@ const AboutCoachSection = () => {
               boxShadow: '0 20px 40px rgba(0,0,0,0.1)'
             }}
           >
-            <img 
-              src={coachImg} 
-              alt="MindErist Training LLP Coach" 
+            <img
+              src={coachImg}
+              alt="MindErist Training LLP Coach"
               style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 10%' }}
             />
           </motion.div>
@@ -32,14 +32,16 @@ const AboutCoachSection = () => {
             viewport={{ once: true }}
           >
             <span className="tag">The Mentor</span>
-            <h2 style={{ marginBottom: '32px' }}>Meet Jagat Turkiya</h2>
+            <h2 style={{ marginBottom: '32px' }}>Meet Your Coach</h2>
 
             <p style={{ marginBottom: '24px', fontSize: '18px' }}>
-              Main ek life strategic family coach aur mind hacker hoon — lekin meri journey textbook se nahi, real struggles se shuru hui. Maine personally dekha hai ki ek unresolved family conflict kaise ek capable, intelligent insaan ko andar se khaali kar deta hai.
+              Jagat turkiya ek Life Strategic Family Coach aur Mind Hacker hai  — lekin us ki journey kisi textbook se nahi, real-life struggles se shuru hui thi.
+              Form jagat turkiya -
+              Maine personally dekha hai ki ek unresolved family conflict kaise ek capable aur intelligent insaan ko andar se khaali kar deta hai.
             </p>
 
             <p style={{ marginBottom: '40px', fontSize: '18px' }}>
-              Aaj tak 1,500+ logon ke saath 1-on-1 kaam kiya hai, aur 12,000+ participants ko live events aur webinars mein transform kiya hai. Guinness World Records speaker, Nation Icon Award winner, aur 4 best-selling books ke author — lekin jo cheez mujhe sabse zyada proud karti hai woh yeh results hain jo mere clients apne ghar le jaate hain.
+              Aaj tak maine 1,500+ logon ke saath 1-on-1 kaam kiya hai, aur mai 15,000+ life ko live events aur webinars mein transform kiya hai. Main Guinness World Record Speaker, National Icon Award Winner, aur 4 best-selling books ka author hoon — lekin jo cheez mujhe sabse zyada proud karti hai, woh hai mere clients ke ghar mein aane wala real badlaav.
             </p>
 
             <div className="grid-responsive" style={{
@@ -48,7 +50,7 @@ const AboutCoachSection = () => {
             }}>
               {[
                 { label: "1:1 Clients", value: "1,500+" },
-                { label: "Event Participants", value: "12,000+" },
+                { label: "Event Participants", value: "15,000+" },
                 { label: "Bestselling Books", value: "4" },
                 { label: "Speaker", value: "Guinness Record" }
               ].map((stat, i) => (
