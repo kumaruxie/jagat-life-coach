@@ -73,6 +73,13 @@ const HeroSection = () => {
           </button>
           <a 
             href="#vsl" 
+            onClick={(e) => {
+              e.preventDefault();
+              const vslElement = document.getElementById('vsl');
+              if (vslElement) {
+                vslElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            }}
             className="btn-ghost" 
             style={{ 
               color: 'white', 
@@ -82,7 +89,8 @@ const HeroSection = () => {
               textDecoration: 'none',
               display: 'inline-flex',
               alignItems: 'center',
-              justifyContent: 'center'
+              justifyContent: 'center',
+              transition: 'all 0.3s ease-in-out'
             }}
           >
             ▶ Watch Jagat's Message
