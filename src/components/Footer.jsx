@@ -20,7 +20,7 @@ const Footer = () => {
 
   return (
     <>
-      <footer style={{ backgroundColor: 'white', padding: '60px 0', borderTop: '1px solid var(--color-border)' }}>
+      <footer style={{ backgroundColor: 'var(--surface-deep)', padding: '32px 0', borderTop: '1px solid var(--border)' }}>
         <div className="section-inner footer-responsive">
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <img 
@@ -30,7 +30,7 @@ const Footer = () => {
             />
           </div>
           
-          <div style={{ display: 'flex', gap: '24px', fontSize: '14px', color: 'var(--color-text-light)', flexWrap: 'wrap', justifyContent: 'center' }}>
+          <div style={{ display: 'flex', gap: '20px', fontSize: '12px', color: 'var(--slate)', flexWrap: 'wrap', justifyContent: 'center' }}>
             <a href="#" onClick={(e) => openModal(e, 'privacy')}>Privacy Policy</a>
             <a href="#" onClick={(e) => openModal(e, 'refund')}>Refund Policy</a>
             <a href="#" onClick={(e) => openModal(e, 'terms')}>Terms and Conditions</a>
@@ -38,13 +38,13 @@ const Footer = () => {
             <a href="#" onClick={(e) => openModal(e, 'contact')}>Contact</a>
           </div>
 
-          <div style={{ fontSize: '14px', color: 'var(--color-text-light)', textAlign: 'center' }}>
+          {/* <div style={{ fontSize: '14px', color: 'var(--color-text-light)', textAlign: 'center' }}>
             <p style={{ margin: '0 0 4px 0' }}>Contact - <a href="mailto:hello@jagatturkiya.com" style={{ fontWeight: 500, color: 'var(--color-secondary)' }}>hello@jagatturkiya.com</a></p>
             <p style={{ margin: 0 }}>Contact whatsapp only - <a href="https://wa.me/917011900562" style={{ fontWeight: 500, color: 'var(--color-secondary)' }}>7011900562</a></p>
-          </div>
+          </div> */}
           
-          <div style={{ fontSize: '14px', color: 'var(--color-text-muted)' }}>
-            © 2026 All rights reserved by apkacoach.com
+          <div style={{ fontSize: '12px', color: 'var(--slate)' }}>
+            ©️2026 apkacoach.com and minderist training . All Rights Reserved.
           </div>
         </div>
       </footer>

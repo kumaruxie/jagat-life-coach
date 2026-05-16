@@ -1,83 +1,153 @@
-// import React from 'react';
 import { motion } from 'framer-motion';
-import { X } from 'lucide-react';
+import { Home, Users, Briefcase, RefreshCw, User, Lightbulb } from 'lucide-react';
 
 const ProblemSection = () => {
   const problems = [
-    "Ghar aate hi mood off ho jaata hai — kyunki pata hai ki phir koi baat pakdi jayegi.",
-    "Spouse, parents, ya siblings ko samjhana chahte hain, lekin har baat debate ya blame game mai badal jaati hai.",
-    "Career chal raha hai, financially theek hain — par andar se lagta hai ki kuch toh missing hai.",
-    "Itne saalon se same pattern repeat ho raha hai: Love → Expectations → Disappointments → Fights → Silence.",
-    "Compromise karte-karte khud ko hi kho chuke hain — 'Main kaun hoon?' ka jawab ab clear nahi.",
-    "YouTube, reels, motivational quotes, sab try kar liya — par agli subah wahi purani reality."
+    {
+      icon: <Home size={20} />,
+      text: "Ghar aate hi mood off ho jaata hai — kyunki pata hai ki phir koi baat pakdi jayegi."
+    },
+    {
+      icon: <Users size={20} />,
+      text: "Spouse, parents, ya siblings ko samjhana chahte hain, lekin har baat debate ya blame game mai badal jaati hai."
+    },
+    {
+      icon: <Briefcase size={20} />,
+      text: "Career chal raha hai, financially theek hain — par andar se lagta hai ki kuch toh missing hai."
+    },
+    {
+      icon: <RefreshCw size={20} />,
+      text: "Itne saalon se same pattern repeat ho raha hai: Love → Expectations → Disappointments → Fights → Silence."
+    },
+    {
+      icon: <User size={20} />,
+      text: "Compromise karte-karte khud ko hi kho chuke hain — \"Main kaun hoon?\" ka jawab ab clear nahi."
+    },
+    {
+      icon: <Lightbulb size={20} />,
+      text: "YouTube, reels, motivational quotes, sab try kar liya — par agli subah wahi purani reality."
+    }
   ];
 
   return (
-    <section className="section" style={{ backgroundColor: 'white', position: 'relative' }}>
+    <section className="section" style={{ backgroundColor: 'var(--surface)', color: 'var(--silver)', padding: '100px 0' }}>
       <div className="section-inner">
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="section-title"
-        >
-          Yeh Sab Jaana Pehchaana Lagta Hai?
-        </motion.h2>
+        <div style={{ textAlign: 'center', marginBottom: '80px', position: 'relative' }}>
+          <div style={{ 
+            position: 'absolute', 
+            top: '50%', 
+            left: 0, 
+            right: 0, 
+            height: '1px', 
+            backgroundColor: 'var(--border)', 
+            zIndex: 0 
+          }}></div>
+          <span style={{ 
+            backgroundColor: 'var(--surface)', 
+            padding: '0 24px', 
+            position: 'relative', 
+            zIndex: 1, 
+            color: 'var(--slate)',
+            fontSize: '14px',
+            textTransform: 'uppercase',
+            letterSpacing: '0.2em'
+          }}>
+            Pehchante hain yeh feelings?
+          </span>
+        </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px', marginBottom: '60px' }}>
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', 
+          gap: '24px',
+          maxWidth: '1100px',
+          margin: '0 auto'
+        }}>
           {problems.map((prob, index) => (
             <motion.div 
               key={index}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               style={{ 
                 display: 'flex', 
-                gap: '16px', 
-                padding: '24px',
-                backgroundColor: 'var(--color-bg)',
-                borderRadius: '12px',
-                alignItems: 'flex-start'
+                gap: '24px', 
+                padding: '32px',
+                backgroundColor: 'var(--surface-raised)',
+                borderRadius: '8px',
+                alignItems: 'flex-start',
+                border: '1px solid var(--border)',
+                transition: 'all 0.3s ease',
               }}
+              whileHover={{ transform: 'translateY(-2px)', borderColor: 'rgba(148,163,184,0.3)' }}
             >
-              <div style={{ color: 'var(--color-secondary)', marginTop: '4px' }}>
-                <X size={24} strokeWidth={3} />
+              <div style={{ 
+                backgroundColor: 'rgba(148,163,184,0.12)', 
+                color: 'var(--slate)', 
+                padding: '12px', 
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0,
+                boxShadow: 'none'
+              }}>
+                {prob.icon}
               </div>
-              <p style={{ margin: 0, color: 'var(--color-text-dark)', fontWeight: 500 }}>
-                {prob}
+              <p style={{ margin: 0, color: 'var(--slate)', fontSize: '14px', lineHeight: '1.7', fontWeight: 400 }}>
+                {prob.text}
               </p>
             </motion.div>
           ))}
         </div>
 
+        {/* Quote Section */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           style={{
-            backgroundColor: '#2D3748', // Dark purple/blue overlay
-            color: 'white',
-            padding: '40px',
-            borderRadius: '16px',
+            marginTop: '100px',
             textAlign: 'center',
-            maxWidth: '800px',
-            margin: '0 auto',
-            boxShadow: '0 20px 40px rgba(0,0,0,0.1)'
+            maxWidth: '900px',
+            margin: '100px auto 0',
+            padding: '0 20px'
           }}
         >
+          <div style={{ 
+            width: '2px', 
+            height: '60px', 
+            background: 'linear-gradient(to bottom, transparent, var(--border-accent), transparent)', 
+            margin: '0 auto 40px' 
+          }}></div>
+          
           <p style={{ 
-            fontSize: '24px', 
+            fontSize: 'clamp(18px, 2.5vw, 22px)', 
             fontFamily: 'var(--font-heading)',
             fontStyle: 'italic',
-            color: 'white',
-            marginBottom: '16px'
+            fontWeight: 500,
+            lineHeight: '1.4',
+            color: 'var(--silver)',
+            marginBottom: '32px',
+            letterSpacing: '-0.02em'
           }}>
-            "Sabko lagta hai problem 'saamne wale' mein hai. Asli root aapki apni Personality DNA mein chhupa hota hai."
+            "Sabko lagta hai problem <span style={{ color: 'var(--color-secondary)' }}>'saamne wale'</span> mein hai. Asli root aapki apni Personality DNA mein chhupa hota hai."
           </p>
-          <span style={{ color: 'var(--color-secondary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-            — Jagat Turkiya
-          </span>
+          
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px' }}>
+            <div style={{ width: '20px', height: '2px', backgroundColor: 'var(--slate)' }}></div>
+            <span style={{ 
+              color: 'var(--slate)', 
+              fontWeight: 700, 
+              textTransform: 'uppercase', 
+              letterSpacing: '0.2em',
+              fontSize: '14px'
+            }}>
+              Jagat Turkiya
+            </span>
+            <div style={{ width: '20px', height: '2px', backgroundColor: 'var(--slate)' }}></div>
+          </div>
         </motion.div>
       </div>
     </section>

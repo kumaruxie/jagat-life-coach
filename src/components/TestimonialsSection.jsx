@@ -18,7 +18,7 @@ const TestimonialsSection = () => {
   ];
 
   return (
-    <section id="alumni" className="section" style={{ backgroundColor: 'var(--color-bg)' }}>
+    <section id="alumni" className="section" style={{ backgroundColor: 'var(--surface)' }}>
       <div className="section-inner">
         <div style={{ textAlign: 'center', marginBottom: '60px' }}>
           <span className="tag">Alumni Results</span>
@@ -27,7 +27,7 @@ const TestimonialsSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            Unke Ghar Badal Gaye. Aapka Bhi Badal Sakta Hai.
+            Inke Ghar Badal Gaye. Aapka Bhi Badal Sakta Hai. 
           </motion.h2>
         </div>
 
@@ -40,22 +40,23 @@ const TestimonialsSection = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
               style={{
-                backgroundColor: 'white',
+                backgroundColor: 'var(--surface-raised)',
                 padding: '40px',
                 borderRadius: '16px',
-                boxShadow: '0 4px 6px rgba(0,0,0,0.05)',
+                boxShadow: 'none',
+                border: '1px solid var(--border)',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between'
               }}
             >
               <div>
-                <div style={{ color: 'var(--color-secondary)', marginBottom: '16px', fontSize: '20px' }}>★★★★★</div>
-                <p style={{ fontStyle: 'italic', fontSize: '18px', color: 'var(--color-text-dark)', marginBottom: '24px' }}>"{test.quote}"</p>
+                <div style={{ color: 'var(--emerald)', marginBottom: '14px', fontSize: '14px', letterSpacing: '2px' }}>★★★★★</div>
+                <p style={{ fontFamily: 'var(--font-heading)', fontStyle: 'italic', fontSize: '14px', color: 'var(--slate)', marginBottom: '20px', lineHeight: '1.7' }}>"{test.quote}"</p>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                <div style={{ width: '40px', height: '2px', backgroundColor: 'var(--color-secondary)' }}></div>
-                <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em' }}>{test.name}</span>
+                <div style={{ width: '20px', height: '2px', backgroundColor: 'var(--slate)' }}></div>
+                <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--silver)' }}>{test.name}</span>
               </div>
             </motion.div>
           ))}

@@ -1,7 +1,6 @@
-
 import { motion } from 'framer-motion';
 
-const VSLSection = () => {
+const VSLSection = ({ triggerPayment }) => {
   return (
     <section id="vsl" className="section" style={{ backgroundColor: 'var(--color-bg)' }}>
       <div className="section-inner" style={{ textAlign: 'center', maxWidth: '900px' }}>
@@ -14,7 +13,7 @@ const VSLSection = () => {
           Watch This Before You Scroll Further
         </motion.h2>
         
-        <motion.p 
+        {/* <motion.p 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -22,7 +21,7 @@ const VSLSection = () => {
           style={{ marginBottom: '40px' }}
         >
           Jagat explains exactly what's keeping your family stuck — and what the next 30 days will do about it.
-        </motion.p>
+        </motion.p> */}
         
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
@@ -59,7 +58,11 @@ const VSLSection = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
         >
-          <button className="btn-primary" style={{ padding: '16px 32px' }}>
+          <button 
+            className="btn-primary" 
+            style={{ padding: '16px 32px' }}
+            onClick={() => triggerPayment()}
+          >
             I'm Ready — Show Me the Program
           </button>
         </motion.div>

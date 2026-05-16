@@ -18,7 +18,7 @@ const TransformationSection = () => {
   ];
 
   return (
-    <section className="section" style={{ backgroundColor: 'white' }}>
+    <section className="section" style={{ backgroundColor: 'var(--surface)' }}>
       <div className="section-inner">
         <div style={{ textAlign: 'center', marginBottom: '60px' }}>
           <span className="tag">The Outcome</span>
@@ -40,10 +40,10 @@ const TransformationSection = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
               style={{
-                backgroundColor: 'var(--color-bg)',
+                backgroundColor: 'var(--surface-raised)',
                 padding: '40px',
                 borderRadius: '16px',
-                borderTop: '4px solid var(--color-secondary)'
+                borderTop: '3px solid var(--border-accent)'
               }}
             >
               <h3 style={{ marginBottom: '16px', fontSize: '24px' }}>{card.title}</h3>

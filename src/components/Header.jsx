@@ -1,8 +1,7 @@
-
 import { motion } from 'framer-motion';
 import logoImg from '../assets/jagat logo png.png';
 
-const Header = () => {
+const Header = ({ triggerPayment }) => {
   return (
     <motion.header 
       initial={{ y: -100 }}
@@ -24,7 +23,7 @@ const Header = () => {
             <a href="#program">Program</a>
             <a href="#alumni">Alumni</a>
           </nav>
-          <button className="btn-primary header-cta">
+          <button className="btn-primary header-cta" onClick={() => triggerPayment()}>
             Apply Now — ₹1,997
           </button>
         </div>

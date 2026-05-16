@@ -31,7 +31,7 @@ const ProgramBreakdownSection = () => {
   ];
 
   return (
-    <section id="program" className="section" style={{ backgroundColor: 'var(--color-primary)', color: 'white' }}>
+    <section id="program" className="section" style={{ backgroundColor: 'var(--surface-deep)', color: 'var(--silver)' }}>
       <div className="section-inner">
         <div style={{ textAlign: 'center', marginBottom: '60px' }}>
           <span className="tag">The Program</span>
@@ -39,9 +39,9 @@ const ProgramBreakdownSection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            style={{ color: 'white' }}
+            style={{ color: 'var(--silver)' }}
           >
-            Conflict to Clarity — 1-Month Accelerator
+            Conflict to Clarity — One Month Accelerator
           </motion.h2>
         </div>
 
@@ -52,20 +52,20 @@ const ProgramBreakdownSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <p style={{ fontSize: '1.125rem', color: 'rgba(255,255,255,0.9)', marginBottom: '2rem' }}>
-              Yeh ek structured 30-day journey hai — recorded modules, live Zoom sessions, worksheets, aur direct coaching. Sirf gyaan nahi, <strong style={{ color: 'white' }}>real ground-level change</strong>.
+            <p style={{ fontSize: '15px', color: 'var(--slate)', marginBottom: '2rem' }}>
+              Yeh ek structured 30-day journey hai — recorded modules, live Zoom sessions, worksheets, aur direct coaching. Sirf gyaan nahi, <strong style={{ color: 'var(--silver)' }}>real ground-level change</strong>.
             </p>
             
             <ul style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               {[
                 { icon: <Calendar size={20} />, text: "8 Recorded Hinglish Modules (112 min total)" },
-                { icon: <Target size={20} />, text: "7 Live Group Coaching Sessions (315 min total)" },
+                { icon: <Target size={20} />, text: "2 Live one on one Coaching Sessions (120 min total)" },
                 { icon: <FileText size={20} />, text: "Worksheets, scripts & reflection exercises" },
-                { icon: <Users size={20} />, text: "Private community support (30 days)" },
+                { icon: <Users size={20} />, text: "Private community support" },
                 { icon: <Lock size={20} />, text: "Lifetime access to all recordings" },
               ].map((item, i) => (
-                <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px', color: 'rgba(255,255,255,0.8)' }}>
-                  <span style={{ color: 'var(--color-secondary)' }}>{item.icon}</span>
+                <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px', color: 'var(--slate)', fontSize: '14px' }}>
+                  <span style={{ color: 'var(--slate)' }}>{item.icon}</span>
                   {item.text}
                 </li>
               ))}
@@ -82,18 +82,21 @@ const ProgramBreakdownSection = () => {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 style={{ 
-                  backgroundColor: 'rgba(255,255,255,0.05)', 
-                  padding: '32px', 
-                  borderRadius: '16px',
-                  borderLeft: '4px solid var(--color-secondary)'
+                  backgroundColor: 'var(--surface-raised)', 
+                  padding: '22px 24px', 
+                  borderRadius: '8px',
+                  borderLeft: '3px solid var(--border-accent)',
+                  border: '1px solid var(--border)',
+                  borderLeftWidth: '3px',
+                  borderLeftColor: 'var(--border-accent)'
                 }}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                  <span style={{ fontWeight: 600, color: 'var(--color-secondary)', letterSpacing: '0.05em' }}>PHASE {phase.phase}</span>
-                  <span style={{ fontSize: '14px', color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{phase.week}</span>
+                  <span style={{ fontWeight: 600, color: 'var(--slate)', letterSpacing: '0.12em', fontSize: '11px', textTransform: 'uppercase' }}>PHASE {phase.phase}</span>
+                  <span style={{ fontSize: '11px', color: 'var(--slate)', textTransform: 'uppercase', letterSpacing: '0.12em', fontWeight: 600 }}>{phase.week}</span>
                 </div>
-                <h3 style={{ color: 'white', marginBottom: '12px', fontSize: '22px' }}>{phase.title}</h3>
-                <p style={{ color: 'rgba(255,255,255,0.7)', margin: 0 }}>{phase.desc}</p>
+                <h3 style={{ color: 'var(--silver)', marginBottom: '8px', fontSize: '17px' }}>{phase.title}</h3>
+                <p style={{ color: 'var(--slate)', margin: 0, fontSize: '13px' }}>{phase.desc}</p>
               </motion.div>
             ))}
           </div>

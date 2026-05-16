@@ -18,7 +18,7 @@ const MechanismSection = () => {
   ];
 
   return (
-    <section className="section" style={{ backgroundColor: 'var(--color-bg)' }}>
+    <section className="section" style={{ backgroundColor: 'var(--surface)' }}>
       <div className="section-inner">
         <div style={{ textAlign: 'center', marginBottom: '60px' }}>
           <span className="tag">The Method</span>
@@ -27,7 +27,7 @@ const MechanismSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            Jagat Ka Signature System: 3 Steps Mein Permanent Change
+            Jagat Ka Signature System: 3 Steps sytems se Permanent Change
           </motion.h2>
         </div>
 
@@ -40,10 +40,11 @@ const MechanismSection = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
               style={{
-                backgroundColor: 'white',
+                backgroundColor: 'var(--surface-raised)',
                 padding: '40px',
                 borderRadius: '16px',
-                boxShadow: '0 4px 6px rgba(0,0,0,0.05)',
+                boxShadow: 'none',
+                border: '1px solid var(--border)',
                 position: 'relative'
               }}
             >
@@ -53,8 +54,8 @@ const MechanismSection = () => {
                 left: '40px',
                 width: '40px',
                 height: '40px',
-                backgroundColor: 'var(--color-secondary)',
-                color: 'white',
+                backgroundColor: 'var(--silver)',
+                color: 'var(--surface)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',

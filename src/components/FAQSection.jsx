@@ -33,9 +33,9 @@ const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <section className="section" style={{ backgroundColor: 'var(--color-bg)' }}>
+    <section className="section" style={{ backgroundColor: 'var(--surface)' }}>
       <div className="section-inner" style={{ maxWidth: '800px' }}>
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -44,22 +44,36 @@ const FAQSection = () => {
           Aapke Sawaal, Seedhe Jawab
         </motion.h2>
 
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          style={{
+            textAlign: 'center',
+            margin: '16px auto 48px'
+          }}
+        >
+          Still have questions? We've answered some of the most common
+          queries below to help you make an informed decision.
+        </motion.p>
+
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           {faqs.map((faq, index) => (
-            <motion.div 
+            <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               style={{
-                backgroundColor: 'white',
-                borderRadius: '12px',
+                backgroundColor: 'var(--surface-raised)',
+                borderRadius: '8px',
                 overflow: 'hidden',
-                boxShadow: '0 2px 4px rgba(0,0,0,0.02)'
+                border: '1px solid var(--border)'
               }}
             >
-              <button 
+              <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 style={{
                   width: '100%',
@@ -68,9 +82,9 @@ const FAQSection = () => {
                   justifyContent: 'space-between',
                   alignItems: 'center',
                   textAlign: 'left',
-                  fontSize: '18px',
+                  fontSize: '15px',
                   fontWeight: 500,
-                  color: 'var(--color-text-dark)'
+                  color: 'var(--silver)'
                 }}
               >
                 {faq.q}
@@ -81,7 +95,7 @@ const FAQSection = () => {
                   <ChevronDown size={20} />
                 </motion.div>
               </button>
-              
+
               <AnimatePresence>
                 {openIndex === index && (
                   <motion.div
@@ -90,7 +104,7 @@ const FAQSection = () => {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div style={{ padding: '0 24px 24px 24px', color: 'var(--color-text-light)', borderTop: '1px solid var(--color-border)' }}>
+                    <div style={{ padding: '0 24px 20px 24px', color: 'var(--slate)', borderTop: '1px solid var(--border)' }}>
                       <p style={{ margin: 0, paddingTop: '16px' }}>{faq.a}</p>
                     </div>
                   </motion.div>

@@ -3,13 +3,13 @@ import { motion } from 'framer-motion';
 
 const AgitateSection = () => {
   return (
-    <section style={{ backgroundColor: 'var(--color-primary)', color: 'white', padding: '80px 0' }}>
+    <section style={{ backgroundColor: 'var(--surface-deep)', color: 'var(--silver)', padding: '80px 0' }}>
       <div className="section-inner" style={{ textAlign: 'center', maxWidth: '800px' }}>
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          style={{ color: 'white', marginBottom: '40px' }}
+          style={{ color: 'var(--silver)', marginBottom: '40px' }}
         >
           Agar Aise Hi 5–10 Saal Aur Nikal Gaye Toh?
         </motion.h2>
@@ -28,11 +28,11 @@ const AgitateSection = () => {
               transition={{ delay: i * 0.1 }}
               style={{
                 padding: '24px',
-                borderLeft: '4px solid var(--color-secondary)',
-                backgroundColor: 'rgba(255,255,255,0.05)'
+                borderLeft: '3px solid var(--border-accent)',
+                backgroundColor: '#1e2535'
               }}
             >
-              <p style={{ color: 'white', margin: 0, fontSize: '18px' }}>{item}</p>
+              <p style={{ color: 'var(--slate)', margin: 0, fontSize: '15px' }}>{item}</p>
             </motion.div>
           ))}
         </div>
@@ -42,9 +42,9 @@ const AgitateSection = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          style={{ fontSize: '20px', color: 'rgba(255,255,255,0.8)' }}
+          style={{ fontSize: '16px', color: 'var(--slate)' }}
         >
-          Yeh sirf relationship problem nahi hai. Yeh ek <strong style={{ color: 'white' }}>pattern</strong> hai. Aur patterns decode kiye ja sakte hain.
+          Yeh sirf relationship problem nahi hai. Yeh ek <strong style={{ color: 'var(--silver)' }}>pattern</strong> hai. Aur patterns decode kiye ja sakte hain.
         </motion.p>
       </div>
     </section>

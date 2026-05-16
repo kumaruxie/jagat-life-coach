@@ -1,6 +1,7 @@
+import { useState, useEffect } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
-import VSLSection from './components/VSLSection';
 import ProblemSection from './components/ProblemSection';
 import AgitateSection from './components/AgitateSection';
 import MechanismSection from './components/MechanismSection';
@@ -13,13 +14,36 @@ import FAQSection from './components/FAQSection';
 import Footer from './components/Footer';
 import './App.css';
 
+import GatedOverlay from './components/GatedOverlay';
+
 function App() {
+  const [isLocked, setIsLocked] = useState(false);
+
+  useEffect(() => {
+    // Check if user already filled the form (Gating)
+    const unlocked = localStorage.getItem('site_unlocked');
+    if (!unlocked) {
+      setIsLocked(true);
+    }
+  }, []);
+
+  const triggerPayment = () => {
+    // Redirecting directly to the client's Razorpay Payment Link
+    window.location.href = "https://rzp.io/rzp/iV71t1VO";
+  };
+
   return (
     <div className="app-container">
-      <Header />
+      <AnimatePresence>
+        {isLocked && (
+          <GatedOverlay onUnlock={() => setIsLocked(false)} />
+        )}
+      </AnimatePresence>
+
+      <Header triggerPayment={triggerPayment} />
       <main>
-        <HeroSection />
-        <VSLSection />
+        <HeroSection triggerPayment={triggerPayment} />
+        {/* <VSLSection triggerPayment={triggerPayment} /> */}
         <ProblemSection />
         <AgitateSection />
         <MechanismSection />
@@ -27,7 +51,7 @@ function App() {
         <ProgramBreakdownSection />
         <AboutCoachSection />
         <TestimonialsSection />
-        <PricingSection />
+        <PricingSection triggerPayment={triggerPayment} />
         <FAQSection />
       </main>
       <Footer />
