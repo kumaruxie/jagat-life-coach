@@ -69,7 +69,7 @@ const ProblemSection = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: index * 0.06 }}
               style={{ 
                 display: 'flex', 
                 gap: '24px', 
@@ -78,9 +78,9 @@ const ProblemSection = () => {
                 borderRadius: '8px',
                 alignItems: 'flex-start',
                 border: '1px solid var(--border)',
-                transition: 'all 0.3s ease',
+                transition: 'all 0.1s ease',
               }}
-              whileHover={{ transform: 'translateY(-2px)', borderColor: 'rgba(148,163,184,0.3)' }}
+              whileHover={{ y: -2, borderColor: 'rgba(148,163,184,0.3)' }}
             >
               <div style={{ 
                 backgroundColor: 'rgba(148,163,184,0.12)', 
