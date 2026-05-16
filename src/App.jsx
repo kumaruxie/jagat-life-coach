@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
@@ -17,15 +17,7 @@ import './App.css';
 import GatedOverlay from './components/GatedOverlay';
 
 function App() {
-  const [isLocked, setIsLocked] = useState(false);
-
-  useEffect(() => {
-    // Check if user already filled the form (Gating)
-    const unlocked = localStorage.getItem('site_unlocked');
-    if (!unlocked) {
-      setIsLocked(true);
-    }
-  }, []);
+  const [isLocked, setIsLocked] = useState(() => !localStorage.getItem('site_unlocked'));
 
   const triggerPayment = () => {
     // Redirecting directly to the client's Razorpay Payment Link
