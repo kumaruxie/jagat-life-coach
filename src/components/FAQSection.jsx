@@ -65,16 +65,18 @@ const FAQSection = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: index * 0.08, duration: 0.5 }}
               style={{
-                backgroundColor: 'var(--surface-raised)',
-                borderRadius: '8px',
+                backgroundColor: openIndex === index ? 'rgba(16,185,129,0.03)' : 'var(--surface-raised)',
+                borderRadius: '12px',
                 overflow: 'hidden',
-                border: '1px solid var(--border)'
+                border: openIndex === index ? '1px solid rgba(16,185,129,0.15)' : '1px solid var(--border)',
+                transition: 'background-color 0.3s, border-color 0.3s'
               }}
             >
-              <button
+              <motion.button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                whileHover={{ backgroundColor: 'rgba(148,163,184,0.04)' }}
                 style={{
                   width: '100%',
                   padding: '24px',
@@ -84,17 +86,23 @@ const FAQSection = () => {
                   textAlign: 'left',
                   fontSize: '15px',
                   fontWeight: 500,
-                  color: 'var(--silver)'
+                  color: openIndex === index ? 'var(--emerald)' : 'var(--silver)',
+                  transition: 'color 0.2s'
                 }}
               >
                 {faq.q}
                 <motion.div
                   animate={{ rotate: openIndex === index ? 180 : 0 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  style={{ 
+                    color: openIndex === index ? 'var(--emerald)' : 'var(--slate)',
+                    flexShrink: 0,
+                    marginLeft: '16px'
+                  }}
                 >
                   <ChevronDown size={20} />
                 </motion.div>
-              </button>
+              </motion.button>
 
               <AnimatePresence>
                 {openIndex === index && (
@@ -102,10 +110,10 @@ const FAQSection = () => {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                   >
                     <div style={{ padding: '0 24px 20px 24px', color: 'var(--slate)', borderTop: '1px solid var(--border)' }}>
-                      <p style={{ margin: 0, paddingTop: '16px' }}>{faq.a}</p>
+                      <p style={{ margin: 0, paddingTop: '16px', lineHeight: '1.8' }}>{faq.a}</p>
                     </div>
                   </motion.div>
                 )}

@@ -5,15 +5,18 @@ const TransformationSection = () => {
   const cards = [
     {
       title: "Absolute Clarity",
-      desc: "Pata chalega ki aap actually kaun hain — aap koi 'problem' nahi hain, balki ek specific personality pattern hain jise samjha aur badla ja sakta hai."
+      desc: "Pata chalega ki aap actually kaun hain — aap koi 'problem' nahi hain, balki ek specific personality pattern hain jise samjha aur badla ja sakta hai.",
+      accent: '#10b981'
     },
     {
       title: "Unshakable Confidence",
-      desc: "Reaction se Response mode mein shift ho jayenge. Same situation, same log — lekin aapka internal experience completely different hoga."
+      desc: "Reaction se Response mode mein shift ho jayenge. Same situation, same log — lekin aapka internal experience completely different hoga.",
+      accent: '#60a5fa'
     },
     {
       title: "Structured Roadmap",
-      desc: "30 din ke baad aapke paas hoga aapka personal Conflict to Clarity Blueprint — sirf generic advice nahi, balki aapke ghar ke liye customized."
+      desc: "30 din ke baad aapke paas hoga aapka personal Conflict to Clarity Blueprint — sirf generic advice nahi, balki aapke ghar ke liye customized.",
+      accent: '#f59e0b'
     }
   ];
 
@@ -35,15 +38,21 @@ const TransformationSection = () => {
           {cards.map((card, index) => (
             <motion.div 
               key={index}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
+              transition={{ delay: index * 0.15, duration: 0.6 }}
+              whileHover={{ 
+                y: -6, 
+                boxShadow: `0 12px 40px rgba(0,0,0,0.25), 0 0 0 1px ${card.accent}22`
+              }}
               style={{
                 backgroundColor: 'var(--surface-raised)',
                 padding: '40px',
                 borderRadius: '16px',
-                borderTop: '3px solid var(--border-accent)'
+                borderTop: `3px solid ${card.accent}`,
+                cursor: 'default',
+                transition: 'box-shadow 0.3s ease'
               }}
             >
               <h3 style={{ marginBottom: '16px', fontSize: '24px' }}>{card.title}</h3>

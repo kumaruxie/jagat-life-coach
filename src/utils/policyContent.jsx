@@ -102,7 +102,7 @@ export const policyContent = {
         <p>Please read our refund and cancellation terms carefully before purchasing any coaching session, programme, or digital product from MindErist Training LLP.</p>
         <p><em>Last Updated: April 17, 2026</em></p>
         
-        <div style={{ padding: '1rem', backgroundColor: '#fff3cd', color: '#856404', borderRadius: '8px', borderLeft: '4px solid #ffeeba', marginBottom: '1.5rem' }}>
+        <div style={{ padding: '1rem', backgroundColor: 'rgba(245,158,11,0.1)', color: '#fbbf24', borderRadius: '8px', borderLeft: '4px solid rgba(245,158,11,0.5)', marginBottom: '1.5rem' }}>
           <strong>⚠️ All purchases are final and non-refundable.</strong> Please ensure you are fully committed before enrolling in any programme.
         </div>
         

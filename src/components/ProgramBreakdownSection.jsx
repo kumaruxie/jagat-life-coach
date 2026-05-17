@@ -1,4 +1,3 @@
-// import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Target, FileText, Users, Lock } from 'lucide-react';
 
@@ -30,6 +29,15 @@ const ProgramBreakdownSection = () => {
     }
   ];
 
+  const listItemVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: (i) => ({
+      opacity: 1,
+      x: 0,
+      transition: { delay: i * 0.1, duration: 0.5 }
+    })
+  };
+
   return (
     <section id="program" className="section" style={{ backgroundColor: 'var(--surface-deep)', color: 'var(--silver)' }}>
       <div className="section-inner">
@@ -51,6 +59,7 @@ const ProgramBreakdownSection = () => {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
           >
             <p style={{ fontSize: '15px', color: 'var(--slate)', marginBottom: '2rem' }}>
               Yeh ek structured 30-day journey hai — recorded modules, live Zoom sessions, worksheets, aur direct coaching. Sirf gyaan nahi, <strong style={{ color: 'var(--silver)' }}>real ground-level change</strong>.
@@ -64,10 +73,27 @@ const ProgramBreakdownSection = () => {
                 { icon: <Users size={20} />, text: "Private community support" },
                 { icon: <Lock size={20} />, text: "Lifetime access to all recordings" },
               ].map((item, i) => (
-                <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px', color: 'var(--slate)', fontSize: '14px' }}>
-                  <span style={{ color: 'var(--slate)' }}>{item.icon}</span>
+                <motion.li 
+                  key={i} 
+                  custom={i}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={listItemVariants}
+                  whileHover={{ x: 6 }}
+                  style={{ 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    gap: '12px', 
+                    color: 'var(--slate)', 
+                    fontSize: '14px',
+                    cursor: 'default',
+                    transition: 'color 0.2s'
+                  }}
+                >
+                  <span style={{ color: 'var(--emerald)' }}>{item.icon}</span>
                   {item.text}
-                </li>
+                </motion.li>
               ))}
             </ul>
           </motion.div>
@@ -80,15 +106,21 @@ const ProgramBreakdownSection = () => {
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                transition={{ delay: i * 0.12, duration: 0.5 }}
+                whileHover={{ 
+                  x: 4,
+                  borderLeftColor: 'var(--emerald)',
+                  boxShadow: '0 4px 24px rgba(0,0,0,0.15)'
+                }}
                 style={{ 
                   backgroundColor: 'var(--surface-raised)', 
                   padding: '22px 24px', 
                   borderRadius: '8px',
-                  borderLeft: '3px solid var(--border-accent)',
                   border: '1px solid var(--border)',
                   borderLeftWidth: '3px',
-                  borderLeftColor: 'var(--border-accent)'
+                  borderLeftColor: 'var(--border-accent)',
+                  cursor: 'default',
+                  transition: 'box-shadow 0.3s ease'
                 }}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>

@@ -1,27 +1,23 @@
-import { motion } from 'framer-motion';
-import logoImg from '../assets/APKACOACH logo png.png';
+import logoImg from '../assets/apkacoach_logo_hires.png';
 
 const Header = ({ triggerPayment }) => {
   return (
-    <motion.header 
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className="main-header"
-    >
+    <header className="main-header header-animate">
       <div className="section-inner header-responsive">
         <div className="logo header-logo">
           <img 
             src={logoImg} 
-            alt="ApkaCoach logo" 
+            alt="ApkaCoach — Jagat Turkiya coaching platform logo"
+            width={180}
+            height={72}
           />
         </div>
         
-        <button className="btn-primary header-cta" onClick={() => triggerPayment()}>
-          Apply Now — ₹1,997
+        <button className="header-cta" onClick={() => triggerPayment()} aria-label="Start enrollment now">
+          Start Now →
         </button>
       </div>
-    </motion.header>
+    </header>
   );
 };
 

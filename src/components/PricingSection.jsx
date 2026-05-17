@@ -27,14 +27,23 @@ const PricingSection = ({ triggerPayment }) => {
           </motion.h2>
         </div>
 
-        <div className="grid-pricing" style={{
-          backgroundColor: 'var(--surface-raised)',
-          borderRadius: '24px',
-          color: 'var(--silver)',
-          overflow: 'hidden',
-          boxShadow: 'none',
-          border: '1px solid rgba(226,232,240,0.12)'
-        }}>
+        <motion.div 
+          className="grid-pricing" 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          whileHover={{ boxShadow: '0 16px 48px rgba(0,0,0,0.3), 0 0 0 1px rgba(16,185,129,0.1)' }}
+          style={{
+            backgroundColor: 'var(--surface-raised)',
+            borderRadius: '24px',
+            color: 'var(--silver)',
+            overflow: 'hidden',
+            boxShadow: 'none',
+            border: '1px solid rgba(226,232,240,0.12)',
+            transition: 'box-shadow 0.3s ease'
+          }}
+        >
           {/* Left: What you get */}
           <div style={{ padding: '48px' }}>
             <h3 style={{ fontSize: '18px', marginBottom: '24px', color: 'var(--silver)' }}>What you get</h3>
@@ -84,23 +93,23 @@ const PricingSection = ({ triggerPayment }) => {
             </div>
 
             <button
-              className="btn-primary"
+              className="btn-cta btn-cta-pulse"
               onClick={() => triggerPayment()}
               style={{
                 width: '100%',
                 padding: '18px',
-                fontSize: '13px',
+                fontSize: '14px',
                 marginBottom: '16px'
               }}
             >
-              Secure Your Spot Now
+              Abhi Enroll Karo →
             </button>
 
-            <p style={{ fontSize: '12px', color: 'var(--slate)' }}>
+            <p style={{ fontSize: '12px', color: 'var(--emerald)', fontWeight: 600 }}>
               Sirf 12 seats available for this cohort. Filling fast.
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

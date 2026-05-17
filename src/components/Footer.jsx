@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PolicyModal from './PolicyModal';
 import { policyContent } from '../utils/policyContent';
-import logoImg from '../assets/APKACOACH logo png.png';
+import logoImg from '../assets/apkacoach_logo_hires.png';
 
 const Footer = () => {
   const [modalConfig, setModalConfig] = useState({ isOpen: false, title: '', content: null });
@@ -26,22 +26,25 @@ const Footer = () => {
           {/* Logo */}
           <img 
             src={logoImg} 
-            alt="ApkaCoach Logo" 
-            style={{ height: '44px', width: 'auto', objectFit: 'contain' }} 
+            alt="ApkaCoach — Jagat Turkiya coaching platform logo"
+            width={180}
+            height={72}
+            loading="lazy"
+            style={{ height: '72px', width: 'auto', objectFit: 'contain' }} 
           />
 
           {/* Policy Links */}
-          <div style={{ display: 'flex', gap: '8px', fontSize: '12px', color: 'var(--slate)', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center' }}>
-            <a href="#" onClick={(e) => openModal(e, 'privacy')} style={{ transition: 'color 0.2s' }}>Privacy Policy</a>
-            <span style={{ color: 'var(--border)' }}>|</span>
-            <a href="#" onClick={(e) => openModal(e, 'terms')} style={{ transition: 'color 0.2s' }}>Terms & Conditions</a>
-            <span style={{ color: 'var(--border)' }}>|</span>
-            <a href="#" onClick={(e) => openModal(e, 'refund')} style={{ transition: 'color 0.2s' }}>Refund Policy</a>
-          </div>
+          <nav aria-label="Legal policies" style={{ display: 'flex', gap: '8px', fontSize: '12px', color: 'var(--slate)', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center' }}>
+            <button type="button" onClick={(e) => openModal(e, 'privacy')} style={{ background: 'none', border: 'none', color: 'var(--slate)', fontSize: '12px', cursor: 'pointer', fontFamily: 'inherit', transition: 'color 0.2s', padding: 0 }} onMouseEnter={(e) => e.target.style.color = 'var(--emerald)'} onMouseLeave={(e) => e.target.style.color = 'var(--slate)'}>Privacy Policy</button>
+            <span style={{ color: 'var(--border)' }} aria-hidden="true">|</span>
+            <button type="button" onClick={(e) => openModal(e, 'terms')} style={{ background: 'none', border: 'none', color: 'var(--slate)', fontSize: '12px', cursor: 'pointer', fontFamily: 'inherit', transition: 'color 0.2s', padding: 0 }} onMouseEnter={(e) => e.target.style.color = 'var(--emerald)'} onMouseLeave={(e) => e.target.style.color = 'var(--slate)'}>Terms & Conditions</button>
+            <span style={{ color: 'var(--border)' }} aria-hidden="true">|</span>
+            <button type="button" onClick={(e) => openModal(e, 'refund')} style={{ background: 'none', border: 'none', color: 'var(--slate)', fontSize: '12px', cursor: 'pointer', fontFamily: 'inherit', transition: 'color 0.2s', padding: 0 }} onMouseEnter={(e) => e.target.style.color = 'var(--emerald)'} onMouseLeave={(e) => e.target.style.color = 'var(--slate)'}>Refund Policy</button>
+          </nav>
 
           {/* Disclaimer - visible directly */}
           <p style={{
-            fontSize: '11px',
+            fontSize: '9px',
             color: 'var(--slate)',
             textAlign: 'center',
             maxWidth: '800px',

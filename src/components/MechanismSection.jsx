@@ -1,4 +1,3 @@
-// import React from 'react';
 import { motion } from 'framer-motion';
 
 const MechanismSection = () => {
@@ -38,33 +37,43 @@ const MechanismSection = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
+              transition={{ delay: index * 0.2, duration: 0.6 }}
+              whileHover={{ 
+                y: -6, 
+                borderColor: 'rgba(16,185,129,0.25)',
+                boxShadow: '0 12px 40px rgba(0,0,0,0.25)'
+              }}
               style={{
                 backgroundColor: 'var(--surface-raised)',
                 padding: '40px',
                 borderRadius: '16px',
                 boxShadow: 'none',
                 border: '1px solid var(--border)',
-                position: 'relative'
+                position: 'relative',
+                cursor: 'default',
+                transition: 'box-shadow 0.3s ease'
               }}
             >
-              <div style={{
-                position: 'absolute',
-                top: '-20px',
-                left: '40px',
-                width: '40px',
-                height: '40px',
-                backgroundColor: 'var(--silver)',
-                color: 'var(--surface)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderRadius: '50%',
-                fontWeight: 'bold',
-                fontSize: '20px'
-              }}>
+              <motion.div 
+                whileHover={{ scale: 1.1 }}
+                style={{
+                  position: 'absolute',
+                  top: '-20px',
+                  left: '40px',
+                  width: '40px',
+                  height: '40px',
+                  backgroundColor: 'var(--silver)',
+                  color: 'var(--surface)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius: '50%',
+                  fontWeight: 'bold',
+                  fontSize: '20px',
+                  boxShadow: '0 4px 16px rgba(226,232,240,0.2)'
+                }}>
                 {index + 1}
-              </div>
+              </motion.div>
               <h3 style={{ marginTop: '16px', marginBottom: '16px', fontSize: '24px' }}>{step.title}</h3>
               <p style={{ margin: 0 }}>{step.desc}</p>
             </motion.div>

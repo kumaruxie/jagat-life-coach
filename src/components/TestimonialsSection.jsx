@@ -17,15 +17,14 @@ const TestimonialsSection = () => {
       color: '#60a5fa'
     },
     {
-      type: 'text',
-      featured: true,
+      type: 'video',
+      duration: '2:45 min',
       quote: "14 saal ki shadi mein pehli baar mujhe laga ki main actually sun raha hoon — saamne waale ko, aur khud ko bhi. Yeh program sirf coaching nahi hai, balki ek mirror hai jo aapko sach dikhata hai.",
       name: "Rajesh M.",
       role: "Senior Manager",
       city: "Delhi",
       initials: "RM",
-      color: '#10b981',
-      badge: "30 days · Total transformation"
+      color: '#10b981'
     },
     {
       type: 'video',
@@ -63,7 +62,12 @@ const TestimonialsSection = () => {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay: index * 0.08 }}
+      transition={{ delay: index * 0.08, duration: 0.5 }}
+      whileHover={{ 
+        y: -4, 
+        borderColor: 'rgba(16,185,129,0.2)',
+        boxShadow: '0 8px 32px rgba(0,0,0,0.2)'
+      }}
       className="testimonial-card"
       style={{
         backgroundColor: 'var(--surface-raised)',
@@ -73,7 +77,9 @@ const TestimonialsSection = () => {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        gap: '18px'
+        gap: '18px',
+        cursor: 'default',
+        transition: 'box-shadow 0.3s ease'
       }}
     >
       {/* Duration badge */}
@@ -169,7 +175,12 @@ const TestimonialsSection = () => {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay: index * 0.08 }}
+      transition={{ delay: index * 0.08, duration: 0.5 }}
+      whileHover={{ 
+        y: -4, 
+        borderColor: 'rgba(16,185,129,0.2)',
+        boxShadow: '0 8px 32px rgba(0,0,0,0.2)'
+      }}
       className="testimonial-card"
       style={{
         backgroundColor: t.featured ? 'rgba(16,185,129,0.04)' : 'var(--surface-raised)',
@@ -180,7 +191,9 @@ const TestimonialsSection = () => {
         flexDirection: 'column',
         justifyContent: 'space-between',
         gap: '20px',
-        position: 'relative'
+        position: 'relative',
+        cursor: 'default',
+        transition: 'box-shadow 0.3s ease'
       }}
     >
       {/* Quote icon */}

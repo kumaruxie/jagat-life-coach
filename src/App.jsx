@@ -1,82 +1,84 @@
-import { useState } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { lazy, Suspense, useState } from 'react';
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
-import ProblemSection from './components/ProblemSection';
-import AgitateSection from './components/AgitateSection';
-import CTABanner from './components/CTABanner';
-import MechanismSection from './components/MechanismSection';
-import TransformationSection from './components/TransformationSection';
-import ProgramBreakdownSection from './components/ProgramBreakdownSection';
-import AboutCoachSection from './components/AboutCoachSection';
-import AchievementsSection from './components/AchievementsSection';
-import TestimonialsSection from './components/TestimonialsSection';
-import PricingSection from './components/PricingSection';
-import FAQSection from './components/FAQSection';
-import Footer from './components/Footer';
 import './App.css';
 
 import GatedOverlay from './components/GatedOverlay';
+
+// Lazy-load below-fold components for performance
+const ProblemSection = lazy(() => import('./components/ProblemSection'));
+const AgitateSection = lazy(() => import('./components/AgitateSection'));
+const CTABanner = lazy(() => import('./components/CTABanner'));
+const MechanismSection = lazy(() => import('./components/MechanismSection'));
+const TransformationSection = lazy(() => import('./components/TransformationSection'));
+const ProgramBreakdownSection = lazy(() => import('./components/ProgramBreakdownSection'));
+const AboutCoachSection = lazy(() => import('./components/AboutCoachSection'));
+const AchievementsSection = lazy(() => import('./components/AchievementsSection'));
+const TestimonialsSection = lazy(() => import('./components/TestimonialsSection'));
+const PricingSection = lazy(() => import('./components/PricingSection'));
+const FAQSection = lazy(() => import('./components/FAQSection'));
+const Footer = lazy(() => import('./components/Footer'));
+
+// Minimal loading fallback that matches the dark theme
+const SectionFallback = () => (
+  <div style={{ minHeight: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{ width: '24px', height: '24px', border: '2px solid var(--border)', borderTop: '2px solid var(--emerald)', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
+  </div>
+);
 
 function App() {
   const [isLocked, setIsLocked] = useState(() => !localStorage.getItem('site_unlocked'));
 
   const triggerPayment = () => {
-    /* ──────────────────────────────────────────────
-       RAZORPAY LINK: Replace the URL below with 
-       the LIVE payment link when you receive it.
-       Currently in TEST MODE.
-    ────────────────────────────────────────────── */
     window.location.href = "https://rzp.io/rzp/iV71t1VO";
   };
 
   return (
     <div className="app-container">
-      <AnimatePresence>
-        {isLocked && (
-          <GatedOverlay onUnlock={() => setIsLocked(false)} />
-        )}
-      </AnimatePresence>
+      {isLocked && (
+        <GatedOverlay onUnlock={() => setIsLocked(false)} />
+      )}
 
       <Header triggerPayment={triggerPayment} />
       <main>
         <HeroSection triggerPayment={triggerPayment} />
-        <ProblemSection />
-        <AgitateSection />
-        
-        {/* CTA 1: After Agitate, before Mechanism */}
-        <CTABanner 
-          text="Patterns decode kiye ja sakte hain. Pehla step yahi hai."
-          buttonText="Start Your Transformation"
-          triggerPayment={triggerPayment}
-        />
-        
-        <MechanismSection />
-        <TransformationSection />
-        
-        {/* CTA 2: After Transformation, before Program Breakdown */}
-        <CTABanner 
-          text="Ready to see what 30 days can do for your family?"
-          buttonText="Join the Program"
-          triggerPayment={triggerPayment}
-        />
-        
-        <ProgramBreakdownSection />
-        <AboutCoachSection />
-        <AchievementsSection />
-        
-        {/* CTA 3: After Achievements, before Testimonials */}
-        <CTABanner 
-          text="1,500+ families transformed. Yours could be next."
-          buttonText="Secure Your Spot"
-          triggerPayment={triggerPayment}
-        />
-        
-        <TestimonialsSection />
-        <PricingSection triggerPayment={triggerPayment} />
-        <FAQSection />
+        <Suspense fallback={<SectionFallback />}>
+          <ProblemSection />
+          <AgitateSection />
+          
+          <CTABanner 
+            text="Yeh patterns samajhna hi pehla step hai — baaki sab iske baad hota hai."
+            buttonText="Apna Pehla Step Lo →"
+            triggerPayment={triggerPayment}
+          />
+          
+          <MechanismSection />
+          <TransformationSection />
+          
+          <CTABanner 
+            text="30 din mein family dynamics badal sakte hain. Kya aap ready ho?"
+            buttonText="Program Join Karo →"
+            triggerPayment={triggerPayment}
+          />
+          
+          <ProgramBreakdownSection />
+          <AboutCoachSection />
+          <AchievementsSection />
+          
+          <CTABanner 
+            text="1,500+ families ne yeh kiya. Ab aapki baari hai."
+            buttonText="Apni Seat Reserve Karo →"
+            triggerPayment={triggerPayment}
+          />
+          
+          <TestimonialsSection />
+          <PricingSection triggerPayment={triggerPayment} />
+          <FAQSection />
+        </Suspense>
       </main>
-      <Footer />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </div>
   );
 }

@@ -23,7 +23,10 @@ const AboutCoachSection = () => {
             }}>
               <img
                 src={coachImg}
-                alt="Jagat Turkiya - Life Strategic Family Coach"
+                alt="Jagat Turkiya - Life Strategic Family Coach and Mind Hacker"
+                width={600}
+                height={800}
+                loading="lazy"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 10%' }}
               />
             </div>
@@ -81,18 +84,31 @@ const AboutCoachSection = () => {
             {/* Role Tags */}
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
               {tags.map((tag, i) => (
-                <span key={i} style={{
-                  padding: '8px 16px',
-                  border: '1px solid var(--border)',
-                  borderRadius: '6px',
-                  fontSize: '12px',
-                  fontWeight: 600,
-                  color: 'var(--silver)',
-                  letterSpacing: '0.04em',
-                  textTransform: 'uppercase'
-                }}>
+                <motion.span 
+                  key={i} 
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 + i * 0.08 }}
+                  whileHover={{ 
+                    borderColor: 'var(--emerald)', 
+                    color: 'var(--emerald)',
+                    scale: 1.05
+                  }}
+                  style={{
+                    padding: '8px 16px',
+                    border: '1px solid var(--border)',
+                    borderRadius: '6px',
+                    fontSize: '12px',
+                    fontWeight: 600,
+                    color: 'var(--silver)',
+                    letterSpacing: '0.04em',
+                    textTransform: 'uppercase',
+                    cursor: 'default'
+                  }}
+                >
                   {tag}
-                </span>
+                </motion.span>
               ))}
             </div>
           </motion.div>

@@ -69,32 +69,40 @@ const ProblemSection = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.06 }}
+              transition={{ delay: index * 0.08, duration: 0.5 }}
+              whileHover={{ 
+                y: -4, 
+                borderColor: 'rgba(148,163,184,0.3)',
+                boxShadow: '0 8px 32px rgba(0,0,0,0.2)'
+              }}
               style={{ 
                 display: 'flex', 
                 gap: '24px', 
                 padding: '32px',
                 backgroundColor: 'var(--surface-raised)',
-                borderRadius: '8px',
+                borderRadius: '12px',
                 alignItems: 'flex-start',
                 border: '1px solid var(--border)',
-                transition: 'all 0.1s ease',
+                cursor: 'default',
+                transition: 'box-shadow 0.3s ease'
               }}
-              whileHover={{ y: -2, borderColor: 'rgba(148,163,184,0.3)' }}
             >
-              <div style={{ 
-                backgroundColor: 'rgba(148,163,184,0.12)', 
-                color: 'var(--slate)', 
-                padding: '12px', 
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
-                boxShadow: 'none'
-              }}>
+              <motion.div 
+                whileHover={{ scale: 1.1, backgroundColor: 'rgba(16,185,129,0.15)' }}
+                transition={{ duration: 0.2 }}
+                style={{ 
+                  backgroundColor: 'rgba(148,163,184,0.12)', 
+                  color: 'var(--slate)', 
+                  padding: '12px', 
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0,
+                  transition: 'background-color 0.2s, color 0.2s'
+                }}>
                 {prob.icon}
-              </div>
+              </motion.div>
               <p style={{ margin: 0, color: 'var(--slate)', fontSize: '14px', lineHeight: '1.7', fontWeight: 400 }}>
                 {prob.text}
               </p>

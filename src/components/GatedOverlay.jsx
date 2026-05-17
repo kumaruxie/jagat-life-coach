@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 
 const GatedOverlay = ({ onUnlock }) => {
   const [formData, setFormData] = useState({
@@ -46,18 +45,28 @@ const GatedOverlay = ({ onUnlock }) => {
         body: formDataObj
       });
       
-      // Save to localStorage so they don't see it again
       localStorage.setItem('site_unlocked', 'true');
       onUnlock();
     } catch (err) {
       console.error("Submission failed:", err);
-      // Even if it fails, we might want to let them in or show an error
       onUnlock(); 
     }
   };
 
+  const inputStyle = { 
+    width: '100%', 
+    padding: '14px 16px', 
+    borderRadius: '4px', 
+    backgroundColor: 'var(--surface, #1a202c)', 
+    border: '1px solid rgba(148,163,184,0.25)', 
+    color: 'var(--silver, #e2e8f0)', 
+    outline: 'none', 
+    fontFamily: 'Inter, system-ui, sans-serif', 
+    fontSize: '14px' 
+  };
+
   return (
-    <div style={{
+    <div className="gate-overlay" style={{
       position: 'fixed',
       top: 0,
       left: 0,
@@ -70,82 +79,51 @@ const GatedOverlay = ({ onUnlock }) => {
       padding: '20px'
     }}>
       {/* Blurred Background Overlay */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(0,0,0,0.4)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)'
-        }}
-      />
+      <div className="gate-bg" style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0,0,0,0.4)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)'
+      }} />
 
       {/* Form Container */}
-      <motion.div
-        initial={{ y: 50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.2 }}
-        style={{
-          position: 'relative',
-          maxWidth: '450px',
-          width: '100%',
-          backgroundColor: 'var(--surface-raised, #232b3b)',
-          padding: '40px',
-          borderRadius: '24px',
-          border: '1px solid var(--border, rgba(148,163,184,0.15))',
-          boxShadow: '0 30px 60px rgba(0,0,0,0.5)',
-          textAlign: 'center'
-        }}
-      >
+      <div className="gate-form" style={{
+        position: 'relative',
+        maxWidth: '450px',
+        width: '100%',
+        backgroundColor: 'var(--surface-raised, #232b3b)',
+        padding: '40px',
+        borderRadius: '24px',
+        border: '1px solid var(--border, rgba(148,163,184,0.15))',
+        boxShadow: '0 30px 60px rgba(0,0,0,0.5)',
+        textAlign: 'center'
+      }}>
         <h2 style={{ fontSize: '28px', color: 'var(--silver, #e2e8f0)', marginBottom: '12px', fontFamily: 'Newsreader, Georgia, serif' }}>Welcome to the Journey</h2>
         <p style={{ color: 'var(--slate, #94a3b8)', marginBottom: '32px' }}>
           Please fill in your details to access Jagat Turkiya's exclusive training.
         </p>
 
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <input
-            type="text"
-            name="name"
-            placeholder="Full Name"
-            required
-            value={formData.name}
-            onChange={handleInputChange}
-            style={{ padding: '14px 16px', borderRadius: '4px', backgroundColor: 'var(--surface, #1a202c)', border: '1px solid rgba(148,163,184,0.25)', color: 'var(--silver, #e2e8f0)', outline: 'none', fontFamily: 'Inter, system-ui, sans-serif', fontSize: '14px' }}
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email Address"
-            required
-            value={formData.email}
-            onChange={handleInputChange}
-            style={{ padding: '14px 16px', borderRadius: '4px', backgroundColor: 'var(--surface, #1a202c)', border: '1px solid rgba(148,163,184,0.25)', color: 'var(--silver, #e2e8f0)', outline: 'none', fontFamily: 'Inter, system-ui, sans-serif', fontSize: '14px' }}
-          />
-          <input
-            type="tel"
-            name="phone"
-            placeholder="Phone Number"
-            required
-            inputMode="numeric"
-            pattern="[0-9]*"
-            value={formData.phone}
-            onChange={handleInputChange}
-            style={{ padding: '14px 16px', borderRadius: '4px', backgroundColor: 'var(--surface, #1a202c)', border: '1px solid rgba(148,163,184,0.25)', color: 'var(--silver, #e2e8f0)', outline: 'none', fontFamily: 'Inter, system-ui, sans-serif', fontSize: '14px' }}
-          />
-          <input
-            type="text"
-            name="city"
-            placeholder="City"
-            required
-            value={formData.city}
-            onChange={handleInputChange}
-            style={{ padding: '14px 16px', borderRadius: '4px', backgroundColor: 'var(--surface, #1a202c)', border: '1px solid rgba(148,163,184,0.25)', color: 'var(--silver, #e2e8f0)', outline: 'none', fontFamily: 'Inter, system-ui, sans-serif', fontSize: '14px' }}
-          />
+          <div>
+            <label htmlFor="gate-name" style={{ position: 'absolute', width: '1px', height: '1px', overflow: 'hidden', clip: 'rect(0,0,0,0)' }}>Full Name</label>
+            <input id="gate-name" type="text" name="name" placeholder="Full Name" required autoComplete="name" value={formData.name} onChange={handleInputChange} style={inputStyle} />
+          </div>
+          <div>
+            <label htmlFor="gate-email" style={{ position: 'absolute', width: '1px', height: '1px', overflow: 'hidden', clip: 'rect(0,0,0,0)' }}>Email Address</label>
+            <input id="gate-email" type="email" name="email" placeholder="Email Address" required autoComplete="email" value={formData.email} onChange={handleInputChange} style={inputStyle} />
+          </div>
+          <div>
+            <label htmlFor="gate-phone" style={{ position: 'absolute', width: '1px', height: '1px', overflow: 'hidden', clip: 'rect(0,0,0,0)' }}>Phone Number</label>
+            <input id="gate-phone" type="tel" name="phone" placeholder="Phone Number" required autoComplete="tel" inputMode="numeric" pattern="[0-9]*" value={formData.phone} onChange={handleInputChange} style={inputStyle} />
+          </div>
+          <div>
+            <label htmlFor="gate-city" style={{ position: 'absolute', width: '1px', height: '1px', overflow: 'hidden', clip: 'rect(0,0,0,0)' }}>City</label>
+            <input id="gate-city" type="text" name="city" placeholder="City" required autoComplete="address-level2" value={formData.city} onChange={handleInputChange} style={inputStyle} />
+          </div>
 
           <button 
             type="submit" 
@@ -163,7 +141,7 @@ const GatedOverlay = ({ onUnlock }) => {
             {isSubmitting ? 'Entering...' : 'Enter Training Now'}
           </button>
         </form>
-      </motion.div>
+      </div>
     </div>
   );
 };

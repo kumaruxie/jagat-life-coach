@@ -6,6 +6,17 @@ export default defineConfig({
   plugins: [react()],
   base: './',
   build: {
-    chunkSizeWarningLimit: 2000
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom'],
+          'vendor-motion': ['framer-motion'],
+        }
+      }
+    },
+    cssCodeSplit: true,
+    // esbuild minification (default, no extra deps needed)
+    minify: 'esbuild'
   }
 })

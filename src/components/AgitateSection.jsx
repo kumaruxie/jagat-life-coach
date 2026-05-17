@@ -1,7 +1,12 @@
-// import React from 'react';
 import { motion } from 'framer-motion';
 
 const AgitateSection = () => {
+  const items = [
+    "Aapke bachche yahi conflict patterns copy karenge — family culture hi toxic ban jayega.",
+    "Office mein productivity girti rahegi, kyunki dimaag ghar ki baaton mein hi atka rahega.",
+    "Aur sabse bada nuksaan: aap khud se disappointed rahenge — 'Itni samajh hai, phir bhi theek kyun nahi ho raha?'"
+  ];
+
   return (
     <section style={{ backgroundColor: 'var(--surface-deep)', color: 'var(--silver)', padding: '80px 0' }}>
       <div className="section-inner" style={{ textAlign: 'center', maxWidth: '800px' }}>
@@ -15,21 +20,24 @@ const AgitateSection = () => {
         </motion.h2>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', textAlign: 'left', marginBottom: '40px' }}>
-          {[
-            "Aapke bachche yahi conflict patterns copy karenge — family culture hi toxic ban jayega.",
-            "Office mein productivity girti rahegi, kyunki dimaag ghar ki baaton mein hi atka rahega.",
-            "Aur sabse bada nuksaan: aap khud se disappointed rahenge — 'Itni samajh hai, phir bhi theek kyun nahi ho raha?'"
-          ].map((item, i) => (
+          {items.map((item, i) => (
             <motion.div 
               key={i}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+              transition={{ delay: i * 0.15, duration: 0.5 }}
+              whileHover={{ 
+                x: 8,
+                borderLeftColor: '#f87171',
+                backgroundColor: '#1f2a3d'
+              }}
               style={{
                 padding: '24px',
                 borderLeft: '3px solid var(--border-accent)',
-                backgroundColor: '#1e2535'
+                backgroundColor: '#1e2535',
+                cursor: 'default',
+                transition: 'background-color 0.3s ease'
               }}
             >
               <p style={{ color: 'var(--slate)', margin: 0, fontSize: '15px' }}>{item}</p>
@@ -41,7 +49,7 @@ const AgitateSection = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
           style={{ fontSize: '16px', color: 'var(--slate)' }}
         >
           Yeh sirf relationship problem nahi hai. Yeh ek <strong style={{ color: 'var(--silver)' }}>pattern</strong> hai. Aur patterns decode kiye ja sakte hain.
