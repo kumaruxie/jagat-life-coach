@@ -419,6 +419,67 @@ button {
   grid-row: span 1;
 }
 
+/* ─── Achievements Infinite Marquees ─── */
+.achievements-marquee-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  position: relative;
+}
+
+.achievements-marquee-row1 {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: achievements-marquee-left 40s linear infinite;
+}
+
+.achievements-marquee-row1:hover {
+  animation-play-state: paused;
+}
+
+.achievements-marquee-row2 {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: achievements-marquee-right 35s linear infinite;
+}
+
+.achievements-marquee-row2:hover {
+  animation-play-state: paused;
+}
+
+.achievement-image-card {
+  overflow: hidden;
+}
+
+.achievement-image-card img {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.achievement-image-card:hover img {
+  transform: scale(1.04);
+}
+
+@keyframes achievements-marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes achievements-marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 /* ─── Responsive Breakpoints ─── */
 @media (max-width: 992px) {
   :root {

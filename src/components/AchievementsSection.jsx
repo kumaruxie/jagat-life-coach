@@ -1,14 +1,49 @@
-import { motion } from 'framer-motion';
-import { Award, Users, BookOpen, Mic, Heart, Globe, Star, Zap, Trophy, Target } from 'lucide-react';
+import { Trophy, Award, FileText, Users, Mic, BookOpen, Heart } from 'lucide-react';
+
+import guinnessImg from '../assets/guniess world record standee.jpg';
+import awardImg from '../assets/another acheivement.jpg';
+import articleImg from '../assets/article.PNG';
 
 const AchievementsSection = () => {
-  /* COPYWRITING: Edit achievements here. Add/remove cards as needed. */
-  const achievements = [
+  const topAchievements = [
+    {
+      img: guinnessImg,
+      icon: <Trophy size={20} />,
+      badge: "Guinness Record",
+      badgeColor: '#60a5fa',
+      badgeBg: 'rgba(96,165,250,0.08)',
+      title: "Guinness World Record",
+      description: "Participated in the official Guinness World Records attempt for \"Most People in a Speech Relay\" in Surat, 2022.",
+      glowColor: '#60a5fa'
+    },
+    {
+      img: awardImg,
+      icon: <Award size={20} />,
+      badge: "National Honor",
+      badgeColor: '#f59e0b',
+      badgeBg: 'rgba(245,158,11,0.08)',
+      title: "National Icon Award 2024",
+      description: "Honored in Pune for outstanding contribution to personal development as a Mind Hacker, Storyteller, Author & Coach.",
+      glowColor: '#f59e0b'
+    },
+    {
+      img: articleImg,
+      icon: <FileText size={20} />,
+      badge: "Media Feature",
+      badgeColor: '#10b981',
+      badgeBg: 'rgba(16,185,129,0.08)',
+      title: "Featured in Business Up2Date",
+      description: "Recognized as an inspiring life coach and personal transformation expert with 15 years of experience.",
+      glowColor: '#10b981'
+    }
+  ];
+
+  const bottomAchievements = [
     {
       icon: <Users size={22} />,
       title: "1,500+ Clients",
       description: "Personal transformation journeys, one client at a time.",
-      color: '#d4a574'
+      color: '#60a5fa'
     },
     {
       icon: <Mic size={22} />,
@@ -20,160 +55,250 @@ const AchievementsSection = () => {
       icon: <BookOpen size={22} />,
       title: "4 Bestselling Books",
       description: "Authored works reaching thousands of families nationwide.",
-      color: '#f87171'
-    },
-    {
-      icon: <Trophy size={22} />,
-      title: "Guinness World Record",
-      description: "Recognized globally for extraordinary speaking achievements.",
-      color: '#60a5fa'
-    },
-    {
-      icon: <Award size={22} />,
-      title: "National Icon Award",
-      description: "Honored for outstanding contribution to personal development.",
       color: '#f59e0b'
     },
     {
       icon: <Heart size={22} />,
-      title: "Family Transformation",
-      description: "Specializing in resolving deep-rooted family conflicts.",
+      title: "Family Impact",
+      description: "Specially recognized for contribution rooted in family values.",
       color: '#f472b6'
-    },
-    {
-      icon: <Globe size={22} />,
-      title: "Pan-India Reach",
-      description: "Coaching professionals and families in 50+ cities.",
-      color: '#818cf8'
-    },
-    {
-      icon: <Target size={22} />,
-      title: "Personality DNA Method",
-      description: "Proprietary framework for understanding behavior patterns.",
-      color: '#34d399'
-    },
-    {
-      icon: <Star size={22} />,
-      title: "TEDx Speaker",
-      description: "Sharing transformative ideas on global stages.",
-      color: '#fbbf24'
-    },
-    {
-      icon: <Zap size={22} />,
-      title: "30-Day Programs",
-      description: "Structured coaching that delivers measurable results.",
-      color: '#a78bfa'
     }
   ];
 
-  // Duplicate for seamless infinite loop
-  const doubledAchievements = [...achievements, ...achievements];
+  // Double elements for seamless infinite scroll loop
+  const doubledTop = [...topAchievements, ...topAchievements];
+  const doubledBottom = [...bottomAchievements, ...bottomAchievements];
 
   return (
-    <section style={{ backgroundColor: 'var(--surface-deep)', padding: '80px 0', overflow: 'hidden' }}>
-      <div className="section-inner" style={{ marginBottom: '40px' }}>
-        <span className="tag">Recognition & Impact</span>
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          Achievements
-        </motion.h2>
+    <section id="achievements" className="section" style={{ backgroundColor: 'var(--surface-deep)', padding: '90px 0', overflow: 'hidden' }}>
+      <div className="section-inner" style={{ marginBottom: '56px' }}>
+        
+        {/* Title Block */}
+        <div>
+          <span className="tag" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <span style={{ width: '20px', height: '2px', backgroundColor: 'var(--emerald)', display: 'inline-block' }}></span>
+            Recognition & Impact
+          </span>
+          <h2 style={{ marginBottom: '8px', color: 'var(--silver)' }}>
+            Milestones of Trust & Impact
+          </h2>
+          <p style={{
+            color: 'var(--slate)',
+            marginTop: '4px',
+            fontFamily: 'var(--font-body)',
+            fontSize: '15px'
+          }}>
+            A lifetime dedicated to personal growth, national honor, and deep family transformation.
+          </p>
+        </div>
       </div>
 
-      {/* Infinite Scroll Carousel */}
-      <div style={{ position: 'relative' }}>
-        {/* Fade edges */}
+      {/* Infinite Marquee Track Wrapper with fade edges */}
+      <div style={{ position: 'relative', width: '100%', overflow: 'hidden' }}>
+        
+        {/* Left Side Shadow Fade */}
         <div style={{
           position: 'absolute',
           top: 0,
           left: 0,
-          width: '80px',
+          width: '12%',
           height: '100%',
           background: 'linear-gradient(to right, var(--surface-deep), transparent)',
-          zIndex: 2,
+          zIndex: 5,
           pointerEvents: 'none'
         }} />
+        
+        {/* Right Side Shadow Fade */}
         <div style={{
           position: 'absolute',
           top: 0,
           right: 0,
-          width: '80px',
+          width: '12%',
           height: '100%',
           background: 'linear-gradient(to left, var(--surface-deep), transparent)',
-          zIndex: 2,
+          zIndex: 5,
           pointerEvents: 'none'
         }} />
 
-        {/* Scrolling track */}
-        <div className="marquee-track">
-          {doubledAchievements.map((item, index) => (
-            <div
-              key={index}
-              className="achievement-card"
-              style={{
-                backgroundColor: 'var(--surface-raised)',
-                border: '1px solid var(--border)',
-                borderRadius: '12px',
-                padding: '28px 24px',
-                minWidth: '260px',
-                maxWidth: '260px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '16px',
-                flexShrink: 0,
-                transition: 'border-color 0.3s, transform 0.3s, box-shadow 0.3s',
-                cursor: 'default'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-4px)';
-                e.currentTarget.style.borderColor = `${item.color}40`;
-                e.currentTarget.style.boxShadow = `0 8px 24px rgba(0,0,0,0.2), 0 0 0 1px ${item.color}15`;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.borderColor = '';
-                e.currentTarget.style.boxShadow = '';
-              }}
-            >
-              {/* Icon */}
-              <div style={{
-                width: '40px',
-                height: '40px',
-                borderRadius: '10px',
-                backgroundColor: `${item.color}15`,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: item.color
-              }}>
-                {item.icon}
+        {/* The Marquee Row Container */}
+        <div className="achievements-marquee-container">
+          
+          {/* Row 1: Image Bento Cards (Continuous left scroll) */}
+          <div className="achievements-marquee-row1">
+            {doubledTop.map((item, index) => (
+              <div
+                key={index}
+                className="achievement-card achievement-image-card"
+                style={{
+                  backgroundColor: 'var(--surface-raised)',
+                  border: '1px solid var(--border)',
+                  borderRadius: '18px',
+                  padding: '24px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '16px',
+                  position: 'relative',
+                  cursor: 'default',
+                  transition: 'border-color 0.3s ease, box-shadow 0.3s ease',
+                  minWidth: '360px',
+                  maxWidth: '360px'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = `${item.glowColor}30`;
+                  e.currentTarget.style.boxShadow = `0 12px 36px rgba(0,0,0,0.3), 0 0 0 1px ${item.glowColor}15`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--border)';
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
+              >
+                {/* Header Icon + Label */}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <div style={{
+                    width: '38px',
+                    height: '38px',
+                    borderRadius: '10px',
+                    backgroundColor: `${item.glowColor}15`,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: item.glowColor
+                  }}>
+                    {item.icon}
+                  </div>
+                  
+                  {/* Badge pill */}
+                  <span style={{
+                    fontSize: '10px',
+                    fontWeight: 600,
+                    color: item.badgeColor,
+                    backgroundColor: item.badgeBg,
+                    padding: '4px 10px',
+                    borderRadius: '100px',
+                    fontFamily: 'var(--font-body)',
+                    letterSpacing: '0.02em'
+                  }}>
+                    {item.badge}
+                  </span>
+                </div>
+
+                {/* Aspect-Ratio Image Container */}
+                <div style={{
+                  width: '100%',
+                  height: '180px',
+                  borderRadius: '10px',
+                  overflow: 'hidden',
+                  border: '1px solid var(--border)',
+                  backgroundColor: '#0c0f16',
+                  position: 'relative'
+                }}>
+                  <img
+                    src={item.img}
+                    alt={item.title}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      objectPosition: item.badge === "Media Feature" ? 'center top' : 'center center'
+                    }}
+                  />
+                </div>
+
+                {/* Text Content */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '4px' }}>
+                  <h3 style={{
+                    fontSize: '17px',
+                    fontFamily: 'var(--font-heading)',
+                    fontWeight: 700,
+                    color: 'var(--silver)',
+                    margin: 0,
+                    lineHeight: 1.3
+                  }}>
+                    {item.title}
+                  </h3>
+                  <p style={{
+                    fontSize: '13px',
+                    color: 'var(--slate)',
+                    margin: 0,
+                    lineHeight: '1.6',
+                    fontFamily: 'var(--font-body)'
+                  }}>
+                    {item.description}
+                  </p>
+                </div>
               </div>
+            ))}
+          </div>
 
-              {/* Title */}
-              <h3 style={{
-                fontSize: '18px',
-                fontFamily: 'var(--font-heading)',
-                fontWeight: 700,
-                color: 'var(--silver)',
-                lineHeight: 1.3,
-                margin: 0
-              }}>
-                {item.title}
-              </h3>
+          {/* Row 2: Standard Bento Cards (Continuous right scroll - polar opposite) */}
+          <div className="achievements-marquee-row2">
+            {doubledBottom.map((item, index) => (
+              <div
+                key={index}
+                className="achievement-card"
+                style={{
+                  backgroundColor: 'var(--surface-raised)',
+                  border: '1px solid var(--border)',
+                  borderRadius: '16px',
+                  padding: '24px 20px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '16px',
+                  transition: 'border-color 0.3s ease, box-shadow 0.3s ease',
+                  cursor: 'default',
+                  minWidth: '280px',
+                  maxWidth: '280px'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = `${item.color}25`;
+                  e.currentTarget.style.boxShadow = `0 8px 24px rgba(0,0,0,0.2), 0 0 0 1px ${item.color}10`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--border)';
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
+              >
+                {/* Icon block */}
+                <div style={{
+                  width: '38px',
+                  height: '38px',
+                  borderRadius: '10px',
+                  backgroundColor: `${item.color}12`,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: item.color,
+                  alignSelf: 'flex-start'
+                }}>
+                  {item.icon}
+                </div>
 
-              {/* Description */}
-              <p style={{
-                fontSize: '13px',
-                color: 'var(--slate)',
-                margin: 0,
-                lineHeight: '1.6'
-              }}>
-                {item.description}
-              </p>
-            </div>
-          ))}
+                {/* Title and Description */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <h3 style={{
+                    fontSize: '19px',
+                    fontFamily: 'var(--font-body)',
+                    fontWeight: 700,
+                    color: 'var(--silver)',
+                    margin: 0,
+                    lineHeight: 1.2
+                  }}>
+                    {item.title}
+                  </h3>
+                  <p style={{
+                    fontSize: '12.5px',
+                    color: 'var(--slate)',
+                    margin: 0,
+                    lineHeight: '1.6',
+                    fontFamily: 'var(--font-body)'
+                  }}>
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
         </div>
       </div>
     </section>

@@ -11,6 +11,14 @@ const TestimonialsSection = () => {
       badge: "Outstanding Growth"
     },
     {
+      quote: "Jagat Turkiya Sir is the best author coach in the country... He teaches book writing in great detail... You help the author from writing the book to its launch and best selling.",
+      name: "Sunil Bhari",
+      role: "Author & Coaching Client",
+      initials: "SB",
+      color: '#f472b6',
+      badge: "Best Author Coach"
+    },
+    {
       quote: "Jagat is very helpful coach , He is always providing the handholding support to face the challenges and overcome the challenges. Which tools and system he use in his coaching process very easy to use and connect easily",
       name: "Renu Chaudhary",
       role: "Coaching Client",
@@ -30,14 +38,6 @@ const TestimonialsSection = () => {
       role: "Empowerment Client",
       initials: "NN",
       color: '#a78bfa'
-    },
-    {
-      quote: "Jagat Turkiya Sir is the best author coach in the country... He teaches book writing in great detail... You help the author from writing the book to its launch and best selling.",
-      name: "Sunil Bhari",
-      role: "Author & Coaching Client",
-      initials: "SB",
-      color: '#f472b6',
-      badge: "Best Author Coach"
     }
   ];
 
