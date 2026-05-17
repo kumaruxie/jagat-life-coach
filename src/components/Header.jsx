@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import logoImg from '../assets/jagat logo png.png';
+import logoImg from '../assets/APKACOACH logo png.png';
 
 const Header = ({ triggerPayment }) => {
   return (
@@ -13,20 +13,13 @@ const Header = ({ triggerPayment }) => {
         <div className="logo header-logo">
           <img 
             src={logoImg} 
-            alt="Apka coach logo" 
+            alt="ApkaCoach logo" 
           />
         </div>
         
-        <div className="nav-container">
-          <nav className="nav-links">
-            <a href="#about">About</a>
-            <a href="#program">Program</a>
-            <a href="#alumni">Alumni</a>
-          </nav>
-          <button className="btn-primary header-cta" onClick={() => triggerPayment()}>
-            Apply Now — ₹1,997
-          </button>
-        </div>
+        <button className="btn-primary header-cta" onClick={() => triggerPayment()}>
+          Apply Now — ₹1,997
+        </button>
       </div>
     </motion.header>
   );

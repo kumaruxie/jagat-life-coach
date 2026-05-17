@@ -101,54 +101,6 @@ const ProblemSection = () => {
             </motion.div>
           ))}
         </div>
-
-        {/* Quote Section */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          style={{
-            marginTop: '100px',
-            textAlign: 'center',
-            maxWidth: '900px',
-            margin: '100px auto 0',
-            padding: '0 20px'
-          }}
-        >
-          <div style={{ 
-            width: '2px', 
-            height: '60px', 
-            background: 'linear-gradient(to bottom, transparent, var(--border-accent), transparent)', 
-            margin: '0 auto 40px' 
-          }}></div>
-          
-          <p style={{ 
-            fontSize: 'clamp(18px, 2.5vw, 22px)', 
-            fontFamily: 'var(--font-heading)',
-            fontStyle: 'italic',
-            fontWeight: 500,
-            lineHeight: '1.4',
-            color: 'var(--silver)',
-            marginBottom: '32px',
-            letterSpacing: '-0.02em'
-          }}>
-            "Sabko lagta hai problem <span style={{ color: 'var(--color-secondary)' }}>'saamne wale'</span> mein hai. Asli root aapki apni Personality DNA mein chhupa hota hai."
-          </p>
-          
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px' }}>
-            <div style={{ width: '20px', height: '2px', backgroundColor: 'var(--slate)' }}></div>
-            <span style={{ 
-              color: 'var(--slate)', 
-              fontWeight: 700, 
-              textTransform: 'uppercase', 
-              letterSpacing: '0.2em',
-              fontSize: '14px'
-            }}>
-              Jagat Turkiya
-            </span>
-            <div style={{ width: '20px', height: '2px', backgroundColor: 'var(--slate)' }}></div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
