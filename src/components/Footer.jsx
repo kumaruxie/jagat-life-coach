@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import PolicyModal from './PolicyModal';
 import { policyContent } from '../utils/policyContent';
-import logoImg from '../assets/apkacoach_logo_hires.png';
-
 const Footer = () => {
   const [modalConfig, setModalConfig] = useState({ isOpen: false, title: '', content: null });
 
@@ -24,14 +22,30 @@ const Footer = () => {
         <div className="section-inner" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '28px' }}>
           
           {/* Logo */}
-          <img 
-            src={logoImg} 
-            alt="ApkaCoach — Jagat Turkiya coaching platform logo"
-            width={180}
-            height={72}
-            loading="lazy"
-            style={{ height: '72px', width: 'auto', objectFit: 'contain' }} 
-          />
+          <div style={{ display: 'flex', alignItems: 'center', margin: '8px 0' }}>
+            <span style={{ display: 'flex', alignItems: 'center', whiteSpace: 'nowrap', lineHeight: 1 }}>
+              <span style={{
+                fontFamily: "'Yatra One', cursive",
+                fontSize: '30px',
+                color: '#ffffff',
+                lineHeight: 1,
+                position: 'relative',
+                top: '1px',
+                letterSpacing: '-0.5px',
+                marginRight: '4px'
+              }}>
+                आपका
+              </span>
+              <span style={{
+                fontFamily: "'Lobster', cursive",
+                fontSize: '34px',
+                color: '#10b981',
+                lineHeight: 1
+              }}>
+                Coach.com
+              </span>
+            </span>
+          </div>
 
           {/* Policy Links */}
           <nav aria-label="Legal policies" style={{ display: 'flex', gap: '8px', fontSize: '12px', color: 'var(--slate)', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center' }}>
