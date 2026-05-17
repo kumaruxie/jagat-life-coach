@@ -22,7 +22,7 @@ export default defineConfig({
         }
       }
     },
-    cssCodeSplit: true,
-    minify: 'esbuild'
+    cssCodeSplit: true
+    // Minify is now handled automatically by Vite v8's default minifier
   }
 })
