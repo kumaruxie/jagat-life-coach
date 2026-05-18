@@ -32,7 +32,7 @@ export const policyContent = {
         <p>We reserve the right to modify or replace these Terms at any time. Where a revision is material, we will endeavour to provide at least 30 days' prior notice before new terms take effect. Continued use of the platform following any changes constitutes your acceptance of the revised Terms.</p>
         
         <div style={{ marginTop: '2rem', padding: '1rem', backgroundColor: 'var(--color-bg)', borderRadius: '8px' }}>
-          <p style={{ margin: 0 }}><strong>Questions? Reach us at:</strong><br/><a href="mailto:hello@minderisttraining.com">hello@minderisttraining.com</a></p>
+          <p style={{ margin: 0 }}><strong>Questions? Reach us at:</strong><br/><a href="mailto:hello@apkacoach.com">hello@apkacoach.com</a></p>
         </div>
       </div>
     )
@@ -89,7 +89,7 @@ export const policyContent = {
         <p>We may update this Privacy Policy periodically. Any changes will be posted on this page with a revised "Last Updated" date. We encourage you to review this page regularly to stay informed of any updates.</p>
         
         <div style={{ marginTop: '2rem', padding: '1rem', backgroundColor: 'var(--color-bg)', borderRadius: '8px' }}>
-          <p style={{ margin: 0 }}><strong>Questions? Reach us at:</strong><br/><a href="mailto:hello@minderisttraining.com">hello@minderisttraining.com</a></p>
+          <p style={{ margin: 0 }}><strong>Questions? Reach us at:</strong><br/><a href="mailto:hello@apkacoach.com">hello@apkacoach.com</a></p>
         </div>
       </div>
     )
@@ -130,7 +130,7 @@ export const policyContent = {
         <p>The only exception to this policy is in the event of a verified billing error or an accidental duplicate payment for the exact same service. In such cases, you must notify our support team within 48 hours of the transaction for us to review and process an adjustment.</p>
         
         <div style={{ marginTop: '2rem', padding: '1rem', backgroundColor: 'var(--color-bg)', borderRadius: '8px' }}>
-          <p style={{ margin: 0 }}><strong>Need help before purchasing? Contact us at:</strong><br/><a href="mailto:hello@minderisttraining.com">hello@minderisttraining.com</a></p>
+          <p style={{ margin: 0 }}><strong>Need help before purchasing? Contact us at:</strong><br/><a href="mailto:hello@apkacoach.com">hello@apkacoach.com</a></p>
         </div>
       </div>
     )
@@ -172,7 +172,7 @@ export const policyContent = {
         <p><strong>Your results are your responsibility. MindErist Training LLP is your guide — not your guarantee.</strong></p>
         
         <div style={{ marginTop: '2rem', padding: '1rem', backgroundColor: 'var(--color-bg)', borderRadius: '8px' }}>
-          <p style={{ margin: 0 }}><strong>Questions about this disclaimer? Reach us at:</strong><br/><a href="mailto:hello@minderisttraining.com">hello@minderisttraining.com</a></p>
+          <p style={{ margin: 0 }}><strong>Questions about this disclaimer? Reach us at:</strong><br/><a href="mailto:hello@apkacoach.com">hello@apkacoach.com</a></p>
         </div>
       </div>
     )
