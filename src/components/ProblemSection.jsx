@@ -66,6 +66,7 @@ const ProblemSection = () => {
           {problems.map((prob, index) => (
             <motion.div 
               key={index}
+              className="problem-card glass-glow-hover"
               initial="hidden"
               whileInView="visible"
               whileHover="hover"

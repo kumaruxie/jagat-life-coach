@@ -711,4 +711,67 @@ button {
   .hide-on-mobile {
     display: none !important;
   }
+  .show-on-mobile {
+    display: block !important;
+  }
 }
+
+@media (min-width: 769px) {
+  .show-on-mobile {
+    display: none !important;
+  }
+}
+
+/* ─── Premium Mobile Spacing & Layout Refinements ─── */
+@media (max-width: 768px) {
+  /* Relax big headings to prevent visual overlapping */
+  h1, h2, h3 {
+    line-height: 1.35 !important;
+  }
+
+  .hero-section h1 {
+    line-height: 1.3 !important;
+  }
+
+  /* Keep marquee achievements balanced and peeking in elegantly */
+  .achievement-card {
+    min-width: 290px !important;
+    max-width: 290px !important;
+    padding: var(--space-4) var(--space-3) !important;
+  }
+  
+  .achievement-image-card {
+    min-width: 310px !important;
+    max-width: 310px !important;
+  }
+
+  /* Sane vertical grid gaps between Problem Cards */
+  #problem div[style*="display: grid"] {
+    gap: var(--space-4) !important; /* 24px distinct vertical spacing on mobile */
+  }
+
+  /* Asymmetric padding to prevent tight word-wrapping on narrow 375px viewports */
+  .problem-card {
+    padding: var(--space-4) var(--space-3) !important; /* 24px vertical, 18px horizontal */
+  }
+
+  /* Agitate Cards vertical separation & internal breathing space */
+  .agitate-cards-list {
+    gap: var(--space-4) !important; /* 24px vertical separation */
+  }
+
+  .agitate-card {
+    padding: var(--space-4) var(--space-4) !important; /* 24px vertical, 24px horizontal */
+    padding-left: var(--space-5) !important; /* 30px left padding to offset the red accent border */
+  }
+
+  /* CTA Banners asymmetric vertical breathing room */
+  .cta-banner-card {
+    padding: var(--space-8) var(--space-4) !important; /* 48px vertical, 24px horizontal for premium breathing room */
+  }
+
+  .cta-banner-card > div {
+    gap: var(--space-4) !important; /* 24px gap above the CTA payment button */
+  }
+}
+

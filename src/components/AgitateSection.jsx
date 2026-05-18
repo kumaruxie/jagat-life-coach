@@ -19,10 +19,11 @@ const AgitateSection = () => {
           Agar cheezein aisi hi chalti rahin, toh kya khoyenge aap?
         </motion.h2>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)', textAlign: 'left', marginBottom: 'var(--space-5)' }}>
+        <div className="agitate-cards-list" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)', textAlign: 'left', marginBottom: 'var(--space-5)' }}>
           {items.map((item, i) => (
             <motion.div 
               key={i}
+              className="agitate-card"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}

@@ -30,7 +30,12 @@ const MechanismSection = () => {
           </motion.h2>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'var(--space-4)' }}>
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
+          gap: 'var(--space-4)',
+          paddingTop: '20px' // Prevent absolute step badge from clipping at the top
+        }}>
           {steps.map((step, index) => (
             <motion.div 
               key={index}

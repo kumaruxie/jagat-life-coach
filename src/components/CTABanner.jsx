@@ -16,7 +16,7 @@ const CTABanner = ({ text, buttonText = "Secure Your Spot", triggerPayment, bgCo
         background: bgColor
       }}
     >
-      <div style={{
+      <div className="cta-banner-card" style={{
         maxWidth: '800px',
         width: '100%',
         backgroundColor: 'rgba(35, 43, 59, 0.25)', 
