@@ -8,7 +8,7 @@ const CTABanner = ({ text, buttonText = "Secure Your Spot", triggerPayment, bgCo
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
       style={{
-        padding: '48px 16px',
+        padding: 'var(--space-4) var(--space-2)',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -22,7 +22,7 @@ const CTABanner = ({ text, buttonText = "Secure Your Spot", triggerPayment, bgCo
         backgroundColor: 'rgba(35, 43, 59, 0.25)', 
         border: '1px solid rgba(255, 255, 255, 0.05)',
         borderRadius: '24px',
-        padding: '48px 32px',
+        padding: 'var(--space-6) var(--space-4)',
         textAlign: 'center',
         position: 'relative',
         overflow: 'hidden',
@@ -43,7 +43,7 @@ const CTABanner = ({ text, buttonText = "Secure Your Spot", triggerPayment, bgCo
           zIndex: 1
         }} />
 
-        <div style={{ position: 'relative', zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px' }}>
+        <div style={{ position: 'relative', zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'var(--space-3)' }}>
           {text && (
             <p style={{
               fontSize: '17px',

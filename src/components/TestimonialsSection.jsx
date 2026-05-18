@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Play } from 'lucide-react';
 import video1 from '../assets/video testimonial 1.mp4';
 import video2 from '../assets/video testimonial 2.mp4';
+import video3 from '../assets/SnapVideo.app_AQNVWUP-Kptr33XAJYCUY9VXi0Z_oXzS16bLouEjVYS67LlF-T_7kDmlevBD7-ivoHwLAokRNy5oebmvyIKocODR_AxQHlvs0A5Cw4k.mp4';
 
 const VideoCard = ({ id, videoSrc, quote, name, role, initials, currentlyPlaying, setCurrentlyPlaying }) => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -177,11 +178,11 @@ const TestimonialsSection = () => {
   ];
 
   return (
-    <section id="alumni" className="section" style={{ backgroundColor: 'var(--surface)', padding: '80px 0' }}>
+    <section id="alumni" className="section" style={{ backgroundColor: 'var(--surface)' }}>
       <div className="section-inner">
         
         {/* Top Header */}
-        <div style={{ marginBottom: '40px' }}>
+        <div style={{ marginBottom: 'var(--space-6)' }}>
           <span style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.15em', color: 'var(--slate)', textTransform: 'uppercase' }}>
             What Clients Say
           </span>
@@ -197,8 +198,8 @@ const TestimonialsSection = () => {
         <div style={{ 
           display: 'grid', 
           gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', 
-          gap: '24px',
-          marginBottom: '60px'
+          gap: 'var(--space-4)',
+          marginBottom: 'var(--space-8)'
         }}>
           <VideoCard 
             id="video1"
@@ -220,10 +221,20 @@ const TestimonialsSection = () => {
             role="Author & Coaching Client"
             initials="PS"
           />
+          <VideoCard 
+            id="video3"
+            currentlyPlaying={currentlyPlaying}
+            setCurrentlyPlaying={setCurrentlyPlaying}
+            videoSrc={video3}
+            quote="Ghar ka tanaav aur career ke beech balance banana bohot mushkil tha. Jagat sir ke coaching se mujhe aur meri family ko sukoon mila."
+            name="Aman Gupta"
+            role="Transformation Client"
+            initials="AG"
+          />
         </div>
 
         {/* Separator */}
-        <div style={{ textAlign: 'center', margin: '60px 0', position: 'relative' }}>
+        <div style={{ textAlign: 'center', margin: 'var(--space-8) 0', position: 'relative' }}>
           <div style={{ position: 'absolute', top: '50%', left: 0, right: 0, height: '1px', backgroundColor: 'var(--border)' }}></div>
           <span style={{ position: 'relative', backgroundColor: 'var(--surface)', padding: '0 20px', color: 'var(--slate)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
             Verified Google Reviews
@@ -234,7 +245,7 @@ const TestimonialsSection = () => {
         <div className="testimonials-bento" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: '24px',
+          gap: 'var(--space-3)',
           width: '100%'
         }}>
           {testimonials.map((t, index) => (
@@ -244,10 +255,10 @@ const TestimonialsSection = () => {
               style={{
                 backgroundColor: '#2a2a35', // Match design dark background
                 borderRadius: '12px',
-                padding: '24px',
+                padding: 'var(--space-4)',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '16px',
+                gap: 'var(--space-3)',
                 position: 'relative'
               }}
             >

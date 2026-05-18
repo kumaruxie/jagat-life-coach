@@ -14,9 +14,9 @@ const PricingSection = ({ triggerPayment }) => {
   ];
 
   return (
-    <section className="section" id="pricing" style={{ backgroundColor: 'var(--surface-deep)' }}>
+    <section className="section" id="pricing" style={{ background: 'linear-gradient(to bottom, var(--surface) 0%, var(--surface-deep) 150px, var(--surface-deep) 100%)' }}>
       <div className="section-inner" style={{ maxWidth: '1000px' }}>
-        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+        <div style={{ textAlign: 'center', marginBottom: 'var(--space-6)' }}>
           <span className="tag">Limited Enrollment</span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}

@@ -8,18 +8,18 @@ const AgitateSection = () => {
   ];
 
   return (
-    <section style={{ background: 'linear-gradient(to bottom, var(--surface) 0%, var(--surface-deep) 150px, var(--surface-deep) 100%)', color: 'var(--silver)', padding: '80px 0' }}>
+    <section className="section" style={{ background: 'linear-gradient(to bottom, var(--surface) 0%, var(--surface-deep) 150px, var(--surface-deep) 100%)', color: 'var(--silver)' }}>
       <div className="section-inner" style={{ textAlign: 'center', maxWidth: '800px' }}>
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          style={{ color: 'var(--silver)', marginBottom: '40px' }}
+          style={{ color: 'var(--silver)', marginBottom: 'var(--space-5)' }}
         >
           Agar cheezein aisi hi chalti rahin, toh kya khoyenge aap?
         </motion.h2>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', textAlign: 'left', marginBottom: '40px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)', textAlign: 'left', marginBottom: 'var(--space-5)' }}>
           {items.map((item, i) => (
             <motion.div 
               key={i}
@@ -33,7 +33,7 @@ const AgitateSection = () => {
                 backgroundColor: '#1f2a3d'
               }}
               style={{
-                padding: '24px',
+                padding: 'var(--space-3)',
                 borderLeft: '3px solid var(--border-accent)',
                 backgroundColor: '#1e2535',
                 cursor: 'default',

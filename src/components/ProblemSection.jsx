@@ -30,9 +30,9 @@ const ProblemSection = () => {
   ];
 
   return (
-    <section className="section" style={{ backgroundColor: 'var(--surface)', color: 'var(--silver)', padding: '100px 0' }}>
+    <section id="problem" className="section" style={{ backgroundColor: 'var(--surface)', color: 'var(--silver)' }}>
       <div className="section-inner">
-        <div style={{ textAlign: 'center', marginBottom: '80px', position: 'relative' }}>
+        <div style={{ textAlign: 'center', marginBottom: 'var(--space-10)', position: 'relative' }}>
           <div style={{ 
             position: 'absolute', 
             top: '50%', 
@@ -44,7 +44,7 @@ const ProblemSection = () => {
           }}></div>
           <span style={{ 
             backgroundColor: 'var(--surface)', 
-            padding: '0 24px', 
+            padding: '0 var(--space-3)', 
             position: 'relative', 
             zIndex: 1, 
             color: '#fff',
@@ -59,7 +59,7 @@ const ProblemSection = () => {
         <div style={{ 
           display: 'grid', 
           gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', 
-          gap: '24px',
+          gap: 'var(--space-3)',
           maxWidth: '1100px',
           margin: '0 auto'
         }}>
@@ -77,8 +77,8 @@ const ProblemSection = () => {
               }}
               style={{ 
                 display: 'flex', 
-                gap: '24px', 
-                padding: '32px',
+                gap: 'var(--space-3)', 
+                padding: 'var(--space-4)',
                 backgroundColor: 'var(--surface-raised)',
                 borderRadius: '12px',
                 alignItems: 'flex-start',

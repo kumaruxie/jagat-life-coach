@@ -155,14 +155,14 @@ const HeroSection = ({ triggerPayment }) => {
       }}>
         <span 
           className="tag hero-anim hero-anim-1"
-          style={{ color: 'var(--slate)', marginBottom: '20px' }}
+          style={{ color: 'var(--slate)', marginBottom: 'var(--space-3)' }}
         >
           Hindi-speaking professionals ke liye — jo ghar ke roz-roz ke tanaav se thak chuke hain
         </span>
         
         <h1 
           className="hero-anim hero-anim-2"
-          style={{ color: 'var(--silver)', marginBottom: '32px' }}
+          style={{ color: 'var(--silver)', marginBottom: 'var(--space-4)' }}
         >
           Ghar Ki Uljhanon Ko Ek Mahine Mein <em style={{ color: 'var(--emerald)', fontStyle: 'normal' }}>Sukoon</em> Mein Badlo.
         </h1>
@@ -173,7 +173,7 @@ const HeroSection = ({ triggerPayment }) => {
             fontSize: '16px',
             color: 'var(--slate)',
             maxWidth: '560px',
-            margin: '0 auto 40px',
+            margin: '0 auto var(--space-6)',
             lineHeight: '1.7'
           }}
         >

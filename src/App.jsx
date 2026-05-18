@@ -101,14 +101,43 @@ function App() {
           <AboutCoachSection />
           <AchievementsSection />
           
+          {/* Soft Ambient Blur for Achievements-to-Testimonials transition */}
+          <div style={{ position: 'relative', width: '100%', height: 0, overflow: 'visible', zIndex: 0, pointerEvents: 'none' }}>
+            <div style={{
+              position: 'absolute',
+              top: '-150px',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              width: '450px',
+              height: '300px',
+              background: 'radial-gradient(circle, rgba(16,185,129,0.09) 0%, transparent 75%)',
+              filter: 'blur(90px)',
+            }} />
+          </div>
+
           <CTABanner 
             text="1,500+ families ne yeh kiya. Ab aapki baari hai."
             buttonText="Apni Seat Reserve Karo →"
             triggerPayment={triggerPayment}
-            bgColor="var(--surface-deep)"
+            bgColor="linear-gradient(to bottom, var(--surface-deep) 0%, var(--surface) 100%)"
           />
           
           <TestimonialsSection />
+
+          {/* Soft Ambient Blur for Testimonials-to-Pricing transition */}
+          <div style={{ position: 'relative', width: '100%', height: 0, overflow: 'visible', zIndex: 0, pointerEvents: 'none' }}>
+            <div style={{
+              position: 'absolute',
+              top: '-100px',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              width: '450px',
+              height: '300px',
+              background: 'radial-gradient(circle, rgba(96,165,250,0.07) 0%, transparent 75%)',
+              filter: 'blur(90px)',
+            }} />
+          </div>
+
           <PricingSection triggerPayment={triggerPayment} />
           <FAQSection />
         </Suspense>
