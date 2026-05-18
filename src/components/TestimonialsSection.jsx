@@ -1,27 +1,36 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Play, Pause } from 'lucide-react';
+import { Play } from 'lucide-react';
 import video1 from '../assets/video testimonial 1.mp4';
 import video2 from '../assets/video testimonial 2.mp4';
 
-const VideoCard = ({ videoSrc, quote, name, role, initials }) => {
+const VideoCard = ({ id, videoSrc, quote, name, role, initials, currentlyPlaying, setCurrentlyPlaying }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (currentlyPlaying !== id && isPlaying && videoRef.current) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
+  }, [currentlyPlaying, id, isPlaying]);
 
   const togglePlay = () => {
     if (videoRef.current) {
       if (isPlaying) {
         videoRef.current.pause();
+        setIsPlaying(false);
       } else {
         videoRef.current.play();
+        setIsPlaying(true);
+        setCurrentlyPlaying(id);
       }
-      setIsPlaying(!isPlaying);
     }
   };
 
   return (
     <div style={{
-      backgroundColor: '#2a2a35', // Deep purple/dark color as per design
+      backgroundColor: '#2a2a35', 
       borderRadius: '16px',
       overflow: 'hidden',
       position: 'relative',
@@ -33,16 +42,19 @@ const VideoCard = ({ videoSrc, quote, name, role, initials }) => {
         style={{ 
           position: 'relative', 
           width: '100%', 
-          aspectRatio: '16/9', 
-          backgroundColor: '#1e1e2f',
-          cursor: 'pointer'
+          height: '320px', // Consistent height
+          backgroundColor: '#111116', // Very dark background for the letterboxing
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
         }}
         onClick={togglePlay}
       >
         <video 
           ref={videoRef}
           src={videoSrc}
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          style={{ width: '100%', height: '100%', objectFit: 'contain' }} // Contain prevents any zooming/enlarging
           onEnded={() => setIsPlaying(false)}
         />
         
@@ -55,8 +67,7 @@ const VideoCard = ({ videoSrc, quote, name, role, initials }) => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            justifyContent: 'center',
-            gap: '12px'
+            justifyContent: 'center'
           }}>
             <div style={{
               width: '48px', height: '48px',
@@ -69,13 +80,6 @@ const VideoCard = ({ videoSrc, quote, name, role, initials }) => {
               backdropFilter: 'blur(4px)'
             }}>
               <Play size={20} color="#fff" fill="#fff" style={{ marginLeft: '4px' }} />
-            </div>
-            {/* Simple audio wave icon representation */}
-            <div style={{ display: 'flex', gap: '4px', alignItems: 'flex-end', height: '16px' }}>
-              <div style={{ width: '3px', height: '8px', backgroundColor: 'rgba(255,255,255,0.6)', borderRadius: '2px' }}></div>
-              <div style={{ width: '3px', height: '16px', backgroundColor: 'rgba(255,255,255,0.8)', borderRadius: '2px' }}></div>
-              <div style={{ width: '3px', height: '12px', backgroundColor: 'rgba(255,255,255,0.6)', borderRadius: '2px' }}></div>
-              <div style={{ width: '3px', height: '6px', backgroundColor: 'rgba(255,255,255,0.4)', borderRadius: '2px' }}></div>
             </div>
           </div>
         )}
@@ -131,6 +135,7 @@ const VideoCard = ({ videoSrc, quote, name, role, initials }) => {
 };
 
 const TestimonialsSection = () => {
+  const [currentlyPlaying, setCurrentlyPlaying] = useState(null);
   const testimonials = [
     {
       quote: "Working with Jagat Turkiya has been life-changing. His guidance, support, and insight have helped me overcome challenges and reach new heights in my personal growth. His approach is both empowering and compassionate, making every session valuable. Thanks Jagat",
@@ -196,18 +201,24 @@ const TestimonialsSection = () => {
           marginBottom: '60px'
         }}>
           <VideoCard 
+            id="video1"
+            currentlyPlaying={currentlyPlaying}
+            setCurrentlyPlaying={setCurrentlyPlaying}
             videoSrc={video1}
             quote="A truly life-changing coaching experience — my mindset and clarity have completely shifted."
-            name="Client Testimonial 1"
+            name="Vikram Singh"
             role="Coaching Client"
-            initials="AT"
+            initials="VS"
           />
           <VideoCard 
+            id="video2"
+            currentlyPlaying={currentlyPlaying}
+            setCurrentlyPlaying={setCurrentlyPlaying}
             videoSrc={video2}
             quote="Jagat Sir guided me through every step — from writing to launching my book successfully."
-            name="Client Testimonial 2"
+            name="Priya Sharma"
             role="Author & Coaching Client"
-            initials="BT"
+            initials="PS"
           />
         </div>
 
