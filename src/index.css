@@ -194,7 +194,7 @@ button {
   .hero-section {
     min-height: auto;
     padding-top: 90px;
-    padding-bottom: var(--space-4);
+    padding-bottom: var(--space-8);
   }
 }
 
@@ -609,7 +609,7 @@ button {
   }
 
   .section {
-    padding: var(--space-6) 0;
+    padding: var(--space-10) 0;
   }
 
   .section-inner {
@@ -655,7 +655,7 @@ button {
   }
 
   .section {
-    padding: var(--space-4) 0;
+    padding: var(--space-8) 0;
   }
 
   .header-logo img {
