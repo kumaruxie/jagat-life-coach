@@ -17,7 +17,7 @@ const MechanismSection = () => {
   ];
 
   return (
-    <section className="section" style={{ backgroundColor: 'var(--surface)' }}>
+    <section className="section" style={{ background: 'linear-gradient(to bottom, var(--surface-deep) 0%, var(--surface) 60px, var(--surface) 100%)' }}>
       <div className="section-inner">
         <div style={{ textAlign: 'center', marginBottom: 'var(--space-6)' }}>
           <span className="tag">Hamara Tarika</span>

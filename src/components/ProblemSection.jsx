@@ -30,7 +30,7 @@ const ProblemSection = () => {
   ];
 
   return (
-    <section id="problem" className="section" style={{ backgroundColor: 'var(--surface)', color: 'var(--silver)' }}>
+    <section id="problem" className="section" style={{ background: 'var(--surface)', color: 'var(--silver)' }}>
       <div className="section-inner">
         <div style={{ textAlign: 'center', marginBottom: 'var(--space-10)', position: 'relative' }}>
           <div style={{ 

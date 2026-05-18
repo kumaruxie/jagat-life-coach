@@ -4,7 +4,7 @@ import { Check } from 'lucide-react';
 const PricingSection = ({ triggerPayment }) => {
   const inclusions = [
     "4 Weeks Structured Program — 8 recorded Hinglish videos (lifetime access)",
-    "7 Live Group Coaching Sessions with Jagat",
+    "4 Live Group Coaching Sessions with Jagat",
     "2 × 1:1 Zoom Calls (Week 1–2 + Week 4)",
     "Conflict Detox Worksheets — break old patterns",
     "Family Conversation Scripts — plug-and-play dialogues",
@@ -14,7 +14,7 @@ const PricingSection = ({ triggerPayment }) => {
   ];
 
   return (
-    <section className="section" id="pricing" style={{ background: 'linear-gradient(to bottom, var(--surface) 0%, var(--surface-deep) 150px, var(--surface-deep) 100%)' }}>
+    <section className="section" id="pricing" style={{ background: 'var(--surface-deep)' }}>
       <div className="section-inner" style={{ maxWidth: '1000px' }}>
         <div style={{ textAlign: 'center', marginBottom: 'var(--space-6)' }}>
           <span className="tag">Limited Enrollment</span>

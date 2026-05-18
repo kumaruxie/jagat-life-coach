@@ -39,7 +39,7 @@ const ProgramBreakdownSection = () => {
   };
 
   return (
-    <section id="program" className="section" style={{ backgroundColor: 'var(--surface-deep)', color: 'var(--silver)' }}>
+    <section id="program" className="section" style={{ background: 'var(--surface-deep)', color: 'var(--silver)' }}>
       <div className="section-inner">
         <div style={{ textAlign: 'center', marginBottom: 'var(--space-6)' }}>
           <span className="tag">The Program</span>
@@ -71,7 +71,7 @@ const ProgramBreakdownSection = () => {
                 { icon: <Target size={20} />, text: "2 Live one on one Coaching Sessions (120 min total)" },
                 { icon: <FileText size={20} />, text: "Worksheets, scripts & reflection exercises" },
                 { icon: <Users size={20} />, text: "Private community support" },
-                { icon: <Lock size={20} />, text: "Lifetime access to all recordings" },
+                // { icon: <Lock size={20} />, text: "Lifetime access to all recordings" },
               ].map((item, i) => (
                 <motion.li 
                   key={i} 

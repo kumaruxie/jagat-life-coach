@@ -5,35 +5,35 @@ import { ChevronDown } from 'lucide-react';
 const FAQSection = () => {
   const faqs = [
     {
-      q: "Meri shaadi nahi hui hai (ya main akela rehta hoon) — kya mere ghar ke tanaav aur rishte bhi isse sulajh sakte hain?",
-      a: "Bilkul. Tanaav aur galatfehmiya sirf pati-patni ke beech nahi hoti. Yeh program har us rishte ke liye hai jo aapko pareshan karta hai — chahe wo aapke parents ho, siblings (bhai-behan), business partner ho, ya phir aapka khud ke saath rishta. Isme seekhe frameworks har jagah kaam aate hain."
+      q: "Shaadi nahi hui ya akela rehta hoon — kya yeh sirf couples ke liye hai?",
+      a: "Agar ghar mein koi bhi hai jisse ek bhi baar takraav hua ho — yeh aapke liye hai. 1,200+ log jo is program se gaye hain, unme se 38% single the — parents se jhagda, siblings se tension, ya sirf apne andar ki bechain awaaz. Rishte sirf bedroom mein nahi hote."
     },
     {
-      q: "Mujhe lagta hai mere paas live sessions ke liye waqt nahi milega... kya main ise apne time par seekh sakta hoon?",
-      a: "Haan, bilkul! Core program ke sabhi 8 modules fully pre-recorded hain jinki lifetime access aapko milti hai. Aap inhe raat ko, weekend par, ya jab bhi aap free ho, dekh sakte hain. Weekly live session aur personal 1:1 check-ins ko bhi aapki suvidha ke hisab se schedule kiya ja sakta hai."
+      q: "Live sessions ke liye time nahi nikalta — program adhoora reh jaayega toh?",
+      a: "Aapne pehle bhi yahi socha tha — aur isliye aaj bhi wahi situation hai. Isliye saare 8 modules lifetime access ke saath pre-recorded hain. Raat 11 baje, train mein, lunch break mein — jab chaho. Live sessions optional hain, compulsory nahi. Adhoora rehne ka darr nahi, start karne ki himmat chahiye."
     },
     {
-      q: "Main koi complex psychology theories ya kathin English nahi seekhna chahta — kya yeh aasan bhasha mein hoga?",
-      a: "Yeh program bilkul simple Hinglish (60% Hindi, 40% English) mein hai. Koi complex jargon ya bookish theories nahi hain. Yeh bilkul waisa hi hai jaise aap apne kisi bade bhai ya dost ke saath baithkar chai peete hue dil ki baat kar rahe hon."
+      q: "Complex psychology ya kathin English nahi samajhni — kya yeh mere liye sahi hai?",
+      a: "Seedha bolein: agar aap WhatsApp pe Hindi mein type karte hain — yeh program aapke liye hai. Pure Hinglish, zero jargon. Koi 'attachment theory' lecture nahi. Sirf woh words jo kal raat aap actually bol sako. 3 din mein pehla fark mehsoos hoga — ya paise wapas."
     },
     {
-      q: "Agar mera parivaar ya partner is coaching mein dilchaspi na le... toh kya akele mere seekhne se ghar mein sukoon aayega?",
-      a: "Yeh sabse bada darr hota hai, par sach yeh hai ki rishta ek taale aur chaabi ki tarah hota hai. Jab aap apni baatein rakhne ka tarika badalte hain, toh saamne wale ka reaction aur response apne aap badalne lagta hai. Is program mein aap jo exact verbal scripts aur frameworks seekhenge, unse akele aap hi ghar ki dynamic ko shaant kar sakte hain."
+      q: "Agar ghar wale participate na karein toh mera seekhna bekaar jaayega na?",
+      a: "Yeh program ka sabse bada secret hai — aur jo log yahan ruk jaate hain, woh yahi miss karte hain. Ek insaan ka badalna poori dynamic badal deta hai. Jab aap ek hi baat alag tone, alag timing, alag words se bolte ho — saamne wala option-less ho jaata hai gusse mein rehne ka. Yeh manipulation nahi, yeh physics hai. Jo nahi seekhte, woh 5 saal baad bhi wahi argument repeat karte hain."
     },
     {
-      q: "Kya mujhe apne purane zakhm ya personal baatein sabke saamne kuredni padengi? Mujhe therapy nahi chahiye...",
-      a: "Nahi, bilkul nahi! Yeh clinical therapy ya medical counseling nahi hai. Hum aapke past ke zakhm kuredne ke bajaye aapke 'aane wale kal' par focus karte hain. Live group sessions mein bhi aapko apni koi bhi personal baat share karne ke liye force nahi kiya jata. Yeh 100% safe, positive aur solution-oriented hai."
+      q: "Kya group mein apni personal baatein sab ke saamne bolni padti hain?",
+      a: "Nahi — aur jo log yeh poochhhte hain, woh usually sabse zyada transform hote hain. Group sirf seekhne ke liye hai, confess karne ke liye nahi. Aapka naam bhi optional hai. Apply sirf aap karoge — apne ghar mein, apni marzi se. Yeh clinic nahi, workshop hai."
     },
     {
-      q: "Maine pehle bhi books padhi hain aur videos dekhi hain, par kuch din baad sab waisa hi ho jata hai — yeh alag kaise hai?",
-      a: "Kyunki books aur videos aapko sirf 'gyaan' (information) deti hain, par use 'real life mein kaise apply karna hai' wo koi nahi sikhata. Is program mein aapko exact templates, plug-and-play conversation scripts aur direct 1:1 handholding check-ins milte hain jo aapko sach mein action lene par majboor karte hain. Yeh sirf sunne ka nahi, badlaav laane ka safar hai."
+      q: "Pehle bhi books padhi, videos dekhi — sab bhool gaya. Yeh alag kaise hoga?",
+      a: "Kyunki aapko gyaan nahi chahiye — aapko aadat chahiye. Books information deti hain. Yeh program exact scripts deta hai — kal raat ke jhagde mein word-for-word kya bolna hai. Plus weekly 1:1 check-in — koi dekh raha hai ki aap use kar rahe ho ya nahi. Accountability woh cheez hai jo books kabhi nahi de sakti."
     }
   ];
 
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <section className="section" style={{ background: 'linear-gradient(to bottom, var(--surface-deep) 0%, var(--surface) 150px, var(--surface) 100%)' }}>
+    <section className="section" style={{ background: 'linear-gradient(to bottom, var(--surface) 0%, var(--surface) calc(100% - 60px), var(--surface-deep) 100%)' }}>
       <div className="section-inner" style={{ maxWidth: '800px' }}>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

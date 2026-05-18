@@ -157,19 +157,6 @@ const HeroSection = ({ triggerPayment }) => {
           Ghar Ki Uljhanon Ko Ek Mahine Mein <em style={{ color: 'var(--emerald)', fontStyle: 'normal' }}>Sukoon</em> Mein Badlo.
         </h1>
 
-        <p
-          className="hero-anim hero-anim-3 hide-on-mobile"
-          style={{
-            fontSize: '16px',
-            color: 'var(--slate)',
-            maxWidth: '560px',
-            margin: '0 auto var(--space-6)',
-            lineHeight: '1.7'
-          }}
-        >
-          Ek aasan 30-din ka safar jo aapko apne parivar ko behtar samajhne aur rishton mein aapsi pyar wapas laane mein madad karega — bina kisi complex theory ke.
-        </p>
-
         <div
           className="hero-anim hero-anim-4"
           style={{

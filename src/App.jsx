@@ -14,7 +14,8 @@ const TransformationSection = lazy(() => import('./components/TransformationSect
 const ProgramBreakdownSection = lazy(() => import('./components/ProgramBreakdownSection'));
 const AboutCoachSection = lazy(() => import('./components/AboutCoachSection'));
 const AchievementsSection = lazy(() => import('./components/AchievementsSection'));
-const TestimonialsSection = lazy(() => import('./components/TestimonialsSection'));
+const VideoTestimonialsSection = lazy(() => import('./components/VideoTestimonialsSection'));
+const TextTestimonialsSection = lazy(() => import('./components/TextTestimonialsSection'));
 const PricingSection = lazy(() => import('./components/PricingSection'));
 const FAQSection = lazy(() => import('./components/FAQSection'));
 const Footer = lazy(() => import('./components/Footer'));
@@ -64,7 +65,7 @@ function App() {
   }, []);
 
   const triggerPayment = () => {
-    window.location.href = "https://rzp.io/rzp/iV71t1VO";
+    window.location.href = "https://rzp.io/rzp/kmJwGTB";
   };
 
   return (
@@ -84,7 +85,7 @@ function App() {
             text="Ek naye safar ki shuruaat karein — aapsi samajh aur sukoon ke liye."
             buttonText="Haan, Mujhe Shuruaat Karni Hai →"
             triggerPayment={triggerPayment}
-            bgColor="linear-gradient(to bottom, var(--surface-deep) 0%, var(--surface) 100%)"
+            bgColor="var(--surface-deep)"
           />
           
           <MechanismSection />
@@ -94,51 +95,26 @@ function App() {
             text="30 din mein aapke ghar ka mahaul badal sakta hai. Kya aap taiyar hain?"
             buttonText="Apna Pehla Kadam Uthayein →"
             triggerPayment={triggerPayment}
-            bgColor="linear-gradient(to bottom, var(--surface) 0%, var(--surface-deep) 100%)"
+            bgColor="var(--surface-deep)"
           />
           
           <ProgramBreakdownSection />
           <AboutCoachSection />
           <AchievementsSection />
           
-          {/* Soft Ambient Blur for Achievements-to-Testimonials transition */}
-          <div style={{ position: 'relative', width: '100%', height: 0, overflow: 'visible', zIndex: 0, pointerEvents: 'none' }}>
-            <div style={{
-              position: 'absolute',
-              top: '-150px',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              width: '450px',
-              height: '300px',
-              background: 'radial-gradient(circle, rgba(16,185,129,0.09) 0%, transparent 75%)',
-              filter: 'blur(90px)',
-            }} />
-          </div>
-
           <CTABanner 
             text="1,500+ families ne yeh kiya. Ab aapki baari hai."
             buttonText="Apni Seat Reserve Karo →"
             triggerPayment={triggerPayment}
-            bgColor="linear-gradient(to bottom, var(--surface-deep) 0%, var(--surface) 100%)"
+            bgColor="var(--surface-deep)"
           />
           
-          <TestimonialsSection />
-
-          {/* Soft Ambient Blur for Testimonials-to-Pricing transition */}
-          <div style={{ position: 'relative', width: '100%', height: 0, overflow: 'visible', zIndex: 0, pointerEvents: 'none' }}>
-            <div style={{
-              position: 'absolute',
-              top: '-100px',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              width: '450px',
-              height: '300px',
-              background: 'radial-gradient(circle, rgba(96,165,250,0.07) 0%, transparent 75%)',
-              filter: 'blur(90px)',
-            }} />
-          </div>
+          <VideoTestimonialsSection />
 
           <PricingSection triggerPayment={triggerPayment} />
+          
+          <TextTestimonialsSection />
+          
           <FAQSection />
         </Suspense>
       </main>
