@@ -5,28 +5,28 @@ import { ChevronDown } from 'lucide-react';
 const FAQSection = () => {
   const faqs = [
     {
-      q: "Kya yeh sirf married logon ke liye hai?",
-      a: "Nahi. Yeh program un sabhi ke liye hai jo family conflicts, relationship tension, ya self-doubt ki wajah se stuck feel karte hain — chahe aap married ho, single ho, ya parents ke saath rehte ho, yeh sabke liye relevant hai."
+      q: "Meri shaadi nahi hui hai (ya main akela rehta hoon) — kya mere ghar ke tanaav aur rishte bhi isse sulajh sakte hain?",
+      a: "Bilkul. Tanaav aur galatfehmiya sirf pati-patni ke beech nahi hoti. Yeh program har us rishte ke liye hai jo aapko pareshan karta hai — chahe wo aapke parents ho, siblings (bhai-behan), business partner ho, ya phir aapka khud ke saath rishta. Isme seekhe frameworks har jagah kaam aate hain."
     },
     {
-      q: "Live classes hongi ya recorded?",
-      a: "Core content 8 recorded modules mein hai jo aap apni suvidha ke anusaar dekh sakte hain. Iske saath hi 7 live group coaching sessions aur 2 personal 1:1 Zoom calls sirf aapke liye hongi."
+      q: "Mujhe lagta hai mere paas live sessions ke liye waqt nahi milega... kya main ise apne time par seekh sakta hoon?",
+      a: "Haan, bilkul! Core program ke sabhi 8 modules fully pre-recorded hain jinki lifetime access aapko milti hai. Aap inhe raat ko, weekend par, ya jab bhi aap free ho, dekh sakte hain. Weekly live session aur personal 1:1 check-ins ko bhi aapki suvidha ke hisab se schedule kiya ja sakta hai."
     },
     {
-      q: "Language kya rahegi?",
-      a: "Pure Hinglish — 60% Hindi, 40% English. Bilkul waise hi jaise hum naturally baat karte hain."
+      q: "Main koi complex psychology theories ya kathin English nahi seekhna chahta — kya yeh aasan bhasha mein hoga?",
+      a: "Yeh program bilkul simple Hinglish (60% Hindi, 40% English) mein hai. Koi complex jargon ya bookish theories nahi hain. Yeh bilkul waisa hi hai jaise aap apne kisi bade bhai ya dost ke saath baithkar chai peete hue dil ki baat kar rahe hon."
     },
     {
-      q: "Mujhe itna time kahan se milega?",
-      a: "Har recorded video approximately 20–30 minutes ka hai. Rozana sirf 30–40 minutes nikaliye — 30 din mein program comfortably complete ho jayega."
+      q: "Agar mera parivaar ya partner is coaching mein dilchaspi na le... toh kya akele mere seekhne se ghar mein sukoon aayega?",
+      a: "Yeh sabse bada darr hota hai, par sach yeh hai ki rishta ek taale aur chaabi ki tarah hota hai. Jab aap apni baatein rakhne ka tarika badalte hain, toh saamne wale ka reaction aur response apne aap badalne lagta hai. Is program mein aap jo exact verbal scripts aur frameworks seekhenge, unse akele aap hi ghar ki dynamic ko shaant kar sakte hain."
     },
     {
-      q: "Kya yeh counselling ya therapy hai?",
-      a: "Nahi. Yeh ek coaching aur personal transformation program hai. Isme koi medical ya clinical diagnosis nahi hoti. Yeh sirf practical tools aur frameworks hain jinhe aap turant apni real life mein use kar sakte hain."
+      q: "Kya mujhe apne purane zakhm ya personal baatein sabke saamne kuredni padengi? Mujhe therapy nahi chahiye...",
+      a: "Nahi, bilkul nahi! Yeh clinical therapy ya medical counseling nahi hai. Hum aapke past ke zakhm kuredne ke bajaye aapke 'aane wale kal' par focus karte hain. Live group sessions mein bhi aapko apni koi bhi personal baat share karne ke liye force nahi kiya jata. Yeh 100% safe, positive aur solution-oriented hai."
     },
     {
-      q: "Kya family members ko bhi saath laana padega?",
-      a: "Aap yeh course apne liye le rahe hain. Isme jo frameworks aur scripts aapko milenge, unhe aap apni family conversations mein directly use kar sakte hain — chahe saamne wala program mein enroll ho ya na ho."
+      q: "Maine pehle bhi books padhi hain aur videos dekhi hain, par kuch din baad sab waisa hi ho jata hai — yeh alag kaise hai?",
+      a: "Kyunki books aur videos aapko sirf 'gyaan' (information) deti hain, par use 'real life mein kaise apply karna hai' wo koi nahi sikhata. Is program mein aapko exact templates, plug-and-play conversation scripts aur direct 1:1 handholding check-ins milte hain jo aapko sach mein action lene par majboor karte hain. Yeh sirf sunne ka nahi, badlaav laane ka safar hai."
     }
   ];
 
@@ -39,9 +39,9 @@ const FAQSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          style={{ textAlign: 'center', marginBottom: '60px' }}
+          style={{ textAlign: 'center', marginBottom: '16px' }}
         >
-          Aapke Sawaal, Seedhe Jawab
+          Man Mein Uthne Wale Sawaal, Khulkar Sahi Jawab
         </motion.h2>
 
         <motion.p
@@ -51,11 +51,14 @@ const FAQSection = () => {
           transition={{ delay: 0.1 }}
           style={{
             textAlign: 'center',
-            margin: '16px auto 48px'
+            margin: '0 auto 48px',
+            maxWidth: '560px',
+            color: 'var(--slate)',
+            fontSize: '15px',
+            lineHeight: '1.6'
           }}
         >
-          Still have questions? We've answered some of the most common
-          queries below to help you make an informed decision.
+          Apne ghar ke mahaul aur rishton ko lekar man mein shanka hona bilkul aam hai. Yahan humne un sawalon ko clarify kiya hai jo aksar professionals humse puchte hain:
         </motion.p>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>

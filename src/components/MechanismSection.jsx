@@ -19,7 +19,7 @@ const MechanismSection = () => {
   return (
     <section className="section" style={{ backgroundColor: 'var(--surface)' }}>
       <div className="section-inner">
-        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+        <div style={{ textAlign: 'center', marginBottom: 'var(--space-6)' }}>
           <span className="tag">Hamara Tarika</span>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -30,7 +30,7 @@ const MechanismSection = () => {
           </motion.h2>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '32px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'var(--space-4)' }}>
           {steps.map((step, index) => (
             <motion.div 
               key={index}
@@ -45,7 +45,7 @@ const MechanismSection = () => {
               }}
               style={{
                 backgroundColor: 'var(--surface-raised)',
-                padding: '40px',
+                padding: 'var(--space-5)',
                 borderRadius: '16px',
                 boxShadow: 'none',
                 border: '1px solid var(--border)',

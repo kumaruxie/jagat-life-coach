@@ -57,7 +57,7 @@ const AboutCoachSection = () => {
             viewport={{ once: true }}
           >
             <span className="tag">The Mentor</span>
-            <h2 style={{ marginBottom: '8px' }}>Jagat Turkiya</h2>
+            <h2 style={{ marginBottom: 'var(--space-1)' }}>Jagat Turkiya</h2>
             
             {/* Role badge */}
             <div style={{
@@ -67,22 +67,22 @@ const AboutCoachSection = () => {
               padding: '8px 16px',
               backgroundColor: 'rgba(148,163,184,0.08)',
               borderRadius: '6px',
-              marginBottom: '28px'
+              marginBottom: 'var(--space-4)'
             }}>
               <span style={{ fontSize: '13px', color: 'var(--slate)' }}>🎯 Life Strategic Family Coach & Mind Hacker</span>
             </div>
 
             {/* COPYWRITING: Edit the bio paragraphs below */}
-            <p style={{ marginBottom: '16px', fontSize: '15px' }}>
+            <p style={{ marginBottom: 'var(--space-2)', fontSize: '15px' }}>
               Jagat Turkiya ki journey kisi textbook se nahi, real-life struggles se shuru hui thi. Unhone personally dekha hai ki ek unresolved family conflict kaise ek capable aur intelligent insaan ko andar se khaali kar deta hai.
             </p>
 
-            <p style={{ marginBottom: '32px', fontSize: '15px' }}>
+            <p style={{ marginBottom: 'var(--space-4)', fontSize: '15px' }}>
               Yahi cheez unhe coaching ki taraf le aayi — is yakeen ke saath ki har ghar mein sukoon ho sakta hai, agar sahi disha mile.
             </p>
 
             {/* Role Tags */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-2)' }}>
               {tags.map((tag, i) => (
                 <motion.span 
                   key={i} 

@@ -41,7 +41,7 @@ const ProgramBreakdownSection = () => {
   return (
     <section id="program" className="section" style={{ backgroundColor: 'var(--surface-deep)', color: 'var(--silver)' }}>
       <div className="section-inner">
-        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+        <div style={{ textAlign: 'center', marginBottom: 'var(--space-6)' }}>
           <span className="tag">The Program</span>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -61,11 +61,11 @@ const ProgramBreakdownSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <p style={{ fontSize: '15px', color: 'var(--slate)', marginBottom: '2rem' }}>
+            <p style={{ fontSize: '15px', color: 'var(--slate)', marginBottom: 'var(--space-4)' }}>
               Yeh ek structured 30-day journey hai — recorded modules, live Zoom sessions, worksheets, aur direct coaching. Sirf gyaan nahi, <strong style={{ color: 'var(--silver)' }}>real ground-level change</strong>.
             </p>
             
-            <ul style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <ul style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
               {[
                 { icon: <Calendar size={20} />, text: "8 Recorded Hinglish Modules (112 min total)" },
                 { icon: <Target size={20} />, text: "2 Live one on one Coaching Sessions (120 min total)" },
@@ -84,7 +84,7 @@ const ProgramBreakdownSection = () => {
                   style={{ 
                     display: 'flex', 
                     alignItems: 'center', 
-                    gap: '12px', 
+                    gap: 'var(--space-2)', 
                     color: 'var(--slate)', 
                     fontSize: '14px',
                     cursor: 'default',
@@ -99,7 +99,7 @@ const ProgramBreakdownSection = () => {
           </motion.div>
 
           {/* Right Column - Phases */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
             {phases.map((phase, i) => (
               <motion.div 
                 key={i}
@@ -114,7 +114,7 @@ const ProgramBreakdownSection = () => {
                 }}
                 style={{ 
                   backgroundColor: 'var(--surface-raised)', 
-                  padding: '22px 24px', 
+                  padding: 'var(--space-3) var(--space-4)', 
                   borderRadius: '8px',
                   border: '1px solid var(--border)',
                   borderLeftWidth: '3px',
@@ -123,11 +123,11 @@ const ProgramBreakdownSection = () => {
                   transition: 'box-shadow 0.3s ease'
                 }}
               >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-2)' }}>
                   <span style={{ fontWeight: 600, color: 'var(--slate)', letterSpacing: '0.12em', fontSize: '11px', textTransform: 'uppercase' }}>PHASE {phase.phase}</span>
                   <span style={{ fontSize: '11px', color: 'var(--slate)', textTransform: 'uppercase', letterSpacing: '0.12em', fontWeight: 600 }}>{phase.week}</span>
                 </div>
-                <h3 style={{ color: 'var(--silver)', marginBottom: '8px', fontSize: '17px' }}>{phase.title}</h3>
+                <h3 style={{ color: 'var(--silver)', marginBottom: 'var(--space-1)', fontSize: '17px' }}>{phase.title}</h3>
                 <p style={{ color: 'var(--slate)', margin: 0, fontSize: '13px' }}>{phase.desc}</p>
               </motion.div>
             ))}

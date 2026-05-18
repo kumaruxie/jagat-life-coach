@@ -178,6 +178,26 @@ button {
   scroll-margin-top: 90px;
 }
 
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 100px;
+  padding-bottom: var(--space-6);
+  overflow: hidden;
+  background-color: var(--surface);
+  color: var(--silver);
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: auto;
+    padding-top: 90px;
+    padding-bottom: var(--space-4);
+  }
+}
+
 .main-header {
   position: fixed;
   top: 0;
@@ -589,11 +609,11 @@ button {
   }
 
   .section {
-    padding: 4rem 0;
+    padding: var(--space-6) 0;
   }
 
   .section-inner {
-    padding: 0 16px;
+    padding: 0 var(--space-3);
   }
 
   .header-cta {
@@ -635,7 +655,7 @@ button {
   }
 
   .section {
-    padding: 3rem 0;
+    padding: var(--space-4) 0;
   }
 
   .header-logo img {

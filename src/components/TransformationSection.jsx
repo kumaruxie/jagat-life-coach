@@ -23,7 +23,7 @@ const TransformationSection = () => {
   return (
     <section className="section" style={{ backgroundColor: 'var(--surface)' }}>
       <div className="section-inner">
-        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+        <div style={{ textAlign: 'center', marginBottom: 'var(--space-6)' }}>
           <span className="tag">Natija (The Outcome)</span>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -34,7 +34,7 @@ const TransformationSection = () => {
           </motion.h2>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '32px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'var(--space-4)' }}>
           {cards.map((card, index) => (
             <motion.div 
               key={index}
@@ -48,14 +48,14 @@ const TransformationSection = () => {
               }}
               style={{
                 backgroundColor: 'var(--surface-raised)',
-                padding: '40px',
+                padding: 'var(--space-5)',
                 borderRadius: '16px',
                 borderTop: `3px solid ${card.accent}`,
                 cursor: 'default',
                 transition: 'box-shadow 0.3s ease'
               }}
             >
-              <h3 style={{ marginBottom: '16px', fontSize: '24px' }}>{card.title}</h3>
+              <h3 style={{ marginBottom: 'var(--space-2)', fontSize: '24px' }}>{card.title}</h3>
               <p style={{ margin: 0 }}>{card.desc}</p>
             </motion.div>
           ))}

@@ -109,17 +109,7 @@ const LazyYouTube = ({ src, title }) => {
 
 const HeroSection = ({ triggerPayment }) => {
   return (
-    <section style={{ 
-      position: 'relative', 
-      minHeight: '100vh',
-      display: 'flex',
-      alignItems: 'center',
-      paddingTop: '80px',
-      paddingBottom: '40px',
-      overflow: 'hidden',
-      backgroundColor: 'var(--surface)',
-      color: 'var(--silver)'
-    }}>
+    <section className="hero-section">
       {/* Zero-Lag CSS Ambient Background */}
       <div style={{
         position: 'absolute',
@@ -188,7 +178,7 @@ const HeroSection = ({ triggerPayment }) => {
             aspectRatio: '16/9',
             backgroundColor: 'var(--surface-deep)',
             borderRadius: '16px',
-            margin: '0 auto 40px',
+            margin: '0 auto var(--space-4)',
             position: 'relative',
             overflow: 'hidden',
             boxShadow: '0 24px 48px rgba(0,0,0,0.4)',
