@@ -2,11 +2,11 @@ const Header = ({ triggerPayment }) => {
   return (
     <header className="main-header header-animate">
       <div className="section-inner header-responsive">
-        <div className="logo header-logo" style={{ display: 'flex', alignItems: 'center' }}>
+        <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="logo header-logo" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
           <span style={{ display: 'flex', alignItems: 'center', whiteSpace: 'nowrap', lineHeight: 1 }}>
             <span style={{
-              fontFamily: "'Yatra One', cursive",
-              fontSize: '24px',
+              fontFamily: "'Rozha One', serif",
+              fontSize: '22px',
               color: '#ffffff',
               lineHeight: 1,
               position: 'relative',
@@ -17,15 +17,15 @@ const Header = ({ triggerPayment }) => {
               आपका
             </span>
             <span style={{
-              fontFamily: "'Lobster', cursive",
-              fontSize: '28px',
+              fontFamily: "'Abril Fatface', cursive",
+              fontSize: '24px',
               color: '#10b981',
               lineHeight: 1
             }}>
               Coach.com
             </span>
           </span>
-        </div>
+        </a>
         
         <button className="header-cta" onClick={() => triggerPayment()} aria-label="Start enrollment now">
           Start Now →

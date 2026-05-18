@@ -22,30 +22,30 @@ const Footer = () => {
         <div className="section-inner" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '28px' }}>
           
           {/* Logo */}
-          <div style={{ display: 'flex', alignItems: 'center', margin: '8px 0' }}>
+          <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} style={{ display: 'flex', alignItems: 'center', margin: '8px 0', textDecoration: 'none' }}>
             <span style={{ display: 'flex', alignItems: 'center', whiteSpace: 'nowrap', lineHeight: 1 }}>
               <span style={{
-                fontFamily: "'Yatra One', cursive",
-                fontSize: '30px',
+                fontFamily: "'Rozha One', serif",
+                fontSize: '28px',
                 color: '#ffffff',
                 lineHeight: 1,
                 position: 'relative',
                 top: '1px',
                 letterSpacing: '-0.5px',
-                marginRight: '4px'
+                marginRight: '3px'
               }}>
                 आपका
               </span>
               <span style={{
-                fontFamily: "'Lobster', cursive",
-                fontSize: '34px',
+                fontFamily: "'Abril Fatface', cursive",
+                fontSize: '30px',
                 color: '#10b981',
                 lineHeight: 1
               }}>
                 Coach.com
               </span>
             </span>
-          </div>
+          </a>
 
           {/* Policy Links */}
           <nav aria-label="Legal policies" style={{ display: 'flex', gap: '8px', fontSize: '12px', color: 'var(--slate)', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center' }}>

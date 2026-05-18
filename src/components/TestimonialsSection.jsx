@@ -29,7 +29,7 @@ const VideoCard = ({ id, videoSrc, quote, name, role, initials, currentlyPlaying
   };
 
   return (
-    <div style={{
+    <div className="glass-glow-hover" style={{
       backgroundColor: '#2a2a35', 
       borderRadius: '16px',
       overflow: 'hidden',
@@ -240,7 +240,7 @@ const TestimonialsSection = () => {
           {testimonials.map((t, index) => (
             <div
               key={index}
-              className="testimonial-card"
+              className="testimonial-card glass-glow-hover"
               style={{
                 backgroundColor: '#2a2a35', // Match design dark background
                 borderRadius: '12px',
