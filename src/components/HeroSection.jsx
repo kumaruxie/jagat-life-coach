@@ -120,15 +120,18 @@ const HeroSection = ({ triggerPayment }) => {
       backgroundColor: 'var(--surface)',
       color: 'var(--silver)'
     }}>
-      {/* Ambient background — placeholder for future Spline 3D */}
+      {/* Zero-Lag CSS Ambient Background */}
       <div style={{
         position: 'absolute',
         top: 0,
         left: 0,
         right: 0,
         bottom: 0,
-        background: 'radial-gradient(ellipse at 30% 20%, rgba(16,185,129,0.06) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(16,185,129,0.04) 0%, transparent 50%)',
-        zIndex: 0
+        zIndex: 0,
+        pointerEvents: 'none',
+        background: 'radial-gradient(circle at 50% 30%, rgba(16,185,129,0.15) 0%, transparent 60%)',
+        animation: 'ambient-breathe 8s ease-in-out infinite',
+        transform: 'translate3d(0,0,0)'
       }} />
 
       {/* Dark gradient overlay */}
@@ -139,31 +142,33 @@ const HeroSection = ({ triggerPayment }) => {
         right: 0,
         bottom: 0,
         background: 'radial-gradient(ellipse at center, rgba(26,32,44,0.4) 0%, rgba(26,32,44,0.88) 70%)',
-        zIndex: 0
+        zIndex: 0,
+        pointerEvents: 'none'
       }} />
 
       <div className="section-inner hero-content" style={{ 
         position: 'relative', 
         zIndex: 1, 
         maxWidth: '900px',
-        textAlign: 'center'
+        textAlign: 'center',
+        pointerEvents: 'none'
       }}>
         <span 
           className="tag hero-anim hero-anim-1"
           style={{ color: 'var(--slate)', marginBottom: '20px' }}
         >
-          Hindi-speaking professionals ke liye — jo ghar ke conflicts se thak chuke hain
+          Hindi-speaking professionals ke liye — jo ghar ke roz-roz ke tanaav se thak chuke hain
         </span>
         
         <h1 
           className="hero-anim hero-anim-2"
           style={{ color: 'var(--silver)', marginBottom: '32px' }}
         >
-          Ghar Ke Conflicts Ko <em style={{ color: 'var(--emerald)', fontStyle: 'normal' }}>Ek Mahine Mein</em> Clarity Mein Badlo.
+          Ghar Ki Uljhanon Ko Ek Mahine Mein <em style={{ color: 'var(--emerald)', fontStyle: 'normal' }}>Sukoon</em> Mein Badlo.
         </h1>
 
         <p
-          className="hero-anim hero-anim-3"
+          className="hero-anim hero-anim-3 hide-on-mobile"
           style={{
             fontSize: '16px',
             color: 'var(--slate)',
@@ -172,7 +177,7 @@ const HeroSection = ({ triggerPayment }) => {
             lineHeight: '1.7'
           }}
         >
-          A 30-day structured coaching program to decode your Personality DNA and transform family dynamics — with live sessions, 1:1 calls, and proven frameworks.
+          Ek aasan 30-din ka safar jo aapko apne parivar ko behtar samajhne aur rishton mein aapsi pyar wapas laane mein madad karega — bina kisi complex theory ke.
         </p>
 
         <div
@@ -187,7 +192,8 @@ const HeroSection = ({ triggerPayment }) => {
             position: 'relative',
             overflow: 'hidden',
             boxShadow: '0 24px 48px rgba(0,0,0,0.4)',
-            border: '1px solid rgba(255,255,255,0.08)'
+            border: '1px solid rgba(255,255,255,0.08)',
+            pointerEvents: 'auto'
           }}
         >
           <LazyYouTube
@@ -198,14 +204,14 @@ const HeroSection = ({ triggerPayment }) => {
 
         <div 
           className="hero-anim hero-anim-5"
-          style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}
+          style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', pointerEvents: 'auto' }}
         >
           <button 
-            className="btn-cta btn-cta-pulse" 
+            className="btn-cta btn-cta-pulse btn-shimmer" 
             style={{ padding: '18px 48px', fontSize: '15px' }}
             onClick={() => triggerPayment()}
           >
-            Haan, Mujhe Clarity Chahiye →
+            Haan, Mujhe Sukoon Chahiye →
           </button>
           <span style={{ 
             fontSize: '12px', 
@@ -213,7 +219,7 @@ const HeroSection = ({ triggerPayment }) => {
             opacity: 0.7,
             letterSpacing: '0.02em'
           }}>
-            30-day program · Starts immediately · Limited seats
+            30-din ka aasan safar · Abhi shuru karein · Limited seats
           </span>
         </div>
       </div>

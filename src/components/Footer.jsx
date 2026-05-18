@@ -18,7 +18,7 @@ const Footer = () => {
 
   return (
     <>
-      <footer style={{ backgroundColor: 'var(--surface-deep)', padding: '48px 0 32px', borderTop: '1px solid var(--border)' }}>
+      <footer style={{ background: 'linear-gradient(to bottom, var(--surface) 0%, var(--surface-deep) 150px, var(--surface-deep) 100%)', padding: '48px 0 32px', borderTop: '1px solid var(--border)' }}>
         <div className="section-inner" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '28px' }}>
           
           {/* Logo */}

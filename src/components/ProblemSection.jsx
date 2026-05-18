@@ -5,27 +5,27 @@ const ProblemSection = () => {
   const problems = [
     {
       icon: <Home size={20} />,
-      text: "Ghar aate hi mood off ho jaata hai — kyunki pata hai ki phir koi baat pakdi jayegi."
+      text: "Ghar aate hi ek anjana sa tanaav mehsus hota hai — lagta hai baat baat par charcha shuru ho jayegi."
     },
     {
       icon: <Users size={20} />,
-      text: "Spouse, parents, ya siblings ko samjhana chahte hain, lekin har baat debate ya blame game mai badal jaati hai."
+      text: "Apno ko apni baat samjhane ki koshish karte hain, par baat aksar galatfehmi mein badal jaati hai."
     },
     {
       icon: <Briefcase size={20} />,
-      text: "Career chal raha hai, financially theek hain — par andar se lagta hai ki kuch toh missing hai."
+      text: "Career mein sab theek chal raha hai, par andar ek ajeeb sa khaalipan aur ashaanti lagti hai."
     },
     {
       icon: <RefreshCw size={20} />,
-      text: "Itne saalon se same pattern repeat ho raha hai: Love → Expectations → Disappointments → Fights → Silence."
+      text: "Rishton mein wahi purana chakkar: Ummid → Nirasha → Behas → Khamoshi."
     },
     {
       icon: <User size={20} />,
-      text: "Compromise karte-karte khud ko hi kho chuke hain — \"Main kaun hoon?\" ka jawab ab clear nahi."
+      text: "Rishton ko bachane mein itna compromise kiya hai ki ab lagta hai \"Main asliyat mein kaun hoon?\""
     },
     {
       icon: <Lightbulb size={20} />,
-      text: "YouTube, reels, motivational quotes, sab try kar liya — par agli subah wahi purani reality."
+      text: "Bahut si videos aur motivational baatein sun li, par agli subah wahi purani ashaanti wapas aa jaati hai."
     }
   ];
 
@@ -47,12 +47,12 @@ const ProblemSection = () => {
             padding: '0 24px', 
             position: 'relative', 
             zIndex: 1, 
-            color: 'var(--slate)',
+            color: '#fff',
             fontSize: '14px',
             textTransform: 'uppercase',
             letterSpacing: '0.2em'
           }}>
-            Pehchante hain yeh feelings?
+            Kya aap khud ko yahan paate hain?
           </span>
         </div>
 
@@ -66,14 +66,14 @@ const ProblemSection = () => {
           {problems.map((prob, index) => (
             <motion.div 
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial="hidden"
+              whileInView="visible"
+              whileHover="hover"
               viewport={{ once: true }}
-              transition={{ delay: index * 0.08, duration: 0.5 }}
-              whileHover={{ 
-                y: -4, 
-                borderColor: 'rgba(148,163,184,0.3)',
-                boxShadow: '0 8px 32px rgba(0,0,0,0.2)'
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { delay: index * 0.08, duration: 0.5 } },
+                hover: { y: -4, borderColor: 'rgba(148,163,184,0.3)', boxShadow: '0 8px 32px rgba(0,0,0,0.2)' }
               }}
               style={{ 
                 display: 'flex', 
@@ -88,24 +88,31 @@ const ProblemSection = () => {
               }}
             >
               <motion.div 
-                whileHover={{ scale: 1.1, backgroundColor: 'rgba(16,185,129,0.15)' }}
-                transition={{ duration: 0.2 }}
+                variants={{
+                  hover: { scale: 1.1, backgroundColor: 'rgba(16,185,129,0.15)' }
+                }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
                 style={{ 
                   backgroundColor: 'rgba(148,163,184,0.12)', 
-                  color: 'var(--slate)', 
+                  color: '#fff', 
                   padding: '12px', 
                   borderRadius: '50%',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  flexShrink: 0,
-                  transition: 'background-color 0.2s, color 0.2s'
+                  flexShrink: 0
                 }}>
                 {prob.icon}
               </motion.div>
-              <p style={{ margin: 0, color: 'var(--slate)', fontSize: '14px', lineHeight: '1.7', fontWeight: 400 }}>
+              <motion.p 
+                variants={{
+                  hover: { opacity: 0.75, color: '#cbd5e1' }
+                }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+                style={{ margin: 0, color: '#fff', fontSize: '14.5px', lineHeight: '1.7', fontWeight: 400 }}
+              >
                 {prob.text}
-              </p>
+              </motion.p>
             </motion.div>
           ))}
         </div>

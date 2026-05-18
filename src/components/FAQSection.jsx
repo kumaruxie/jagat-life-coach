@@ -33,7 +33,7 @@ const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <section className="section" style={{ backgroundColor: 'var(--surface)' }}>
+    <section className="section" style={{ background: 'linear-gradient(to bottom, var(--surface-deep) 0%, var(--surface) 150px, var(--surface) 100%)' }}>
       <div className="section-inner" style={{ maxWidth: '800px' }}>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

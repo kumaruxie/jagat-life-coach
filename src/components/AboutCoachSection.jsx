@@ -5,7 +5,7 @@ const AboutCoachSection = () => {
   const tags = ["Family Coach", "Mind Hacker", "Guinness Speaker", "National Icon", "Bestselling Author"];
 
   return (
-    <section id="about" className="section" style={{ backgroundColor: 'var(--surface)' }}>
+    <section id="about" className="section" style={{ background: 'linear-gradient(to bottom, var(--surface-deep) 0%, var(--surface) 150px, var(--surface) 100%)' }}>
       <div className="section-inner">
         <div className="grid-2-col" style={{ alignItems: 'center' }}>
           {/* Coach Photo */}

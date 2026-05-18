@@ -2,13 +2,13 @@ import { motion } from 'framer-motion';
 
 const AgitateSection = () => {
   const items = [
-    "Aapke bachche yahi conflict patterns copy karenge — family culture hi toxic ban jayega.",
-    "Office mein productivity girti rahegi, kyunki dimaag ghar ki baaton mein hi atka rahega.",
-    "Aur sabse bada nuksaan: aap khud se disappointed rahenge — 'Itni samajh hai, phir bhi theek kyun nahi ho raha?'"
+    "Aapke bachche bhi jaane-anjane mein yahi tanaav seekhenge, aur unka bachpan khul ke nahi beet payega.",
+    "Ghar ki ashaanti ka asar aapke kaam par padega, kyunki dimaag aakhir wahin atka rahega.",
+    "Aur sabse bada nuksaan: Rishton se wo mithaas aur apnapan hamesha ke liye gayab ho jayega."
   ];
 
   return (
-    <section style={{ backgroundColor: 'var(--surface-deep)', color: 'var(--silver)', padding: '80px 0' }}>
+    <section style={{ background: 'linear-gradient(to bottom, var(--surface) 0%, var(--surface-deep) 150px, var(--surface-deep) 100%)', color: 'var(--silver)', padding: '80px 0' }}>
       <div className="section-inner" style={{ textAlign: 'center', maxWidth: '800px' }}>
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
@@ -16,7 +16,7 @@ const AgitateSection = () => {
           viewport={{ once: true }}
           style={{ color: 'var(--silver)', marginBottom: '40px' }}
         >
-          Agar Aise Hi 5–10 Saal Aur Nikal Gaye Toh?
+          Agar cheezein aisi hi chalti rahin, toh kya khoyenge aap?
         </motion.h2>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', textAlign: 'left', marginBottom: '40px' }}>
@@ -52,7 +52,7 @@ const AgitateSection = () => {
           transition={{ delay: 0.5, duration: 0.8 }}
           style={{ fontSize: '16px', color: 'var(--slate)' }}
         >
-          Yeh sirf relationship problem nahi hai. Yeh ek <strong style={{ color: 'var(--silver)' }}>pattern</strong> hai. Aur patterns decode kiye ja sakte hain.
+          Yeh koi aapki galti nahi hai. Yeh sirf kuch uljhe hue <strong style={{ color: 'var(--silver)' }}>dhage</strong> hain, jinhe pyar aur sahi samajh se suljhaya ja sakta hai.
         </motion.p>
       </div>
     </section>

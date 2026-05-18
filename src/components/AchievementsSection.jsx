@@ -70,7 +70,7 @@ const AchievementsSection = () => {
   const doubledBottom = [...bottomAchievements, ...bottomAchievements];
 
   return (
-    <section id="achievements" className="section" style={{ backgroundColor: 'var(--surface-deep)', padding: '90px 0', overflow: 'hidden' }}>
+    <section id="achievements" className="section" style={{ background: 'linear-gradient(to bottom, var(--surface) 0%, var(--surface-deep) 150px, var(--surface-deep) 100%)', padding: '90px 0', overflow: 'hidden' }}>
       <div className="section-inner" style={{ marginBottom: '56px' }}>
         
         {/* Title Block */}

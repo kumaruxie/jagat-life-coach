@@ -6,26 +6,26 @@ const ProgramBreakdownSection = () => {
     {
       phase: "01",
       week: "Week 1",
-      title: "Personality DNA Decode",
-      desc: "Pehli baar khud ko 'problem' nahi, balki ek 'pattern' ki nazar se dekhna. Un 3 core beliefs ko identify karna jo aapki poori life chala rahe hain."
+      title: "Hafte 1: Apne Achar-Vichar Ko Samajhna",
+      desc: "Khud ko aur apno ko ek nayi aur naram nazar se dekhna shuru karein."
     },
     {
       phase: "02",
       week: "Week 2",
-      title: "Root Causes of Conflict",
-      desc: "Aapke ghar ki recent fights ke exact root causes ka ek clear map. Blame game se bahar aakar responsibility mode mein shift hona."
+      title: "Hafte 2: Galatfehmiyon Ko Dur Karna",
+      desc: "Pehchanein ki asal mudda kya hai, taaki ek dusre par ilzaam lagane ka silsila khatam ho."
     },
     {
       phase: "03",
       week: "Week 3",
-      title: "NLP Shifts & New Scripts",
-      desc: "Ready-made conflict de-escalation scripts. Anchoring, reframing, aur perspective shifts. Reaction se seedha Response mode mein aana."
+      title: "Hafte 3: Pyar Se Baat Rakhna",
+      desc: "Aise tarike seekhein jinse aap apni baat keh bhi dein, aur samne wale ko bura bhi na lage."
     },
     {
       phase: "04",
       week: "Week 4",
-      title: "Integration & Long-Term Clarity",
-      desc: "Aapka personal Conflict to Clarity Blueprint. Bina guilt ke healthy boundaries set karna. 90-day follow-through roadmap."
+      title: "Hafte 4: Hamesha Ke Liye Khushali",
+      desc: "Jo seekha hai usko apni rozmara ki zindagi ka hissa banayein, taaki yeh sukoon hamesha bana rahe."
     }
   ];
 
@@ -47,9 +47,9 @@ const ProgramBreakdownSection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            style={{ color: 'var(--silver)' }}
+            style={{ color: 'var(--silver)', fontSize: '2.5rem' }}
           >
-            Conflict to Clarity — One Month Accelerator
+            Aapka 30-Din Ka Safar Ek Nayi Shuruaat Ki Aur
           </motion.h2>
         </div>
 

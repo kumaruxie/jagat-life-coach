@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState } from 'react';
+import { lazy, Suspense, useState, useEffect } from 'react';
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
 import './App.css';
@@ -27,7 +27,41 @@ const SectionFallback = () => (
 );
 
 function App() {
-  const [isLocked, setIsLocked] = useState(() => !localStorage.getItem('site_unlocked'));
+  const [isLocked, setIsLocked] = useState(false);
+
+  useEffect(() => {
+    // Force scroll to top on reload
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+
+    // Show Gated Overlay based on a strict 15-second total allowance
+    const hasUnlocked = localStorage.getItem('site_unlocked');
+    if (!hasUnlocked) {
+      const firstVisit = localStorage.getItem('first_visit_timestamp');
+      
+      if (!firstVisit) {
+        // First visit ever: start the 15s clock and save the timestamp
+        localStorage.setItem('first_visit_timestamp', Date.now().toString());
+        const timer = setTimeout(() => setIsLocked(true), 15000);
+        return () => clearTimeout(timer);
+      } else {
+        // They refreshed or came back. How much of their 15s is left?
+        const timeElapsed = Date.now() - parseInt(firstVisit, 10);
+        
+        if (timeElapsed >= 15000) {
+          // Their 15 seconds are completely up! Lock immediately.
+          setIsLocked(true);
+        } else {
+          // They refreshed during the teaser. Give them exactly what's left.
+          const timeRemaining = 15000 - timeElapsed;
+          const timer = setTimeout(() => setIsLocked(true), timeRemaining);
+          return () => clearTimeout(timer);
+        }
+      }
+    }
+  }, []);
 
   const triggerPayment = () => {
     window.location.href = "https://rzp.io/rzp/iV71t1VO";
@@ -47,18 +81,20 @@ function App() {
           <AgitateSection />
           
           <CTABanner 
-            text="Yeh patterns samajhna hi pehla step hai — baaki sab iske baad hota hai."
-            buttonText="Apna Pehla Step Lo →"
+            text="Ek naye safar ki shuruaat karein — aapsi samajh aur sukoon ke liye."
+            buttonText="Haan, Mujhe Shuruaat Karni Hai →"
             triggerPayment={triggerPayment}
+            bgColor="linear-gradient(to bottom, var(--surface-deep) 0%, var(--surface) 100%)"
           />
           
           <MechanismSection />
           <TransformationSection />
           
           <CTABanner 
-            text="30 din mein family dynamics badal sakte hain. Kya aap ready ho?"
-            buttonText="Program Join Karo →"
+            text="30 din mein aapke ghar ka mahaul badal sakta hai. Kya aap taiyar hain?"
+            buttonText="Apna Pehla Kadam Uthayein →"
             triggerPayment={triggerPayment}
+            bgColor="linear-gradient(to bottom, var(--surface) 0%, var(--surface-deep) 100%)"
           />
           
           <ProgramBreakdownSection />
@@ -69,6 +105,7 @@ function App() {
             text="1,500+ families ne yeh kiya. Ab aapki baari hai."
             buttonText="Apni Seat Reserve Karo →"
             triggerPayment={triggerPayment}
+            bgColor="var(--surface-deep)"
           />
           
           <TestimonialsSection />

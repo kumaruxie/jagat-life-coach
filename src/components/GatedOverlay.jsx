@@ -76,19 +76,11 @@ const GatedOverlay = ({ onUnlock }) => {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '20px'
+      padding: '20px',
+      backgroundColor: 'rgba(20, 24, 32, 0.85)',
+      backdropFilter: 'blur(16px)',
+      WebkitBackdropFilter: 'blur(16px)'
     }}>
-      {/* Blurred Background Overlay */}
-      <div className="gate-bg" style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        backgroundColor: 'rgba(0,0,0,0.4)',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)'
-      }} />
 
       {/* Form Container */}
       <div className="gate-form" style={{
