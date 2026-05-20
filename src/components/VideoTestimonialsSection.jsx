@@ -6,24 +6,10 @@ import video3 from '../assets/a staified client.mp4';
 import video4 from '../assets/SnapVideo.app_AQP0LsCAVNa3tWlCGt8PQhiNSumpyG3kSvJ3c4dMGvnnOLq1c6uOta5CJOh3y900Jjf8LYgrUluFWgFhcJb4Ps73RSRxO4MfV1IaaAg.mp4';
 
 
-// import THUMBNAIL_AJIT from '../assets/testi1.jpg';
-// import THUMBNAIL_YOGITA from '../assets/testi2.jpg';
-// import THUMBNAIL_SATISFIED_1 from '../assets/ajit-thumbnail.jpg';
-// import THUMBNAIL_SATISFIED_2 from '../assets/ajit-thumbnail.jpg';
-// ─────────────────────────────────────────────────────────────────────────────
-// VIDEO TESTIMONIAL THUMBNAILS CONFIGURATION
-// When you have your testimonial thumbnail images ready:
-// 1. Place them in your 'src/assets/' directory.
-// 2. Import them at the top of this file:
-//    e.g. import thumbAjit from '../assets/ajit-thumbnail.jpg';
-// 3. Assign them to the respective variables below:
-//    e.g. const THUMBNAIL_AJIT = thumbAjit;
-// If set to null, it defaults to a clean premium dark-colored gradient.
-// ─────────────────────────────────────────────────────────────────────────────
-const THUMBNAIL_AJIT = null;         // Ajit Testimonial Thumbnail
-const THUMBNAIL_YOGITA = null;       // Yogita Testimonial Thumbnail
-const THUMBNAIL_SATISFIED_1 = null;   // Satisfied Client 1 Testimonial Thumbnail
-const THUMBNAIL_SATISFIED_2 = null;   // Satisfied Client 2 Testimonial Thumbnail
+import THUMBNAIL_AJIT from '../assets/testi1.jpg';
+import THUMBNAIL_YOGITA from '../assets/testi2.jpg';
+import THUMBNAIL_SATISFIED_1 from '../assets/testi3.jpg';
+import THUMBNAIL_SATISFIED_2 from '../assets/testi4.jpg';
 
 /* ── Thumbnail colours per card ── */
 const THUMB_GRADIENTS = [
