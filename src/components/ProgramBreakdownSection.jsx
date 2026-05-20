@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Calendar, Target, FileText, Users, Lock } from 'lucide-react';
+import { Calendar, Target, FileText, Users } from 'lucide-react';
 
 const ProgramBreakdownSection = () => {
   const phases = [

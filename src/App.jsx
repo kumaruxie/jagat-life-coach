@@ -53,7 +53,7 @@ function App() {
         
         if (timeElapsed >= 15000) {
           // Their 15 seconds are completely up! Lock immediately.
-          setIsLocked(true);
+          setTimeout(() => setIsLocked(true), 0);
         } else {
           // They refreshed during the teaser. Give them exactly what's left.
           const timeRemaining = 15000 - timeElapsed;

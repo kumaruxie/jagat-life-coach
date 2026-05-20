@@ -5,6 +5,26 @@ import video2 from '../assets/Yogita - Sunil and Yogesh.mp4';
 import video3 from '../assets/a staified client.mp4';
 import video4 from '../assets/SnapVideo.app_AQP0LsCAVNa3tWlCGt8PQhiNSumpyG3kSvJ3c4dMGvnnOLq1c6uOta5CJOh3y900Jjf8LYgrUluFWgFhcJb4Ps73RSRxO4MfV1IaaAg.mp4';
 
+
+// import THUMBNAIL_AJIT from '../assets/testi1.jpg';
+// import THUMBNAIL_YOGITA from '../assets/testi2.jpg';
+// import THUMBNAIL_SATISFIED_1 from '../assets/ajit-thumbnail.jpg';
+// import THUMBNAIL_SATISFIED_2 from '../assets/ajit-thumbnail.jpg';
+// ─────────────────────────────────────────────────────────────────────────────
+// VIDEO TESTIMONIAL THUMBNAILS CONFIGURATION
+// When you have your testimonial thumbnail images ready:
+// 1. Place them in your 'src/assets/' directory.
+// 2. Import them at the top of this file:
+//    e.g. import thumbAjit from '../assets/ajit-thumbnail.jpg';
+// 3. Assign them to the respective variables below:
+//    e.g. const THUMBNAIL_AJIT = thumbAjit;
+// If set to null, it defaults to a clean premium dark-colored gradient.
+// ─────────────────────────────────────────────────────────────────────────────
+const THUMBNAIL_AJIT = null;         // Ajit Testimonial Thumbnail
+const THUMBNAIL_YOGITA = null;       // Yogita Testimonial Thumbnail
+const THUMBNAIL_SATISFIED_1 = null;   // Satisfied Client 1 Testimonial Thumbnail
+const THUMBNAIL_SATISFIED_2 = null;   // Satisfied Client 2 Testimonial Thumbnail
+
 /* ── Thumbnail colours per card ── */
 const THUMB_GRADIENTS = [
   'linear-gradient(135deg, #0f2417 0%, #0d1d2e 100%)',
@@ -14,7 +34,7 @@ const THUMB_GRADIENTS = [
 ];
 const THUMB_ACCENTS = ['#10b981', '#818cf8', '#f59e0b', '#38bdf8'];
 
-const VideoCard = ({ id, videoSrc, name, role, quote, index, thumbInitials, currentlyPlaying, setCurrentlyPlaying }) => {
+const VideoCard = ({ id, videoSrc, thumbnail, name, role, quote, index, thumbInitials, currentlyPlaying, setCurrentlyPlaying }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef(null);
   const accent = THUMB_ACCENTS[index % THUMB_ACCENTS.length];
@@ -74,7 +94,7 @@ const VideoCard = ({ id, videoSrc, name, role, quote, index, thumbInitials, curr
             onClick={handlePlay}
             style={{
               position: 'absolute', inset: 0,
-              background: THUMB_GRADIENTS[index % THUMB_GRADIENTS.length],
+              background: thumbnail ? `url(${thumbnail}) center/cover no-repeat` : THUMB_GRADIENTS[index % THUMB_GRADIENTS.length],
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
@@ -84,47 +104,65 @@ const VideoCard = ({ id, videoSrc, name, role, quote, index, thumbInitials, curr
               userSelect: 'none',
             }}
           >
-            {/* Decorative rings */}
-            <div style={{
-              position: 'absolute',
-              width: '200px', height: '200px',
-              borderRadius: '50%',
-              border: `1px solid ${accent}18`,
-              top: '50%', left: '50%',
-              transform: 'translate(-50%, -50%)',
-              pointerEvents: 'none',
-            }} />
-            <div style={{
-              position: 'absolute',
-              width: '140px', height: '140px',
-              borderRadius: '50%',
-              border: `1px solid ${accent}28`,
-              top: '50%', left: '50%',
-              transform: 'translate(-50%, -50%)',
-              pointerEvents: 'none',
-            }} />
+            {/* Dark glass overlay tint for image thumbnails to ensure high contrast and text readability */}
+            {thumbnail && (
+              <div style={{
+                position: 'absolute', inset: 0,
+                background: 'rgba(10, 13, 20, 0.45)',
+                zIndex: 0,
+                pointerEvents: 'none'
+              }} />
+            )}
 
-            {/* Avatar initial */}
-            <div style={{
-              width: '52px', height: '52px',
-              borderRadius: '50%',
-              background: `${accent}22`,
-              border: `2px solid ${accent}55`,
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: '18px', fontWeight: 700, color: accent,
-              letterSpacing: '0.05em',
-              zIndex: 1,
-            }}>
-              {thumbInitials}
-            </div>
+            {/* Decorative rings (hidden if custom thumbnail is used to keep it perfectly clean) */}
+            {!thumbnail && (
+              <>
+                <div style={{
+                  position: 'absolute',
+                  width: '200px', height: '200px',
+                  borderRadius: '50%',
+                  border: `1px solid ${accent}18`,
+                  top: '50%', left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  pointerEvents: 'none',
+                }} />
+                <div style={{
+                  position: 'absolute',
+                  width: '140px', height: '140px',
+                  borderRadius: '50%',
+                  border: `1px solid ${accent}28`,
+                  top: '50%', left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  pointerEvents: 'none',
+                }} />
+              </>
+            )}
 
-            {/* Name */}
-            <div style={{
-              zIndex: 1, textAlign: 'center', padding: '0 16px',
-            }}>
-              <div style={{ fontSize: '13px', fontWeight: 600, color: '#e2e8f0', marginBottom: '3px' }}>{name}</div>
-              <div style={{ fontSize: '11px', color: '#64748b' }}>{role}</div>
-            </div>
+            {/* Avatar initial (shown only if no custom thumbnail to maintain clean design) */}
+            {!thumbnail && (
+              <div style={{
+                width: '52px', height: '52px',
+                borderRadius: '50%',
+                background: `${accent}22`,
+                border: `2px solid ${accent}55`,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontSize: '18px', fontWeight: 700, color: accent,
+                letterSpacing: '0.05em',
+                zIndex: 1,
+              }}>
+                {thumbInitials}
+              </div>
+            )}
+
+            {/* Name and Role (shown only if no custom thumbnail to maintain clean design) */}
+            {!thumbnail && (
+              <div style={{
+                zIndex: 1, textAlign: 'center', padding: '0 16px',
+              }}>
+                <div style={{ fontSize: '13px', fontWeight: 600, color: '#e2e8f0', marginBottom: '3px' }}>{name}</div>
+                <div style={{ fontSize: '11px', color: '#64748b' }}>{role}</div>
+              </div>
+            )}
 
             {/* Play button */}
             <div style={{
@@ -205,15 +243,15 @@ const VideoCard = ({ id, videoSrc, name, role, quote, index, thumbInitials, curr
 
 /* ─────────────────────────────────────────────────────────────
    Section
-───────────────────────────────────────────────────────────── */
+ ───────────────────────────────────────────────────────────── */
 const VideoTestimonialsSection = () => {
   const [currentlyPlaying, setCurrentlyPlaying] = useState(null);
 
   const videos = [
-    { id: 'v1', videoSrc: video1, thumbInitials: 'AC', name: 'Ajit - A coach', role: 'Coaching Client', quote: 'A truly life-changing experience — my mindset and clarity have completely shifted.' },
-    { id: 'v2', videoSrc: video2, thumbInitials: 'YS', name: 'Yogita - Sunil and Yogesh', role: 'Family Coaching Client', quote: 'Ghar ka tanaav aur career ke beech balance banana bohot mushkil tha. Jagat sir ke coaching se mujhe aur meri family ko sukoon mila.' },
-    { id: 'v3', videoSrc: video3, thumbInitials: 'SC', name: 'A Satisifed client', role: 'Coaching Client', quote: 'Jagat Sir\'s methodology is very practical. Confidence, clarity aur ghar mein sukoon — teeno mili.' },
-    { id: 'v4', videoSrc: video4, thumbInitials: 'SC', name: 'A Satisfied client', role: 'Transformation Client', quote: 'Is program ne meri zindagi ka nazariya badal diya. Jagat Sir ke saath kaam karna ek privilege hai.' },
+    { id: 'v1', videoSrc: video1, thumbnail: THUMBNAIL_AJIT, thumbInitials: 'AC', name: 'Ajit - A coach', role: 'Coaching Client', quote: 'A truly life-changing experience — my mindset and clarity have completely shifted.' },
+    { id: 'v2', videoSrc: video2, thumbnail: THUMBNAIL_YOGITA, thumbInitials: 'YS', name: 'Yogita - Sunil and Yogesh', role: 'Family Coaching Client', quote: 'Ghar ka tanaav aur career ke beech balance banana bohot mushkil tha. Jagat sir ke coaching se mujhe aur meri family ko sukoon mila.' },
+    { id: 'v3', videoSrc: video3, thumbnail: THUMBNAIL_SATISFIED_1, thumbInitials: 'SC', name: 'A Satisifed client', role: 'Coaching Client', quote: 'Jagat Sir\'s methodology is very practical. Confidence, clarity aur ghar mein sukoon — teeno mili.' },
+    { id: 'v4', videoSrc: video4, thumbnail: THUMBNAIL_SATISFIED_2, thumbInitials: 'SC', name: 'A Satisfied client', role: 'Transformation Client', quote: 'Is program ne meri zindagi ka nazariya badal diya. Jagat Sir ke saath kaam karna ek privilege hai.' },
   ];
 
   return (

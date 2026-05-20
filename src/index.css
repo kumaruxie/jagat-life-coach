@@ -206,13 +206,14 @@ button {
   left: 0;
   right: 0;
   height: 5rem;
-  background-color: rgba(20, 24, 32, 0.65);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background-color: rgba(20, 24, 32, 0.55);
+  backdrop-filter: blur(24px) saturate(1.6);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6) !important;
   z-index: 1000;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(16, 185, 129, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
 }
 
 @keyframes header-slide-down {
@@ -691,22 +692,6 @@ button {
   }
 }
 
-/* ─── Reduced Motion Accessibility ─── */
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
-  }
-
-  .btn-cta-pulse {
-    animation: none;
-  }
-
-  * {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-  }
-}
-
 /* ─── Utilities ─── */
 @media (max-width: 768px) {
   .hide-on-mobile {
@@ -716,24 +701,20 @@ button {
     display: block !important;
   }
 }
-
 @media (min-width: 769px) {
   .show-on-mobile {
     display: none !important;
   }
 }
-
 /* ─── Premium Mobile Spacing & Layout Refinements ─── */
 @media (max-width: 768px) {
   /* Relax big headings to prevent visual overlapping */
   h1, h2, h3 {
     line-height: 1.35 !important;
   }
-
   .hero-section h1 {
     line-height: 1.3 !important;
   }
-
   /* Keep marquee achievements balanced and peeking in elegantly */
   .achievement-card {
     min-width: 290px !important;
@@ -745,34 +726,127 @@ button {
     min-width: 310px !important;
     max-width: 310px !important;
   }
-
   /* Sane vertical grid gaps between Problem Cards */
   #problem div[style*="display: grid"] {
     gap: var(--space-4) !important; /* 24px distinct vertical spacing on mobile */
   }
-
   /* Asymmetric padding to prevent tight word-wrapping on narrow 375px viewports */
   .problem-card {
     padding: var(--space-4) var(--space-3) !important; /* 24px vertical, 18px horizontal */
   }
-
   /* Agitate Cards vertical separation & internal breathing space */
   .agitate-cards-list {
     gap: var(--space-4) !important; /* 24px vertical separation */
   }
-
   .agitate-card {
     padding: var(--space-4) var(--space-4) !important; /* 24px vertical, 24px horizontal */
     padding-left: var(--space-5) !important; /* 30px left padding to offset the red accent border */
   }
-
   /* CTA Banners asymmetric vertical breathing room */
   .cta-banner-card {
     padding: var(--space-8) var(--space-4) !important; /* 48px vertical, 24px horizontal for premium breathing room */
   }
-
   .cta-banner-card > div {
     gap: var(--space-4) !important; /* 24px gap above the CTA payment button */
   }
 }
-
+/* ─── Premium 3D Gyroscope and Video Player Custom Styles ─── */
+.gyro-container {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(950px, 110vw);
+  height: min(950px, 110vw);
+  z-index: 2;
+  opacity: 0.9;
+  pointer-events: none;
+  perspective: 1200px;
+}
+.gyro-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(16, 185, 129, 0.45); /* Enhanced borders */
+  box-shadow: 0 0 40px rgba(16, 185, 129, 0.12), inset 0 0 30px rgba(16, 185, 129, 0.08);
+}
+.ring-1 {
+  transform-style: preserve-3d;
+  animation: spin-ring-1 30s linear infinite;
+  border: 1.5px dashed rgba(16, 185, 129, 0.55);
+}
+.ring-2 {
+  transform-style: preserve-3d;
+  animation: spin-ring-2 24s linear infinite;
+  border: 2px solid rgba(16, 185, 129, 0.25);
+  width: 90%;
+  height: 90%;
+  margin: 5%;
+}
+.ring-3 {
+  transform-style: preserve-3d;
+  animation: spin-ring-3 36s linear infinite;
+  border: 1.5px dotted rgba(16, 185, 129, 0.3);
+  width: 80%;
+  height: 80%;
+  margin: 10%;
+}
+/* Pulse animation for GHL Play button wrapper */
+.video-play-btn-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid var(--emerald);
+  opacity: 0.6;
+  animation: play-pulse 2s infinite;
+  pointer-events: none;
+}
+button:hover .video-play-btn-wrapper {
+  transform: scale(1.08);
+  background-color: var(--emerald) !important;
+  box-shadow: 0 12px 40px rgba(16, 185, 129, 0.6) !important;
+}
+button:active .video-play-btn-wrapper {
+  transform: scale(0.95);
+}
+@keyframes spin-ring-1 {
+  0% {
+    transform: rotateX(55deg) rotateY(45deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(55deg) rotateY(45deg) rotateZ(360deg);
+  }
+}
+@keyframes spin-ring-2 {
+  0% {
+    transform: rotateX(-35deg) rotateY(35deg) rotateZ(360deg);
+  }
+  100% {
+    transform: rotateX(-35deg) rotateY(35deg) rotateZ(0deg);
+  }
+}
+@keyframes spin-ring-3 {
+  0% {
+    transform: rotateX(70deg) rotateY(15deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(70deg) rotateY(15deg) rotateZ(360deg);
+  }
+}
+@keyframes play-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}

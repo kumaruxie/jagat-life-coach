@@ -1,116 +1,95 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
+import PremiumVideoPlayer from './PremiumVideoPlayer';
 
-/* ──────────────────────────────────────────────────────────
-   SPLINE 3D (Disabled for performance — enable when ready)
-   
-   To re-enable:
-   1. Add: const Spline = lazy(() => import('@splinetool/react-spline'));
-   2. Uncomment the Spline JSX block in the render
-   Scene URL: https://prod.spline.design/JnbmEpncnp-VXFu3/scene.splinecode
-────────────────────────────────────────────────────────── */
-
-const LazyYouTube = ({ src, title }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [hasClicked, setHasClicked] = useState(false);
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: '200px' }
-    );
-    if (containerRef.current) observer.observe(containerRef.current);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div ref={containerRef} style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}>
-      {!hasClicked ? (
-        <button
-          onClick={() => setHasClicked(true)}
-          aria-label={`Play ${title}`}
-          style={{
-            width: '100%',
-            height: '100%',
-            border: 'none',
-            cursor: 'pointer',
-            backgroundColor: 'var(--surface-deep)',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '12px',
-            position: 'relative'
-          }}
-        >
-          {isVisible && (
-            <img
-              src="https://img.youtube.com/vi/92mCOUkNrj0/hqdefault.jpg"
-              alt={title}
-              loading="lazy"
-              width={480}
-              height={360}
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                opacity: 0.7
-              }}
-            />
-          )}
-          <div style={{
-            width: '64px',
-            height: '64px',
-            borderRadius: '50%',
-            backgroundColor: 'rgba(16,185,129,0.9)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 1,
-            boxShadow: '0 4px 24px rgba(16,185,129,0.3)'
-          }}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="white" aria-hidden="true">
-              <polygon points="8,5 19,12 8,19" />
-            </svg>
-          </div>
-          <span style={{ 
-            color: 'var(--silver)', 
-            fontSize: '13px', 
-            fontWeight: 600,
-            zIndex: 1,
-            textTransform: 'uppercase',
-            letterSpacing: '0.1em'
-          }}>
-            Watch the Video
-          </span>
-        </button>
-      ) : (
-        <iframe
-          src={`${src}&autoplay=1`}
-          title={title}
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          loading="lazy"
-          style={{ width: '100%', height: '100%', border: 'none' }}
-        />
-      )}
-    </div>
-  );
-};
+// ─────────────────────────────────────────────────────────────────────────────
+// VSL VIDEO THUMBNAIL CONFIGURATION
+// When you have your new thumbnail image ready:
+// 1. Place it in the 'src/assets/' directory.
+// 2. Import it here (e.g. import vslThumb from '../assets/your-new-thumbnail.jpg';)
+// 3. Replace 'coachImg' below with your imported image variable.
+// ─────────────────────────────────────────────────────────────────────────────
+import coachImg from '../assets/jagatthumbnail.jpg'; 
+const VSL_THUMBNAIL = coachImg;
 
 const HeroSection = ({ triggerPayment }) => {
+  // State to drive the interactive 3D background tilt & glow tracker
+  const [bgStyle, setBgStyle] = useState({
+    transform: 'translate(-50%, -50%) rotateX(0deg) rotateY(0deg)',
+    transition: 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)',
+    glowLeft: '50%',
+    glowTop: '40%',
+    glowOpacity: 0.12
+  });
+
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    // Interactive 3D CSS Parallax (tilt background rings based on cursor position)
+    const maxTilt = 15; // Max degree tilt
+    const rotateX = ((centerY - y) / centerY) * maxTilt;
+    const rotateY = ((x - centerX) / centerX) * maxTilt;
+
+    setBgStyle({
+      transform: `translate(-50%, -50%) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
+      transition: 'transform 0.1s ease-out', // Snappy & highly responsive tracking
+      glowLeft: `${(x / rect.width) * 100}%`,
+      glowTop: `${(y / rect.height) * 100}%`,
+      glowOpacity: 0.18 // Increase glow intensity on hover
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setBgStyle({
+      transform: 'translate(-50%, -50%) rotateX(0deg) rotateY(0deg)',
+      transition: 'transform 0.8s cubic-bezier(0.25, 1, 0.5, 1)', // Smooth return transition
+      glowLeft: '50%',
+      glowTop: '40%',
+      glowOpacity: 0.12
+    });
+  };
+
   return (
-    <section className="hero-section">
-      {/* Zero-Lag CSS Ambient Background */}
+    <section 
+      className="hero-section"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ perspective: '1000px' }} // Establish 3D space perspective for the parent
+    >
+      {/* 3D Interactive CSS Gyroscope Background (Tilts dynamically to cursor!) */}
+      <div 
+        className="gyro-container"
+        style={{
+          transform: bgStyle.transform,
+          transition: bgStyle.transition,
+          transformStyle: 'preserve-3d'
+        }}
+      >
+        <div className="gyro-ring ring-1" />
+        <div className="gyro-ring ring-2" />
+        <div className="gyro-ring ring-3" />
+      </div>
+
+      {/* Interactive Cursor-Following Ambient Backlight Glow */}
+      <div style={{
+        position: 'absolute',
+        top: bgStyle.glowTop,
+        left: bgStyle.glowLeft,
+        transform: 'translate(-50%, -50%)',
+        width: 'min(500px, 90vw)',
+        height: 'min(500px, 90vw)',
+        borderRadius: '50%',
+        background: `radial-gradient(circle, rgba(16, 185, 129, ${bgStyle.glowOpacity}) 0%, transparent 70%)`,
+        zIndex: 2, // Set to 2 to sit on top of the black overlay backdrop
+        pointerEvents: 'none',
+        transition: 'top 0.2s cubic-bezier(0.1, 0.8, 0.3, 1), left 0.2s cubic-bezier(0.1, 0.8, 0.3, 1), background 0.3s ease'
+      }} />
+
+      {/* Zero-Lag CSS Ambient Base Glow */}
       <div style={{
         position: 'absolute',
         top: 0,
@@ -119,7 +98,7 @@ const HeroSection = ({ triggerPayment }) => {
         bottom: 0,
         zIndex: 0,
         pointerEvents: 'none',
-        background: 'radial-gradient(circle at 50% 30%, rgba(16,185,129,0.15) 0%, transparent 60%)',
+        background: 'radial-gradient(circle at 50% 30%, rgba(16,185,129,0.06) 0%, transparent 60%)',
         animation: 'ambient-breathe 8s ease-in-out infinite',
         transform: 'translate3d(0,0,0)'
       }} />
@@ -131,14 +110,14 @@ const HeroSection = ({ triggerPayment }) => {
         left: 0,
         right: 0,
         bottom: 0,
-        background: 'radial-gradient(ellipse at center, rgba(26,32,44,0.4) 0%, rgba(26,32,44,0.88) 70%)',
-        zIndex: 0,
+        background: 'radial-gradient(ellipse at center, rgba(26,32,44,0.4) 0%, rgba(26,32,44,0.92) 75%)',
+        zIndex: 1, // Sits on top of the base ambient glow
         pointerEvents: 'none'
       }} />
 
       <div className="section-inner hero-content" style={{ 
         position: 'relative', 
-        zIndex: 1, 
+        zIndex: 3, // Set to 3 so all buttons and player sit on top of rings and are fully clickable
         maxWidth: '900px',
         textAlign: 'center',
         pointerEvents: 'none'
@@ -157,7 +136,8 @@ const HeroSection = ({ triggerPayment }) => {
           Ghar Ki Uljhanon Ko Ek Mahine Mein <em style={{ color: 'var(--emerald)', fontStyle: 'normal' }}>Sukoon</em> Mein Badlo.
         </h1>
 
-        <div
+        {/* Premium Custom Video Card Container */}
+        <div 
           className="hero-anim hero-anim-4"
           style={{
             width: '100%',
@@ -173,10 +153,12 @@ const HeroSection = ({ triggerPayment }) => {
             pointerEvents: 'auto'
           }}
         >
-          <LazyYouTube
-            src="https://www.youtube.com/embed/92mCOUkNrj0?rel=0&modestbranding=1&controls=1"
-            title="Video Sales Letter — Jagat Turkiya Conflict to Clarity Program"
-          />
+          <div style={{ width: '100%', height: '100%' }}>
+            <PremiumVideoPlayer
+              src="https://assets.cdn.filesafe.space/UV9lQH2lpnsX6mPHlFQR/media/6a0d9f3dce0ec8e60c1f6032.mp4"
+              poster={VSL_THUMBNAIL}
+            />
+          </div>
         </div>
 
         <div 
