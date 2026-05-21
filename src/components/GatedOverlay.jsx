@@ -27,20 +27,21 @@ const GatedOverlay = ({ onUnlock }) => {
     const GHL_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/UV9lQH2lpnsX6mPHlFQR/webhook-trigger/e439fe60-5421-4341-b288-a86fb3767cba";
 
     try {
+      const params = new URLSearchParams();
+      params.append('full_name', formData.name);
+      params.append('email', formData.email);
+      params.append('phone', formData.phone);
+      params.append('city', formData.city);
+      params.append('source', 'apkacoach.com');
+      params.append('form_name', 'Conflict to Clarity - Lead Capture');
+
       await fetch(GHL_WEBHOOK_URL, {
         method: 'POST',
         mode: 'no-cors',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: JSON.stringify({
-          full_name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          city: formData.city,
-          source: 'apkacoach.com',
-          form_name: 'Conflict to Clarity - Lead Capture'
-        })
+        body: params.toString()
       });
       
       localStorage.setItem('ghl_form_submitted_at', Date.now().toString());
