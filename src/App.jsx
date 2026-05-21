@@ -65,7 +65,7 @@ function App() {
     if (contactInfoStr) {
       try {
         const contactInfo = JSON.parse(contactInfoStr);
-        const ABANDONED_WEBHOOK_URL = "PLACEHOLDER_ABANDONED_WEBHOOK_URL";
+        const ABANDONED_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/UV9lQH2lpnsX6mPHlFQR/webhook-trigger/286bbb9a-23b1-4837-9342-0238410f7633";
         
         if (ABANDONED_WEBHOOK_URL && ABANDONED_WEBHOOK_URL !== "PLACEHOLDER_ABANDONED_WEBHOOK_URL") {
           const params = new URLSearchParams();
