@@ -60,6 +60,36 @@ function App() {
   }, []);
 
   const triggerPayment = () => {
+    const contactInfoStr = localStorage.getItem('lead_contact_info');
+    
+    if (contactInfoStr) {
+      try {
+        const contactInfo = JSON.parse(contactInfoStr);
+        const ABANDONED_WEBHOOK_URL = "PLACEHOLDER_ABANDONED_WEBHOOK_URL";
+        
+        if (ABANDONED_WEBHOOK_URL && ABANDONED_WEBHOOK_URL !== "PLACEHOLDER_ABANDONED_WEBHOOK_URL") {
+          const params = new URLSearchParams();
+          params.append('full_name', contactInfo.name || '');
+          params.append('email', contactInfo.email || '');
+          params.append('phone', contactInfo.phone || '');
+          params.append('city', contactInfo.city || '');
+          params.append('source', 'apkacoach.com');
+          params.append('event', 'payment_started');
+          
+          fetch(ABANDONED_WEBHOOK_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: params.toString()
+          }).catch(err => console.error("Abandoned checkout track failed:", err));
+        }
+      } catch (e) {
+        console.error("Failed to parse contact info:", e);
+      }
+    }
+
     window.location.href = "https://rzp.io/rzp/kmJwGTB";
   };
 

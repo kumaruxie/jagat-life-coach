@@ -45,6 +45,12 @@ const GatedOverlay = ({ onUnlock }) => {
       });
       
       localStorage.setItem('ghl_form_submitted_at', Date.now().toString());
+      localStorage.setItem('lead_contact_info', JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        city: formData.city
+      }));
       onUnlock();
     } catch (err) {
       console.error("Submission failed:", err);
