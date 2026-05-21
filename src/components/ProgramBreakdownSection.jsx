@@ -67,8 +67,8 @@ const ProgramBreakdownSection = () => {
             
             <ul style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
               {[
-                { icon: <Calendar size={20} />, text: "8 Recorded Hinglish Modules (112 min total)" },
-                { icon: <Target size={20} />, text: "2 Live one on one Coaching Sessions (120 min total)" },
+                { icon: <Calendar size={20} />, text: "8 Recorded Hinglish Modules" },
+                { icon: <Target size={20} />, text: "2 Live one on one Coaching Sessions" },
                 { icon: <FileText size={20} />, text: "Worksheets, scripts & reflection exercises" },
                 { icon: <Users size={20} />, text: "Private community support" },
                 // { icon: <Lock size={20} />, text: "Lifetime access to all recordings" },

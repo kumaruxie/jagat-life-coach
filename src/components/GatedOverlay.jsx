@@ -23,32 +23,32 @@ const GatedOverlay = ({ onUnlock }) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // GOOGLE FORM CONFIGURATION (Using your latest IDs)
-    const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfG27AiLyF07mqf1dRxcF7avVWc_aSOQL5LzACGeqdGn_xKAw/formResponse";
-    const entryIds = {
-      name: "entry.734389897", 
-      email: "entry.1016882557",
-      phone: "entry.1784927413",
-      city: "entry.1935344953"
-    };
-
-    const formDataObj = new FormData();
-    formDataObj.append(entryIds.name, formData.name);
-    formDataObj.append(entryIds.email, formData.email);
-    formDataObj.append(entryIds.phone, formData.phone);
-    formDataObj.append(entryIds.city, formData.city);
+    // GHL Inbound Webhook
+    const GHL_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/UV9lQH2lpnsX6mPHlFQR/webhook-trigger/e439fe60-5421-4341-b288-a86fb3767cba";
 
     try {
-      await fetch(GOOGLE_FORM_URL, {
+      await fetch(GHL_WEBHOOK_URL, {
         method: 'POST',
         mode: 'no-cors',
-        body: formDataObj
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          full_name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          city: formData.city,
+          source: 'apkacoach.com',
+          form_name: 'Conflict to Clarity - Lead Capture'
+        })
       });
       
-      localStorage.setItem('site_unlocked', 'true');
+      localStorage.setItem('ghl_form_submitted_at', Date.now().toString());
       onUnlock();
     } catch (err) {
       console.error("Submission failed:", err);
+      // Still unlock so user isn't stuck
+      localStorage.setItem('ghl_form_submitted_at', Date.now().toString());
       onUnlock(); 
     }
   };

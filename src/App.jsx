@@ -37,30 +37,25 @@ function App() {
     }
     window.scrollTo(0, 0);
 
-    // Show Gated Overlay based on a strict 15-second total allowance
-    const hasUnlocked = localStorage.getItem('site_unlocked');
-    if (!hasUnlocked) {
-      const firstVisit = localStorage.getItem('first_visit_timestamp');
-      
-      if (!firstVisit) {
-        // First visit ever: start the 15s clock and save the timestamp
-        localStorage.setItem('first_visit_timestamp', Date.now().toString());
-        const timer = setTimeout(() => setIsLocked(true), 15000);
-        return () => clearTimeout(timer);
-      } else {
-        // They refreshed or came back. How much of their 15s is left?
-        const timeElapsed = Date.now() - parseInt(firstVisit, 10);
-        
-        if (timeElapsed >= 15000) {
-          // Their 15 seconds are completely up! Lock immediately.
-          setTimeout(() => setIsLocked(true), 0);
-        } else {
-          // They refreshed during the teaser. Give them exactly what's left.
-          const timeRemaining = 15000 - timeElapsed;
-          const timer = setTimeout(() => setIsLocked(true), timeRemaining);
-          return () => clearTimeout(timer);
-        }
-      }
+    // Clean up old localStorage keys from the previous Google Forms approach
+    localStorage.removeItem('site_unlocked');
+    localStorage.removeItem('first_visit_timestamp');
+
+    // 3-hour re-show logic:
+    // If user has submitted/closed the form, we store a timestamp.
+    // If 3+ hours have passed (or no timestamp exists), show the form again.
+    const THREE_HOURS_MS = 3 * 60 * 60 * 1000;
+    const lastSubmitted = localStorage.getItem('ghl_form_submitted_at');
+
+    const shouldShowForm = !lastSubmitted || 
+      (Date.now() - parseInt(lastSubmitted, 10)) >= THREE_HOURS_MS;
+
+    if (shouldShowForm) {
+      // Clear the old timestamp so it's treated as fresh
+      localStorage.removeItem('ghl_form_submitted_at');
+      // Show form after 15 seconds of browsing
+      const timer = setTimeout(() => setIsLocked(true), 15000);
+      return () => clearTimeout(timer);
     }
   }, []);
 
