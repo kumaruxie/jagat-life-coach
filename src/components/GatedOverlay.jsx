@@ -23,6 +23,18 @@ const GatedOverlay = ({ onUnlock }) => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    // Format phone number with country code (+91) for Indian numbers
+    let formattedPhone = formData.phone;
+    const cleanPhone = formattedPhone.replace(/\D/g, ''); // Strip non-numeric characters
+    
+    if (cleanPhone.length === 10) {
+      formattedPhone = '+91' + cleanPhone;
+    } else if (cleanPhone.length === 12 && cleanPhone.startsWith('91')) {
+      formattedPhone = '+' + cleanPhone;
+    } else if (cleanPhone.length > 0 && !cleanPhone.startsWith('+')) {
+      formattedPhone = '+' + cleanPhone;
+    }
+
     // GHL Inbound Webhook
     const GHL_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/UV9lQH2lpnsX6mPHlFQR/webhook-trigger/e439fe60-5421-4341-b288-a86fb3767cba";
 
@@ -30,7 +42,7 @@ const GatedOverlay = ({ onUnlock }) => {
       const params = new URLSearchParams();
       params.append('full_name', formData.name);
       params.append('email', formData.email);
-      params.append('phone', formData.phone);
+      params.append('phone', formattedPhone);
       params.append('city', formData.city);
       params.append('source', 'apkacoach.com');
       params.append('form_name', 'Conflict to Clarity - Lead Capture');
@@ -48,7 +60,7 @@ const GatedOverlay = ({ onUnlock }) => {
       localStorage.setItem('lead_contact_info', JSON.stringify({
         name: formData.name,
         email: formData.email,
-        phone: formData.phone,
+        phone: formattedPhone,
         city: formData.city
       }));
       onUnlock();
