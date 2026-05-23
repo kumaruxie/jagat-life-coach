@@ -1,4 +1,5 @@
 import { lazy, Suspense, useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
 import './App.css';
@@ -29,8 +30,27 @@ const SectionFallback = () => (
 
 function App() {
   const [isLocked, setIsLocked] = useState(false);
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
   useEffect(() => {
+    // Check URL parameters for ?payment=success
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('payment') === 'success') {
+      setShowSuccessPopup(true);
+      
+      // Fire Purchase event on Meta Pixel
+      if (window.fbq) {
+        window.fbq('track', 'Purchase', { value: 1997, currency: 'INR' });
+      }
+      
+      // Prevent gated overlay from showing again by marking it as submitted in localStorage
+      localStorage.setItem('ghl_form_submitted_at', Date.now().toString());
+      
+      // Clean up the URL so the popup doesn't reappear on page reload
+      const newUrl = window.location.pathname;
+      window.history.replaceState({}, document.title, newUrl);
+    }
+
     // Force scroll to top on reload
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual';
@@ -60,6 +80,11 @@ function App() {
   }, []);
 
   const triggerPayment = () => {
+    // Fire InitiateCheckout Event on Meta Pixel
+    if (window.fbq) {
+      window.fbq('track', 'InitiateCheckout');
+    }
+
     const contactInfoStr = localStorage.getItem('lead_contact_info');
     
     if (contactInfoStr) {
@@ -98,6 +123,132 @@ function App() {
       {isLocked && (
         <GatedOverlay onUnlock={() => setIsLocked(false)} />
       )}
+
+      <AnimatePresence>
+        {showSuccessPopup && (
+          <motion.div 
+            className="success-overlay" 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.35 }}
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              zIndex: 10001,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '20px',
+              backgroundColor: 'rgba(20, 24, 32, 0.9)',
+              backdropFilter: 'blur(16px)',
+              WebkitBackdropFilter: 'blur(16px)'
+            }}
+          >
+            <motion.div 
+              className="success-modal"
+              initial={{ scale: 0.9, y: 30, opacity: 0 }}
+              animate={{ scale: 1, y: 0, opacity: 1 }}
+              exit={{ scale: 0.9, y: 20, opacity: 0 }}
+              transition={{ 
+                type: "spring",
+                damping: 25,
+                stiffness: 350,
+                delay: 0.05
+              }}
+              style={{
+                position: 'relative',
+                maxWidth: '480px',
+                width: '100%',
+                backgroundColor: 'var(--surface-raised, #232b3b)',
+                padding: '40px',
+                borderRadius: '24px',
+                border: '1px solid rgba(16, 185, 129, 0.3)',
+                boxShadow: '0 30px 60px rgba(0,0,0,0.6), 0 0 20px rgba(16, 185, 129, 0.1)',
+                textAlign: 'center'
+              }}
+            >
+              <div style={{
+                width: '64px',
+                height: '64px',
+                borderRadius: '50%',
+                backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                color: 'var(--emerald, #10b981)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                margin: '0 auto 24px auto',
+                fontSize: '32px',
+                fontWeight: 'bold'
+              }}>
+                ✓
+              </div>
+              
+              <h2 style={{ 
+                fontSize: '26px', 
+                color: 'var(--silver, #e2e8f0)', 
+                marginBottom: '8px', 
+                fontFamily: 'Newsreader, Georgia, serif' 
+              }}>
+                Bhugtan Safal Raha! 🎉
+              </h2>
+              
+              <p style={{ 
+                color: 'var(--emerald, #10b981)', 
+                fontSize: '15px', 
+                fontWeight: 600, 
+                marginBottom: '20px' 
+              }}>
+                Your seat in the Founding Batch is confirmed.
+              </p>
+              
+              <p style={{ 
+                color: 'var(--slate, #94a3b8)', 
+                fontSize: '14.5px', 
+                lineHeight: '1.6', 
+                marginBottom: '24px' 
+              }}>
+                Humne program ki details aur live cohort join karne ka link aapke email aur WhatsApp number par bhej diya hai.
+              </p>
+              
+              <div style={{
+                backgroundColor: 'rgba(239, 68, 68, 0.08)',
+                border: '1px solid rgba(239, 68, 68, 0.25)',
+                borderRadius: '12px',
+                padding: '16px',
+                marginBottom: '28px',
+                textAlign: 'left'
+              }}>
+                <p style={{ 
+                  color: '#fca5a5',
+                  fontSize: '13px', 
+                  margin: 0, 
+                  lineHeight: '1.5',
+                  fontWeight: 500
+                }}>
+                  ⚠️ <strong>Important Note:</strong> GHL automations email kabhi-kabhi <strong>Spam or Promotions folder</strong> mein chale jaate hain. Agar mail primary inbox mein na dikhe, toh please wahan check karke use <strong>"Not Spam"</strong> mark karein taaki aage ke live sessions ke links miss na hon.
+                </p>
+              </div>
+              
+              <button 
+                className="btn-primary" 
+                onClick={() => setShowSuccessPopup(false)}
+                style={{ 
+                  width: '100%', 
+                  padding: '16px', 
+                  fontSize: '15px', 
+                  fontWeight: 700 
+                }}
+              >
+                Theek Hai, Got It!
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <Header triggerPayment={triggerPayment} />
       <main>

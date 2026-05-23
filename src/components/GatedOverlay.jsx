@@ -56,6 +56,11 @@ const GatedOverlay = ({ onUnlock }) => {
         body: params.toString()
       });
       
+      // Fire Lead Event on Meta Pixel
+      if (window.fbq) {
+        window.fbq('track', 'Lead');
+      }
+      
       localStorage.setItem('ghl_form_submitted_at', Date.now().toString());
       localStorage.setItem('lead_contact_info', JSON.stringify({
         name: formData.name,
