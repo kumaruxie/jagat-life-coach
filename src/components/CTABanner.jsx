@@ -61,14 +61,13 @@ const CTABanner = ({ text, buttonText = "Secure Your Spot", triggerPayment, bgCo
           )}
 
           <motion.button
-            className="btn-cta btn-shimmer"
+            className="btn-cta btn-shimmer btn-pill"
             onClick={() => triggerPayment()}
             whileHover={{ scale: 1.02, translateY: -2 }}
             whileTap={{ scale: 0.98 }}
             style={{
               padding: '14px 32px',
               fontSize: '13.5px',
-              borderRadius: '8px',
               fontWeight: 700,
               letterSpacing: '0.05em',
               textTransform: 'uppercase'

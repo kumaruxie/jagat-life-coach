@@ -93,7 +93,7 @@ const PricingSection = ({ triggerPayment }) => {
             </div>
 
             <button
-              className="btn-cta btn-cta-pulse"
+              className="btn-cta btn-cta-pulse btn-pill"
               onClick={() => triggerPayment()}
               style={{
                 width: '100%',

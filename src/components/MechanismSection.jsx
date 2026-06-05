@@ -32,7 +32,7 @@ const MechanismSection = () => {
 
         <div style={{ 
           display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(300px, 100%), 1fr))', 
           gap: 'var(--space-4)',
           paddingTop: '20px' // Prevent absolute step badge from clipping at the top
         }}>
@@ -79,7 +79,7 @@ const MechanismSection = () => {
                 }}>
                 {index + 1}
               </motion.div>
-              <h3 style={{ marginTop: '16px', marginBottom: '16px', fontSize: '24px' }}>{step.title}</h3>
+              <h3 style={{ marginTop: '16px', marginBottom: '16px', fontSize: 'clamp(1.05rem, 4vw, 1.5rem)' }}>{step.title}</h3>
               <p style={{ margin: 0 }}>{step.desc}</p>
             </motion.div>
           ))}

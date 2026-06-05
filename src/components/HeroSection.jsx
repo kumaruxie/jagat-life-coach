@@ -211,7 +211,7 @@ const HeroSection = ({ triggerPayment }) => {
           style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', pointerEvents: 'auto' }}
         >
           <button 
-            className="btn-cta btn-cta-pulse btn-shimmer hero-cta-btn" 
+            className="btn-cta btn-cta-pulse btn-shimmer btn-pill hero-cta-btn" 
             style={{ padding: '18px 48px', fontSize: '15px' }}
             onClick={() => triggerPayment()}
           >

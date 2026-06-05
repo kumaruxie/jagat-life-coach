@@ -4,9 +4,6 @@ import Header from './components/Header';
 import HeroSection from './components/HeroSection';
 import './App.css';
 
-import GatedOverlay from './components/GatedOverlay';
-
-// Lazy-load below-fold components for performance
 const ProblemSection = lazy(() => import('./components/ProblemSection'));
 const AgitateSection = lazy(() => import('./components/AgitateSection'));
 const CTABanner = lazy(() => import('./components/CTABanner'));
@@ -19,6 +16,7 @@ const VideoTestimonialsSection = lazy(() => import('./components/VideoTestimonia
 const TextTestimonialsSection = lazy(() => import('./components/TextTestimonialsSection'));
 const PricingSection = lazy(() => import('./components/PricingSection'));
 const FAQSection = lazy(() => import('./components/FAQSection'));
+const ContactSection = lazy(() => import('./components/ContactSection'));
 const Footer = lazy(() => import('./components/Footer'));
 
 // Minimal loading fallback that matches the dark theme
@@ -29,7 +27,6 @@ const SectionFallback = () => (
 );
 
 function App() {
-  const [isLocked, setIsLocked] = useState(false);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
   useEffect(() => {
@@ -43,9 +40,6 @@ function App() {
         window.fbq('track', 'Purchase', { value: 1997, currency: 'INR' });
       }
       
-      // Prevent gated overlay from showing again by marking it as submitted in localStorage
-      localStorage.setItem('ghl_form_submitted_at', Date.now().toString());
-      
       // Clean up the URL so the popup doesn't reappear on page reload
       const newUrl = window.location.pathname;
       window.history.replaceState({}, document.title, newUrl);
@@ -56,27 +50,6 @@ function App() {
       window.history.scrollRestoration = 'manual';
     }
     window.scrollTo(0, 0);
-
-    // Clean up old localStorage keys from the previous Google Forms approach
-    localStorage.removeItem('site_unlocked');
-    localStorage.removeItem('first_visit_timestamp');
-
-    // 3-hour re-show logic:
-    // If user has submitted/closed the form, we store a timestamp.
-    // If 3+ hours have passed (or no timestamp exists), show the form again.
-    const THREE_HOURS_MS = 3 * 60 * 60 * 1000;
-    const lastSubmitted = localStorage.getItem('ghl_form_submitted_at');
-
-    const shouldShowForm = !lastSubmitted || 
-      (Date.now() - parseInt(lastSubmitted, 10)) >= THREE_HOURS_MS;
-
-    if (shouldShowForm) {
-      // Clear the old timestamp so it's treated as fresh
-      localStorage.removeItem('ghl_form_submitted_at');
-      // Show form after 15 seconds of browsing
-      const timer = setTimeout(() => setIsLocked(true), 15000);
-      return () => clearTimeout(timer);
-    }
   }, []);
 
   const triggerPayment = () => {
@@ -120,10 +93,6 @@ function App() {
 
   return (
     <div className="app-container">
-      {isLocked && (
-        <GatedOverlay onUnlock={() => setIsLocked(false)} />
-      )}
-
       <AnimatePresence>
         {showSuccessPopup && (
           <motion.div 
@@ -292,6 +261,7 @@ function App() {
           <TextTestimonialsSection />
           
           <FAQSection />
+          <ContactSection />
         </Suspense>
       </main>
       <Suspense fallback={null}>

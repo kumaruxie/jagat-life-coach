@@ -47,7 +47,7 @@ const ProgramBreakdownSection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            style={{ color: 'var(--silver)', fontSize: '2.5rem' }}
+            style={{ color: 'var(--silver)', fontSize: 'clamp(1.4rem, 5vw, 2.5rem)' }}
           >
             Aapka 30-Din Ka Safar Ek Nayi Shuruaat Ki Aur
           </motion.h2>
