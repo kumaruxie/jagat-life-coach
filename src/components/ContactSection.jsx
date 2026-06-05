@@ -86,7 +86,7 @@ const TrustItem = ({ text }) => (
 );
 
 /* ══════════════════════════════════════════════ */
-const ContactSection = () => {
+const ContactSection = ({ showPrompt = false, onFormSubmit = () => {} }) => {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', city: '' });
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState('idle'); // idle | submitting | success
@@ -137,13 +137,59 @@ const ContactSection = () => {
 
       if (window.fbq) window.fbq('track', 'Lead');
       localStorage.setItem('ghl_form_submitted_at', Date.now().toString());
+      localStorage.setItem('lead_contact_info', JSON.stringify({
+        name: formData.name.trim(),
+        email: formData.email.trim().toLowerCase(),
+        phone,
+        city: formData.city.trim(),
+      }));
     } catch { /* no-cors won't throw on actual success */ }
 
     setStatus('success');
+    onFormSubmit(); // notify App that form is done
   };
 
   return (
     <section id="contact" className="section" style={{ background: 'var(--surface-deep)' }}>
+
+      {/* ── Warning Banner (shown when user clicks CTA without filling form) ── */}
+      {showPrompt && status !== 'success' && (
+        <motion.div
+          initial={{ opacity: 0, y: -16, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+          style={{
+            background: 'rgba(239,68,68,0.08)',
+            border: '1px solid rgba(239,68,68,0.35)',
+            borderLeft: '4px solid #ef4444',
+            borderRadius: '10px',
+            padding: '16px 20px',
+            margin: '0 auto 8px',
+            maxWidth: '1200px',
+            width: 'calc(100% - 48px)',
+            display: 'flex',
+            alignItems: 'flex-start',
+            gap: '12px',
+          }}
+        >
+          <span style={{ fontSize: '20px', flexShrink: 0, lineHeight: 1.3 }}>⚠️</span>
+          <div>
+            <p style={{
+              margin: 0,
+              fontWeight: 700,
+              fontSize: '15px',
+              color: '#fca5a5',
+              lineHeight: '1.5',
+            }}>
+              Please fill in your details below before proceeding to payment.
+            </p>
+            <p style={{ margin: '4px 0 0', fontSize: '13px', color: '#f87171', opacity: 0.85 }}>
+              This helps us confirm your enrollment and send you all program details via WhatsApp before you pay.
+            </p>
+          </div>
+        </motion.div>
+      )}
+
       <div className="section-inner">
         <div className="contact-layout">
 

@@ -28,6 +28,7 @@ const SectionFallback = () => (
 
 function App() {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  const [showContactPrompt, setShowContactPrompt] = useState(false);
 
   useEffect(() => {
     // Check URL parameters for ?payment=success
@@ -53,18 +54,48 @@ function App() {
   }, []);
 
   const triggerPayment = () => {
-    // Fire InitiateCheckout Event on Meta Pixel
+    // Check if user has already submitted the contact form
+    const hasFilledForm = localStorage.getItem('ghl_form_submitted_at');
+
+    if (!hasFilledForm) {
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        // Custom smooth scroll with easing — much smoother than scrollIntoView
+        const startY = window.scrollY;
+        const targetY = contactSection.getBoundingClientRect().top + window.scrollY - 80; // 80px offset for fixed header
+        const distance = targetY - startY;
+        const duration = 900; // ms
+        let startTime = null;
+
+        // Ease-in-out cubic
+        const ease = (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+        const step = (timestamp) => {
+          if (!startTime) startTime = timestamp;
+          const elapsed = timestamp - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          window.scrollTo(0, startY + distance * ease(progress));
+          if (progress < 1) requestAnimationFrame(step);
+          else setTimeout(() => setShowContactPrompt(true), 100); // banner fades in after scroll lands
+        };
+
+        requestAnimationFrame(step);
+      } else {
+        setShowContactPrompt(true);
+      }
+      return;
+    }
+
+    // Form already filled — fire pixel and go to Razorpay
     if (window.fbq) {
       window.fbq('track', 'InitiateCheckout');
     }
 
     const contactInfoStr = localStorage.getItem('lead_contact_info');
-    
     if (contactInfoStr) {
       try {
         const contactInfo = JSON.parse(contactInfoStr);
         const ABANDONED_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/UV9lQH2lpnsX6mPHlFQR/webhook-trigger/286bbb9a-23b1-4837-9342-0238410f7633";
-        
         if (ABANDONED_WEBHOOK_URL && ABANDONED_WEBHOOK_URL !== "PLACEHOLDER_ABANDONED_WEBHOOK_URL") {
           const params = new URLSearchParams();
           params.append('full_name', contactInfo.name || '');
@@ -73,18 +104,15 @@ function App() {
           params.append('city', contactInfo.city || '');
           params.append('source', 'apkacoach.com');
           params.append('event', 'payment_started');
-          
           fetch(ABANDONED_WEBHOOK_URL, {
             method: 'POST',
             mode: 'no-cors',
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
-            },
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: params.toString()
-          }).catch(err => console.error("Abandoned checkout track failed:", err));
+          }).catch(err => console.error('Abandoned checkout track failed:', err));
         }
       } catch (e) {
-        console.error("Failed to parse contact info:", e);
+        console.error('Failed to parse contact info:', e);
       }
     }
 
@@ -261,7 +289,10 @@ function App() {
           <TextTestimonialsSection />
           
           <FAQSection />
-          <ContactSection />
+          <ContactSection
+            showPrompt={showContactPrompt}
+            onFormSubmit={() => setShowContactPrompt(false)}
+          />
         </Suspense>
       </main>
       <Suspense fallback={null}>
