@@ -58,8 +58,49 @@ const HeroSection = ({ triggerPayment }) => {
       className="hero-section"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      style={{ perspective: '1000px' }} // Establish 3D space perspective for the parent
+      style={{ perspective: '1000px', overflowX: 'hidden' }}
     >
+      {/* ── Mobile-first responsive overrides ── */}
+      <style>{`
+        .hero-content {
+          width: 100%;
+          padding-left: 16px !important;
+          padding-right: 16px !important;
+          box-sizing: border-box;
+        }
+        .hero-h1 {
+          word-break: break-word;
+          overflow-wrap: break-word;
+          hyphens: auto;
+        }
+        .hero-tag {
+          white-space: normal;
+          word-break: break-word;
+          text-align: center;
+        }
+        @media (max-width: 480px) {
+          .hero-h1 {
+            font-size: 1.65rem !important;
+            line-height: 1.28 !important;
+          }
+          .hero-cta-btn {
+            padding: 14px 24px !important;
+            font-size: 13px !important;
+            width: 100% !important;
+            max-width: 340px !important;
+          }
+          .hero-sub-text {
+            font-size: 11px !important;
+            text-align: center;
+            padding: 0 8px;
+          }
+        }
+        @media (max-width: 360px) {
+          .hero-h1 {
+            font-size: 1.45rem !important;
+          }
+        }
+      `}</style>
       {/* 3D Interactive CSS Gyroscope Background (Tilts dynamically to cursor!) */}
       <div 
         className="gyro-container"
@@ -117,20 +158,24 @@ const HeroSection = ({ triggerPayment }) => {
 
       <div className="section-inner hero-content" style={{ 
         position: 'relative', 
-        zIndex: 3, // Set to 3 so all buttons and player sit on top of rings and are fully clickable
+        zIndex: 3,
         maxWidth: '900px',
+        width: '100%',
         textAlign: 'center',
-        pointerEvents: 'none'
+        pointerEvents: 'none',
+        paddingLeft: '16px',
+        paddingRight: '16px',
+        boxSizing: 'border-box',
       }}>
         <span 
-          className="tag hero-anim hero-anim-1"
-          style={{ color: 'var(--slate)', marginBottom: 'var(--space-3)' }}
+          className="tag hero-anim hero-anim-1 hero-tag"
+          style={{ color: 'var(--slate)', marginBottom: 'var(--space-3)', display: 'block' }}
         >
           Hindi-speaking professionals ke liye — jo ghar ke roz-roz ke tanaav se thak chuke hain
         </span>
         
         <h1 
-          className="hero-anim hero-anim-2"
+          className="hero-anim hero-anim-2 hero-h1"
           style={{ color: 'var(--silver)', marginBottom: 'var(--space-4)' }}
         >
           Ghar Ki Uljhanon Ko Ek Mahine Mein <em style={{ color: 'var(--emerald)', fontStyle: 'normal' }}>Sukoon</em> Mein Badlo.
@@ -166,13 +211,13 @@ const HeroSection = ({ triggerPayment }) => {
           style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', pointerEvents: 'auto' }}
         >
           <button 
-            className="btn-cta btn-cta-pulse btn-shimmer" 
+            className="btn-cta btn-cta-pulse btn-shimmer hero-cta-btn" 
             style={{ padding: '18px 48px', fontSize: '15px' }}
             onClick={() => triggerPayment()}
           >
             Haan, Mujhe Sukoon Chahiye →
           </button>
-          <span style={{ 
+          <span className="hero-sub-text" style={{ 
             fontSize: '12px', 
             color: 'var(--slate)', 
             opacity: 0.7,
