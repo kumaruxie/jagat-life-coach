@@ -30,7 +30,27 @@ function App() {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [showContactPrompt, setShowContactPrompt] = useState(false);
 
+  const checkContactFormExpiry = () => {
+    const formSubmittedAtStr = localStorage.getItem('ghl_form_submitted_at');
+    if (formSubmittedAtStr) {
+      const submittedAt = parseInt(formSubmittedAtStr, 10);
+      const currentTime = Date.now();
+      const threeHours = 3 * 60 * 60 * 1000; // 3 hours in ms
+      
+      if (currentTime - submittedAt > threeHours) {
+        localStorage.removeItem('ghl_form_submitted_at');
+        localStorage.removeItem('lead_contact_info');
+        return false;
+      }
+      return true;
+    }
+    return false;
+  };
+
   useEffect(() => {
+    // Check for contact form submission expiry
+    checkContactFormExpiry();
+
     // Check URL parameters for ?payment=success
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('payment') === 'success') {
@@ -54,8 +74,8 @@ function App() {
   }, []);
 
   const triggerPayment = () => {
-    // Check if user has already submitted the contact form
-    const hasFilledForm = localStorage.getItem('ghl_form_submitted_at');
+    // Check if user has already submitted the contact form and it hasn't expired
+    const hasFilledForm = checkContactFormExpiry();
 
     if (!hasFilledForm) {
       const contactSection = document.getElementById('contact');
