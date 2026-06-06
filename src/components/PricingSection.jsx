@@ -87,9 +87,9 @@ const PricingSection = ({ triggerPayment }) => {
             </div>
 
             <div style={{ marginBottom: '32px' }}>
-              <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.14em', color: 'var(--slate)', marginBottom: '8px', fontWeight: 600 }}>Founding Batch Price</div>
+              <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.14em', color: 'var(--slate)', marginBottom: '8px', fontWeight: 600 }}>Founding Batch Price (Save 60%)</div>
               <div style={{ fontSize: '60px', fontFamily: 'var(--font-heading)', fontWeight: 700, lineHeight: 1, color: 'var(--emerald)' }}>₹1,997</div>
-              <div style={{ fontSize: '12px', color: 'var(--slate)', marginTop: '4px' }}>all-inclusive</div>
+              <div style={{ fontSize: '12px', color: 'var(--slate)', marginTop: '4px' }}>Standard Price (₹4,997) increases for the next batch</div>
             </div>
 
             <button
@@ -105,9 +105,14 @@ const PricingSection = ({ triggerPayment }) => {
               Abhi Enroll Karo →
             </button>
 
-            <p style={{ fontSize: '12px', color: 'var(--emerald)', fontWeight: 600 }}>
-              Sirf 12 seats available for this cohort. Filling fast.
-            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+              <p style={{ fontSize: '12.5px', color: 'var(--emerald)', fontWeight: 700, margin: 0 }}>
+                ⚠️ Strictly limited to 12 seats for personalized 1:1 attention.
+              </p>
+              <p style={{ fontSize: '11.5px', color: 'var(--slate)', margin: 0 }}>
+                Founding batch offer ends soon. Price increases to ₹4,997 thereafter.
+              </p>
+            </div>
           </div>
         </motion.div>
       </div>

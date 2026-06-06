@@ -19,6 +19,8 @@ const FAQSection = lazy(() => import('./components/FAQSection'));
 const ContactSection = lazy(() => import('./components/ContactSection'));
 const Footer = lazy(() => import('./components/Footer'));
 const InlineReview = lazy(() => import('./components/InlineReview'));
+const CaseStudiesSection = lazy(() => import('./components/CaseStudiesSection'));
+
 
 // Minimal loading fallback that matches the dark theme
 const SectionFallback = () => (
@@ -298,6 +300,8 @@ function App() {
             author="Vikram Singh"
             bgGradient="linear-gradient(to bottom, var(--surface) 0%, var(--surface-deep) 100%)"
           />
+
+          <CaseStudiesSection />
 
           <TransformationSection />
 

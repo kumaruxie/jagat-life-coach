@@ -3,16 +3,16 @@ import { motion } from 'framer-motion';
 const MechanismSection = () => {
   const steps = [
     {
-      title: "Kadam 1: Khud Ki Pehchan (Self-Discovery)",
-      desc: "Sabse pehle hum samjhenge ki aap aur aapke apne situations mein kaise react karte hain — bina kisi ko galat thehraye."
+      title: "Kadam 1: Root Analysis (Bina Kisi Blame Ke)",
+      desc: "Hum situations ko analyze karenge bina kisi ko galat thehraye, taaki aap samajh sakein ki aakhir triggers shuru kahan se hote hain."
     },
     {
-      title: "Kadam 2: Uljhan Ki Jad Tak Pahuchna",
-      desc: "Hum un choti-choti baaton ko pehchanenge jo darasal badi galatfehmiyon ka kaaran banti hain."
+      title: "Kadam 2: Exact Dialogue Scripts (Word-for-Word)",
+      desc: "Kathin psychology nahi — hum aapko exact conversation scripts denge jo aap active arguments mein bolkar tanaav ko instantly neutralize kar sakein."
     },
     {
-      title: "Kadam 3: Nayi Soch, Naye Tarike",
-      desc: "Aasan aur practical tarike jinse aap apne baat karne aur sochne ka dhang badal kar ghar ka mahaul instantly halka kar sakte hain."
+      title: "Kadam 3: 1:1 Accountability & Check-Ins",
+      desc: "Sirf video dekhna kaafi nahi hai. Hum har hafte aapse 1:1 check-in karenge aur guide karenge taaki yeh nayi aadat aapke jeevan ka hissa ban sake."
     }
   ];
 

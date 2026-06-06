@@ -72,13 +72,13 @@ const AboutCoachSection = () => {
               <span style={{ fontSize: '13px', color: 'var(--slate)' }}>🎯 Life Strategic Family Coach & Mind Hacker</span>
             </div>
 
-            {/* COPYWRITING: Edit the bio paragraphs below */}
-            <p style={{ marginBottom: 'var(--space-2)', fontSize: '15px' }}>
-              Jagat Turkiya ki journey kisi textbook se nahi, real-life struggles se shuru hui thi. Unhone personally dekha hai ki ek unresolved family conflict kaise ek capable aur intelligent insaan ko andar se khaali kar deta hai.
+            {/* COPYWRITING: Emotional founder story */}
+            <p style={{ marginBottom: 'var(--space-3)', fontSize: '15.5px', lineHeight: '1.75' }}>
+              Jagat Turkiya ki journey kisi academic textbook se nahi, balki ek gehre realization se shuru hui thi. Ek shaam, unke ek behad safal dost — jo ek badi company mein 500+ employees ki team chalaate the — unke saamne rote hue bole: <em style={{ color: 'var(--emerald)', fontStyle: 'italic' }}>"Main office mein saikdo logon ko manage kar leta hoon, par ghar aakar apne parivar se 5 minute bina behas ke baat nahi kar paata."</em>
             </p>
 
-            <p style={{ marginBottom: 'var(--space-4)', fontSize: '15px' }}>
-              Yahi cheez unhe coaching ki taraf le aayi — is yakeen ke saath ki har ghar mein sukoon ho sakta hai, agar sahi disha mile.
+            <p style={{ marginBottom: 'var(--space-4)', fontSize: '15.5px', lineHeight: '1.75' }}>
+              Tab Jagat ko samajh aaya ki log career set karne mein apni saari energy laga dete hain, par ghar aate hi wahi tanaav aur khaalipan mehsus karte hain. Unhone family conflict resolution par saalon research ki aur exact **dialogue scripts** aur **habits** banayein. Jab unke dost ne in scripts ko ghar par use kiya, toh barson purana tanaav ek hi shaam mein halka ho gaya. Yahan se shuru hua Jagat Turkiya ka signature system.
             </p>
 
             {/* Role Tags */}

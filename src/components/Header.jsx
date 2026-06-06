@@ -27,8 +27,8 @@ const Header = ({ triggerPayment }) => {
           </span>
         </a>
         
-        <button className="header-cta btn-pill" onClick={() => triggerPayment()} aria-label="Start enrollment now" style={{ flexShrink: 0 }}>
-          Start Now →
+        <button className="header-cta btn-pill" onClick={() => triggerPayment()} aria-label="Apply now" style={{ flexShrink: 0 }}>
+          Apply Now →
         </button>
       </div>
     </header>

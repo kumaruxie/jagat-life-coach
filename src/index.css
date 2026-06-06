@@ -784,18 +784,18 @@ button {
   right: 0;
   bottom: 0;
   border-radius: 50%;
-  border: 1.5px dashed rgba(16, 185, 129, 0.45); /* Enhanced borders */
-  box-shadow: 0 0 40px rgba(16, 185, 129, 0.12), inset 0 0 30px rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.08); /* Soft Emerald border */
+  box-shadow: 0 0 50px rgba(6, 182, 212, 0.06), inset 0 0 40px rgba(13, 148, 136, 0.03);
 }
 .ring-1 {
   transform-style: preserve-3d;
   animation: spin-ring-1 30s linear infinite;
-  border: 1.5px dashed rgba(16, 185, 129, 0.55);
+  border: 1px solid rgba(16, 185, 129, 0.12);
 }
 .ring-2 {
   transform-style: preserve-3d;
   animation: spin-ring-2 24s linear infinite;
-  border: 2px solid rgba(16, 185, 129, 0.25);
+  border: 1.5px solid rgba(6, 182, 212, 0.06);
   width: 90%;
   height: 90%;
   margin: 5%;
@@ -803,7 +803,7 @@ button {
 .ring-3 {
   transform-style: preserve-3d;
   animation: spin-ring-3 36s linear infinite;
-  border: 1.5px dotted rgba(16, 185, 129, 0.3);
+  border: 1px dashed rgba(13, 148, 136, 0.08);
   width: 80%;
   height: 80%;
   margin: 10%;
@@ -906,4 +906,152 @@ button:active .video-play-btn-wrapper {
     padding: 0.75rem 1.25rem !important;
     font-size: 0.8rem !important;
   }
+}
+
+/* ─── Hero Split VSL Layout classes ─── */
+.hero-split-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-areas: 
+    "headline video"
+    "subheadline video"
+    "trustlabel video"
+    "trustrow video"
+    "cta video";
+  gap: 0 var(--space-6);
+  align-items: center;
+  text-align: left;
+  width: 100%;
+}
+
+.hero-h1-area { grid-area: headline; }
+.hero-sub-area { grid-area: subheadline; }
+.hero-trust-label-area { grid-area: trustlabel; }
+.hero-trust-row-area { grid-area: trustrow; }
+.hero-cta-area { grid-area: cta; }
+.hero-video-area { grid-area: video; }
+
+.hero-trust-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 480px;
+  width: 100%;
+}
+
+.hero-trust-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 8px 12px;
+  text-align: left;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hero-cta-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 24px; /* Added breathing room below the trust badges */
+}
+
+.desktop-only {
+  display: inline;
+}
+
+@media (max-width: 992px) {
+  .desktop-only {
+    display: none;
+  }
+  .hero-split-layout {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+  .hero-h1-area { order: 1; }
+  .hero-sub-area { order: 2; }
+  .hero-cta-area { order: 3; }
+  .hero-video-area { order: 4; }
+  .hero-trust-label-area { order: 5; }
+  .hero-trust-row-area { order: 6; }
+
+  .hero-trust-row {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    margin: 0 auto !important;
+    max-width: 380px !important;
+  }
+  .hero-cta-wrapper {
+    justify-content: center !important;
+    margin-top: 8px; /* Compact top margin on mobile viewports */
+  }
+}
+
+/* ─── VSL Video Thumbnail Hover Effects ─── */
+.video-thumbnail-container {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.video-thumbnail-container:hover {
+  transform: translateY(-4px) scale(1.015);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.6) !important;
+}
+
+.play-icon-blob {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 8px 32px rgba(16, 185, 129, 0.15) !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s, border-color 0.3s, box-shadow 0.3s !important;
+  margin-top: 50px;
+}
+
+/* Subtle play button pulse animation */
+.play-icon-blob::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  opacity: 0;
+  animation: play-blob-pulse 2.5s infinite;
+  pointer-events: none;
+}
+
+@keyframes play-blob-pulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.15;
+  }
+  100% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+.video-thumbnail-container:hover .play-icon-blob {
+  transform: scale(1.08);
+  background-color: rgba(16, 185, 129, 0.15) !important;
+  border-color: rgba(16, 185, 129, 0.4) !important;
+  box-shadow: 0 12px 40px rgba(16, 185, 129, 0.4) !important;
 }

@@ -212,7 +212,7 @@ const ContactSection = ({ showPrompt = false, onFormSubmit = () => {} }) => {
               </span>
 
               <h2 style={{ color: 'var(--silver)', marginBottom: '16px', lineHeight: '1.25' }}>
-                Talk to Jagat Sir's Team — No Cost, No Commitment
+                Talk to Jagat Turkiya's Team — No Cost, No Commitment
               </h2>
 
               <p style={{ color: 'var(--slate)', fontSize: '15px', lineHeight: '1.75' }}>

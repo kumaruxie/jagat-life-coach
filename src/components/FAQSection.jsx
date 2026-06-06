@@ -27,6 +27,18 @@ const FAQSection = () => {
     {
       q: "Pehle bhi books padhi, videos dekhi — sab bhool gaya. Yeh alag kaise hoga?",
       a: "Kyunki aapko gyaan nahi chahiye — aapko aadat chahiye. Books information deti hain. Yeh program exact scripts deta hai — kal raat ke jhagde mein word-for-word kya bolna hai. Plus weekly 1:1 check-in — koi dekh raha hai ki aap use kar rahe ho ya nahi. Accountability woh cheez hai jo books kabhi nahi de sakti."
+    },
+    {
+      q: "Kya yeh program mere unique parivar ki situation par sach mein kaam karega?",
+      a: "Haan. Rishton aur conflicts ke patterns repetitive hote hain. Jab aap react karne ka apna tarika aur word-choice badal dete hain, toh saamne wale ka behavior apne aap badal jaata hai. Program mein shamil 1,500+ alag-alag families par yahi identical system kaam kar chuka hai."
+    },
+    {
+      q: "Program ki fees sirf ₹1,997 kyun hai? Itna kam kyun?",
+      a: "Yeh humare exclusive Founding Batch ki special price hai. Humara goal is batch ke members se solid reviews aur case studies ikattha karna hai. Agle cohort se fees badhkar standard price (₹4,997) par chali jayegi."
+    },
+    {
+      q: "Maine pehle bhi kai courses aur YouTube videos try kiye hain. Yeh unse alag kaise hai?",
+      a: "YouTube videos aur books sirf theoretical gyaan deti hain. Hum aapko concept nahi, balki exact conversation scripts aur weekly 1:1 check-ins dete hain. Jab aapko exact pata ho ki kya bolna hai aur koi aapse updates lene wala ho, toh badlaav aana tay hai."
     }
   ];
 
