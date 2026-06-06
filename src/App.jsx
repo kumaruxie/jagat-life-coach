@@ -18,6 +18,7 @@ const PricingSection = lazy(() => import('./components/PricingSection'));
 const FAQSection = lazy(() => import('./components/FAQSection'));
 const ContactSection = lazy(() => import('./components/ContactSection'));
 const Footer = lazy(() => import('./components/Footer'));
+const InlineReview = lazy(() => import('./components/InlineReview'));
 
 // Minimal loading fallback that matches the dark theme
 const SectionFallback = () => (
@@ -272,42 +273,56 @@ function App() {
         <HeroSection triggerPayment={triggerPayment} />
         <Suspense fallback={<SectionFallback />}>
           <ProblemSection />
-          <AgitateSection />
-          
-          <CTABanner 
-            text="Ek naye safar ki shuruaat karein — aapsi samajh aur sukoon ke liye."
-            buttonText="Haan, Mujhe Shuruaat Karni Hai →"
-            triggerPayment={triggerPayment}
-            bgColor="var(--surface-deep)"
+          <InlineReview
+            quote="Career set tha. Ghar aate hi wahi tanaav... Lagta tha balance banana impossible hai. Jagat sir ki coaching ke baad pehli baar ghar mein sukoon aur khushi mehsus hui."
+            author="Yogita"
+            bgGradient="linear-gradient(to bottom, var(--surface) 0%, var(--surface-deep) 100%)"
           />
-          
-          <MechanismSection />
-          <TransformationSection />
-          
-          <CTABanner 
-            text="30 din mein aapke ghar ka mahaul badal sakta hai. Kya aap taiyar hain?"
-            buttonText="Apna Pehla Kadam Uthayein →"
-            triggerPayment={triggerPayment}
-            bgColor="var(--surface-deep)"
-          />
-          
-          <ProgramBreakdownSection />
+
           <AboutCoachSection />
+
           <AchievementsSection />
-          
+
           <CTABanner 
             text="1,500+ families ne yeh kiya. Ab aapki baari hai."
-            buttonText="Apni Seat Reserve Karo →"
+            buttonText="Apply Now →"
+            triggerPayment={triggerPayment}
+            bgColor="linear-gradient(to bottom, var(--surface-deep) 0%, var(--surface) 100%)"
+          />
+
+          <AgitateSection />
+
+          <MechanismSection />
+          <InlineReview
+            quote="Mujhe laga tha ki rishton ko sudharna bohot complicated hoga. Jagat sir ke 3 steps itne practical hain ki pehli hi session se ghar ka mahaul instantly halka ho gaya."
+            author="Vikram Singh"
+            bgGradient="linear-gradient(to bottom, var(--surface) 0%, var(--surface-deep) 100%)"
+          />
+
+          <TransformationSection />
+
+          <CTABanner 
+            text="30 din mein aapke ghar ka mahaul badal sakta hai."
+            buttonText="Apply Now →"
             triggerPayment={triggerPayment}
             bgColor="var(--surface-deep)"
           />
-          
+
+          <ProgramBreakdownSection />
+
           <VideoTestimonialsSection />
 
           <PricingSection triggerPayment={triggerPayment} />
-          
+
           <TextTestimonialsSection />
-          
+
+          <CTABanner 
+            text="Ek naye safar ki shuruaat karein — sukoon aur samajh ke liye."
+            buttonText="Apply Now →"
+            triggerPayment={triggerPayment}
+            bgColor="var(--surface)"
+          />
+
           <FAQSection />
           <ContactSection
             showPrompt={showContactPrompt}

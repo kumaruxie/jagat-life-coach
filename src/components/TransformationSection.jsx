@@ -21,7 +21,7 @@ const TransformationSection = () => {
   ];
 
   return (
-    <section className="section" style={{ background: 'linear-gradient(to bottom, var(--surface) 0%, var(--surface) calc(100% - 60px), var(--surface-deep) 100%)' }}>
+    <section className="section" style={{ background: 'linear-gradient(to bottom, var(--surface-deep) 0%, var(--surface) 60px, var(--surface) calc(100% - 60px), var(--surface-deep) 100%)' }}>
       <div className="section-inner">
         <div style={{ textAlign: 'center', marginBottom: 'var(--space-6)' }}>
           <span className="tag">Natija (The Outcome)</span>

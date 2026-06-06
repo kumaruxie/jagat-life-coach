@@ -6,11 +6,6 @@ import video3 from '../assets/a staified client.mp4';
 import video4 from '../assets/SnapVideo.app_AQP0LsCAVNa3tWlCGt8PQhiNSumpyG3kSvJ3c4dMGvnnOLq1c6uOta5CJOh3y900Jjf8LYgrUluFWgFhcJb4Ps73RSRxO4MfV1IaaAg.mp4';
 
 
-import THUMBNAIL_AJIT from '../assets/testi1.jpg';
-import THUMBNAIL_YOGITA from '../assets/testi2.jpg';
-import THUMBNAIL_SATISFIED_1 from '../assets/testi3.jpg';
-import THUMBNAIL_SATISFIED_2 from '../assets/testi4.jpg';
-
 /* ── Thumbnail colours per card ── */
 const THUMB_GRADIENTS = [
   'linear-gradient(135deg, #0f2417 0%, #0d1d2e 100%)',
@@ -234,10 +229,10 @@ const VideoTestimonialsSection = () => {
   const [currentlyPlaying, setCurrentlyPlaying] = useState(null);
 
   const videos = [
-    { id: 'v1', videoSrc: video1, thumbnail: THUMBNAIL_AJIT, thumbInitials: 'AC', name: 'Ajit - A coach', role: 'Coaching Client', quote: 'A truly life-changing experience — my mindset and clarity have completely shifted.' },
-    { id: 'v2', videoSrc: video2, thumbnail: THUMBNAIL_YOGITA, thumbInitials: 'YS', name: 'Yogita - Sunil and Yogesh', role: 'Family Coaching Client', quote: 'Ghar ka tanaav aur career ke beech balance banana bohot mushkil tha. Jagat sir ke coaching se mujhe aur meri family ko sukoon mila.' },
-    { id: 'v3', videoSrc: video3, thumbnail: THUMBNAIL_SATISFIED_1, thumbInitials: 'SC', name: 'A Satisifed client', role: 'Coaching Client', quote: 'Jagat Sir\'s methodology is very practical. Confidence, clarity aur ghar mein sukoon — teeno mili.' },
-    { id: 'v4', videoSrc: video4, thumbnail: THUMBNAIL_SATISFIED_2, thumbInitials: 'SC', name: 'A Satisfied client', role: 'Transformation Client', quote: 'Is program ne meri zindagi ka nazariya badal diya. Jagat Sir ke saath kaam karna ek privilege hai.' },
+    { id: 'v1', videoSrc: video1, thumbInitials: 'AC', name: 'Ajit - A coach', role: 'Coaching Client', quote: 'A truly life-changing experience — my mindset and clarity have completely shifted.' },
+    { id: 'v2', videoSrc: video2, thumbInitials: 'YS', name: 'Yogita - Sunil and Yogesh', role: 'Family Coaching Client', quote: 'Ghar ka tanaav aur career ke beech balance banana bohot mushkil tha. Jagat sir ke coaching se mujhe aur meri family ko sukoon mila.' },
+    { id: 'v3', videoSrc: video3, thumbInitials: 'SC', name: 'A Satisifed client', role: 'Coaching Client', quote: 'Jagat Sir\'s methodology is very practical. Confidence, clarity aur ghar mein sukoon — teeno mili.' },
+    { id: 'v4', videoSrc: video4, thumbInitials: 'SC', name: 'A Satisfied client', role: 'Transformation Client', quote: 'Is program ne meri zindagi ka nazariya badal diya. Jagat Sir ke saath kaam karna ek privilege hai.' },
   ];
 
   return (

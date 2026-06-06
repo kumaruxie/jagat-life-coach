@@ -167,23 +167,20 @@ const HeroSection = ({ triggerPayment }) => {
         paddingRight: '16px',
         boxSizing: 'border-box',
       }}>
-        <span 
-          className="tag hero-anim hero-anim-1 hero-tag"
-          style={{ color: 'var(--slate)', marginBottom: 'var(--space-3)', display: 'block' }}
-        >
-          Hindi-speaking professionals ke liye — jo ghar ke roz-roz ke tanaav se thak chuke hain
-        </span>
+
         
         <h1 
-          className="hero-anim hero-anim-2 hero-h1"
+          className="hero-anim hero-anim-1 hero-h1"
           style={{ color: 'var(--silver)', marginBottom: 'var(--space-4)' }}
         >
           Ghar Ki Uljhanon Ko Ek Mahine Mein <em style={{ color: 'var(--emerald)', fontStyle: 'normal' }}>Sukoon</em> Mein Badlo.
         </h1>
 
+
         {/* Premium Custom Video Card Container */}
         <div 
-          className="hero-anim hero-anim-4"
+          id="hero-vsl"
+          className="hero-anim hero-anim-2"
           style={{
             width: '100%',
             maxWidth: '780px',
@@ -207,24 +204,65 @@ const HeroSection = ({ triggerPayment }) => {
         </div>
 
         <div 
-          className="hero-anim hero-anim-5"
-          style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', pointerEvents: 'auto' }}
+          className="hero-anim hero-anim-3"
+          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '32px', pointerEvents: 'auto', flexWrap: 'wrap' }}
         >
           <button 
             className="btn-cta btn-cta-pulse btn-shimmer btn-pill hero-cta-btn" 
-            style={{ padding: '18px 48px', fontSize: '15px' }}
+            style={{ padding: '14px 36px', fontSize: '14px' }}
             onClick={() => triggerPayment()}
           >
-            Haan, Mujhe Sukoon Chahiye →
+            Apply Now →
           </button>
-          <span className="hero-sub-text" style={{ 
-            fontSize: '12px', 
-            color: 'var(--slate)', 
-            opacity: 0.7,
-            letterSpacing: '0.02em'
-          }}>
-            30-din ka aasan safar · Abhi shuru karein · Limited seats
-          </span>
+          <button
+            className="hero-cta-btn"
+            style={{
+              background: 'transparent',
+              border: '2px solid var(--emerald)',
+              color: 'var(--emerald)',
+              borderRadius: '100px',
+              padding: '14px 32px',
+              fontSize: '14px',
+              fontWeight: 600,
+              letterSpacing: '0.02em',
+              cursor: 'pointer',
+              transition: 'background 0.2s ease, transform 0.2s ease',
+              fontFamily: 'Inter, system-ui, sans-serif',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(16,185,129,0.1)';
+              e.currentTarget.style.transform = 'scale(1.04)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'transparent';
+              e.currentTarget.style.transform = 'scale(1)';
+            }}
+            onClick={() => {
+              const vslContainer = document.getElementById('hero-vsl');
+              if (vslContainer) {
+                const startY = window.scrollY;
+                const targetY = vslContainer.getBoundingClientRect().top + window.scrollY - 40;
+                const distance = targetY - startY;
+                const duration = 700;
+                let startTime = null;
+                const ease = (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+                const step = (timestamp) => {
+                  if (!startTime) startTime = timestamp;
+                  const elapsed = timestamp - startTime;
+                  const progress = Math.min(elapsed / duration, 1);
+                  window.scrollTo(0, startY + distance * ease(progress));
+                  if (progress < 1) requestAnimationFrame(step);
+                  else {
+                    const playBtn = vslContainer.querySelector('button[aria-label="Play Masterclass Video"]');
+                    if (playBtn) playBtn.click();
+                  }
+                };
+                requestAnimationFrame(step);
+              }
+            }}
+          >
+            ▶ Watch Video
+          </button>
         </div>
       </div>
     </section>
