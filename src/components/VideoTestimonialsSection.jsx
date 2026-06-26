@@ -4,7 +4,7 @@ import video1 from '../assets/ajit_coach.mp4';
 import video2 from '../assets/yogita_sunil_yogesh.mp4';
 import video3 from '../assets/satisfied_client_1.mp4';
 import video4 from '../assets/satisfied_client_2.mp4';
-import video5 from '../assets/20260525_163927.mp4';
+// import video5 from '../assets/20260525_163927.mp4';
 
 
 /* ── Thumbnail colours per card ── */
@@ -233,7 +233,7 @@ const VideoTestimonialsSection = () => {
     { id: 'v2', videoSrc: video2, thumbInitials: 'YS', name: 'Yogita - Sunil and Yogesh', role: 'Family Coaching Client', quote: 'Ghar ka tanaav aur career ke beech balance banana bohot mushkil tha. Jagat sir ke coaching se mujhe aur meri family ko sukoon mila.' },
     { id: 'v3', videoSrc: video3, thumbInitials: 'SC', name: 'A Satisifed client', role: 'Coaching Client', quote: 'Jagat Sir\'s methodology is very practical. Confidence, clarity aur ghar mein sukoon — teeno mili.' },
     { id: 'v4', videoSrc: video4, thumbInitials: 'SC', name: 'A Satisfied client', role: 'Transformation Client', quote: 'Is program ne meri zindagi ka nazariya badal diya. Jagat Sir ke saath kaam karna ek privilege hai.' },
-    { id: 'v5', videoSrc: video5, thumbInitials: 'SC', name: 'A Satisfied client', role: 'Coaching Client', quote: 'Ghar ke tanaav se nikal kar aapsi samajh banana ab aasan lagta hai. Coaching ke baad rishton mein bahut sukoon mila.' },
+    // { id: 'v5', videoSrc: video5, thumbInitials: 'SC', name: 'A Satisfied client', role: 'Coaching Client', quote: 'Ghar ke tanaav se nikal kar aapsi samajh banana ab aasan lagta hai. Coaching ke baad rishton mein bahut sukoon mila.' },
   ];
 
 
