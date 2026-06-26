@@ -1,7 +1,7 @@
 import { Trophy, Award, FileText, Users, Mic, BookOpen, Heart } from 'lucide-react';
 
-import guinnessImg from '../assets/guniess world record standee.jpg';
-import awardImg from '../assets/another acheivement.jpg';
+import guinnessImg from '../assets/guinness_standee.jpg';
+import awardImg from '../assets/national_icon_award.jpg';
 import articleImg from '../assets/article.PNG';
 
 const AchievementsSection = () => {

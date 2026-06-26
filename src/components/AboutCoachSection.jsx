@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import coachImg from '../assets/jagat photo.jpg';
+import coachImg from '../assets/jagat_photo.jpg';
 
 const AboutCoachSection = () => {
   const tags = ["Family Coach", "Mind Hacker", "Guinness Speaker", "National Icon", "Bestselling Author"];

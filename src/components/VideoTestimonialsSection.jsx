@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import video1 from '../assets/Ajit - A coach.mp4';
-import video2 from '../assets/Yogita - Sunil and Yogesh.mp4';
-import video3 from '../assets/a staified client.mp4';
-import video4 from '../assets/SnapVideo.app_AQP0LsCAVNa3tWlCGt8PQhiNSumpyG3kSvJ3c4dMGvnnOLq1c6uOta5CJOh3y900Jjf8LYgrUluFWgFhcJb4Ps73RSRxO4MfV1IaaAg.mp4';
+import video1 from '../assets/ajit_coach.mp4';
+import video2 from '../assets/yogita_sunil_yogesh.mp4';
+import video3 from '../assets/satisfied_client_1.mp4';
+import video4 from '../assets/satisfied_client_2.mp4';
 import video5 from '../assets/20260525_163927.mp4';
 
 
