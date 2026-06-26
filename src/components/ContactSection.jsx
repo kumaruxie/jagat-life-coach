@@ -57,9 +57,9 @@ const Field = ({ id, label, type, name, placeholder, value, error, onChange, inp
         width: '100%',
         padding: '13px 16px',
         borderRadius: '8px',
-        backgroundColor: 'rgba(148,163,184,0.05)',
-        border: `1px solid ${error ? 'rgba(239,68,68,0.5)' : 'rgba(148,163,184,0.15)'}`,
-        color: '#e2e8f0',
+        backgroundColor: 'rgba(18, 36, 33, 0.03)',
+        border: `1px solid ${error ? 'rgba(239,68,68,0.5)' : 'rgba(18, 36, 33, 0.12)'}`,
+        color: 'var(--silver)',
         outline: 'none',
         fontFamily: 'Inter, system-ui, sans-serif',
         fontSize: '14px',
@@ -67,10 +67,10 @@ const Field = ({ id, label, type, name, placeholder, value, error, onChange, inp
         boxSizing: 'border-box',
       }}
       onFocus={e => { e.target.style.borderColor = 'rgba(16,185,129,0.55)'; }}
-      onBlur={e => { e.target.style.borderColor = error ? 'rgba(239,68,68,0.5)' : 'rgba(148,163,184,0.15)'; }}
+      onBlur={e => { e.target.style.borderColor = error ? 'rgba(239,68,68,0.5)' : 'rgba(18, 36, 33, 0.12)'; }}
     />
     {error && (
-      <span style={{ fontSize: '11.5px', color: '#f87171', display: 'flex', alignItems: 'center', gap: '4px' }}>
+      <span style={{ fontSize: '11.5px', color: '#dc2626', display: 'flex', alignItems: 'center', gap: '4px' }}>
         ✕ {error}
       </span>
     )}
@@ -119,76 +119,46 @@ const ContactSection = ({ showPrompt = false, onFormSubmit = () => {} }) => {
     let phone = formData.phone;
     if (phone.length === 10) phone = '+91' + phone;
 
-    try {
-      const params = new URLSearchParams();
-      params.append('full_name', formData.name.trim());
-      params.append('email', formData.email.trim().toLowerCase());
-      params.append('phone', phone);
-      params.append('city', formData.city.trim());
-      params.append('source', 'apkacoach.com');
-      params.append('form_name', 'Conflict to Clarity - Lead Capture');
+    // Track lead submission on Meta Pixel
+    if (window.fbq) window.fbq('track', 'Lead');
+    
+    // Save contact info in localStorage to unlock checkout
+    localStorage.setItem('ghl_form_submitted_at', Date.now().toString());
+    localStorage.setItem('lead_contact_info', JSON.stringify({
+      name: formData.name.trim(),
+      email: formData.email.trim().toLowerCase(),
+      phone,
+      city: formData.city.trim(),
+    }));
 
-      await fetch(GHL_WEBHOOK_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: params.toString(),
-      });
+    // Submit silently to Google Form
+    const googleFormResponseUrl = 'https://docs.google.com/forms/d/e/1FAIpQLScR0UV0_xQ_dwpcbYjZHPKqlsobQJz-FDqKrhTquYvDt29XAA/formResponse';
+    const params = new URLSearchParams();
+    params.append('entry.1357961071', formData.name.trim());
+    params.append('entry.1393899574', phone);
+    params.append('entry.419119203', formData.email.trim().toLowerCase());
+    params.append('entry.2015323172', formData.city.trim());
 
-      if (window.fbq) window.fbq('track', 'Lead');
-      localStorage.setItem('ghl_form_submitted_at', Date.now().toString());
-      localStorage.setItem('lead_contact_info', JSON.stringify({
-        name: formData.name.trim(),
-        email: formData.email.trim().toLowerCase(),
-        phone,
-        city: formData.city.trim(),
-      }));
-    } catch { /* no-cors won't throw on actual success */ }
+    fetch(googleFormResponseUrl, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: params.toString()
+    }).catch(err => console.error('Google Form submission error:', err));
 
-    setStatus('success');
-    onFormSubmit(); // notify App that form is done
+    // Show a loading state for 400ms (0.4s) for a smoother transition
+    setTimeout(() => {
+      setStatus('success');
+      onFormSubmit(); // notify App that form is done
+    }, 400);
   };
 
   return (
-    <section id="contact" className="section" style={{ background: 'var(--surface-deep)' }}>
+    <section id="contact" className="section" style={{ background: 'var(--surface)' }}>
 
-      {/* ── Warning Banner (shown when user clicks CTA without filling form) ── */}
-      {showPrompt && status !== 'success' && (
-        <motion.div
-          initial={{ opacity: 0, y: -16, scale: 0.98 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          style={{
-            background: 'rgba(239,68,68,0.08)',
-            border: '1px solid rgba(239,68,68,0.35)',
-            borderLeft: '4px solid #ef4444',
-            borderRadius: '10px',
-            padding: '16px 20px',
-            margin: '0 auto 8px',
-            maxWidth: '1200px',
-            width: 'calc(100% - 48px)',
-            display: 'flex',
-            alignItems: 'flex-start',
-            gap: '12px',
-          }}
-        >
-          <span style={{ fontSize: '20px', flexShrink: 0, lineHeight: 1.3 }}>⚠️</span>
-          <div>
-            <p style={{
-              margin: 0,
-              fontWeight: 700,
-              fontSize: '15px',
-              color: '#fca5a5',
-              lineHeight: '1.5',
-            }}>
-              Please fill in your details below before proceeding to payment.
-            </p>
-            <p style={{ margin: '4px 0 0', fontSize: '13px', color: '#f87171', opacity: 0.85 }}>
-              This helps us confirm your enrollment and send you all program details via WhatsApp before you pay.
-            </p>
-          </div>
-        </motion.div>
-      )}
+
 
       <div className="section-inner">
         <div className="contact-layout">
@@ -202,17 +172,12 @@ const ContactSection = ({ showPrompt = false, onFormSubmit = () => {} }) => {
             style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}
           >
             <div>
-              <span style={{
-                fontSize: '11px', fontWeight: 600, letterSpacing: '0.15em',
-                color: 'var(--emerald)', textTransform: 'uppercase',
-                display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px',
-              }}>
-                <span style={{ width: '20px', height: '1px', background: 'var(--emerald)', display: 'inline-block' }} />
+              <span className="tag">
                 Free Consultation
               </span>
 
               <h2 style={{ color: 'var(--silver)', marginBottom: '16px', lineHeight: '1.25' }}>
-                Talk to Jagat Turkiya's Team — No Cost, No Commitment
+                Talk to Jagat Turkiya's Team — <span style={{ color: 'var(--gold-accent)' }}>No Cost, No Commitment</span>
               </h2>
 
               <p style={{ color: 'var(--slate)', fontSize: '15px', lineHeight: '1.75' }}>

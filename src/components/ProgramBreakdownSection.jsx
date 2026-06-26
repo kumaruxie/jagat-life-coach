@@ -34,7 +34,7 @@ const ProgramBreakdownSection = () => {
     visible: (i) => ({
       opacity: 1,
       x: 0,
-      transition: { delay: i * 0.1, duration: 0.5 }
+      transition: { delay: i * 0.04, duration: 0.3 }
     })
   };
 
@@ -47,9 +47,9 @@ const ProgramBreakdownSection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            style={{ color: 'var(--silver)', fontSize: 'clamp(1.4rem, 5vw, 2.5rem)' }}
+            style={{ color: 'var(--silver)', fontSize: 'clamp(1.8rem, 4.5vw, 2.8rem)' }}
           >
-            Aapka 30-Din Ka Safar Ek Nayi Shuruaat Ki Aur
+            Aapka <span style={{ color: 'var(--gold-accent)' }}>30-Din Ka Safar</span> Ek Nayi Shuruaat Ki Aur
           </motion.h2>
         </div>
 
@@ -59,7 +59,7 @@ const ProgramBreakdownSection = () => {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.3 }}
           >
             <p style={{ fontSize: '15px', color: 'var(--slate)', marginBottom: 'var(--space-4)' }}>
               Yeh ek structured 30-day journey hai — recorded modules, live Zoom sessions, worksheets, aur direct coaching. Sirf gyaan nahi, <strong style={{ color: 'var(--silver)' }}>real ground-level change</strong>.
@@ -80,7 +80,7 @@ const ProgramBreakdownSection = () => {
                   whileInView="visible"
                   viewport={{ once: true }}
                   variants={listItemVariants}
-                  whileHover={{ x: 6 }}
+                  whileHover={{ x: 6, transition: { duration: 0.1, ease: "easeOut" } }}
                   style={{ 
                     display: 'flex', 
                     alignItems: 'center', 
@@ -88,7 +88,7 @@ const ProgramBreakdownSection = () => {
                     color: 'var(--slate)', 
                     fontSize: '14px',
                     cursor: 'default',
-                    transition: 'color 0.2s'
+                    transition: 'color 0.1s'
                   }}
                 >
                   <span style={{ color: 'var(--emerald)' }}>{item.icon}</span>
@@ -106,11 +106,12 @@ const ProgramBreakdownSection = () => {
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.12, duration: 0.5 }}
+                transition={{ delay: i * 0.04, duration: 0.3 }}
                 whileHover={{ 
                   x: 4,
                   borderLeftColor: 'var(--emerald)',
-                  boxShadow: '0 4px 24px rgba(0,0,0,0.15)'
+                  boxShadow: '0 4px 24px rgba(0,0,0,0.15)',
+                  transition: { duration: 0.12, ease: "easeOut" }
                 }}
                 style={{ 
                   backgroundColor: 'var(--surface-raised)', 
@@ -120,7 +121,7 @@ const ProgramBreakdownSection = () => {
                   borderLeftWidth: '3px',
                   borderLeftColor: 'var(--border-accent)',
                   cursor: 'default',
-                  transition: 'box-shadow 0.3s ease'
+                  transition: 'box-shadow 0.12s ease, border-color 0.12s, transform 0.12s'
                 }}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-2)' }}>

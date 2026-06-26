@@ -21,7 +21,7 @@ const TransformationSection = () => {
   ];
 
   return (
-    <section className="section" style={{ background: 'linear-gradient(to bottom, var(--surface-deep) 0%, var(--surface) 60px, var(--surface) calc(100% - 60px), var(--surface-deep) 100%)' }}>
+    <section className="section" style={{ background: 'var(--surface)' }}>
       <div className="section-inner">
         <div style={{ textAlign: 'center', marginBottom: 'var(--space-6)' }}>
           <span className="tag">Natija (The Outcome)</span>
@@ -41,18 +41,21 @@ const TransformationSection = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.15, duration: 0.6 }}
+              transition={{ delay: index * 0.04, duration: 0.3 }}
               whileHover={{ 
                 y: -6, 
-                boxShadow: `0 16px 40px ${card.accent}33, 0 0 0 1px ${card.accent}66`
+                boxShadow: `0 16px 40px ${card.accent}33, 0 0 0 1px ${card.accent}66`,
+                transition: { duration: 0.12, ease: "easeOut" }
               }}
               style={{
                 backgroundColor: 'var(--surface-raised)',
                 padding: 'var(--space-5)',
                 borderRadius: '16px',
+                border: '1px solid var(--border)',
                 borderTop: `3px solid ${card.accent}`,
+                boxShadow: '0 8px 30px rgba(18, 36, 33, 0.02)',
                 cursor: 'default',
-                transition: 'box-shadow 0.3s ease'
+                transition: 'box-shadow 0.12s ease, border-color 0.12s, transform 0.12s'
               }}
             >
               <h3 style={{ marginBottom: 'var(--space-2)', fontSize: '24px' }}>{card.title}</h3>

@@ -35,46 +35,33 @@ const GatedOverlay = ({ onUnlock }) => {
       formattedPhone = '+' + cleanPhone;
     }
 
-    // GHL Inbound Webhook
-    const GHL_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/UV9lQH2lpnsX6mPHlFQR/webhook-trigger/e439fe60-5421-4341-b288-a86fb3767cba";
-
-    try {
-      const params = new URLSearchParams();
-      params.append('full_name', formData.name);
-      params.append('email', formData.email);
-      params.append('phone', formattedPhone);
-      params.append('city', formData.city);
-      params.append('source', 'apkacoach.com');
-      params.append('form_name', 'Conflict to Clarity - Lead Capture');
-
-      await fetch(GHL_WEBHOOK_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: params.toString()
-      });
-      
-      // Fire Lead Event on Meta Pixel
-      if (window.fbq) {
-        window.fbq('track', 'Lead');
-      }
-      
-      localStorage.setItem('ghl_form_submitted_at', Date.now().toString());
-      localStorage.setItem('lead_contact_info', JSON.stringify({
-        name: formData.name,
-        email: formData.email,
-        phone: formattedPhone,
-        city: formData.city
-      }));
-      onUnlock();
-    } catch (err) {
-      console.error("Submission failed:", err);
-      // Still unlock so user isn't stuck
-      localStorage.setItem('ghl_form_submitted_at', Date.now().toString());
-      onUnlock(); 
+    // Fire Lead Event on Meta Pixel
+    if (window.fbq) {
+      window.fbq('track', 'Lead');
     }
+    
+    localStorage.setItem('ghl_form_submitted_at', Date.now().toString());
+    localStorage.setItem('lead_contact_info', JSON.stringify({
+      name: formData.name.trim(),
+      email: formData.email.trim().toLowerCase(),
+      phone: formattedPhone,
+      city: formData.city.trim()
+    }));
+
+    // Format the WhatsApp template message
+    const message = `*Conflict to Clarity - Video Access Request*
+
+Hello Jagat Sir, I would like to access the training video. Here are my details:
+
+• *Name:* ${formData.name.trim()}
+• *Phone:* ${formattedPhone}
+• *Email:* ${formData.email.trim().toLowerCase()}
+• *City:* ${formData.city.trim()}`;
+
+    // Open WhatsApp pre-filled link
+    const whatsappUrl = `https://wa.me/917011900562?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+    onUnlock();
   };
 
   const inputStyle = { 

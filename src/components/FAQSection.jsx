@@ -80,18 +80,18 @@ const FAQSection = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.08, duration: 0.5 }}
+              transition={{ delay: index * 0.03, duration: 0.3 }}
               style={{
                 backgroundColor: openIndex === index ? 'rgba(16,185,129,0.03)' : 'var(--surface-raised)',
                 borderRadius: '12px',
                 overflow: 'hidden',
                 border: openIndex === index ? '1px solid rgba(16,185,129,0.15)' : '1px solid var(--border)',
-                transition: 'background-color 0.3s, border-color 0.3s'
+                transition: 'background-color 0.12s, border-color 0.12s'
               }}
             >
               <motion.button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                whileHover={{ backgroundColor: 'rgba(148,163,184,0.04)' }}
+                whileHover={{ backgroundColor: 'rgba(148,163,184,0.04)', transition: { duration: 0.1, ease: "easeOut" } }}
                 style={{
                   width: '100%',
                   padding: '24px',
@@ -102,7 +102,7 @@ const FAQSection = () => {
                   fontSize: '15px',
                   fontWeight: 500,
                   color: openIndex === index ? 'var(--emerald)' : 'var(--silver)',
-                  transition: 'color 0.2s'
+                  transition: 'color 0.12s'
                 }}
               >
                 {faq.q}

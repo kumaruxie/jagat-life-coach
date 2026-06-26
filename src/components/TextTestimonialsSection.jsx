@@ -25,12 +25,12 @@ const TestimonialCard = ({ quote, name, role, index, colorIdx }) => {
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.48, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.3, delay: index * 0.04, ease: 'easeOut' }}
       style={{
         background: 'var(--surface-raised)',
         border: '1px solid transparent',
         borderRadius: '16px',
-        padding: '28px 24px',
+        padding: '34px 28px',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
@@ -41,15 +41,15 @@ const TestimonialCard = ({ quote, name, role, index, colorIdx }) => {
         y: -6,
         borderColor: 'rgba(16,185,129,0.2)',
         boxShadow: '0 18px 48px rgba(0,0,0,0.32), 0 0 0 1px rgba(16,185,129,0.08)',
-        transition: { duration: 0.25 },
+        transition: { duration: 0.12 },
       }}
     >
       {/* ─── Decorative accent quote mark ─── */}
       <span style={{
         position: 'absolute',
-        top: '12px',
-        left: '20px',
-        fontSize: '72px',
+        top: '8px',
+        left: '18px',
+        fontSize: '84px',
         fontFamily: "'Newsreader', Georgia, serif",
         lineHeight: 1,
         color: tint.color,
@@ -60,12 +60,12 @@ const TestimonialCard = ({ quote, name, role, index, colorIdx }) => {
 
       {/* ─── Quote ─── */}
       <p style={{
-        margin: '32px 0 24px 0',
-        fontSize: '14px',
+        margin: '36px 0 24px 0',
+        fontSize: '15.5px',
         fontStyle: 'normal',
         fontFamily: "'Inter', system-ui, sans-serif",
         color: 'var(--silver)',
-        lineHeight: 1.8,
+        lineHeight: 1.75,
         flex: 1,
       }}>
         {quote}
@@ -76,8 +76,8 @@ const TestimonialCard = ({ quote, name, role, index, colorIdx }) => {
         borderLeft: `3px solid ${tint.color}`,
         paddingLeft: '12px',
       }}>
-        <div style={{ fontSize: '13.5px', fontWeight: 700, color: 'var(--silver)', marginBottom: '2px' }}>{name}</div>
-        <div style={{ fontSize: '11.5px', color: 'var(--slate)' }}>{role}</div>
+        <div style={{ fontSize: '15px', fontWeight: 700, color: 'var(--silver)', marginBottom: '3px' }}>{name}</div>
+        <div style={{ fontSize: '12.5px', color: 'var(--slate)' }}>{role}</div>
       </div>
     </motion.div>
   );

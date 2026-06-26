@@ -14,7 +14,7 @@ const PricingSection = ({ triggerPayment }) => {
   ];
 
   return (
-    <section className="section" id="pricing" style={{ background: 'var(--surface-deep)' }}>
+    <section className="section" id="pricing" style={{ background: 'var(--surface)' }}>
       <div className="section-inner" style={{ maxWidth: '1000px' }}>
         <div style={{ textAlign: 'center', marginBottom: 'var(--space-6)' }}>
           <span className="tag">Limited Enrollment</span>
@@ -32,16 +32,19 @@ const PricingSection = ({ triggerPayment }) => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          whileHover={{ boxShadow: '0 16px 48px rgba(0,0,0,0.3), 0 0 0 1px rgba(16,185,129,0.1)' }}
+          transition={{ duration: 0.3 }}
+          whileHover={{ 
+            boxShadow: '0 24px 48px rgba(18, 36, 33, 0.06), 0 0 0 1px rgba(16,185,129,0.15)',
+            transition: { duration: 0.12, ease: "easeOut" }
+          }}
           style={{
             backgroundColor: 'var(--surface-raised)',
             borderRadius: '24px',
             color: 'var(--silver)',
             overflow: 'hidden',
-            boxShadow: 'none',
-            border: '1px solid rgba(226,232,240,0.12)',
-            transition: 'box-shadow 0.3s ease'
+            boxShadow: '0 12px 32px rgba(18, 36, 33, 0.03)',
+            border: '1px solid var(--border)',
+            transition: 'box-shadow 0.12s ease, border-color 0.12s'
           }}
         >
           {/* Left: What you get */}
@@ -59,7 +62,7 @@ const PricingSection = ({ triggerPayment }) => {
 
           {/* Right: Price & CTA */}
           <div style={{
-            backgroundColor: 'rgba(0,0,0,0.15)',
+            backgroundColor: 'var(--surface-deep)',
             padding: '48px',
             display: 'flex',
             flexDirection: 'column',
@@ -102,7 +105,7 @@ const PricingSection = ({ triggerPayment }) => {
                 marginBottom: '16px'
               }}
             >
-              Abhi Enroll Karo →
+              Talk to Jagat's Team →
             </button>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>

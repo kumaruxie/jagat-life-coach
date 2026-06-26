@@ -65,9 +65,9 @@ const AchievementsSection = () => {
     }
   ];
 
-  // Double elements for seamless infinite scroll loop
-  const doubledTop = [...topAchievements, ...topAchievements];
-  const doubledBottom = [...bottomAchievements, ...bottomAchievements];
+  // Quadruple elements for seamless infinite scroll loop on all viewports
+  const doubledTop = [...topAchievements, ...topAchievements, ...topAchievements, ...topAchievements];
+  const doubledBottom = [...bottomAchievements, ...bottomAchievements, ...bottomAchievements, ...bottomAchievements];
 
   return (
     <section id="achievements" className="section" style={{ background: 'linear-gradient(to bottom, var(--surface) 0%, var(--surface-deep) 150px, var(--surface-deep) 100%)', padding: '90px 0', overflow: 'hidden' }}>
@@ -75,16 +75,15 @@ const AchievementsSection = () => {
         
         {/* Title Block */}
         <div>
-          <span className="tag" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <span style={{ width: '20px', height: '2px', backgroundColor: 'var(--emerald)', display: 'inline-block' }}></span>
+          <span className="tag">
             Recognition & Impact
           </span>
           <h2 style={{ marginBottom: '8px', color: 'var(--silver)' }}>
-            Milestones of Trust & Impact
+            Milestones of <span style={{ color: 'var(--emerald)' }}>Trust & Impact</span>
           </h2>
           <p style={{
             color: 'var(--slate)',
-            marginTop: '4px',
+            marginTop: '8px',
             fontFamily: 'var(--font-body)',
             fontSize: '15px'
           }}>
@@ -139,7 +138,7 @@ const AchievementsSection = () => {
                   gap: '16px',
                   position: 'relative',
                   cursor: 'default',
-                  transition: 'border-color 0.3s ease, box-shadow 0.3s ease',
+                  transition: 'border-color 0.18s ease, box-shadow 0.18s ease',
                   minWidth: '360px',
                   maxWidth: '360px'
                 }}
@@ -244,7 +243,7 @@ const AchievementsSection = () => {
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '16px',
-                  transition: 'border-color 0.3s ease, box-shadow 0.3s ease',
+                  transition: 'border-color 0.18s ease, box-shadow 0.18s ease',
                   cursor: 'default',
                   minWidth: '280px',
                   maxWidth: '280px'

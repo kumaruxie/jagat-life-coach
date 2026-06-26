@@ -4,6 +4,7 @@ import video1 from '../assets/Ajit - A coach.mp4';
 import video2 from '../assets/Yogita - Sunil and Yogesh.mp4';
 import video3 from '../assets/a staified client.mp4';
 import video4 from '../assets/SnapVideo.app_AQP0LsCAVNa3tWlCGt8PQhiNSumpyG3kSvJ3c4dMGvnnOLq1c6uOta5CJOh3y900Jjf8LYgrUluFWgFhcJb4Ps73RSRxO4MfV1IaaAg.mp4';
+import video5 from '../assets/20260525_163927.mp4';
 
 
 /* ── Thumbnail colours per card ── */
@@ -21,15 +22,12 @@ const VideoCard = ({ id, videoSrc, thumbnail, name, role, quote, index, thumbIni
   const accent = THUMB_ACCENTS[index % THUMB_ACCENTS.length];
 
   useEffect(() => {
-    if (currentlyPlaying !== id && isPlaying && videoRef.current) {
-      videoRef.current.pause();
+    if (currentlyPlaying !== id && isPlaying) {
       setIsPlaying(false);
     }
   }, [currentlyPlaying, id, isPlaying]);
 
   const handlePlay = () => {
-    if (!videoRef.current) return;
-    videoRef.current.play();
     setIsPlaying(true);
     setCurrentlyPlaying(id);
   };
@@ -39,7 +37,7 @@ const VideoCard = ({ id, videoSrc, thumbnail, name, role, quote, index, thumbIni
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.5, delay: index * 0.09, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.3, delay: index * 0.04, ease: 'easeOut' }}
       style={{
         borderRadius: '18px',
         overflow: 'hidden',
@@ -53,21 +51,23 @@ const VideoCard = ({ id, videoSrc, thumbnail, name, role, quote, index, thumbIni
       {/* ── Video + Thumbnail area ── */}
       <div style={{ position: 'relative', width: '100%', aspectRatio: '16/10', backgroundColor: '#0a0d14', flexShrink: 0 }}>
 
-        {/* Actual Video — shown only when playing */}
-        <video
-          ref={videoRef}
-          src={videoSrc}
-          style={{
-            position: 'absolute', inset: 0,
-            width: '100%', height: '100%',
-            objectFit: 'contain',
-            backgroundColor: '#0a0d14',
-            display: isPlaying ? 'block' : 'none',
-          }}
-          onEnded={() => setIsPlaying(false)}
-          controls={isPlaying}
-          playsInline
-        />
+        {/* Actual Video — shown and loaded only when playing */}
+        {isPlaying && (
+          <video
+            ref={videoRef}
+            src={videoSrc}
+            autoPlay
+            style={{
+              position: 'absolute', inset: 0,
+              width: '100%', height: '100%',
+              objectFit: 'contain',
+              backgroundColor: '#0a0d14',
+            }}
+            onEnded={() => setIsPlaying(false)}
+            controls
+            playsInline
+          />
+        )}
 
         {/* ── Custom Thumbnail (shown before play) ── */}
         {!isPlaying && (
@@ -233,7 +233,10 @@ const VideoTestimonialsSection = () => {
     { id: 'v2', videoSrc: video2, thumbInitials: 'YS', name: 'Yogita - Sunil and Yogesh', role: 'Family Coaching Client', quote: 'Ghar ka tanaav aur career ke beech balance banana bohot mushkil tha. Jagat sir ke coaching se mujhe aur meri family ko sukoon mila.' },
     { id: 'v3', videoSrc: video3, thumbInitials: 'SC', name: 'A Satisifed client', role: 'Coaching Client', quote: 'Jagat Sir\'s methodology is very practical. Confidence, clarity aur ghar mein sukoon — teeno mili.' },
     { id: 'v4', videoSrc: video4, thumbInitials: 'SC', name: 'A Satisfied client', role: 'Transformation Client', quote: 'Is program ne meri zindagi ka nazariya badal diya. Jagat Sir ke saath kaam karna ek privilege hai.' },
+    { id: 'v5', videoSrc: video5, thumbInitials: 'SC', name: 'A Satisfied client', role: 'Coaching Client', quote: 'Ghar ke tanaav se nikal kar aapsi samajh banana ab aasan lagta hai. Coaching ke baad rishton mein bahut sukoon mila.' },
   ];
+
+
 
   return (
     <section
@@ -253,17 +256,11 @@ const VideoTestimonialsSection = () => {
           viewport={{ once: true }}
           style={{ marginBottom: '40px' }}
         >
-          <span style={{
-            fontSize: '11px', fontWeight: 600, letterSpacing: '0.15em',
-            color: 'var(--emerald)', textTransform: 'uppercase',
-            display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px'
-          }}>
-            <span style={{ width: '20px', height: '1px', background: 'var(--emerald)', display: 'inline-block' }} />
+          <span className="tag">
             Real Stories
-            <span style={{ width: '20px', height: '1px', background: 'var(--emerald)', display: 'inline-block' }} />
           </span>
           <h2 style={{ color: 'var(--silver)', marginBottom: '10px' }}>
-            Unhe suniye jo badal chuke hain
+            Unhe suniye jo <span style={{ color: 'var(--gold-accent)' }}>badal chuke hain</span>
           </h2>
           <p style={{ color: 'var(--slate)', fontSize: '15px', maxWidth: '500px', lineHeight: '1.7' }}>
             Yeh sirf reviews nahi — yeh woh log hain jinki zindagi actually badli is safar ke baad.

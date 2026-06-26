@@ -59,52 +59,9 @@ const HeroSection = ({ triggerPayment }) => {
     triggerPayment();
   };
 
-  // State to drive the interactive 3D background tilt & glow tracker
-  const [bgStyle, setBgStyle] = useState({
-    transform: 'translate(-50%, -50%) rotateX(0deg) rotateY(0deg)',
-    transition: 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)',
-    glowLeft: '50%',
-    glowTop: '40%',
-    glowOpacity: 0.08
-  });
-
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    // Interactive 3D CSS Parallax (tilt background rings based on cursor position)
-    const maxTilt = 15; // Max degree tilt
-    const rotateX = ((centerY - y) / centerY) * maxTilt;
-    const rotateY = ((x - centerX) / centerX) * maxTilt;
-
-    setBgStyle({
-      transform: `translate(-50%, -50%) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
-      transition: 'transform 0.1s ease-out', // Snappy & highly responsive tracking
-      glowLeft: `${(x / rect.width) * 100}%`,
-      glowTop: `${(y / rect.height) * 100}%`,
-      glowOpacity: 0.12 // Increase glow intensity slightly on hover (subtle Teal lift)
-    });
-  };
-
-  const handleMouseLeave = () => {
-    setBgStyle({
-      transform: 'translate(-50%, -50%) rotateX(0deg) rotateY(0deg)',
-      transition: 'transform 0.8s cubic-bezier(0.25, 1, 0.5, 1)', // Smooth return transition
-      glowLeft: '50%',
-      glowTop: '40%',
-      glowOpacity: 0.08
-    });
-  };
-
   return (
     <section
       className="hero-section"
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
       style={{ perspective: '1000px', overflowX: 'hidden' }}
     >
       {/* ── Mobile-first responsive overrides ── */}
@@ -124,6 +81,18 @@ const HeroSection = ({ triggerPayment }) => {
           white-space: normal;
           word-break: break-word;
           text-align: center;
+        }
+        @keyframes float-gentle {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-8px); }
+        }
+        .hero-floating-panel {
+          animation: float-gentle 6s ease-in-out infinite;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 16px;
         }
         @media (max-width: 480px) {
           .hero-h1 {
@@ -148,36 +117,7 @@ const HeroSection = ({ triggerPayment }) => {
           }
         }
       `}</style>
-      {/* 3D Interactive CSS Gyroscope Background (Tilts dynamically to cursor!) */}
-      <div
-        className="gyro-container"
-        style={{
-          transform: bgStyle.transform,
-          transition: bgStyle.transition,
-          transformStyle: 'preserve-3d'
-        }}
-      >
-        <div className="gyro-ring ring-1" />
-        <div className="gyro-ring ring-2" />
-        <div className="gyro-ring ring-3" />
-      </div>
-
-      {/* Interactive Cursor-Following Ambient Backlight Glow */}
-      <div style={{
-        position: 'absolute',
-        top: bgStyle.glowTop,
-        left: bgStyle.glowLeft,
-        transform: 'translate(-50%, -50%)',
-        width: 'min(380px, 80vw)',
-        height: 'min(380px, 80vw)',
-        borderRadius: '50%',
-        background: `radial-gradient(circle, rgba(16, 185, 129, ${bgStyle.glowOpacity * 0.6}) 0%, rgba(6, 182, 212, ${bgStyle.glowOpacity * 0.2}) 45%, transparent 70%)`,
-        zIndex: 2, // Set to 2 to sit on top of the black overlay backdrop
-        pointerEvents: 'none',
-        transition: 'top 0.2s cubic-bezier(0.1, 0.8, 0.3, 1), left 0.2s cubic-bezier(0.1, 0.8, 0.3, 1), background 0.3s ease'
-      }} />
-
-      {/* Zero-Lag CSS Ambient Base Glow */}
+      {/* Zero-Lag CSS Ambient Base Glow (Centered Top) */}
       <div style={{
         position: 'absolute',
         top: 0,
@@ -186,22 +126,38 @@ const HeroSection = ({ triggerPayment }) => {
         bottom: 0,
         zIndex: 0,
         pointerEvents: 'none',
-        background: 'radial-gradient(circle at 50% 30%, rgba(13, 148, 136, 0.05) 0%, rgba(6, 182, 212, 0.02) 40%, transparent 60%)',
+        background: 'radial-gradient(circle at 50% 35%, rgba(16, 185, 129, 0.08) 0%, rgba(6, 182, 212, 0.03) 45%, transparent 70%)',
         animation: 'ambient-breathe 8s ease-in-out infinite',
-        transform: 'translate3d(0,0,0)'
+        transform: 'translate3d(0,0,0)',
+        willChange: 'transform'
       }} />
 
-      {/* Dark gradient overlay */}
-      <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        background: 'radial-gradient(ellipse at center, rgba(26,32,44,0.3) 0%, rgba(26,32,44,0.92) 80%)',
-        zIndex: 1, // Sits on top of the base ambient glow
-        pointerEvents: 'none'
-      }} />
+      {/* Curved SVG S-Curve Separator (Raised Left Cream Pane) */}
+      <svg 
+        className="hero-s-curve" 
+        viewBox="0 0 1000 1000" 
+        preserveAspectRatio="none"
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          zIndex: 1,
+          pointerEvents: 'none'
+        }}
+      >
+        <defs>
+          <filter id="hero-mask-shadow" x="-10%" y="-10%" width="120%" height="120%">
+            <feDropShadow dx="4" dy="0" stdDeviation="12" floodOpacity="0.04" floodColor="#122421" />
+          </filter>
+        </defs>
+        <path 
+          d="M 0,0 L 590,0 C 670,250 490,480 550,720 C 590,880 470,950 470,1000 L 0,1000 Z" 
+          fill="var(--surface)" 
+          filter="url(#hero-mask-shadow)"
+        />
+      </svg>
 
       {/* Bottom fade transition overlay to blend into next section */}
       <div style={{
@@ -218,7 +174,7 @@ const HeroSection = ({ triggerPayment }) => {
       <div className="section-inner hero-content" style={{
         position: 'relative',
         zIndex: 3,
-        maxWidth: '1200px',
+        maxWidth: '1340px',
         width: '100%',
         pointerEvents: 'none',
         paddingLeft: '16px',
@@ -232,24 +188,24 @@ const HeroSection = ({ triggerPayment }) => {
             style={{ 
               color: 'var(--silver)', 
               marginBottom: '20px',
-              fontSize: 'clamp(1.65rem, 3.6vw, 2.45rem)', /* Reduced by 10% to let layout breathe */
-              lineHeight: '1.25'
+              fontSize: 'clamp(2.2rem, 4.2vw, 3.4rem)',
+              lineHeight: '1.2'
             }}
           >
             Career Mein Success Hai.
             <br />
             <span style={{ display: 'block', marginTop: '12px' }}>
-              Ab Ghar Mein Bhi <br className="desktop-only" />Sukoon Wapas Laaiye.
+              Ab Ghar Mein Bhi <br className="desktop-only" /><span style={{ color: 'var(--emerald)' }}>Sukoon Wapas Laaiye.</span>
             </span>
           </h1>
 
           <p 
             className="hero-anim hero-anim-2 hero-sub-text hero-sub-area" 
             style={{ 
-              color: 'rgba(226, 232, 240, 0.9)', /* Increased contrast for readability */
-              fontSize: 'clamp(14.5px, 2vw, 16px)', 
-              margin: '0 0 28px 0', 
-              lineHeight: '1.65'
+              color: 'var(--slate)', 
+              fontSize: 'clamp(16px, 1.8vw, 17.5px)', 
+              margin: '0 0 32px 0', 
+              lineHeight: '1.7'
             }}
           >
             Learn the exact communication framework that has helped 1,500+ families reduce daily arguments, improve understanding, and restore peace at home in just 30 days.
@@ -257,13 +213,13 @@ const HeroSection = ({ triggerPayment }) => {
 
           {/* Context Label above Trust Hierarchy */}
           <div className="hero-anim hero-anim-3 hero-trust-label-area" style={{ 
-            fontSize: '13px', 
-            fontWeight: 600, 
+            fontSize: '14px', 
+            fontWeight: 700, 
             letterSpacing: '0.04em', 
-            color: '#10b981', 
-            opacity: 0.85, 
+            color: 'var(--emerald)', 
+            opacity: 0.95, 
             textTransform: 'uppercase',
-            marginBottom: '10px' 
+            marginBottom: '12px' 
           }}>
             Trusted By 1,500+ Families Across India
           </div>
@@ -276,24 +232,39 @@ const HeroSection = ({ triggerPayment }) => {
               { num: "200+", label: "Reviews" },
               { num: "15+", label: "Years" }
             ].map((stat, i) => (
-              <div key={i} className="hero-trust-card" style={stat.highlight ? {
-                border: '1px solid rgba(16, 185, 129, 0.35)',
-                background: 'rgba(16, 185, 129, 0.04)',
-                boxShadow: '0 0 16px rgba(16, 185, 129, 0.05)'
-              } : {}}>
+              <motion.div 
+                key={i} 
+                className="hero-trust-card" 
+                whileHover={{ 
+                  y: -3, 
+                  scale: 1.03, 
+                  borderColor: stat.highlight ? 'rgba(16, 185, 129, 0.55)' : 'rgba(18, 36, 33, 0.18)', 
+                  background: stat.highlight ? 'rgba(16, 185, 129, 0.08)' : 'rgba(18, 36, 33, 0.04)', 
+                  boxShadow: stat.highlight ? '0 8px 24px rgba(16, 185, 129, 0.08)' : '0 8px 24px rgba(18, 36, 33, 0.04)',
+                  transition: { duration: 0.12, ease: "easeOut" }
+                }}
+                style={stat.highlight ? {
+                  border: '1px solid rgba(16, 185, 129, 0.35)',
+                  background: 'rgba(16, 185, 129, 0.04)',
+                  boxShadow: '0 0 16px rgba(16, 185, 129, 0.05)'
+                } : {
+                  border: '1px solid var(--border)',
+                  background: 'rgba(18, 36, 33, 0.02)'
+                }}
+              >
                 <div style={{ 
-                  fontSize: stat.highlight ? '21px' : '18.5px', 
+                  fontSize: stat.highlight ? '26px' : '23px', 
                   fontWeight: 800, 
-                  color: stat.highlight ? '#10b981' : '#ffffff', 
+                  color: stat.highlight ? 'var(--emerald)' : 'var(--silver)', 
                   lineHeight: 1 
                 }}>{stat.num}</div>
                 <div style={{ 
-                  fontSize: '12px', 
-                  color: stat.highlight ? 'rgba(255, 255, 255, 0.75)' : 'rgba(255, 255, 255, 0.65)', 
-                  fontWeight: 500, 
+                  fontSize: '13.5px', 
+                  color: stat.highlight ? 'rgba(18, 36, 33, 0.85)' : 'var(--slate)', 
+                  fontWeight: 600, 
                   lineHeight: 1.2 
                 }}>{stat.label}</div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
@@ -301,15 +272,15 @@ const HeroSection = ({ triggerPayment }) => {
           <div className="hero-anim hero-anim-4 hero-cta-wrapper hero-cta-area" style={{ 
             display: 'flex', 
             alignItems: 'center',
-            gap: '8px', 
+            gap: '12px', 
             flexWrap: 'wrap'
           }}>
             <button 
               className="btn-cta btn-cta-pulse btn-shimmer btn-pill" 
               style={{ 
-                padding: '0 32px', 
-                fontSize: '13.5px',
-                height: '48px',
+                padding: '0 40px', 
+                fontSize: '15px',
+                height: '54px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -322,17 +293,17 @@ const HeroSection = ({ triggerPayment }) => {
               }}
               onClick={handleCTAClick}
             >
-              Join Founding Batch
+              Connect with Jagat's Team
             </button>
             <button
               style={{
                 background: 'transparent',
-                border: '1px solid rgba(255, 255, 255, 0.25)',
-                color: 'rgba(255, 255, 255, 0.9)',
+                border: '1px solid rgba(18, 36, 33, 0.16)',
+                color: 'var(--silver)',
                 borderRadius: '100px',
-                padding: '0 24px',
-                fontSize: '13.5px',
-                height: '48px',
+                padding: '0 32px',
+                fontSize: '15px',
+                height: '54px',
                 fontWeight: 600,
                 letterSpacing: '0.02em',
                 cursor: 'pointer',
@@ -344,15 +315,15 @@ const HeroSection = ({ triggerPayment }) => {
                 gap: '8px'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.4)';
-                e.currentTarget.style.color = '#fff';
+                e.currentTarget.style.background = 'rgba(18, 36, 33, 0.04)';
+                e.currentTarget.style.borderColor = 'rgba(18, 36, 33, 0.3)';
+                e.currentTarget.style.color = 'var(--silver)';
                 e.currentTarget.style.transform = 'scale(1.02)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.background = 'transparent';
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.25)';
-                e.currentTarget.style.color = 'rgba(255, 255, 255, 0.9)';
+                e.currentTarget.style.borderColor = 'rgba(18, 36, 33, 0.16)';
+                e.currentTarget.style.color = 'var(--silver)';
                 e.currentTarget.style.transform = 'scale(1)';
               }}
               onClick={openVideoModal}
@@ -373,71 +344,96 @@ const HeroSection = ({ triggerPayment }) => {
               pointerEvents: 'auto'
             }}
           >
-            <div 
-              onClick={openVideoModal}
-              className="video-thumbnail-container"
-              style={{
-                width: '100%',
-                maxWidth: '520px', /* Enlarge video card slightly */
-                aspectRatio: '16/9',
-                background: `url(${VSL_THUMBNAIL}) center/cover no-repeat`,
-                borderRadius: '16px',
-                position: 'relative',
-                overflow: 'hidden',
-                boxShadow: '0 0 40px rgba(0,0,0,0.25), 0 0 24px rgba(16,185,129,0.06)', /* Subtle glow behind video for connection */
-                border: '1px solid rgba(255,255,255,0.08)',
-                cursor: 'pointer',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}
-            >
-              {/* Backdrop dark tint with top-down fade gradient to integrate overlay text */}
-              <div style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.45) 0%, transparent 40%, rgba(0, 0, 0, 0.45) 100%)',
-                zIndex: 1
-              }} />
+            <div className="hero-floating-panel">
+              <div 
+                onClick={openVideoModal}
+                className="video-thumbnail-container"
+                style={{
+                  width: '100%',
+                  maxWidth: '580px', /* Enlarge video card slightly */
+                  aspectRatio: '16/9',
+                  background: `url(${VSL_THUMBNAIL}) center/cover no-repeat`,
+                  borderRadius: '16px',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  boxShadow: '0 0 40px rgba(0,0,0,0.25), 0 0 24px rgba(16,185,129,0.06)', /* Subtle glow behind video for connection */
+                  border: '1px solid rgba(255,255,255,0.12)',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              >
+                {/* Backdrop dark tint with top-down fade gradient to integrate overlay text */}
+                <div style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.45) 0%, transparent 40%, rgba(0, 0, 0, 0.45) 100%)',
+                  zIndex: 1
+                }} />
 
-              {/* VSL Text Overlay with higher curiosity */}
-              <div style={{
-                position: 'absolute',
-                top: '28px',
-                left: '20px',
-                right: '20px',
-                zIndex: 2,
-                textAlign: 'center',
-                pointerEvents: 'none'
-              }}>
-                <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'rgba(255,255,255,0.7)', fontWeight: 600, marginBottom: '4px' }}>Watch Jagat Turkiya Explain</div>
-                <div style={{ fontSize: '16px', fontWeight: 700, color: '#fff', lineHeight: '1.4' }}>Why Families Keep Fighting<br />(Even When They Love Each Other)</div>
+                {/* VSL Text Overlay with higher curiosity */}
+                <div 
+                  className="hero-vsl-text"
+                  style={{
+                    position: 'absolute',
+                    top: '28px',
+                    left: '20px',
+                    right: '20px',
+                    zIndex: 2,
+                    textAlign: 'center',
+                    pointerEvents: 'none'
+                  }}
+                >
+                  <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'rgba(255,255,255,0.7)', fontWeight: 600, marginBottom: '4px' }}>Watch Jagat Turkiya Explain</div>
+                  <div style={{ fontSize: '16px', fontWeight: 700, color: '#fff', lineHeight: '1.4' }}>Why Families Keep Fighting<br />(Even When They Love Each Other)</div>
+                </div>
+
+                {/* Glowing play icon blob */}
+                <div className="play-icon-blob">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="white" style={{ marginLeft: '2px' }}>
+                    <polygon points="8,5 19,12 8,19" />
+                  </svg>
+                </div>
               </div>
 
-              {/* Glowing play icon blob */}
-              <div className="play-icon-blob">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="white" style={{ marginLeft: '2px' }}>
-                  <polygon points="8,5 19,12 8,19" />
-                </svg>
-              </div>
-            </div>
-
-            {/* Small, elegant founder info block above the fold */}
-            <div style={{ 
-              textAlign: 'center', 
-              fontFamily: 'Inter, system-ui, sans-serif',
-              padding: '0 var(--space-1)',
-              marginTop: '4px'
-            }}>
-              <div style={{ fontSize: '15.5px', fontWeight: 700, color: '#ffffff', letterSpacing: '0.02em' }}>Jagat Turkiya</div>
-              <div style={{ fontSize: '12.5px', color: '#10b981', fontWeight: 600, marginTop: '2.5px', letterSpacing: '0.04em' }}>Strategic Family Relationship Coach</div>
-              <div style={{ fontSize: '11.5px', color: 'rgba(255, 255, 255, 0.55)', marginTop: '2.5px', fontWeight: 500 }}>
-                15-Year Family Care Expert <span style={{ opacity: 0.3, margin: '0 6px' }}>•</span> Author of 4 Books
-              </div>
+              {/* Small, elegant founder info block above the fold */}
+              <motion.div 
+                whileHover={{ 
+                  y: -3, 
+                  scale: 1.01, 
+                  borderColor: 'rgba(16, 185, 129, 0.25)', 
+                  boxShadow: '0 16px 40px rgba(16, 185, 129, 0.08)', 
+                  background: 'rgba(255, 255, 255, 0.75)',
+                  transition: { duration: 0.12, ease: "easeOut" }
+                }}
+                transition={{ duration: 0.12, ease: 'easeOut' }}
+                style={{ 
+                  textAlign: 'center', 
+                  fontFamily: 'Inter, system-ui, sans-serif',
+                  padding: '16px 24px',
+                  marginTop: '4px',
+                  background: 'rgba(255, 255, 255, 0.65)',
+                  border: '1px solid rgba(18, 36, 33, 0.08)',
+                  backdropFilter: 'blur(10px)',
+                  WebkitBackdropFilter: 'blur(10px)',
+                  borderRadius: '16px',
+                  boxShadow: '0 12px 32px rgba(18, 36, 33, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.6)',
+                  width: '100%',
+                  maxWidth: '440px',
+                  cursor: 'default'
+                }}
+              >
+                <div style={{ fontSize: '15.5px', fontWeight: 700, color: 'var(--silver)', letterSpacing: '0.02em' }}>Jagat Turkiya</div>
+                <div style={{ fontSize: '12.5px', color: '#10b981', fontWeight: 600, marginTop: '4px', letterSpacing: '0.04em' }}>Strategic Family Relationship Coach</div>
+                <div style={{ fontSize: '11.5px', color: 'var(--slate)', marginTop: '4px', fontWeight: 500 }}>
+                  15-Year Family Care Expert <span style={{ opacity: 0.3, margin: '0 6px' }}>•</span> Author of 4 Books
+                </div>
+              </motion.div>
             </div>
           </div>
 

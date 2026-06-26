@@ -30,7 +30,7 @@ const ProblemSection = () => {
   ];
 
   return (
-    <section id="problem" className="section" style={{ background: 'var(--surface)', color: 'var(--silver)' }}>
+    <section id="problem" className="section" style={{ background: '#0D1B18', color: '#E2E8F0' }}>
       <div className="section-inner">
         <div style={{ textAlign: 'center', marginBottom: 'var(--space-10)', position: 'relative' }}>
           <div style={{ 
@@ -39,18 +39,19 @@ const ProblemSection = () => {
             left: 0, 
             right: 0, 
             height: '1px', 
-            backgroundColor: 'var(--border)', 
+            backgroundColor: 'rgba(255, 255, 255, 0.1)', 
             zIndex: 0 
           }}></div>
           <span style={{ 
-            backgroundColor: 'var(--surface)', 
+            backgroundColor: '#0D1B18', 
             padding: '0 var(--space-3)', 
             position: 'relative', 
             zIndex: 1, 
-            color: '#fff',
+            color: 'var(--emerald)',
             fontSize: '14px',
             textTransform: 'uppercase',
-            letterSpacing: '0.2em'
+            letterSpacing: '0.2em',
+            fontWeight: 700
           }}>
             Kya aap khud ko yahan paate hain?
           </span>
@@ -66,51 +67,62 @@ const ProblemSection = () => {
           {problems.map((prob, index) => (
             <motion.div 
               key={index}
-              className="problem-card glass-glow-hover"
+              className="problem-card"
               initial="hidden"
               whileInView="visible"
               whileHover="hover"
               viewport={{ once: true }}
               variants={{
                 hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0, transition: { delay: index * 0.08, duration: 0.5 } },
-                hover: { y: -4, borderColor: 'rgba(148,163,184,0.3)', boxShadow: '0 8px 32px rgba(0,0,0,0.2)' }
+                visible: { opacity: 1, y: 0, transition: { delay: index * 0.04, duration: 0.3 } },
+                hover: { 
+                  y: -4, 
+                  borderColor: 'rgba(16, 185, 129, 0.4)', 
+                  boxShadow: '0 8px 32px rgba(16, 185, 129, 0.12)',
+                  transition: { duration: 0.12, ease: "easeOut" }
+                }
               }}
               style={{ 
                 display: 'flex', 
                 gap: 'var(--space-3)', 
                 padding: 'var(--space-4)',
-                backgroundColor: 'var(--surface-raised)',
-                borderRadius: '12px',
+                backgroundColor: 'rgba(255, 255, 255, 0.02)',
+                borderRadius: '16px',
                 alignItems: 'flex-start',
-                border: '1px solid var(--border)',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
                 cursor: 'default',
-                transition: 'box-shadow 0.3s ease'
+                transition: 'box-shadow 0.12s ease, border-color 0.12s, background-color 0.12s'
               }}
             >
               <motion.div 
                 variants={{
-                  hover: { scale: 1.1, backgroundColor: 'rgba(16,185,129,0.15)' }
+                  hover: { 
+                    scale: 1.1, 
+                    backgroundColor: 'rgba(16,185,129,0.2)', 
+                    color: '#ffffff',
+                    transition: { duration: 0.12, ease: "easeOut" }
+                  }
                 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
+                transition={{ duration: 0.12, ease: "easeOut" }}
                 style={{ 
-                  backgroundColor: 'rgba(148,163,184,0.12)', 
-                  color: '#fff', 
+                  backgroundColor: 'rgba(255, 255, 255, 0.05)', 
+                  color: 'var(--emerald)', 
                   padding: '12px', 
                   borderRadius: '50%',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  flexShrink: 0
+                  flexShrink: 0,
+                  transition: 'background-color 0.12s, color 0.12s'
                 }}>
                 {prob.icon}
               </motion.div>
               <motion.p 
                 variants={{
-                  hover: { opacity: 0.75, color: '#cbd5e1' }
+                  hover: { color: '#ffffff' }
                 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
-                style={{ margin: 0, color: '#fff', fontSize: '14.5px', lineHeight: '1.7', fontWeight: 400 }}
+                transition={{ duration: 0.12, ease: "easeOut" }}
+                style={{ margin: 0, color: '#CBD5E1', fontSize: '14.5px', lineHeight: '1.7', fontWeight: 400 }}
               >
                 {prob.text}
               </motion.p>

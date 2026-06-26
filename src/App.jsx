@@ -2,15 +2,16 @@ import { lazy, Suspense, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
+import ProblemSection from './components/ProblemSection';
+import AboutCoachSection from './components/AboutCoachSection';
+import InlineReview from './components/InlineReview';
 import './App.css';
 
-const ProblemSection = lazy(() => import('./components/ProblemSection'));
 const AgitateSection = lazy(() => import('./components/AgitateSection'));
 const CTABanner = lazy(() => import('./components/CTABanner'));
 const MechanismSection = lazy(() => import('./components/MechanismSection'));
 const TransformationSection = lazy(() => import('./components/TransformationSection'));
 const ProgramBreakdownSection = lazy(() => import('./components/ProgramBreakdownSection'));
-const AboutCoachSection = lazy(() => import('./components/AboutCoachSection'));
 const AchievementsSection = lazy(() => import('./components/AchievementsSection'));
 const VideoTestimonialsSection = lazy(() => import('./components/VideoTestimonialsSection'));
 const TextTestimonialsSection = lazy(() => import('./components/TextTestimonialsSection'));
@@ -18,7 +19,6 @@ const PricingSection = lazy(() => import('./components/PricingSection'));
 const FAQSection = lazy(() => import('./components/FAQSection'));
 const ContactSection = lazy(() => import('./components/ContactSection'));
 const Footer = lazy(() => import('./components/Footer'));
-const InlineReview = lazy(() => import('./components/InlineReview'));
 const CaseStudiesSection = lazy(() => import('./components/CaseStudiesSection'));
 
 
@@ -77,69 +77,30 @@ function App() {
   }, []);
 
   const triggerPayment = () => {
-    // Check if user has already submitted the contact form and it hasn't expired
-    const hasFilledForm = checkContactFormExpiry();
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      const targetY = contactSection.getBoundingClientRect().top + window.scrollY - 80; // 80px offset for fixed header
+      const startY = window.scrollY;
+      const distance = targetY - startY;
+      const duration = 500; // Snappy 500ms scroll
+      let startTime = null;
 
-    if (!hasFilledForm) {
-      const contactSection = document.getElementById('contact');
-      if (contactSection) {
-        // Custom smooth scroll with easing — much smoother than scrollIntoView
-        const startY = window.scrollY;
-        const targetY = contactSection.getBoundingClientRect().top + window.scrollY - 80; // 80px offset for fixed header
-        const distance = targetY - startY;
-        const duration = 900; // ms
-        let startTime = null;
-
-        // Ease-in-out cubic
-        const ease = (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-
-        const step = (timestamp) => {
-          if (!startTime) startTime = timestamp;
-          const elapsed = timestamp - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-          window.scrollTo(0, startY + distance * ease(progress));
-          if (progress < 1) requestAnimationFrame(step);
-          else setTimeout(() => setShowContactPrompt(true), 100); // banner fades in after scroll lands
-        };
-
-        requestAnimationFrame(step);
-      } else {
-        setShowContactPrompt(true);
-      }
-      return;
-    }
-
-    // Form already filled — fire pixel and go to Razorpay
-    if (window.fbq) {
-      window.fbq('track', 'InitiateCheckout');
-    }
-
-    const contactInfoStr = localStorage.getItem('lead_contact_info');
-    if (contactInfoStr) {
-      try {
-        const contactInfo = JSON.parse(contactInfoStr);
-        const ABANDONED_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/UV9lQH2lpnsX6mPHlFQR/webhook-trigger/286bbb9a-23b1-4837-9342-0238410f7633";
-        if (ABANDONED_WEBHOOK_URL && ABANDONED_WEBHOOK_URL !== "PLACEHOLDER_ABANDONED_WEBHOOK_URL") {
-          const params = new URLSearchParams();
-          params.append('full_name', contactInfo.name || '');
-          params.append('email', contactInfo.email || '');
-          params.append('phone', contactInfo.phone || '');
-          params.append('city', contactInfo.city || '');
-          params.append('source', 'apkacoach.com');
-          params.append('event', 'payment_started');
-          fetch(ABANDONED_WEBHOOK_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: params.toString()
-          }).catch(err => console.error('Abandoned checkout track failed:', err));
+      const animateScroll = (currentTime) => {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        
+        // easeOutQuad curve: snappy start, smooth finish
+        const progress = Math.min(timeElapsed / duration, 1);
+        const easeProgress = progress * (2 - progress); 
+        
+        window.scrollTo(0, startY + distance * easeProgress);
+        
+        if (timeElapsed < duration) {
+          requestAnimationFrame(animateScroll);
         }
-      } catch (e) {
-        console.error('Failed to parse contact info:', e);
-      }
+      };
+      requestAnimationFrame(animateScroll);
     }
-
-    window.location.href = "https://rzp.io/rzp/kmJwGTB";
   };
 
   return (
@@ -243,7 +204,7 @@ function App() {
                 textAlign: 'left'
               }}>
                 <p style={{ 
-                  color: '#fca5a5',
+                  color: '#b91c1c',
                   fontSize: '13px', 
                   margin: 0, 
                   lineHeight: '1.5',
@@ -273,60 +234,87 @@ function App() {
       <Header triggerPayment={triggerPayment} />
       <main>
         <HeroSection triggerPayment={triggerPayment} />
+        
+        {/* Above-the-fold content loads instantly with the main bundle */}
+        <ProblemSection />
+        <InlineReview
+          quote="Career set tha. Ghar aate hi wahi tanaav... Lagta tha balance banana impossible hai. Jagat sir ki coaching ke baad pehli baar ghar mein sukoon aur khushi mehsus hui."
+          author="Yogita"
+          bgGradient="var(--surface)"
+        />
+
+        <AboutCoachSection />
+
+        {/* Defer remaining sections in independent Suspense blocks */}
         <Suspense fallback={<SectionFallback />}>
-          <ProblemSection />
-          <InlineReview
-            quote="Career set tha. Ghar aate hi wahi tanaav... Lagta tha balance banana impossible hai. Jagat sir ki coaching ke baad pehli baar ghar mein sukoon aur khushi mehsus hui."
-            author="Yogita"
-            bgGradient="linear-gradient(to bottom, var(--surface) 0%, var(--surface-deep) 100%)"
-          />
-
-          <AboutCoachSection />
-
           <AchievementsSection />
+        </Suspense>
 
+        <Suspense fallback={<SectionFallback />}>
           <CTABanner 
             text="1,500+ families ne yeh kiya. Ab aapki baari hai."
-            buttonText="Apply Now →"
+            buttonText="Request Callback →"
             triggerPayment={triggerPayment}
-            bgColor="linear-gradient(to bottom, var(--surface-deep) 0%, var(--surface) 100%)"
+            bgColor="var(--surface)"
           />
+        </Suspense>
 
+        <Suspense fallback={<SectionFallback />}>
           <AgitateSection />
+        </Suspense>
 
+        <Suspense fallback={<SectionFallback />}>
           <MechanismSection />
           <InlineReview
             quote="Mujhe laga tha ki rishton ko sudharna bohot complicated hoga. Jagat sir ke 3 steps itne practical hain ki pehli hi session se ghar ka mahaul instantly halka ho gaya."
             author="Vikram Singh"
-            bgGradient="linear-gradient(to bottom, var(--surface) 0%, var(--surface-deep) 100%)"
+            bgGradient="var(--surface)"
           />
+        </Suspense>
 
+        <Suspense fallback={<SectionFallback />}>
           <CaseStudiesSection />
+        </Suspense>
 
+        <Suspense fallback={<SectionFallback />}>
           <TransformationSection />
+        </Suspense>
 
+        <Suspense fallback={<SectionFallback />}>
           <CTABanner 
             text="30 din mein aapke ghar ka mahaul badal sakta hai."
-            buttonText="Apply Now →"
-            triggerPayment={triggerPayment}
-            bgColor="var(--surface-deep)"
-          />
-
-          <ProgramBreakdownSection />
-
-          <VideoTestimonialsSection />
-
-          <PricingSection triggerPayment={triggerPayment} />
-
-          <TextTestimonialsSection />
-
-          <CTABanner 
-            text="Ek naye safar ki shuruaat karein — sukoon aur samajh ke liye."
-            buttonText="Apply Now →"
+            buttonText="Connect with Us →"
             triggerPayment={triggerPayment}
             bgColor="var(--surface)"
           />
+        </Suspense>
 
+        <Suspense fallback={<SectionFallback />}>
+          <ProgramBreakdownSection />
+        </Suspense>
+
+        <Suspense fallback={<SectionFallback />}>
+          <VideoTestimonialsSection />
+        </Suspense>
+
+        <Suspense fallback={<SectionFallback />}>
+          <PricingSection triggerPayment={triggerPayment} />
+        </Suspense>
+
+        <Suspense fallback={<SectionFallback />}>
+          <TextTestimonialsSection />
+        </Suspense>
+
+        <Suspense fallback={<SectionFallback />}>
+          <CTABanner 
+            text="Ek naye safar ki shuruaat karein — sukoon aur samajh ke liye."
+            buttonText="Talk to Jagat's Team →"
+            triggerPayment={triggerPayment}
+            bgColor="var(--surface)"
+          />
+        </Suspense>
+
+        <Suspense fallback={<SectionFallback />}>
           <FAQSection />
           <ContactSection
             showPrompt={showContactPrompt}

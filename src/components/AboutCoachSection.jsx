@@ -56,7 +56,7 @@ const AboutCoachSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <span className="tag">The Mentor</span>
+            <span className="tag">About</span>
             <h2 style={{ marginBottom: 'var(--space-1)' }}>Jagat Turkiya</h2>
             
             {/* Role badge */}
@@ -93,7 +93,8 @@ const AboutCoachSection = () => {
                   whileHover={{ 
                     borderColor: 'var(--emerald)', 
                     color: 'var(--emerald)',
-                    scale: 1.05
+                    scale: 1.05,
+                    transition: { duration: 0.18, ease: "easeOut" }
                   }}
                   style={{
                     padding: '8px 16px',
@@ -104,7 +105,8 @@ const AboutCoachSection = () => {
                     color: 'var(--silver)',
                     letterSpacing: '0.04em',
                     textTransform: 'uppercase',
-                    cursor: 'default'
+                    cursor: 'default',
+                    transition: 'border-color 0.18s, color 0.18s'
                   }}
                 >
                   {tag}

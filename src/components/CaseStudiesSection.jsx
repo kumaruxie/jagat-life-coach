@@ -33,17 +33,15 @@ const CaseStudiesSection = () => {
   ];
 
   return (
-    <section id="case-studies" className="section" style={{ background: 'linear-gradient(to bottom, var(--surface-deep) 0%, var(--surface) 80px, var(--surface) calc(100% - 80px), var(--surface-deep) 100%)', color: 'var(--silver)' }}>
+    <section id="case-studies" className="section" style={{ background: 'var(--surface)', color: 'var(--silver)' }}>
       <div className="section-inner">
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: 'var(--space-8)' }}>
-          <span className="tag" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
-            <span style={{ width: '20px', height: '2px', backgroundColor: 'var(--emerald)', display: 'inline-block' }}></span>
+          <span className="tag">
             Real Case Studies
-            <span style={{ width: '20px', height: '2px', backgroundColor: 'var(--emerald)', display: 'inline-block' }}></span>
           </span>
           <h2 style={{ marginBottom: '16px' }}>
-            Kahaniyan Jo Sukoon Aur Badlaav Sabit Karti Hain
+            Kahaniyan Jo <span style={{ color: 'var(--emerald)' }}>Sukoon Aur Badlaav</span> Sabit Karti Hain
           </h2>
           <p style={{ color: 'var(--slate)', fontSize: '15px', maxWidth: '600px', margin: '0 auto', lineHeight: '1.7' }}>
             Yeh sirf testimonials nahi hain. Dekhiye kaise humare structured system ne in logon ki zindagi ko badla:
@@ -64,11 +62,12 @@ const CaseStudiesSection = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
-              transition={{ delay: index * 0.15, duration: 0.6 }}
+              transition={{ delay: index * 0.04, duration: 0.3 }}
               whileHover={{ 
                 y: -6,
                 borderColor: `${item.color}35`,
-                boxShadow: `0 16px 40px ${item.color}12, 0 0 0 1px ${item.color}15`
+                boxShadow: `0 16px 40px ${item.color}12, 0 0 0 1px ${item.color}15`,
+                transition: { duration: 0.12, ease: "easeOut" }
               }}
               style={{
                 backgroundColor: 'var(--surface-raised)',
@@ -79,7 +78,7 @@ const CaseStudiesSection = () => {
                 flexDirection: 'column',
                 gap: '24px',
                 cursor: 'default',
-                transition: 'border-color 0.3s, box-shadow 0.3s, transform 0.3s'
+                transition: 'border-color 0.12s, box-shadow 0.12s, transform 0.12s'
               }}
             >
               {/* Card Header: Icon + Name */}

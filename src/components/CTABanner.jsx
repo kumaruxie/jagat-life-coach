@@ -6,7 +6,7 @@ const CTABanner = ({ text, buttonText = "Secure Your Spot", triggerPayment, bgCo
       initial={{ opacity: 0, y: 15 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.3 }}
       style={{
         padding: 'var(--space-4) var(--space-2)',
         display: 'flex',
@@ -19,14 +19,14 @@ const CTABanner = ({ text, buttonText = "Secure Your Spot", triggerPayment, bgCo
       <div className="cta-banner-card" style={{
         maxWidth: '800px',
         width: '100%',
-        backgroundColor: 'rgba(35, 43, 59, 0.25)', 
-        border: '1px solid rgba(255, 255, 255, 0.05)',
+        backgroundColor: 'rgba(255, 255, 255, 0.8)', 
+        border: '1px solid var(--border)',
         borderRadius: '24px',
         padding: 'var(--space-6) var(--space-4)',
         textAlign: 'center',
         position: 'relative',
         overflow: 'hidden',
-        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.25)',
+        boxShadow: '0 20px 40px rgba(18, 36, 33, 0.03), 0 1px 3px rgba(18, 36, 33, 0.01)',
         backdropFilter: 'blur(16px)',
         WebkitBackdropFilter: 'blur(16px)'
       }}>
@@ -38,7 +38,7 @@ const CTABanner = ({ text, buttonText = "Secure Your Spot", triggerPayment, bgCo
           transform: 'translate(-50%, -50%)',
           width: '350px',
           height: '350px',
-          background: 'radial-gradient(circle, rgba(16,185,129,0.06) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(16,185,129,0.03) 0%, transparent 70%)',
           pointerEvents: 'none',
           zIndex: 1
         }} />
@@ -63,7 +63,7 @@ const CTABanner = ({ text, buttonText = "Secure Your Spot", triggerPayment, bgCo
           <motion.button
             className="btn-cta btn-shimmer btn-pill"
             onClick={() => triggerPayment()}
-            whileHover={{ scale: 1.02, translateY: -2 }}
+            whileHover={{ scale: 1.02, translateY: -2, transition: { duration: 0.12, ease: "easeOut" } }}
             whileTap={{ scale: 0.98 }}
             style={{
               padding: '14px 32px',
