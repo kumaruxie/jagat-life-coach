@@ -26,7 +26,8 @@ const AboutCoachSection = () => {
                 alt="Jagat Turkiya - Life Strategic Family Coach and Mind Hacker"
                 width={600}
                 height={800}
-                loading="lazy"
+                loading="eager"
+                decoding="async"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 10%' }}
               />
             </div>

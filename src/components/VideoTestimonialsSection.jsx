@@ -1,11 +1,14 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import video1 from '../assets/ajit_coach.mp4';
-import video2 from '../assets/yogita_sunil_yogesh.mp4';
-import video3 from '../assets/satisfied_client_1.mp4';
-import video4 from '../assets/satisfied_client_2.mp4';
-// import video5 from '../assets/20260525_163927.mp4';
 
+// Videos served from /public for proper HTTP Range streaming on GitHub Pages
+// Static Vite imports bundle asset URLs into JS and prevent true streaming
+const BASE = import.meta.env.BASE_URL;
+const video1 = `${BASE}ajit_coach.mp4`;
+const video2 = `${BASE}yogita_sunil_yogesh.mp4`;
+const video3 = `${BASE}satisfied_client_1.mp4`;
+const video4 = `${BASE}satisfied_client_2.mp4`;
+// const video5 = `${BASE}20260525_163927.mp4`; // temporarily removed — re-add when compressed
 
 /* ── Thumbnail colours per card ── */
 const THUMB_GRADIENTS = [
@@ -51,12 +54,13 @@ const VideoCard = ({ id, videoSrc, thumbnail, name, role, quote, index, thumbIni
       {/* ── Video + Thumbnail area ── */}
       <div style={{ position: 'relative', width: '100%', aspectRatio: '16/10', backgroundColor: '#0a0d14', flexShrink: 0 }}>
 
-        {/* Actual Video — shown and loaded only when playing */}
+        {/* Actual Video — rendered only when user clicks play, preload=none prevents all buffering */}
         {isPlaying && (
           <video
             ref={videoRef}
             src={videoSrc}
             autoPlay
+            preload="none"
             style={{
               position: 'absolute', inset: 0,
               width: '100%', height: '100%',
@@ -85,7 +89,7 @@ const VideoCard = ({ id, videoSrc, thumbnail, name, role, quote, index, thumbIni
               userSelect: 'none',
             }}
           >
-            {/* Dark glass overlay tint for image thumbnails to ensure high contrast and text readability */}
+            {/* Dark glass overlay tint for image thumbnails */}
             {thumbnail && (
               <div style={{
                 position: 'absolute', inset: 0,
@@ -95,7 +99,7 @@ const VideoCard = ({ id, videoSrc, thumbnail, name, role, quote, index, thumbIni
               }} />
             )}
 
-            {/* Decorative rings (hidden if custom thumbnail is used to keep it perfectly clean) */}
+            {/* Decorative rings (hidden if custom thumbnail is used) */}
             {!thumbnail && (
               <>
                 <div style={{
@@ -119,7 +123,7 @@ const VideoCard = ({ id, videoSrc, thumbnail, name, role, quote, index, thumbIni
               </>
             )}
 
-            {/* Avatar initial (shown only if no custom thumbnail to maintain clean design) */}
+            {/* Avatar initial */}
             {!thumbnail && (
               <div style={{
                 width: '52px', height: '52px',
@@ -135,7 +139,7 @@ const VideoCard = ({ id, videoSrc, thumbnail, name, role, quote, index, thumbIni
               </div>
             )}
 
-            {/* Name and Role (shown only if no custom thumbnail to maintain clean design) */}
+            {/* Name and Role */}
             {!thumbnail && (
               <div style={{
                 zIndex: 1, textAlign: 'center', padding: '0 16px',
@@ -231,12 +235,10 @@ const VideoTestimonialsSection = () => {
   const videos = [
     { id: 'v1', videoSrc: video1, thumbInitials: 'AC', name: 'Ajit - A coach', role: 'Coaching Client', quote: 'A truly life-changing experience — my mindset and clarity have completely shifted.' },
     { id: 'v2', videoSrc: video2, thumbInitials: 'YS', name: 'Yogita - Sunil and Yogesh', role: 'Family Coaching Client', quote: 'Ghar ka tanaav aur career ke beech balance banana bohot mushkil tha. Jagat sir ke coaching se mujhe aur meri family ko sukoon mila.' },
-    { id: 'v3', videoSrc: video3, thumbInitials: 'SC', name: 'A Satisifed client', role: 'Coaching Client', quote: 'Jagat Sir\'s methodology is very practical. Confidence, clarity aur ghar mein sukoon — teeno mili.' },
+    { id: 'v3', videoSrc: video3, thumbInitials: 'SC', name: 'A Satisfied client', role: 'Coaching Client', quote: 'Jagat Sir\'s methodology is very practical. Confidence, clarity aur ghar mein sukoon — teeno mili.' },
     { id: 'v4', videoSrc: video4, thumbInitials: 'SC', name: 'A Satisfied client', role: 'Transformation Client', quote: 'Is program ne meri zindagi ka nazariya badal diya. Jagat Sir ke saath kaam karna ek privilege hai.' },
     // { id: 'v5', videoSrc: video5, thumbInitials: 'SC', name: 'A Satisfied client', role: 'Coaching Client', quote: 'Ghar ke tanaav se nikal kar aapsi samajh banana ab aasan lagta hai. Coaching ke baad rishton mein bahut sukoon mila.' },
   ];
-
-
 
   return (
     <section
@@ -267,7 +269,7 @@ const VideoTestimonialsSection = () => {
           </p>
         </motion.div>
 
-        {/* ─── 2×2 Grid — always 2 columns on desktop, 1 on mobile ─── */}
+        {/* ─── Grid ─── */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(2, 1fr)',
