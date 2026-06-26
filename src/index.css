@@ -75,10 +75,10 @@
   --surface-deep: #F1EFE9;
   --silver: #102B27;
   --slate: #5C6661;
-  --emerald: #10b981;
+  --emerald: #00A884;
   --border: rgba(18, 36, 33, 0.08);
   --border-accent: #065f46;
-  --gold-accent: #10b981;
+  --gold-accent: #00A884;
 
   /* Spacing System (8pt desktop default) */
   --space-1: 8px;
@@ -1049,7 +1049,9 @@ button:active .video-play-btn-wrapper {
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
   box-shadow: 0 8px 32px rgba(16, 185, 129, 0.15) !important;
   transition: background-color 0.18s, border-color 0.18s, box-shadow 0.18s !important;
-  margin-top: 50px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* Subtle play button pulse animation */
@@ -1104,19 +1106,21 @@ button:active .video-play-btn-wrapper {
 
 @media (max-width: 992px) {
   .hero-s-curve {
-    display: none; /* Hide on mobile to show full background image */
+    display: none; /* Hide vertical S-curve on mobile */
   }
   
   .hero-section {
     min-height: auto !important;
     padding: 0 !important;
+    background-image: none !important;
+    background: linear-gradient(to bottom, #e2f3ee 0%, #ffffff 100%) !important;
   }
   
   .hero-top-cream-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: var(--surface);
+    background-color: transparent !important;
     padding: 100px 24px 20px 24px;
     width: 100%;
     box-sizing: border-box;
@@ -1127,60 +1131,112 @@ button:active .video-play-btn-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 24px;
+    gap: 32px; /* Increased vertical spacing to prevent crowding */
     width: 100%;
     box-sizing: border-box;
     padding: 20px 24px 80px 24px;
+    background-color: transparent !important;
   }
   
   .hero-mobile-divider {
-    display: block;
-    width: 100%;
-    height: 120px;
-    margin-top: -2px; /* Overlap to prevent subpixel white lines */
-    margin-bottom: 24px;
-    position: relative;
-    z-index: 2;
+    display: none !important; /* Hide separator on solid mint-white gradient */
   }
   
-  .hero-mobile-divider svg {
-    width: 100%;
-    height: 100%;
-    display: block;
+  /* Navigation header CTA sizing overrides for WCAG accessibility */
+  .header-cta {
+    height: 48px !important;
+    min-height: 48px !important;
+    padding: 0 24px !important;
+    font-size: 0.75rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 100px !important;
+    line-height: 1 !important;
   }
   
-  /* Overrides for trust cards on the dark mobile backdrop */
+  /* Typography deep forest charcoal (#1A332E) legibility overrides */
+  .hero-section h1 {
+    color: #1A332E !important;
+  }
+  
+  .hero-section .hero-sub-text {
+    color: #1A332E !important;
+    opacity: 0.95 !important;
+  }
+  
+  /* Primary Action Buttons */
+  .hero-cta-wrapper button:first-child {
+    background: #00A884 !important;
+    color: #fff !important;
+    border: none !important;
+    box-shadow: 0 4px 16px rgba(0, 168, 132, 0.25) !important;
+  }
+  
+  /* Hide secondary button to save mobile screen real estate */
+  .hero-cta-wrapper button:last-child {
+    display: none !important;
+  }
+  
+  /* Video Thumbnail Overlay Adjustments */
+  .hero-vsl-text {
+    top: auto !important;
+    bottom: 24px !important;
+  }
+  
+  /* Glassmorphism coach bio card styling on light background */
+  .hero-bottom-dark-wrapper .hero-floating-panel > div:last-child {
+    background: rgba(255, 255, 255, 0.75) !important;
+    border: 1px solid rgba(26, 51, 46, 0.08) !important;
+    box-shadow: 0 8px 24px rgba(26, 51, 46, 0.04) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+  }
+  
+  .hero-bottom-dark-wrapper .hero-floating-panel > div:last-child div:first-child {
+    color: #1A332E !important;
+  }
+  
+  .hero-bottom-dark-wrapper .hero-floating-panel > div:last-child div:nth-child(2) {
+    color: #00A884 !important;
+  }
+  
+  .hero-bottom-dark-wrapper .hero-floating-panel > div:last-child div:last-child {
+    color: #5C6661 !important;
+  }
+  
+  /* Overrides for trust cards on the light mobile backdrop */
   .hero-bottom-dark-wrapper .hero-trust-card {
-    background: rgba(255, 255, 255, 0.02) !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    box-shadow: none !important;
+    background: #ffffff !important;
+    border: 1px solid rgba(26, 51, 46, 0.08) !important;
+    box-shadow: 0 4px 12px rgba(26, 51, 46, 0.03) !important;
   }
   
   .hero-bottom-dark-wrapper .hero-trust-card:not([style*="rgba(16, 185, 129"]) {
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    background: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid rgba(26, 51, 46, 0.08) !important;
+    background: #ffffff !important;
   }
   
   .hero-bottom-dark-wrapper .hero-trust-card:not([style*="rgba(16, 185, 129"]) div:first-child {
-    color: rgba(255, 255, 255, 0.9) !important;
+    color: #1A332E !important;
   }
   
   .hero-bottom-dark-wrapper .hero-trust-card:not([style*="rgba(16, 185, 129"]) div:last-child {
-    color: rgba(255, 255, 255, 0.55) !important;
+    color: #5C6661 !important;
   }
   
-  /* Highlighted trust card overrides to stand out on dark bg */
+  /* Highlighted trust card overrides to stand out on light bg */
   .hero-bottom-dark-wrapper .hero-trust-card[style*="rgba(16, 185, 129"] {
-    border: 1px solid rgba(16, 185, 129, 0.45) !important;
-    background: rgba(16, 185, 129, 0.08) !important;
-    box-shadow: 0 0 16px rgba(16, 185, 129, 0.1) !important;
+    border: 1px solid rgba(0, 168, 132, 0.25) !important;
+    background: rgba(0, 168, 132, 0.04) !important;
+    box-shadow: 0 4px 16px rgba(0, 168, 132, 0.06) !important;
   }
   
   .hero-bottom-dark-wrapper .hero-trust-card[style*="rgba(16, 185, 129"] div:first-child {
-    color: #10b981 !important;
+    color: #00A884 !important;
   }
   
   .hero-bottom-dark-wrapper .hero-trust-card[style*="rgba(16, 185, 129"] div:last-child {
-    color: #a7f3d0 !important;
+    color: #2C4D46 !important;
   }
 }
