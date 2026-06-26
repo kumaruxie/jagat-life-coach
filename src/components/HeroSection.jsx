@@ -183,257 +183,283 @@ const HeroSection = ({ triggerPayment }) => {
       }}>
         <div className="hero-split-layout" style={{ pointerEvents: 'auto' }}>
 
-          <h1 
-            className="hero-anim hero-anim-1 hero-h1 hero-h1-area"
-            style={{ 
-              color: 'var(--silver)', 
-              marginBottom: '20px',
-              fontSize: 'clamp(2.2rem, 4.2vw, 3.4rem)',
-              lineHeight: '1.2'
-            }}
-          >
-            Career Mein Success Hai.
-            <br />
-            <span style={{ display: 'block', marginTop: '12px' }}>
-              Ab Ghar Mein Bhi <br className="desktop-only" /><span style={{ color: 'var(--emerald)' }}>Sukoon Wapas Laaiye.</span>
-            </span>
-          </h1>
-
-          <p 
-            className="hero-anim hero-anim-2 hero-sub-text hero-sub-area" 
-            style={{ 
-              color: 'var(--slate)', 
-              fontSize: 'clamp(16px, 1.8vw, 17.5px)', 
-              margin: '0 0 32px 0', 
-              lineHeight: '1.7'
-            }}
-          >
-            Learn the exact communication framework that has helped 1,500+ families reduce daily arguments, improve understanding, and restore peace at home in just 30 days.
-          </p>
-
-          {/* Context Label above Trust Hierarchy */}
-          <div className="hero-anim hero-anim-3 hero-trust-label-area" style={{ 
-            fontSize: '14px', 
-            fontWeight: 700, 
-            letterSpacing: '0.04em', 
-            color: 'var(--emerald)', 
-            opacity: 0.95, 
-            textTransform: 'uppercase',
-            marginBottom: '12px' 
-          }}>
-            Trusted By 1,500+ Families Across India
-          </div>
-
-          {/* Compact Row of 4 Trust Cards with ranking hierarchy */}
-          <div className="hero-anim hero-anim-3 hero-trust-row hero-trust-row-area">
-            {[
-              { num: "1,500+", label: "Families", highlight: true },
-              { num: "4.9★", label: "Rating" },
-              { num: "200+", label: "Reviews" },
-              { num: "15+", label: "Years" }
-            ].map((stat, i) => (
-              <motion.div 
-                key={i} 
-                className="hero-trust-card" 
-                whileHover={{ 
-                  y: -3, 
-                  scale: 1.03, 
-                  borderColor: stat.highlight ? 'rgba(16, 185, 129, 0.55)' : 'rgba(18, 36, 33, 0.18)', 
-                  background: stat.highlight ? 'rgba(16, 185, 129, 0.08)' : 'rgba(18, 36, 33, 0.04)', 
-                  boxShadow: stat.highlight ? '0 8px 24px rgba(16, 185, 129, 0.08)' : '0 8px 24px rgba(18, 36, 33, 0.04)',
-                  transition: { duration: 0.12, ease: "easeOut" }
-                }}
-                style={stat.highlight ? {
-                  border: '1px solid rgba(16, 185, 129, 0.35)',
-                  background: 'rgba(16, 185, 129, 0.04)',
-                  boxShadow: '0 0 16px rgba(16, 185, 129, 0.05)'
-                } : {
-                  border: '1px solid var(--border)',
-                  background: 'rgba(18, 36, 33, 0.02)'
-                }}
-              >
-                <div style={{ 
-                  fontSize: stat.highlight ? '26px' : '23px', 
-                  fontWeight: 800, 
-                  color: stat.highlight ? 'var(--emerald)' : 'var(--silver)', 
-                  lineHeight: 1 
-                }}>{stat.num}</div>
-                <div style={{ 
-                  fontSize: '13.5px', 
-                  color: stat.highlight ? 'rgba(18, 36, 33, 0.85)' : 'var(--slate)', 
-                  fontWeight: 600, 
-                  lineHeight: 1.2 
-                }}>{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* High-impact CTA Pair (Primary: Green, Secondary: Ghost) */}
-          <div className="hero-anim hero-anim-4 hero-cta-wrapper hero-cta-area" style={{ 
-            display: 'flex', 
-            alignItems: 'center',
-            gap: '12px', 
-            flexWrap: 'wrap'
-          }}>
-            <button 
-              className="btn-cta btn-cta-pulse btn-shimmer btn-pill" 
+          {/* Wrapper for Top Section (Cream background on mobile, invisible on desktop) */}
+          <div className="hero-top-cream-wrapper">
+            <h1 
+              className="hero-anim hero-anim-1 hero-h1 hero-h1-area"
               style={{ 
-                padding: '0 40px', 
-                fontSize: '15px',
-                height: '54px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
-                color: '#fff',
-                border: 'none',
-                borderRadius: '100px',
-                fontWeight: 700,
-                cursor: 'pointer'
+                color: 'var(--silver)', 
+                marginBottom: '20px',
+                fontSize: 'clamp(2.2rem, 4.2vw, 3.4rem)',
+                lineHeight: '1.2'
               }}
-              onClick={handleCTAClick}
             >
-              Connect with Jagat's Team
-            </button>
-            <button
-              style={{
-                background: 'transparent',
-                border: '1px solid rgba(18, 36, 33, 0.16)',
-                color: 'var(--silver)',
-                borderRadius: '100px',
-                padding: '0 32px',
-                fontSize: '15px',
-                height: '54px',
-                fontWeight: 600,
-                letterSpacing: '0.02em',
-                cursor: 'pointer',
-                transition: 'background 0.2s ease, transform 0.2s ease, border-color 0.2s, color 0.2s',
-                fontFamily: 'Inter, system-ui, sans-serif',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px'
+              Career Mein Success Hai.
+              <br />
+              <span style={{ display: 'block', marginTop: '12px' }}>
+                Ab Ghar Mein Bhi <br className="desktop-only" /><span style={{ color: 'var(--emerald)' }}>Sukoon Wapas Laaiye.</span>
+              </span>
+            </h1>
+
+            <p 
+              className="hero-anim hero-anim-2 hero-sub-text hero-sub-area" 
+              style={{ 
+                color: 'var(--slate)', 
+                fontSize: 'clamp(16px, 1.8vw, 17.5px)', 
+                margin: '0 0 32px 0', 
+                lineHeight: '1.7'
               }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(18, 36, 33, 0.04)';
-                e.currentTarget.style.borderColor = 'rgba(18, 36, 33, 0.3)';
-                e.currentTarget.style.color = 'var(--silver)';
-                e.currentTarget.style.transform = 'scale(1.02)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'transparent';
-                e.currentTarget.style.borderColor = 'rgba(18, 36, 33, 0.16)';
-                e.currentTarget.style.color = 'var(--silver)';
-                e.currentTarget.style.transform = 'scale(1)';
-              }}
-              onClick={openVideoModal}
             >
-              ▶ Watch Video
-            </button>
+              Learn the exact communication framework that has helped 1,500+ families reduce daily arguments, improve understanding, and restore peace at home in just 30 days.
+            </p>
+
+            {/* High-impact CTA Pair (Primary: Green, Secondary: Ghost) */}
+            <div className="hero-anim hero-anim-4 hero-cta-wrapper hero-cta-area" style={{ 
+              display: 'flex', 
+              alignItems: 'center',
+              gap: '12px', 
+              flexWrap: 'wrap'
+            }}>
+              <button 
+                className="btn-cta btn-cta-pulse btn-shimmer btn-pill" 
+                style={{ 
+                  padding: '0 40px', 
+                  fontSize: '15px',
+                  height: '54px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: '100px',
+                  fontWeight: 700,
+                  cursor: 'pointer'
+                }}
+                onClick={handleCTAClick}
+              >
+                Connect with Jagat's Team
+              </button>
+              <button
+                style={{
+                  background: 'transparent',
+                  border: '1px solid rgba(18, 36, 33, 0.16)',
+                  color: 'var(--silver)',
+                  borderRadius: '100px',
+                  padding: '0 32px',
+                  fontSize: '15px',
+                  height: '54px',
+                  fontWeight: 600,
+                  letterSpacing: '0.02em',
+                  cursor: 'pointer',
+                  transition: 'background 0.2s ease, transform 0.2s ease, border-color 0.2s, color 0.2s',
+                  fontFamily: 'Inter, system-ui, sans-serif',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'rgba(18, 36, 33, 0.04)';
+                  e.currentTarget.style.borderColor = 'rgba(18, 36, 33, 0.3)';
+                  e.currentTarget.style.color = 'var(--silver)';
+                  e.currentTarget.style.transform = 'scale(1.02)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'transparent';
+                  e.currentTarget.style.borderColor = 'rgba(18, 36, 33, 0.16)';
+                  e.currentTarget.style.color = 'var(--silver)';
+                  e.currentTarget.style.transform = 'scale(1)';
+                }}
+                onClick={openVideoModal}
+              >
+                ▶ Watch Video
+              </button>
+            </div>
           </div>
 
-          {/* Right Column: VSL Video Play Trigger + Founder Authority */}
-          <div 
-            className="hero-anim hero-anim-3 hero-video-area"
-            style={{ 
-              display: 'flex', 
-              flexDirection: 'column', 
-              gap: '16px', 
-              alignItems: 'center', 
-              width: '100%',
-              pointerEvents: 'auto'
-            }}
-          >
-            <div className="hero-floating-panel">
-              <div 
-                onClick={openVideoModal}
-                className="video-thumbnail-container"
-                style={{
-                  width: '100%',
-                  maxWidth: '580px', /* Enlarge video card slightly */
-                  aspectRatio: '16/9',
-                  background: `url(${VSL_THUMBNAIL}) center/cover no-repeat`,
-                  borderRadius: '16px',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  boxShadow: '0 0 40px rgba(0,0,0,0.25), 0 0 24px rgba(16,185,129,0.06)', /* Subtle glow behind video for connection */
-                  border: '1px solid rgba(255,255,255,0.12)',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}
-              >
-                {/* Backdrop dark tint with top-down fade gradient to integrate overlay text */}
-                <div style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.45) 0%, transparent 40%, rgba(0, 0, 0, 0.45) 100%)',
-                  zIndex: 1
-                }} />
+          {/* S-curve divider shown only on mobile */}
+          <div className="hero-mobile-divider">
+            <svg viewBox="0 0 1000 160" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="mobile-shade-gradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#071513" stopOpacity="0.85" />
+                  <stop offset="100%" stopColor="#071513" stopOpacity="0" />
+                </linearGradient>
+              </defs>
+              <path 
+                d="M 0,0 L 1000,0 L 1000,100 C 800,120 600,80 500,100 C 400,120 200,80 0,100 Z" 
+                fill="var(--surface)" 
+              />
+              <path 
+                d="M 0,100 C 200,80 400,120 500,100 C 600,80 800,120 1000,100 L 1000,150 C 800,170 600,130 500,150 C 400,170 200,130 0,150 Z" 
+                fill="url(#mobile-shade-gradient)" 
+              />
+            </svg>
+          </div>
 
-                {/* VSL Text Overlay with higher curiosity */}
+          {/* Wrapper for Bottom Section (Dark background on mobile, invisible on desktop) */}
+          <div className="hero-bottom-dark-wrapper">
+            {/* Right Column: VSL Video Play Trigger + Founder Authority */}
+            <div 
+              className="hero-anim hero-anim-3 hero-video-area"
+              style={{ 
+                display: 'flex', 
+                flexDirection: 'column', 
+                gap: '16px', 
+                alignItems: 'center', 
+                width: '100%',
+                pointerEvents: 'auto'
+              }}
+            >
+              <div className="hero-floating-panel">
                 <div 
-                  className="hero-vsl-text"
+                  onClick={openVideoModal}
+                  className="video-thumbnail-container"
                   style={{
-                    position: 'absolute',
-                    top: '28px',
-                    left: '20px',
-                    right: '20px',
-                    zIndex: 2,
-                    textAlign: 'center',
-                    pointerEvents: 'none'
+                    width: '100%',
+                    maxWidth: '580px', /* Enlarge video card slightly */
+                    aspectRatio: '16/9',
+                    background: `url(${VSL_THUMBNAIL}) center/cover no-repeat`,
+                    borderRadius: '16px',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    boxShadow: '0 0 40px rgba(0,0,0,0.25), 0 0 24px rgba(16,185,129,0.06)', /* Subtle glow behind video for connection */
+                    border: '1px solid rgba(255,255,255,0.12)',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center'
                   }}
                 >
-                  <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'rgba(255,255,255,0.7)', fontWeight: 600, marginBottom: '4px' }}>Watch Jagat Turkiya Explain</div>
-                  <div style={{ fontSize: '16px', fontWeight: 700, color: '#fff', lineHeight: '1.4' }}>Why Families Keep Fighting<br />(Even When They Love Each Other)</div>
+                  {/* Backdrop dark tint with top-down fade gradient to integrate overlay text */}
+                  <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.45) 0%, transparent 40%, rgba(0, 0, 0, 0.45) 100%)',
+                    zIndex: 1
+                  }} />
+
+                  {/* VSL Text Overlay with higher curiosity */}
+                  <div 
+                    className="hero-vsl-text"
+                    style={{
+                      position: 'absolute',
+                      top: '28px',
+                      left: '20px',
+                      right: '20px',
+                      zIndex: 2,
+                      textAlign: 'center',
+                      pointerEvents: 'none'
+                    }}
+                  >
+                    <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'rgba(255,255,255,0.7)', fontWeight: 600, marginBottom: '4px' }}>Watch Jagat Turkiya Explain</div>
+                    <div style={{ fontSize: '16px', fontWeight: 700, color: '#fff', lineHeight: '1.4' }}>Why Families Keep Fighting<br />(Even When They Love Each Other)</div>
+                  </div>
+
+                  {/* Glowing play icon blob */}
+                  <div className="play-icon-blob">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="white" style={{ marginLeft: '2px' }}>
+                      <polygon points="8,5 19,12 8,19" />
+                    </svg>
+                  </div>
                 </div>
 
-                {/* Glowing play icon blob */}
-                <div className="play-icon-blob">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="white" style={{ marginLeft: '2px' }}>
-                    <polygon points="8,5 19,12 8,19" />
-                  </svg>
-                </div>
+                {/* Small, elegant founder info block above the fold */}
+                <motion.div 
+                  whileHover={{ 
+                    y: -3, 
+                    scale: 1.01, 
+                    borderColor: 'rgba(16, 185, 129, 0.25)', 
+                    boxShadow: '0 16px 40px rgba(16, 185, 129, 0.08)', 
+                    background: 'rgba(255, 255, 255, 0.75)',
+                    transition: { duration: 0.12, ease: "easeOut" }
+                  }}
+                  transition={{ duration: 0.12, ease: 'easeOut' }}
+                  style={{ 
+                    textAlign: 'center', 
+                    fontFamily: 'Inter, system-ui, sans-serif',
+                    padding: '16px 24px',
+                    marginTop: '4px',
+                    background: 'rgba(255, 255, 255, 0.65)',
+                    border: '1px solid rgba(18, 36, 33, 0.08)',
+                    backdropFilter: 'blur(10px)',
+                    WebkitBackdropFilter: 'blur(10px)',
+                    borderRadius: '16px',
+                    boxShadow: '0 12px 32px rgba(18, 36, 33, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.6)',
+                    width: '100%',
+                    maxWidth: '440px',
+                    cursor: 'default'
+                  }}
+                >
+                  <div style={{ fontSize: '15.5px', fontWeight: 700, color: 'var(--silver)', letterSpacing: '0.02em' }}>Jagat Turkiya</div>
+                  <div style={{ fontSize: '12.5px', color: '#10b981', fontWeight: 600, marginTop: '4px', letterSpacing: '0.04em' }}>Strategic Family Relationship Coach</div>
+                  <div style={{ fontSize: '11.5px', color: 'var(--slate)', marginTop: '4px', fontWeight: 500 }}>
+                    15-Year Family Care Expert <span style={{ opacity: 0.3, margin: '0 6px' }}>•</span> Author of 4 Books
+                  </div>
+                </motion.div>
               </div>
+            </div>
 
-              {/* Small, elegant founder info block above the fold */}
-              <motion.div 
-                whileHover={{ 
-                  y: -3, 
-                  scale: 1.01, 
-                  borderColor: 'rgba(16, 185, 129, 0.25)', 
-                  boxShadow: '0 16px 40px rgba(16, 185, 129, 0.08)', 
-                  background: 'rgba(255, 255, 255, 0.75)',
-                  transition: { duration: 0.12, ease: "easeOut" }
-                }}
-                transition={{ duration: 0.12, ease: 'easeOut' }}
-                style={{ 
-                  textAlign: 'center', 
-                  fontFamily: 'Inter, system-ui, sans-serif',
-                  padding: '16px 24px',
-                  marginTop: '4px',
-                  background: 'rgba(255, 255, 255, 0.65)',
-                  border: '1px solid rgba(18, 36, 33, 0.08)',
-                  backdropFilter: 'blur(10px)',
-                  WebkitBackdropFilter: 'blur(10px)',
-                  borderRadius: '16px',
-                  boxShadow: '0 12px 32px rgba(18, 36, 33, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.6)',
-                  width: '100%',
-                  maxWidth: '440px',
-                  cursor: 'default'
-                }}
-              >
-                <div style={{ fontSize: '15.5px', fontWeight: 700, color: 'var(--silver)', letterSpacing: '0.02em' }}>Jagat Turkiya</div>
-                <div style={{ fontSize: '12.5px', color: '#10b981', fontWeight: 600, marginTop: '4px', letterSpacing: '0.04em' }}>Strategic Family Relationship Coach</div>
-                <div style={{ fontSize: '11.5px', color: 'var(--slate)', marginTop: '4px', fontWeight: 500 }}>
-                  15-Year Family Care Expert <span style={{ opacity: 0.3, margin: '0 6px' }}>•</span> Author of 4 Books
-                </div>
-              </motion.div>
+            {/* Context Label above Trust Hierarchy */}
+            <div className="hero-anim hero-anim-3 hero-trust-label-area" style={{ 
+              fontSize: '14px', 
+              fontWeight: 700, 
+              letterSpacing: '0.04em', 
+              color: 'var(--emerald)', 
+              opacity: 0.95, 
+              textTransform: 'uppercase',
+              marginBottom: '12px' 
+            }}>
+              Trusted By 1,500+ Families Across India
+            </div>
+
+            {/* Compact Row of 4 Trust Cards with ranking hierarchy */}
+            <div className="hero-anim hero-anim-3 hero-trust-row hero-trust-row-area">
+              {[
+                { num: "1,500+", label: "Families", highlight: true },
+                { num: "4.9★", label: "Rating" },
+                { num: "200+", label: "Reviews" },
+                { num: "15+", label: "Years" }
+              ].map((stat, i) => (
+                <motion.div 
+                  key={i} 
+                  className="hero-trust-card" 
+                  whileHover={{ 
+                    y: -3, 
+                    scale: 1.03, 
+                    borderColor: stat.highlight ? 'rgba(16, 185, 129, 0.55)' : 'rgba(18, 36, 33, 0.18)', 
+                    background: stat.highlight ? 'rgba(16, 185, 129, 0.08)' : 'rgba(18, 36, 33, 0.04)', 
+                    boxShadow: stat.highlight ? '0 8px 24px rgba(16, 185, 129, 0.08)' : '0 8px 24px rgba(18, 36, 33, 0.04)',
+                    transition: { duration: 0.12, ease: "easeOut" }
+                  }}
+                  style={stat.highlight ? {
+                    border: '1px solid rgba(16, 185, 129, 0.35)',
+                    background: 'rgba(16, 185, 129, 0.04)',
+                    boxShadow: '0 0 16px rgba(16, 185, 129, 0.05)'
+                  } : {
+                    border: '1px solid var(--border)',
+                    background: 'rgba(18, 36, 33, 0.02)'
+                  }}
+                >
+                  <div style={{ 
+                    fontSize: stat.highlight ? '26px' : '23px', 
+                    fontWeight: 800, 
+                    color: stat.highlight ? 'var(--emerald)' : 'var(--silver)', 
+                    lineHeight: 1 
+                  }}>{stat.num}</div>
+                  <div style={{ 
+                    fontSize: '13.5px', 
+                    color: stat.highlight ? 'rgba(18, 36, 33, 0.85)' : 'var(--slate)', 
+                    fontWeight: 600, 
+                    lineHeight: 1.2 
+                  }}>{stat.label}</div>
+                </motion.div>
+              ))}
             </div>
           </div>
 
