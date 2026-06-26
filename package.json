@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "npm run predeploy && node deploy.mjs"
   },
   "dependencies": {
     "@splinetool/react-spline": "^4.1.0",
