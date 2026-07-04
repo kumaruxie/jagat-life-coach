@@ -5,6 +5,8 @@ import HeroSection from './components/HeroSection';
 import ProblemSection from './components/ProblemSection';
 import AboutCoachSection from './components/AboutCoachSection';
 import InlineReview from './components/InlineReview';
+import { smoothScrollTo } from './utils/scroll';
+import { getWhatsAppUrl } from './utils/whatsapp';
 import './App.css';
 
 const AgitateSection = lazy(() => import('./components/AgitateSection'));
@@ -31,28 +33,8 @@ const SectionFallback = () => (
 
 function App() {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
-  const [showContactPrompt, setShowContactPrompt] = useState(false);
-
-  const checkContactFormExpiry = () => {
-    const formSubmittedAtStr = localStorage.getItem('ghl_form_submitted_at');
-    if (formSubmittedAtStr) {
-      const submittedAt = parseInt(formSubmittedAtStr, 10);
-      const currentTime = Date.now();
-      const threeHours = 3 * 60 * 60 * 1000; // 3 hours in ms
-      
-      if (currentTime - submittedAt > threeHours) {
-        localStorage.removeItem('ghl_form_submitted_at');
-        localStorage.removeItem('lead_contact_info');
-        return false;
-      }
-      return true;
-    }
-    return false;
-  };
 
   useEffect(() => {
-    // Check for contact form submission expiry
-    checkContactFormExpiry();
 
     // Check URL parameters for ?payment=success
     const urlParams = new URLSearchParams(window.location.search);
@@ -77,30 +59,15 @@ function App() {
   }, []);
 
   const triggerPayment = () => {
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      const targetY = contactSection.getBoundingClientRect().top + window.scrollY - 80; // 80px offset for fixed header
-      const startY = window.scrollY;
-      const distance = targetY - startY;
-      const duration = 500; // Snappy 500ms scroll
-      let startTime = null;
+    const WHATSAPP_NUMBER = '917011900562';
+    const WHATSAPP_MSG = "Hi Jagat! I just visited your website and would love to connect about the \"Conflict to Clarity\" 1:1 coaching program. I'm ready to clear the fog, resolve my internal conflicts, and start taking charge of my future. Let's chat!";
+    const whatsappUrl = getWhatsAppUrl(WHATSAPP_NUMBER, WHATSAPP_MSG);
 
-      const animateScroll = (currentTime) => {
-        if (startTime === null) startTime = currentTime;
-        const timeElapsed = currentTime - startTime;
-        
-        // easeOutQuad curve: snappy start, smooth finish
-        const progress = Math.min(timeElapsed / duration, 1);
-        const easeProgress = progress * (2 - progress); 
-        
-        window.scrollTo(0, startY + distance * easeProgress);
-        
-        if (timeElapsed < duration) {
-          requestAnimationFrame(animateScroll);
-        }
-      };
-      requestAnimationFrame(animateScroll);
+    if (window.fbq) {
+      window.fbq('track', 'Lead');
     }
+    
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -316,10 +283,7 @@ function App() {
 
         <Suspense fallback={<SectionFallback />}>
           <FAQSection />
-          <ContactSection
-            showPrompt={showContactPrompt}
-            onFormSubmit={() => setShowContactPrompt(false)}
-          />
+          <ContactSection />
         </Suspense>
       </main>
       <Suspense fallback={null}>

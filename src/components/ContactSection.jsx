@@ -1,165 +1,27 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { getWhatsAppUrl } from '../utils/whatsapp';
 
-const GHL_WEBHOOK_URL =
-  'https://services.leadconnectorhq.com/hooks/UV9lQH2lpnsX6mPHlFQR/webhook-trigger/e439fe60-5421-4341-b288-a86fb3767cba';
+const WHATSAPP_NUMBER = '917011900562';
+const WHATSAPP_MSG = "Hi Jagat! I just visited your website and would love to connect about the \"Conflict to Clarity\" 1:1 coaching program. I'm ready to clear the fog, resolve my internal conflicts, and start taking charge of my future. Let's chat!";
 
-/* ─── Validation helpers ─── */
-const BLOCKED_EMAIL_DOMAINS = [
-  'mailinator.com','guerrillamail.com','tempmail.com','throwam.com',
-  'yopmail.com','sharklasers.com','guerrillamailblock.com','grr.la',
-  'spam4.me','trashmail.com','dispostable.com','fakeinbox.com',
-  'maildrop.cc','mailnull.com','spamgourmet.com','test.com',
-  'fake.com','example.com','noemail.com','nomail.com',
-];
-
-function validateEmail(email) {
-  const re = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-  if (!re.test(email)) return 'Enter a valid email address.';
-  const domain = email.split('@')[1]?.toLowerCase();
-  if (BLOCKED_EMAIL_DOMAINS.includes(domain)) return 'Please use your real email address.';
-  return null;
-}
-
-function validatePhone(phone) {
-  const digits = phone.replace(/\D/g, '');
-  if (digits.length !== 10) return 'Enter a valid 10-digit mobile number.';
-  if (!/^[6-9]/.test(digits)) return 'Enter a valid Indian mobile number.';
-  // Reject obviously fake numbers: all same digit or sequential
-  if (/^(\d)\1{9}$/.test(digits)) return 'Enter your real mobile number.';
-  if (digits === '1234567890' || digits === '9876543210') return 'Enter your real mobile number.';
-  return null;
-}
-
-function validateName(name) {
-  if (name.trim().length < 2) return 'Enter your full name.';
-  if (!/^[a-zA-Z\s'-]+$/.test(name.trim())) return 'Name should only contain letters.';
-  return null;
-}
-
-/* ─── Single field component ─── */
-const Field = ({ id, label, type, name, placeholder, value, error, onChange, inputMode, autoComplete }) => (
-  <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-    <label htmlFor={id} style={{ fontSize: '12px', fontWeight: 600, color: 'var(--slate)', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
-      {label}
-    </label>
-    <input
-      id={id}
-      type={type}
-      name={name}
-      placeholder={placeholder}
-      required
-      autoComplete={autoComplete}
-      inputMode={inputMode}
-      value={value}
-      onChange={onChange}
-      style={{
-        width: '100%',
-        padding: '13px 16px',
-        borderRadius: '8px',
-        backgroundColor: 'rgba(18, 36, 33, 0.03)',
-        border: `1px solid ${error ? 'rgba(239,68,68,0.5)' : 'rgba(18, 36, 33, 0.12)'}`,
-        color: 'var(--silver)',
-        outline: 'none',
-        fontFamily: 'Inter, system-ui, sans-serif',
-        fontSize: '14px',
-        transition: 'border-color 0.2s',
-        boxSizing: 'border-box',
-      }}
-      onFocus={e => { e.target.style.borderColor = 'rgba(16,185,129,0.55)'; }}
-      onBlur={e => { e.target.style.borderColor = error ? 'rgba(239,68,68,0.5)' : 'rgba(18, 36, 33, 0.12)'; }}
-    />
-    {error && (
-      <span style={{ fontSize: '11.5px', color: '#dc2626', display: 'flex', alignItems: 'center', gap: '4px' }}>
-        ✕ {error}
-      </span>
-    )}
-  </div>
-);
-
-/* ─── Trust pill ─── */
 const TrustItem = ({ text }) => (
-  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
     <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--emerald)', flexShrink: 0 }} />
-    <span style={{ fontSize: '13px', color: 'var(--slate)', lineHeight: '1.5' }}>{text}</span>
+    <span style={{ fontSize: '14.5px', color: 'var(--slate)', lineHeight: '1.5' }}>{text}</span>
   </div>
 );
 
-/* ══════════════════════════════════════════════ */
-const ContactSection = ({ showPrompt = false, onFormSubmit = () => {} }) => {
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', city: '' });
-  const [errors, setErrors] = useState({});
-  const [status, setStatus] = useState('idle'); // idle | submitting | success
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: name === 'phone' ? value.replace(/\D/g, '') : value,
-    }));
-    // Clear error on change
-    if (errors[name]) setErrors(prev => ({ ...prev, [name]: null }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    // Run all validations
-    const newErrors = {
-      name: validateName(formData.name),
-      email: validateEmail(formData.email),
-      phone: validatePhone(formData.phone),
-      city: formData.city.trim().length < 2 ? 'Enter your city.' : null,
-    };
-    setErrors(newErrors);
-    if (Object.values(newErrors).some(Boolean)) return;
-
-    setStatus('submitting');
-
-    let phone = formData.phone;
-    if (phone.length === 10) phone = '+91' + phone;
-
-    // Track lead submission on Meta Pixel
-    if (window.fbq) window.fbq('track', 'Lead');
-    
-    // Save contact info in localStorage to unlock checkout
-    localStorage.setItem('ghl_form_submitted_at', Date.now().toString());
-    localStorage.setItem('lead_contact_info', JSON.stringify({
-      name: formData.name.trim(),
-      email: formData.email.trim().toLowerCase(),
-      phone,
-      city: formData.city.trim(),
-    }));
-
-    // Submit silently to Google Form
-    const googleFormResponseUrl = 'https://docs.google.com/forms/d/e/1FAIpQLScR0UV0_xQ_dwpcbYjZHPKqlsobQJz-FDqKrhTquYvDt29XAA/formResponse';
-    const params = new URLSearchParams();
-    params.append('entry.1357961071', formData.name.trim());
-    params.append('entry.1393899574', phone);
-    params.append('entry.419119203', formData.email.trim().toLowerCase());
-    params.append('entry.2015323172', formData.city.trim());
-
-    fetch(googleFormResponseUrl, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: params.toString()
-    }).catch(err => console.error('Google Form submission error:', err));
-
-    // Show a loading state for 400ms (0.4s) for a smoother transition
-    setTimeout(() => {
-      setStatus('success');
-      onFormSubmit(); // notify App that form is done
-    }, 400);
+const ContactSection = () => {
+  const handleWhatsAppClick = () => {
+    if (window.fbq) {
+      window.fbq('track', 'Lead');
+    }
+    const whatsappUrl = getWhatsAppUrl(WHATSAPP_NUMBER, WHATSAPP_MSG);
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
   };
 
   return (
-    <section id="contact" className="section" style={{ background: 'var(--surface)' }}>
-
-
-
+    <section id="contact" className="section" style={{ background: 'var(--surface)', padding: '80px 0' }}>
       <div className="section-inner">
         <div className="contact-layout">
 
@@ -172,24 +34,24 @@ const ContactSection = ({ showPrompt = false, onFormSubmit = () => {} }) => {
             style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}
           >
             <div>
-              <span className="tag">
-                Free Consultation
+              <span className="tag" style={{ background: 'rgba(16, 185, 129, 0.08)', color: 'var(--emerald)', border: '1px solid rgba(16, 185, 129, 0.2)' }}>
+                Direct Connection
               </span>
 
-              <h2 style={{ color: 'var(--silver)', marginBottom: '16px', lineHeight: '1.25' }}>
-                Talk to Jagat Turkiya's Team — <span style={{ color: 'var(--gold-accent)' }}>No Cost, No Commitment</span>
+              <h2 style={{ color: 'var(--silver)', marginBottom: '16px', lineHeight: '1.25', fontSize: '32px', fontWeight: 800 }}>
+                Connect directly with Jagat Turkiya on <span style={{ color: '#25D366' }}>WhatsApp</span>
               </h2>
 
-              <p style={{ color: 'var(--slate)', fontSize: '15px', lineHeight: '1.75' }}>
-                Share your details. Our team will call you within 24 hours, understand your situation, and guide you on whether this program is right for you.
+              <p style={{ color: 'var(--slate)', fontSize: '15.5px', lineHeight: '1.8' }}>
+                Skip the long forms and waiting times. Click the button to start a direct, confidential 1-on-1 WhatsApp chat with Jagat. Share your challenges and discover if the <strong>Conflict to Clarity</strong> program is the right fit for your goals.
               </p>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              <TrustItem text="Response within 24 hours" />
-              <TrustItem text="One-on-one call — not a sales pitch" />
-              <TrustItem text="No spam. Your details stay private." />
-              <TrustItem text="Speak in Hindi, English, or both" />
+              <TrustItem text="Direct response from Jagat Turkiya" />
+              <TrustItem text="A safe, private space to share" />
+              <TrustItem text="No sales pressure — just real guidance" />
+              <TrustItem text="Chat in Hindi, English, or both" />
             </div>
 
             {/* Stat strip */}
@@ -199,18 +61,18 @@ const ContactSection = ({ showPrompt = false, onFormSubmit = () => {} }) => {
               borderTop: '1px solid var(--border)',
             }}>
               {[
-                { num: '1,500+', label: 'Families Coached' },
+                { num: '1,500+', label: 'People Coached' },
                 { num: '30 Days', label: 'Program Duration' },
               ].map(({ num, label }) => (
                 <div key={label}>
-                  <div style={{ fontSize: '22px', fontWeight: 700, color: 'var(--silver)', marginBottom: '2px' }}>{num}</div>
-                  <div style={{ fontSize: '12px', color: 'var(--slate)' }}>{label}</div>
+                  <div style={{ fontSize: '24px', fontWeight: 800, color: 'var(--silver)', marginBottom: '2px' }}>{num}</div>
+                  <div style={{ fontSize: '13px', color: 'var(--slate)' }}>{label}</div>
                 </div>
               ))}
             </div>
           </motion.div>
 
-          {/* ── Right: Form ── */}
+          {/* ── Right: WhatsApp Premium Card ── */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -220,89 +82,118 @@ const ContactSection = ({ showPrompt = false, onFormSubmit = () => {} }) => {
             <div style={{
               backgroundColor: 'var(--surface-raised)',
               border: '1px solid var(--border)',
-              borderRadius: '16px',
-              padding: '36px',
+              borderRadius: '20px',
+              padding: '40px',
+              textAlign: 'center',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '24px',
+              boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2), 0 0 30px rgba(16, 185, 129, 0.03)',
+              position: 'relative',
+              overflow: 'hidden'
             }}>
-              {status === 'success' ? (
-                /* ── Thank You ── */
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.96 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.35 }}
-                  style={{ textAlign: 'center', padding: '20px 0' }}
-                >
-                  <div style={{
-                    width: '52px', height: '52px', borderRadius: '50%',
-                    background: 'rgba(16,185,129,0.1)',
-                    border: '1px solid rgba(16,185,129,0.3)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    margin: '0 auto 20px',
-                    color: 'var(--emerald)', fontSize: '20px', fontWeight: 700,
-                  }}>
-                    ✓
-                  </div>
-                  <h3 style={{ color: 'var(--silver)', marginBottom: '12px' }}>
-                    Thank you, {formData.name.split(' ')[0]}
-                  </h3>
-                  <p style={{ color: 'var(--slate)', lineHeight: '1.75', fontSize: '14px', marginBottom: '20px' }}>
-                    We've received your details. Expect a call or WhatsApp message from our team within <span style={{ color: 'var(--emerald)', fontWeight: 600 }}>24 hours</span>.
-                  </p>
-                  <div style={{
-                    padding: '12px 16px',
-                    background: 'rgba(16,185,129,0.06)',
-                    border: '1px solid rgba(16,185,129,0.12)',
-                    borderRadius: '8px',
-                    fontSize: '13px', color: 'var(--slate)',
-                  }}>
-                    Keep your phone handy — we'll reach out on WhatsApp.
-                  </div>
-                </motion.div>
-              ) : (
-                /* ── Form ── */
-                <form onSubmit={handleSubmit} noValidate style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-                  <Field id="c-name"  label="Full Name"     type="text"  name="name"  placeholder="Your full name"         value={formData.name}  error={errors.name}  onChange={handleChange} autoComplete="name" />
-                  <Field id="c-phone" label="Mobile Number" type="tel"   name="phone" placeholder="10-digit mobile number" value={formData.phone} error={errors.phone} onChange={handleChange} autoComplete="tel" inputMode="numeric" />
-                  <Field id="c-email" label="Email Address" type="email" name="email" placeholder="your@email.com"         value={formData.email} error={errors.email} onChange={handleChange} autoComplete="email" />
-                  <Field id="c-city"  label="City"          type="text"  name="city"  placeholder="Your city"              value={formData.city}  error={errors.city}  onChange={handleChange} autoComplete="address-level2" />
+              {/* WhatsApp Glow Accent */}
+              <div style={{
+                position: 'absolute',
+                top: '-50px',
+                right: '-50px',
+                width: '100px',
+                height: '100px',
+                borderRadius: '50%',
+                background: 'rgba(37, 211, 102, 0.1)',
+                filter: 'blur(30px)',
+                pointerEvents: 'none'
+              }} />
 
-                  <button
-                    type="submit"
-                    disabled={status === 'submitting'}
-                    className="btn-cta"
-                    style={{
-                      width: '100%', padding: '15px', fontSize: '14px',
-                      fontWeight: 700, marginTop: '4px',
-                      borderRadius: '10px',
-                      opacity: status === 'submitting' ? 0.7 : 1,
-                      cursor: status === 'submitting' ? 'not-allowed' : 'pointer',
-                    }}
-                  >
-                    {status === 'submitting' ? 'Submitting...' : 'Request a Free Callback →'}
-                  </button>
+              {/* WhatsApp Premium Icon */}
+              <div style={{
+                width: '64px',
+                height: '64px',
+                borderRadius: '50%',
+                background: 'rgba(37, 211, 102, 0.1)',
+                border: '1px solid rgba(37, 211, 102, 0.25)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '28px',
+                boxShadow: '0 8px 16px rgba(37, 211, 102, 0.05)'
+              }}>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.458 5.704 1.459h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413" fill="#25D366" />
+                </svg>
+              </div>
 
-                  <p style={{ fontSize: '11.5px', color: 'var(--slate)', opacity: 0.55, textAlign: 'center', margin: 0 }}>
-                    Your information is confidential and will not be shared.
-                  </p>
-                </form>
-              )}
+              <div>
+                <h3 style={{ color: 'var(--silver)', marginBottom: '8px', fontSize: '20px', fontWeight: 700 }}>
+                  Apply via WhatsApp
+                </h3>
+                <p style={{ color: 'var(--slate)', fontSize: '14.5px', lineHeight: '1.6', margin: 0 }}>
+                  Initiate your chat application directly. It takes less than a minute and we'll reply today.
+                </p>
+              </div>
+
+              <button
+                onClick={handleWhatsAppClick}
+                className="btn-cta"
+                style={{
+                  width: '100%',
+                  padding: '16px',
+                  fontSize: '15px',
+                  fontWeight: 700,
+                  borderRadius: '12px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  background: 'linear-gradient(135deg, #25D366 0%, #128C7E 100%)',
+                  color: '#fff',
+                  border: 'none',
+                  cursor: 'pointer',
+                  boxShadow: '0 8px 24px rgba(37, 211, 102, 0.2)',
+                  transition: 'transform 0.2s, box-shadow 0.2s'
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = '0 12px 30px rgba(37, 211, 102, 0.3)';
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.transform = 'none';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(37, 211, 102, 0.2)';
+                }}
+              >
+                Start Your Chat Application →
+              </button>
+
+              <div style={{
+                fontSize: '12.5px',
+                color: 'var(--slate)',
+                opacity: 0.6,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px'
+              }}>
+                <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', background: '#25D366' }} />
+                Jagat Turkiya is online now
+              </div>
+
             </div>
           </motion.div>
 
         </div>
       </div>
 
-      {/* Responsive layout */}
       <style>{`
         .contact-layout {
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: 1.2fr 0.8fr;
           gap: 60px;
           align-items: center;
         }
         @media (max-width: 768px) {
           .contact-layout {
             grid-template-columns: 1fr;
-            gap: 36px;
+            gap: 40px;
           }
         }
       `}</style>

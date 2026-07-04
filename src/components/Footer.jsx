@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { smoothScrollTo } from '../utils/scroll';
 import PolicyModal from './PolicyModal';
 import { policyContent } from '../utils/policyContent';
 const Footer = () => {
@@ -17,28 +18,7 @@ const Footer = () => {
   };
 
   const scrollToTop = () => {
-    const startY = window.scrollY;
-    const distance = -startY;
-    const duration = 800; // 800ms for smooth elegant sweep
-    let startTime = null;
-
-    const animateScroll = (currentTime) => {
-      if (startTime === null) startTime = currentTime;
-      const timeElapsed = currentTime - startTime;
-      
-      // easeInOutQuad curve: slow start, fast middle, slow finish
-      const progress = Math.min(timeElapsed / duration, 1);
-      const easeProgress = progress < 0.5 
-        ? 2 * progress * progress 
-        : 1 - Math.pow(-2 * progress + 2, 2) / 2;
-      
-      window.scrollTo(0, startY + distance * easeProgress);
-      
-      if (timeElapsed < duration) {
-        requestAnimationFrame(animateScroll);
-      }
-    };
-    requestAnimationFrame(animateScroll);
+    smoothScrollTo(0, 600); // Smoother custom top scroll (600ms duration)
   };
 
   return (
