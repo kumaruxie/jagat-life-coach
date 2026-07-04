@@ -1,12 +1,24 @@
 /**
  * High-performance smooth scroll utility.
- * Runs on requestAnimationFrame, starts instantly by using performance.now() at call time
- * to eliminate scheduling lag.
+ * For mobile devices, it uses native browser smooth scroll to run on the compositor thread.
+ * For desktop devices, it uses a custom requestAnimationFrame loop with an easeOutCubic curve
+ * to start instantly and bypass potential system-level "Reduce Motion" overrides.
  * 
  * @param {number} targetY - The destination Y scroll coordinate.
- * @param {number} duration - Animation duration in milliseconds.
+ * @param {number} duration - Animation duration in milliseconds (for desktop custom scroll).
  */
 export const smoothScrollTo = (targetY, duration = 350) => {
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  
+  if (isMobile) {
+    // Native browser smooth scrolling is highly optimized on mobile compositor threads
+    window.scrollTo({
+      top: targetY,
+      behavior: 'smooth'
+    });
+    return;
+  }
+
   const startY = window.scrollY;
   const distance = targetY - startY;
   
