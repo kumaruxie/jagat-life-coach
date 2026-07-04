@@ -27,7 +27,7 @@ const Footer = () => {
         <div className="section-inner" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '28px' }}>
           
           {/* Logo */}
-          <a href="#" onClick={(e) => { e.preventDefault(); scrollToTop(); }} style={{ display: 'flex', alignItems: 'center', margin: '8px 0', textDecoration: 'none' }}>
+          <div onClick={scrollToTop} style={{ display: 'flex', alignItems: 'center', margin: '8px 0', cursor: 'pointer', userSelect: 'none', WebkitTapHighlightColor: 'transparent' }}>
             <span style={{ display: 'flex', alignItems: 'center', whiteSpace: 'nowrap', lineHeight: 1 }}>
               <span style={{
                 fontFamily: "'Rozha One', serif",
@@ -50,7 +50,7 @@ const Footer = () => {
                 Coach.com
               </span>
             </span>
-          </a>
+          </div>
 
           {/* Policy Links */}
           <nav aria-label="Legal policies" style={{ display: 'flex', gap: '8px', fontSize: '12px', color: 'var(--slate)', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center' }}>

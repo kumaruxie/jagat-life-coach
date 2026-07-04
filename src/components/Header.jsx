@@ -19,7 +19,7 @@ const Header = ({ triggerPayment }) => {
   return (
     <header className={`main-header header-animate ${scrolled ? 'scrolled' : ''}`}>
       <div className="section-inner header-responsive">
-        <a href="#" onClick={(e) => { e.preventDefault(); scrollToTop(); }} className="logo header-logo" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', minWidth: 0, flexShrink: 1, overflow: 'hidden' }}>
+        <div onClick={scrollToTop} className="logo header-logo" style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', minWidth: 0, flexShrink: 1, overflow: 'hidden', userSelect: 'none', WebkitTapHighlightColor: 'transparent' }}>
           <span style={{ display: 'flex', alignItems: 'center', whiteSpace: 'nowrap', lineHeight: 1 }}>
             <span style={{
               fontFamily: "'Rozha One', serif",
@@ -42,7 +42,7 @@ const Header = ({ triggerPayment }) => {
               Coach.com
             </span>
           </span>
-        </a>
+        </div>
         
         <button className="header-cta btn-pill" onClick={() => triggerPayment()} aria-label="Request callback" style={{ flexShrink: 0 }}>
           Request Callback →
