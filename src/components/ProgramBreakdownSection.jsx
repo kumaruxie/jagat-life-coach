@@ -6,26 +6,26 @@ const ProgramBreakdownSection = () => {
     {
       phase: "01",
       week: "Week 1",
-      title: "Hafte 1: Apne Achar-Vichar Ko Samajhna",
-      desc: "Khud ko aur apno ko ek nayi aur naram nazar se dekhna shuru karein."
+      title: "Week 1: Understanding Your Patterns",
+      desc: "Begin seeing yourself and your loved ones through a fresh, compassionate lens."
     },
     {
       phase: "02",
       week: "Week 2",
-      title: "Hafte 2: Galatfehmiyon Ko Dur Karna",
-      desc: "Pehchanein ki asal mudda kya hai, taaki ek dusre par ilzaam lagane ka silsila khatam ho."
+      title: "Week 2: Clearing Misunderstandings",
+      desc: "Identify the real issues so the cycle of blame and resentment finally comes to an end."
     },
     {
       phase: "03",
       week: "Week 3",
-      title: "Hafte 3: Pyar Se Baat Rakhna",
-      desc: "Aise tarike seekhein jinse aap apni baat keh bhi dein, aur samne wale ko bura bhi na lage."
+      title: "Week 3: Speaking with Love",
+      desc: "Learn to express your truth clearly — without hurting the person in front of you."
     },
     {
       phase: "04",
       week: "Week 4",
-      title: "Hafte 4: Hamesha Ke Liye Khushali",
-      desc: "Jo seekha hai usko apni rozmara ki zindagi ka hissa banayein, taaki yeh sukoon hamesha bana rahe."
+      title: "Week 4: Lasting Harmony",
+      desc: "Integrate everything you've learned into daily life — so this peace becomes permanent."
     }
   ];
 
@@ -49,7 +49,7 @@ const ProgramBreakdownSection = () => {
             viewport={{ once: true }}
             style={{ color: 'var(--silver)', fontSize: 'clamp(1.8rem, 4.5vw, 2.8rem)' }}
           >
-            Aapka <span style={{ color: 'var(--gold-accent)' }}>30-Din Ka Safar</span> Ek Nayi Shuruaat Ki Aur
+            Your <span style={{ color: 'var(--gold-accent)' }}>30-Day Journey</span> to a Brand New Beginning
           </motion.h2>
         </div>
 
@@ -62,12 +62,12 @@ const ProgramBreakdownSection = () => {
             transition={{ duration: 0.3 }}
           >
             <p style={{ fontSize: '15px', color: 'var(--slate)', marginBottom: 'var(--space-4)' }}>
-              Yeh ek structured 30-day journey hai — recorded modules, live Zoom sessions, worksheets, aur direct coaching. Sirf gyaan nahi, <strong style={{ color: 'var(--silver)' }}>real ground-level change</strong>.
+              This is a structured 30-day journey — recorded modules, live Zoom sessions, worksheets, and direct coaching. Not just knowledge, but <strong style={{ color: 'var(--silver)' }}>real ground-level change</strong>.
             </p>
             
             <ul style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
               {[
-                { icon: <Calendar size={20} />, text: "8 Recorded Hinglish Modules" },
+                { icon: <Calendar size={20} />, text: "8 Recorded Coaching Modules" },
                 { icon: <Target size={20} />, text: "2 Live one on one Coaching Sessions" },
                 { icon: <FileText size={20} />, text: "Worksheets, scripts & reflection exercises" },
                 { icon: <Users size={20} />, text: "Private community support" },

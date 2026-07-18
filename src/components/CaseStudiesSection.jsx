@@ -41,10 +41,10 @@ const CaseStudiesSection = () => {
             Real Case Studies
           </span>
           <h2 style={{ marginBottom: '16px' }}>
-            Kahaniyan Jo <span style={{ color: 'var(--emerald)' }}>Sukoon Aur Badlaav</span> Sabit Karti Hain
+            Stories That Prove <span style={{ color: 'var(--emerald)' }}>Real Transformation</span> Is Possible
           </h2>
           <p style={{ color: 'var(--slate)', fontSize: '15px', maxWidth: '600px', margin: '0 auto', lineHeight: '1.7' }}>
-            Yeh sirf testimonials nahi hain. Dekhiye kaise humare structured system ne in logon ki zindagi ko badla:
+            These aren't just testimonials. See how our structured system transformed real lives:
           </p>
         </div>
 
@@ -115,7 +115,7 @@ const CaseStudiesSection = () => {
                   alignItems: 'center',
                   gap: '6px'
                 }}>
-                  ● BEFORE (Tanaav)
+                  ● BEFORE (The Struggle)
                 </span>
                 <p style={{ fontSize: '13.5px', color: 'var(--slate)', margin: 0, lineHeight: '1.65' }}>
                   {item.before}
@@ -134,7 +134,7 @@ const CaseStudiesSection = () => {
                   alignItems: 'center',
                   gap: '6px'
                 }}>
-                  ● THE ACTION (Badlaav)
+                  ● THE ACTION (The Shift)
                 </span>
                 <p style={{ fontSize: '13.5px', color: 'var(--slate)', margin: 0, lineHeight: '1.65' }}>
                   {item.during}
@@ -160,7 +160,7 @@ const CaseStudiesSection = () => {
                   alignItems: 'center',
                   gap: '6px'
                 }}>
-                  ● AFTER (Sukoon)
+                  ● AFTER (The Result)
                 </span>
                 <p style={{ fontSize: '13.5px', color: 'var(--silver)', fontWeight: 500, margin: 0, lineHeight: '1.65' }}>
                   {item.after}

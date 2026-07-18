@@ -4,18 +4,18 @@ import { motion } from 'framer-motion';
 const TransformationSection = () => {
   const cards = [
     {
-      title: "Man Ki Shanti (Peace of Mind)",
-      desc: "Ghar ka mahaul halka hoga. Aap bina kisi dar ya tanaav ke apni baat rakh payenge.",
+      title: "Peace of Mind",
+      desc: "Your home will feel lighter. You'll express yourself freely — without fear, tension, or walking on eggshells.",
       accent: '#10b981'
     },
     {
-      title: "Gehra Apnapan (Deeper Connection)",
-      desc: "Choti baaton par behas ki jagah, ab ek dusre ko samajhne ki koshish hogi.",
+      title: "Deeper Connection",
+      desc: "Instead of petty arguments, your family will genuinely try to understand each other — building real closeness.",
       accent: '#60a5fa'
     },
     {
-      title: "Ek Naya Nazariya (A New Perspective)",
-      desc: "Aapke paas har mushkil situation ko pyar se sambhalne ka ek aasan aur clear rasta hoga.",
+      title: "A New Perspective",
+      desc: "You'll have a clear, simple approach to handle every difficult situation with love and composure.",
       accent: '#f59e0b'
     }
   ];
@@ -24,13 +24,13 @@ const TransformationSection = () => {
     <section className="section" style={{ background: 'var(--surface)' }}>
       <div className="section-inner">
         <div style={{ textAlign: 'center', marginBottom: 'var(--space-6)' }}>
-          <span className="tag">Natija (The Outcome)</span>
+          <span className="tag">The Outcome</span>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            30 Din Baad Aapki Zindagi Kaisi Hogi
+            What Your Life Looks Like After 30 Days
           </motion.h2>
         </div>
 

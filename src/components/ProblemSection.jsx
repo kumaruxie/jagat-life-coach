@@ -5,27 +5,27 @@ const ProblemSection = () => {
   const problems = [
     {
       icon: <Home size={20} />,
-      text: "Ghar aate hi ek anjana sa tanaav mehsus hota hai — lagta hai baat baat par charcha shuru ho jayegi."
+      text: "The moment you walk through the door, an invisible tension fills the air — as if every conversation is one word away from becoming an argument."
     },
     {
       icon: <Users size={20} />,
-      text: "Apno ko apni baat samjhane ki koshish karte hain, par baat aksar galatfehmi mein badal jaati hai."
+      text: "You try to explain yourself to the people you love most, but your words keep getting twisted into misunderstandings."
     },
     {
       icon: <Briefcase size={20} />,
-      text: "Career mein sab theek chal raha hai, par andar ek ajeeb sa khaalipan aur ashaanti lagti hai."
+      text: "Everything looks perfect on the outside — the career, the success — but inside, there's a strange emptiness and restlessness that won't go away."
     },
     {
       icon: <RefreshCw size={20} />,
-      text: "Rishton mein wahi purana chakkar: Ummid → Nirasha → Behas → Khamoshi."
+      text: "Your relationships are stuck in the same exhausting loop: Hope → Disappointment → Argument → Silence."
     },
     {
       icon: <User size={20} />,
-      text: "Rishton ko bachane mein itna compromise kiya hai ki ab lagta hai \"Main asliyat mein kaun hoon?\""
+      text: "You've compromised so much to keep your relationships alive that you've started wondering: \"Who am I, really?\""
     },
     {
       icon: <Lightbulb size={20} />,
-      text: "Bahut si videos aur motivational baatein sun li, par agli subah wahi purani ashaanti wapas aa jaati hai."
+      text: "You've watched countless videos and read all the motivational advice, but every morning the same old restlessness comes rushing back."
     }
   ];
 
@@ -53,7 +53,7 @@ const ProblemSection = () => {
             letterSpacing: '0.2em',
             fontWeight: 700
           }}>
-            Kya aap khud ko yahan paate hain?
+            Do you find yourself here?
           </span>
         </div>
 

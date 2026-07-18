@@ -2,9 +2,9 @@ import { motion } from 'framer-motion';
 
 const AgitateSection = () => {
   const items = [
-    "Aapke bachche bhi jaane-anjane mein yahi tanaav seekhenge, aur unka bachpan khul ke nahi beet payega.",
-    "Ghar ki ashaanti ka asar aapke kaam par padega, kyunki dimaag aakhir wahin atka rahega.",
-    "Aur sabse bada nuksaan: Rishton se wo mithaas aur apnapan hamesha ke liye gayab ho jayega."
+    "Your children will unknowingly absorb this same tension — and their childhood will never feel truly free or joyful.",
+    "The unrest at home will seep into your work, because your mind will always be stuck on what's waiting for you back there.",
+    "And the biggest loss of all: the warmth, the sweetness, the feeling of belonging in your relationships — gone forever."
   ];
 
   return (
@@ -16,7 +16,7 @@ const AgitateSection = () => {
           viewport={{ once: true }}
           style={{ color: 'var(--silver)', marginBottom: 'var(--space-5)' }}
         >
-          Agar cheezein aisi hi chalti rahin, toh <span style={{ color: 'var(--emerald)' }}>kya khoyenge aap?</span>
+          If nothing changes, <span style={{ color: 'var(--emerald)' }}>what will you lose?</span>
         </motion.h2>
  
         <div className="agitate-cards-list" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)', textAlign: 'left', marginBottom: 'var(--space-5)' }}>
@@ -59,7 +59,7 @@ const AgitateSection = () => {
           transition={{ delay: 0.2, duration: 0.4 }}
           style={{ fontSize: '16px', color: 'var(--slate)' }}
         >
-          Yeh koi aapki galti nahi hai. Yeh sirf kuch uljhe hue <strong style={{ color: 'var(--silver)' }}>dhage</strong> hain, jinhe pyar aur sahi samajh se suljhaya ja sakta hai.
+          This isn't your fault. These are simply tangled <strong style={{ color: 'var(--silver)' }}>threads</strong> — and with the right love and understanding, they can be gently untangled.
         </motion.p>
       </div>
     </section>

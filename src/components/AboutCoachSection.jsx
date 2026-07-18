@@ -75,11 +75,11 @@ const AboutCoachSection = () => {
 
             {/* COPYWRITING: Emotional founder story */}
             <p style={{ marginBottom: 'var(--space-3)', fontSize: '15.5px', lineHeight: '1.75' }}>
-              Jagat Turkiya ki journey kisi academic textbook se nahi, balki ek gehre realization se shuru hui thi. Ek shaam, unke ek behad safal dost — jo ek badi company mein 500+ employees ki team chalaate the — unke saamne rote hue bole: <em style={{ color: 'var(--emerald)', fontStyle: 'italic' }}>"Main office mein saikdo logon ko manage kar leta hoon, par ghar aakar apne parivar se 5 minute bina behas ke baat nahi kar paata."</em>
+              Jagat Turkiya's journey didn't begin in a classroom — it began with a moment of raw, painful truth. One evening, a highly successful friend — someone who managed a team of 500+ employees at a major company — broke down in front of him and said: <em style={{ color: 'var(--emerald)', fontStyle: 'italic' }}>"I can manage hundreds of people at the office, but I can't have a 5-minute conversation with my own family without it turning into an argument."</em>
             </p>
 
             <p style={{ marginBottom: 'var(--space-4)', fontSize: '15.5px', lineHeight: '1.75' }}>
-              Tab Jagat ko samajh aaya ki log career set karne mein apni saari energy laga dete hain, par ghar aate hi wahi tanaav aur khaalipan mehsus karte hain. Unhone family conflict resolution par saalon research ki aur exact **dialogue scripts** aur **habits** banayein. Jab unke dost ne in scripts ko ghar par use kiya, toh barson purana tanaav ek hi shaam mein halka ho gaya. Yahan se shuru hua Jagat Turkiya ka signature system.
+              That's when Jagat realized that people pour every ounce of energy into building their careers, yet come home to the same tension and emptiness every single day. He spent years researching family conflict resolution and developed exact **dialogue scripts** and **daily habits** that transform communication. When his friend used these scripts at home, years of built-up resentment began to dissolve in a single evening. That was the birth of Jagat Turkiya's signature system.
             </p>
 
             {/* Role Tags */}

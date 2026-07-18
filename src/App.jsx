@@ -141,7 +141,7 @@ function App() {
                 marginBottom: '8px', 
                 fontFamily: 'Newsreader, Georgia, serif' 
               }}>
-                Bhugtan Safal Raha! 🎉
+                Payment Successful! 🎉
               </h2>
               
               <p style={{ 
@@ -159,7 +159,7 @@ function App() {
                 lineHeight: '1.6', 
                 marginBottom: '24px' 
               }}>
-                Humne program ki details aur live cohort join karne ka link aapke email aur WhatsApp number par bhej diya hai.
+                We've sent the program details and your live cohort joining link to your email and WhatsApp number.
               </p>
               
               <div style={{
@@ -177,7 +177,7 @@ function App() {
                   lineHeight: '1.5',
                   fontWeight: 500
                 }}>
-                  ⚠️ <strong>Important Note:</strong> GHL automations email kabhi-kabhi <strong>Spam or Promotions folder</strong> mein chale jaate hain. Agar mail primary inbox mein na dikhe, toh please wahan check karke use <strong>"Not Spam"</strong> mark karein taaki aage ke live sessions ke links miss na hon.
+                  ⚠️ <strong>Important Note:</strong> Automated emails sometimes land in your <strong>Spam or Promotions folder</strong>. If you don't see the email in your primary inbox, please check there and mark it as <strong>"Not Spam"</strong> so you don't miss future live session links.
                 </p>
               </div>
               
@@ -191,7 +191,7 @@ function App() {
                   fontWeight: 700 
                 }}
               >
-                Theek Hai, Got It!
+                Okay, Got It!
               </button>
             </motion.div>
           </motion.div>
@@ -205,7 +205,7 @@ function App() {
         {/* Above-the-fold content loads instantly with the main bundle */}
         <ProblemSection />
         <InlineReview
-          quote="Career set tha. Ghar aate hi wahi tanaav... Lagta tha balance banana impossible hai. Jagat sir ki coaching ke baad pehli baar ghar mein sukoon aur khushi mehsus hui."
+          quote="My career was sorted, but the moment I stepped home, the same stress was waiting. Balancing both felt impossible. After Jagat Sir's coaching, I felt genuine peace and happiness at home for the first time."
           author="Yogita"
           bgGradient="var(--surface)"
         />
@@ -219,7 +219,7 @@ function App() {
 
         <Suspense fallback={<SectionFallback />}>
           <CTABanner 
-            text="1,500+ families ne yeh kiya. Ab aapki baari hai."
+            text="1,500+ families have already done it. Now it's your turn."
             buttonText="Request Callback →"
             triggerPayment={triggerPayment}
             bgColor="var(--surface)"
@@ -233,7 +233,7 @@ function App() {
         <Suspense fallback={<SectionFallback />}>
           <MechanismSection />
           <InlineReview
-            quote="Mujhe laga tha ki rishton ko sudharna bohot complicated hoga. Jagat sir ke 3 steps itne practical hain ki pehli hi session se ghar ka mahaul instantly halka ho gaya."
+            quote="I thought fixing relationships would be incredibly complicated. Jagat Sir's 3 steps are so practical that the atmosphere at home felt lighter from the very first session."
             author="Vikram Singh"
             bgGradient="var(--surface)"
           />
@@ -249,7 +249,7 @@ function App() {
 
         <Suspense fallback={<SectionFallback />}>
           <CTABanner 
-            text="30 din mein aapke ghar ka mahaul badal sakta hai."
+            text="Your home's atmosphere can transform in just 30 days."
             buttonText="Connect with Us →"
             triggerPayment={triggerPayment}
             bgColor="var(--surface)"
@@ -274,7 +274,7 @@ function App() {
 
         <Suspense fallback={<SectionFallback />}>
           <CTABanner 
-            text="Ek naye safar ki shuruaat karein — sukoon aur samajh ke liye."
+            text="Begin a new journey — toward peace and understanding."
             buttonText="Talk to Jagat's Team →"
             triggerPayment={triggerPayment}
             bgColor="var(--surface)"

@@ -234,10 +234,10 @@ const VideoTestimonialsSection = () => {
 
   const videos = [
     { id: 'v1', videoSrc: video1, thumbInitials: 'AC', name: 'Ajit - A coach', role: 'Coaching Client', quote: 'A truly life-changing experience — my mindset and clarity have completely shifted.' },
-    { id: 'v2', videoSrc: video2, thumbInitials: 'YS', name: 'Yogita - Sunil and Yogesh', role: 'Family Coaching Client', quote: 'Ghar ka tanaav aur career ke beech balance banana bohot mushkil tha. Jagat sir ke coaching se mujhe aur meri family ko sukoon mila.' },
-    { id: 'v3', videoSrc: video3, thumbInitials: 'SC', name: 'A Satisfied client', role: 'Coaching Client', quote: 'Jagat Sir\'s methodology is very practical. Confidence, clarity aur ghar mein sukoon — teeno mili.' },
-    { id: 'v4', videoSrc: video4, thumbInitials: 'SC', name: 'A Satisfied client', role: 'Transformation Client', quote: 'Is program ne meri zindagi ka nazariya badal diya. Jagat Sir ke saath kaam karna ek privilege hai.' },
-    // { id: 'v5', videoSrc: video5, thumbInitials: 'SC', name: 'A Satisfied client', role: 'Coaching Client', quote: 'Ghar ke tanaav se nikal kar aapsi samajh banana ab aasan lagta hai. Coaching ke baad rishton mein bahut sukoon mila.' },
+    { id: 'v2', videoSrc: video2, thumbInitials: 'YS', name: 'Yogita - Sunil and Yogesh', role: 'Family Coaching Client', quote: 'Balancing household stress and career demands felt impossible. Jagat Sir\'s coaching brought real peace to me and my entire family.' },
+    { id: 'v3', videoSrc: video3, thumbInitials: 'SC', name: 'A Satisfied client', role: 'Coaching Client', quote: 'Jagat Sir\'s methodology is incredibly practical. I gained confidence, clarity, and harmony at home — all three.' },
+    { id: 'v4', videoSrc: video4, thumbInitials: 'SC', name: 'A Satisfied client', role: 'Transformation Client', quote: 'This program completely transformed my outlook on life. Working with Jagat Sir has been an absolute privilege.' },
+    // { id: 'v5', videoSrc: video5, thumbInitials: 'SC', name: 'A Satisfied client', role: 'Coaching Client', quote: 'Moving past household stress and building mutual understanding feels effortless now. After coaching, my relationships are truly at peace.' },
   ];
 
   return (
@@ -262,10 +262,10 @@ const VideoTestimonialsSection = () => {
             Real Stories
           </span>
           <h2 style={{ color: 'var(--silver)', marginBottom: '10px' }}>
-            Unhe suniye jo <span style={{ color: 'var(--gold-accent)' }}>badal chuke hain</span>
+            Hear from those who've <span style={{ color: 'var(--gold-accent)' }}>already transformed</span>
           </h2>
           <p style={{ color: 'var(--slate)', fontSize: '15px', maxWidth: '500px', lineHeight: '1.7' }}>
-            Yeh sirf reviews nahi — yeh woh log hain jinki zindagi actually badli is safar ke baad.
+            These aren't just reviews — these are real people whose lives truly changed after this journey.
           </p>
         </motion.div>
 

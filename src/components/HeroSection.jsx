@@ -194,10 +194,10 @@ const HeroSection = ({ triggerPayment }) => {
                 lineHeight: '1.2'
               }}
             >
-              Career Mein Success Hai.
+              You've Conquered Your Career.
               <br />
               <span style={{ display: 'block', marginTop: '12px' }}>
-                Ab Ghar Mein Bhi <br className="desktop-only" /><span style={{ color: 'var(--emerald)' }}>Sukoon Wapas Laaiye.</span>
+                Now Bring That <br className="desktop-only" /><span style={{ color: 'var(--emerald)' }}>Peace Back Home.</span>
               </span>
             </h1>
 

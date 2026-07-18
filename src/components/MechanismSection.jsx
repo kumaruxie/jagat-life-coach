@@ -4,8 +4,8 @@ import { Brain, MessageSquare, UserCheck } from 'lucide-react';
 const MechanismSection = () => {
   const steps = [
     {
-      title: "Kadam 1: Root Analysis (Bina Kisi Blame Ke)",
-      desc: "Hum situations ko analyze karenge bina kisi ko galat thehraye, taaki aap samajh sakein ki aakhir triggers shuru kahan se hote hain.",
+      title: "Step 1: Root Analysis (Zero Blame)",
+      desc: "We analyze your family dynamics without pointing fingers — so you can uncover where the real triggers begin and why conflicts keep repeating.",
       icon: <Brain size={22} style={{ color: '#0d9488' }} />,
       accent: '#0d9488', // Teal
       bg: 'rgba(13, 148, 136, 0.03)',
@@ -13,8 +13,8 @@ const MechanismSection = () => {
       glow: 'rgba(13, 148, 136, 0.18)'
     },
     {
-      title: "Kadam 2: Exact Dialogue Scripts (Word-for-Word)",
-      desc: "Kathin psychology nahi — hum aapko exact conversation scripts denge jo aap active arguments mein bolkar tanaav ko instantly neutralize kar sakein.",
+      title: "Step 2: Exact Dialogue Scripts (Word-for-Word)",
+      desc: "No complex psychology — we give you ready-to-use conversation scripts you can speak during active arguments to instantly neutralize tension.",
       icon: <MessageSquare size={22} style={{ color: '#f43f5e' }} />,
       accent: '#f43f5e', // Rose/Coral
       bg: 'rgba(244, 63, 94, 0.03)',
@@ -22,8 +22,8 @@ const MechanismSection = () => {
       glow: 'rgba(244, 63, 94, 0.18)'
     },
     {
-      title: "Kadam 3: 1:1 Accountability & Check-Ins",
-      desc: "Sirf video dekhna kaafi nahi hai. Hum har hafte aapse 1:1 check-in karenge aur guide karenge taaki yeh nayi aadat aapke jeevan ka hissa ban sake.",
+      title: "Step 3: 1:1 Accountability & Check-Ins",
+      desc: "Watching videos alone isn't enough. We check in with you 1:1 every week and guide you until these new habits become a natural part of your life.",
       icon: <UserCheck size={22} style={{ color: '#1d4ed8' }} />,
       accent: '#1d4ed8', // Sapphire Blue
       bg: 'rgba(29, 78, 216, 0.03)',
@@ -36,13 +36,13 @@ const MechanismSection = () => {
     <section className="section" style={{ background: 'linear-gradient(to bottom, var(--surface-deep) 0%, var(--surface) 60px, var(--surface) 100%)' }}>
       <div className="section-inner">
         <div style={{ textAlign: 'center', marginBottom: 'var(--space-6)' }}>
-          <span className="tag">Hamara Tarika</span>
+          <span className="tag">Our Method</span>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            Jagat Ka Signature System: <span style={{ color: 'var(--gold-accent)' }}>3 Aasan Kadam</span> Ek Khushal Zindagi Ki Aur
+            Jagat's Signature System: <span style={{ color: 'var(--gold-accent)' }}>3 Simple Steps</span> to a Happier Life
           </motion.h2>
         </div>
 

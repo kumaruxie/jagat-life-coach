@@ -143,14 +143,14 @@ const TextTestimonialsSection = () => {
           </div>
 
           <h2 style={{ color: 'var(--silver)', marginBottom: '10px' }}>
-            Jin logon ki zindagi{' '}
-            <em style={{ fontStyle: 'italic', color: 'var(--emerald)', fontFamily: "'Newsreader', Georgia, serif" }}>badli</em>
+            Real people, real lives{' '}
+            <em style={{ fontStyle: 'italic', color: 'var(--emerald)', fontFamily: "'Newsreader', Georgia, serif" }}>transformed</em>
           </h2>
           <p style={{ color: 'var(--emerald)', fontSize: '13px', fontWeight: 600, marginBottom: '0', letterSpacing: '0.02em' }}>
             ⭐ 4.9 rated on Google · 200+ reviews
           </p>
           <p style={{ color: 'var(--slate)', fontSize: '15px', maxWidth: '440px', margin: '0 auto', lineHeight: '1.7' }}>
-            200+ clients. Har ek ki apni kahani. Yeh unhi ki zuban mein.
+            200+ clients. Each with their own story. Hear it in their own words.
           </p>
         </motion.div>
 

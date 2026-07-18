@@ -5,40 +5,40 @@ import { ChevronDown } from 'lucide-react';
 const FAQSection = () => {
   const faqs = [
     {
-      q: "Shaadi nahi hui ya akela rehta hoon — kya yeh sirf couples ke liye hai?",
-      a: "Agar ghar mein koi bhi hai jisse ek bhi baar takraav hua ho — yeh aapke liye hai. 1,200+ log jo is program se gaye hain, unme se 38% single the — parents se jhagda, siblings se tension, ya sirf apne andar ki bechain awaaz. Rishte sirf bedroom mein nahi hote."
+      q: "I'm not married or I live alone — is this only for couples?",
+      a: "If there's anyone in your life you've ever had even one conflict with — this is for you. Of the 1,200+ people who've been through this program, 38% were single — dealing with arguments with parents, tension with siblings, or just that restless voice inside. Relationships aren't limited to the bedroom."
     },
     {
-      q: "Live sessions ke liye time nahi nikalta — program adhoora reh jaayega toh?",
-      a: "Aapne pehle bhi yahi socha tha — aur isliye aaj bhi wahi situation hai. Isliye saare 8 modules lifetime access ke saath pre-recorded hain. Raat 11 baje, train mein, lunch break mein — jab chaho. Live sessions optional hain, compulsory nahi. Adhoora rehne ka darr nahi, start karne ki himmat chahiye."
+      q: "I can never find time for live sessions — what if I can't finish the program?",
+      a: "That's the same thought that's kept you stuck until now — and exactly why nothing has changed. All 8 modules are pre-recorded with lifetime access. Watch at 11 PM, on a train, during lunch break — whenever works for you. Live sessions are optional, not mandatory. Don't fear leaving it incomplete — just find the courage to start."
     },
     {
-      q: "Complex psychology ya kathin English nahi samajhni — kya yeh mere liye sahi hai?",
-      a: "Seedha bolein: agar aap WhatsApp pe Hindi mein type karte hain — yeh program aapke liye hai. Pure Hinglish, zero jargon. Koi 'attachment theory' lecture nahi. Sirf woh words jo kal raat aap actually bol sako. 3 din mein pehla fark mehsoos hoga — ya paise wapas."
+      q: "I don't understand complex psychology or difficult jargon — is this right for me?",
+      a: "Let's be direct: if you can chat on WhatsApp, this program is for you. Simple language, zero jargon. No 'attachment theory' lectures. Just the exact words you can actually use in tonight's conversation. You'll feel the first difference within 3 days — or your money back."
     },
     {
-      q: "Agar ghar wale participate na karein toh mera seekhna bekaar jaayega na?",
-      a: "Yeh program ka sabse bada secret hai — aur jo log yahan ruk jaate hain, woh yahi miss karte hain. Ek insaan ka badalna poori dynamic badal deta hai. Jab aap ek hi baat alag tone, alag timing, alag words se bolte ho — saamne wala option-less ho jaata hai gusse mein rehne ka. Yeh manipulation nahi, yeh physics hai. Jo nahi seekhte, woh 5 saal baad bhi wahi argument repeat karte hain."
+      q: "If my family members refuse to participate, won't my learning be wasted?",
+      a: "This is the program's biggest secret — and the very thing people miss when they hesitate. One person changing transforms the entire dynamic. When you say the same thing with a different tone, different timing, different words — the other person has no choice but to drop the anger. This isn't manipulation, it's physics. Those who never learn this are still repeating the same arguments 5 years from now."
     },
     {
-      q: "Kya group mein apni personal baatein sab ke saamne bolni padti hain?",
-      a: "Nahi — aur jo log yeh poochhhte hain, woh usually sabse zyada transform hote hain. Group sirf seekhne ke liye hai, confess karne ke liye nahi. Aapka naam bhi optional hai. Apply sirf aap karoge — apne ghar mein, apni marzi se. Yeh clinic nahi, workshop hai."
+      q: "Do I have to share my personal issues in front of the entire group?",
+      a: "Not at all — and interestingly, people who ask this question usually experience the deepest transformation. The group is purely for learning, not for confessing. Even sharing your name is optional. You apply what you learn privately — in your own home, on your own terms. This isn't a clinic, it's a workshop."
     },
     {
-      q: "Pehle bhi books padhi, videos dekhi — sab bhool gaya. Yeh alag kaise hoga?",
-      a: "Kyunki aapko gyaan nahi chahiye — aapko aadat chahiye. Books information deti hain. Yeh program exact scripts deta hai — kal raat ke jhagde mein word-for-word kya bolna hai. Plus weekly 1:1 check-in — koi dekh raha hai ki aap use kar rahe ho ya nahi. Accountability woh cheez hai jo books kabhi nahi de sakti."
+      q: "I've read books and watched videos before — forgot everything. How is this different?",
+      a: "Because you don't need more knowledge — you need habits. Books give information. This program gives you exact scripts — word-for-word what to say during last night's argument. Plus weekly 1:1 check-ins — someone is watching whether you're actually applying what you learn or not. Accountability is the one thing books can never give you."
     },
     {
-      q: "Kya yeh program mere unique parivar ki situation par sach mein kaam karega?",
-      a: "Haan. Rishton aur conflicts ke patterns repetitive hote hain. Jab aap react karne ka apna tarika aur word-choice badal dete hain, toh saamne wale ka behavior apne aap badal jaata hai. Program mein shamil 1,500+ alag-alag families par yahi identical system kaam kar chuka hai."
+      q: "Will this program actually work for my family's unique situation?",
+      a: "Yes. The patterns behind relationship conflicts are remarkably repetitive. When you change how you react — your tone, your timing, your word choices — the other person's behavior shifts automatically. This identical system has already worked across 1,500+ different families in the program."
     },
     {
-      q: "Program ki fees sirf ₹1,997 kyun hai? Itna kam kyun?",
-      a: "Yeh humare exclusive Founding Batch ki special price hai. Humara goal is batch ke members se solid reviews aur case studies ikattha karna hai. Agle cohort se fees badhkar standard price (₹4,997) par chali jayegi."
+      q: "Why is the program fee only ₹1,997? Why so low?",
+      a: "This is our exclusive Founding Batch special price. Our goal with this batch is to collect solid reviews and case studies from early members. Starting from the next cohort, the fee will increase to the standard price of ₹4,997."
     },
     {
-      q: "Maine pehle bhi kai courses aur YouTube videos try kiye hain. Yeh unse alag kaise hai?",
-      a: "YouTube videos aur books sirf theoretical gyaan deti hain. Hum aapko concept nahi, balki exact conversation scripts aur weekly 1:1 check-ins dete hain. Jab aapko exact pata ho ki kya bolna hai aur koi aapse updates lene wala ho, toh badlaav aana tay hai."
+      q: "I've already tried multiple courses and YouTube videos. How is this different?",
+      a: "YouTube videos and books only give you theoretical knowledge. We don't teach concepts — we give you exact conversation scripts and weekly 1:1 check-ins. When you know precisely what to say and someone is holding you accountable for progress, real change becomes inevitable."
     }
   ];
 
@@ -53,7 +53,7 @@ const FAQSection = () => {
           viewport={{ once: true }}
           style={{ textAlign: 'center', marginBottom: '16px' }}
         >
-          Man Mein Uthne Wale Sawaal, Khulkar Sahi Jawab
+          Your Honest Questions, Answered with Clarity
         </motion.h2>
 
         <motion.p
@@ -70,7 +70,7 @@ const FAQSection = () => {
             lineHeight: '1.6'
           }}
         >
-          Apne ghar ke mahaul aur rishton ko lekar man mein shanka hona bilkul aam hai. Yahan humne un sawalon ko clarify kiya hai jo aksar professionals humse puchte hain:
+          It's completely natural to have doubts about your home environment and relationships. Here we've addressed the questions professionals most frequently ask us:
         </motion.p>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
