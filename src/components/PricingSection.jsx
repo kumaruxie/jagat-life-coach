@@ -60,39 +60,45 @@ const PricingSection = ({ triggerPayment }) => {
             </ul>
           </div>
 
-          {/* Right: Price & CTA */}
+          {/* Right: Application & Value */}
           <div style={{
             backgroundColor: 'var(--surface-deep)',
             padding: '48px',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
-            alignItems: 'center',
-            textAlign: 'center'
+            alignItems: 'flex-start',
+            textAlign: 'left'
           }}>
-            <div style={{ width: '100%', marginBottom: '32px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', color: 'var(--slate)', fontSize: '14px' }}>
-                <span>Core Program</span>
-                <span>₹23,996</span>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', color: 'var(--slate)', fontSize: '14px' }}>
-                <span>Live 1:1 Calls</span>
-                <span>₹5,000</span>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', color: 'var(--slate)', fontSize: '14px' }}>
-                <span>Bonuses</span>
-                <span>₹2,000+</span>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '14px', borderTop: '1px solid var(--border)', fontWeight: 600, fontSize: '14px', color: 'var(--silver)' }}>
-                <span>Total Value</span>
-                <span>₹29,000+</span>
-              </div>
-            </div>
+            <h3 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--silver)', marginBottom: '8px' }}>
+              Apply for the Founding Batch
+            </h3>
+            <p style={{ fontSize: '14px', color: 'var(--slate)', marginBottom: '24px', lineHeight: '1.5' }}>
+              We limit each cohort to exactly 12 families to guarantee deeply personalized, high-touch support and real relationship breakthroughs.
+            </p>
 
-            <div style={{ marginBottom: '32px' }}>
-              <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.14em', color: 'var(--slate)', marginBottom: '8px', fontWeight: 600 }}>Founding Batch Price (Save 60%)</div>
-              <div style={{ fontSize: '60px', fontFamily: 'var(--font-heading)', fontWeight: 700, lineHeight: 1, color: 'var(--emerald)' }}>₹1,997</div>
-              <div style={{ fontSize: '12px', color: 'var(--slate)', marginTop: '4px' }}>Standard Price (₹4,997) increases for the next batch</div>
+            <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '32px' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+                <div style={{ color: 'var(--emerald)', fontSize: '18px', lineHeight: 1 }}>•</div>
+                <div>
+                  <h4 style={{ fontSize: '14px', fontWeight: 600, color: 'var(--silver)', margin: '0 0 2px 0' }}>100% Tailored Roadmap</h4>
+                  <p style={{ fontSize: '12.5px', color: 'var(--slate)', margin: 0 }}>Customized solutions built specifically around your family dynamic.</p>
+                </div>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+                <div style={{ color: 'var(--emerald)', fontSize: '18px', lineHeight: 1 }}>•</div>
+                <div>
+                  <h4 style={{ fontSize: '14px', fontWeight: 600, color: 'var(--silver)', margin: '0 0 2px 0' }}>Direct 1:1 Coaching</h4>
+                  <p style={{ fontSize: '12.5px', color: 'var(--slate)', margin: 0 }}>Get direct audio, Zoom, and message support from Jagat and his team.</p>
+                </div>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+                <div style={{ color: 'var(--emerald)', fontSize: '18px', lineHeight: 1 }}>•</div>
+                <div>
+                  <h4 style={{ fontSize: '14px', fontWeight: 600, color: 'var(--silver)', margin: '0 0 2px 0' }}>Free Compatibility Call</h4>
+                  <p style={{ fontSize: '12.5px', color: 'var(--slate)', margin: 0 }}>Discuss your situation confidentially to ensure a perfect programmatic fit.</p>
+                </div>
+              </div>
             </div>
 
             <button
@@ -102,18 +108,19 @@ const PricingSection = ({ triggerPayment }) => {
                 width: '100%',
                 padding: '18px',
                 fontSize: '14px',
-                marginBottom: '16px'
+                marginBottom: '16px',
+                textAlign: 'center'
               }}
             >
-              Talk to Jagat's Team →
+              Apply via WhatsApp Chat →
             </button>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-              <p style={{ fontSize: '12.5px', color: 'var(--emerald)', fontWeight: 700, margin: 0 }}>
-                ⚠️ Strictly limited to 12 seats for personalized 1:1 attention.
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', width: '100%', textAlign: 'center' }}>
+              <p style={{ fontSize: '12px', color: 'var(--emerald)', fontWeight: 600, margin: 0 }}>
+                ⚠️ Strictly limited to 12 active slots.
               </p>
-              <p style={{ fontSize: '11.5px', color: 'var(--slate)', margin: 0 }}>
-                Founding batch offer ends soon. Price increases to ₹4,997 thereafter.
+              <p style={{ fontSize: '11px', color: 'var(--slate)', margin: 0 }}>
+                Application calls are completely free and confidential.
               </p>
             </div>
           </div>

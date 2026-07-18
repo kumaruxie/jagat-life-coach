@@ -33,8 +33,8 @@ const FAQSection = () => {
       a: "Yes. The patterns behind relationship conflicts are remarkably repetitive. When you change how you react — your tone, your timing, your word choices — the other person's behavior shifts automatically. This identical system has already worked across 1,500+ different families in the program."
     },
     {
-      q: "Why is the program fee only ₹1,997? Why so low?",
-      a: "This is our exclusive Founding Batch special price. Our goal with this batch is to collect solid reviews and case studies from early members. Starting from the next cohort, the fee will increase to the standard price of ₹4,997."
+      q: "How do I apply for the program, and what is the selection criteria?",
+      a: "Because we prioritize high-quality interaction and personalized attention, the program is application-only. We select participants via a brief 1:1 strategy call with Jagat or his core team to ensure this methodology is the absolute best fit for your family dynamic. If selected, you will be invited to join the upcoming batch."
     },
     {
       q: "I've already tried multiple courses and YouTube videos. How is this different?",
